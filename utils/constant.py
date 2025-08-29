@@ -1,8 +1,9 @@
 CLASSIFICATION_DATASET = ['299_libras_move']
 REGRESSION_DATASET = ['196_autoMpg']
-DATASET_NAME = []
-TASK = ['regression', 'classification']
+SEMI_SUPERVISED_DATASET = ['LL0_1053_jm1']
+TIMESERIES_DATASET = ['stock_market']
+TASK = ['regression', 'classification', 'semi_supervised_classification', 'timeseries_forcasting']
 METRICS = []
 ARCHIVE_NAMES = ['dataset']
-dataset_names_for_task = {'regression': REGRESSION_DATASET,'classification':CLASSIFICATION_DATASET}
+dataset_names_for_task = {'regression': REGRESSION_DATASET,'classification':CLASSIFICATION_DATASET, 'semi_supervised_classification':SEMI_SUPERVISED_DATASET,'timeseries_forcasting':TIMESERIES_DATASET}
 LLMs = { 'deepseek-r1:14b', 'llama4'}

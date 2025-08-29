@@ -20,7 +20,7 @@ from prompts.prompt_manager import PromptManager
 import requests ,json
 import os
 from dotenv import load_dotenv, dotenv_values
-def explain_process(doc_path, llm):
+def explain_process(doc_path, llm, des_path):
     
                 
         with open(doc_path, "r", encoding="utf-8") as f:
@@ -43,16 +43,19 @@ def explain_process(doc_path, llm):
         }
 
         response = requests.post(url, data=json.dumps(payload), stream=True)
+        
+        with open(des_path, "a", encoding="utf-8") as f:
+            
 
-        for line in response.iter_lines():
-            if line:
-                data = json.loads(line.decode('utf-8'))
-                print(data.get("response", ""), end="", flush=True)
+            for line in response.iter_lines():
+                if line:      
+                    data = json.loads(line.decode('utf-8'))
+                    text = data.get("response", "")
+                    
+                    print(text, end="", flush=True)
+                    
+                    f.write(text)
+           
+    
+            print()  
 
-        print()  
-
-
-
-# print(support_prompt)
-# print(helpdesk_prompt)
-# explain_process('full_log.txt')

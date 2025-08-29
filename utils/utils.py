@@ -2,8 +2,8 @@ import os
 import pandas as pd
 import numpy as np
 
-from utils.constant import CLASSIFICATION_DATASET
-from utils.constant import REGRESSION_DATASET
+from utils.constant import CLASSIFICATION_DATASET,TIMESERIES_DATASET
+from utils.constant import REGRESSION_DATASET,SEMI_SUPERVISED_DATASET
 from utils.constant import TASK
 from utils.constant import LLMs
 
@@ -47,7 +47,7 @@ def read_dataset(root_dir, task_name, dataset_name):
         X_test = test_dataset.drop(columns=[target_column])
         y_test = test_dataset[[target_column]] 
         
-        dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test)
+        dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
         
     elif task_name == 'classification':
         root_dir_dataset = cur_root_dir + '/dataset/' + task_name + '/' 
@@ -60,8 +60,35 @@ def read_dataset(root_dir, task_name, dataset_name):
         X_test = test_dataset.drop(columns=[target_column])
         y_test = test_dataset[[target_column]] 
         
-        dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test)
+        dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
         
+    elif task_name == 'semi_supervised_classification':
+        root_dir_dataset = cur_root_dir + '/dataset/' + task_name + '/' 
+        train_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'train_data.csv')  
+        test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
+        
+        target_column = 'defects'
+        X_train = train_dataset.drop(columns=[target_column])
+        y_train = train_dataset[[target_column]]
+        X_test = test_dataset.drop(columns=[target_column])
+        y_test = test_dataset[[target_column]] 
+        
+        dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
+        
+    
+    elif task_name == 'timeseries_forcasting':
+        root_dir_dataset = cur_root_dir + '/dataset/' + task_name + '/' 
+        train_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'train_data.csv')  
+        test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
+        
+        target_column = 'Close'
+        X_train = train_dataset
+        y_train = train_dataset[[target_column]]
+        X_test = test_dataset
+        y_test = test_dataset[[target_column]] 
+        
+        dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test, target_column)
+
     return dataset_dict
 
 def read_all_dataset(root_dir, task_name):
@@ -83,7 +110,7 @@ def read_all_dataset(root_dir, task_name):
             X_test = test_dataset.drop(columns=[target_column])
             y_test = test_dataset[[target_column]] 
             
-            dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test)
+            dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
                 
     
     elif task_name == 'classification':
@@ -100,7 +127,42 @@ def read_all_dataset(root_dir, task_name):
             X_test = test_dataset.drop(columns=[target_column])
             y_test = test_dataset[[target_column]] 
             
-            dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test)
+            dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
+            
+    
+    elif task_name == 'semi_supervised_classification':
+    
+        for dataset_name in SEMI_SUPERVISED_DATASET:
+            root_dir_dataset = cur_root_dir + '/dataset/' + task_name + '/' 
+            
+            train_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'train_data.csv')  
+            test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
+            
+            target_column = 'defects'
+            X_train = train_dataset.drop(columns=[target_column])
+            y_train = train_dataset[[target_column]]
+            X_test = test_dataset.drop(columns=[target_column])
+            y_test = test_dataset[[target_column]] 
+            
+            dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
+        
+            
+    elif task_name == 'timeseries_forcasting':
+    
+        for dataset_name in TIMESERIES_DATASET:
+            root_dir_dataset = cur_root_dir + '/dataset/' + task_name + '/' 
+            
+            train_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'train_data.csv')  
+            test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
+            
+            target_column = 'Close'
+            X_train = train_dataset
+            y_train = train_dataset[[target_column]]
+            X_test = test_dataset
+            y_test = test_dataset[[target_column]] 
+            
+            dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
+    
            
     return dataset_dict     
           
@@ -108,11 +170,9 @@ def read_all_dataset(root_dir, task_name):
 def calculate_metrics():
     pass
 
-def generate_results(file, root_dir, task_name, dataset_name, llm):
-    
+def generate_results(root_dir, task_name, dataset_name, llm):
     res = pd.DataFrame(data=np.zeros((0,3), dtype=np.float16), index=[],
                         columns=['task', 'dataset', 'llm' ])
-    # df_metrics = pd.DataFrame()
     
     df_metrics = pd.DataFrame([{
         'task': task_name,
@@ -120,20 +180,15 @@ def generate_results(file, root_dir, task_name, dataset_name, llm):
         'llm': llm
     }])
     
-    # df_metrics = pd.read_csv(output_dir)
-    # print(output_dir)
     df_metrics['task'] = task_name
     df_metrics['dataset'] = dataset_name
     df_metrics['llm'] = llm
     #df_metrics['metric'] = metric  
     #df_metrics['llm'] = llm
+ 
     res = pd.concat((res, df_metrics), axis=0, sort=False)
-    
-    res.to_csv(root_dir + '/' + 'results.csv', index=False, mode='a', header=not os.path.exists(root_dir + '/' + 'results.csv'))
-    
-    # res = generate_results('results.csv', root_dir)
-    
-    print(res.to_string())
+
+    res.to_csv(os.path.join(root_dir, 'results.csv'), index=False, mode='a', header= not os.path.exists(os.path.join(root_dir, 'results.csv')))
     
     return res
 
