@@ -8,9 +8,9 @@ It provides an environment to experiment, evaluate, and compare how various mode
 Follow the steps below to set up and run the project:
 
 1. Clone the Repository
-'''
+```
 git clone https://github.com/amelinenar/explanation-experiment-llm.git
-'''
+```
 '''
 cd your-repo-name
 '''
