@@ -11,31 +11,28 @@ Follow the steps below to set up and run the project:
 
 2. Clone the Repository
 ```
-git clone https://github.com/amelinenar/explanation-experiment-llm.git
-cd your-repo-name
+- git clone https://github.com/amelinenar/explanation-experiment-llm.git
+= cd your-repo-name
 ```
-'''
-
-'''
-
-3. Create a Virtual Environment (Python 3.10 required)
-   conda create envName
-   conda activate envName
-
-4. Install Dependencies
-   pip install -r requirements.txt
-
-5. Configure Environment Variables
+3. Install Dependencies
+```
+pip install -r requirements.txt
+```
+4. Configure Environment Variables
 Fill in the required values inside the .env file:
+```
 URL_API=' '
 ROOT_DIR=''
+```
 
 6. (Optional) Resolve Potential SSH Issues
 
 If you encounter SSH-related errors while installing dependencies, run:
+```
 python -m pip install --upgrade pip setuptools wheel
+```
 
-🎯 Objective
+## 🎯 Objective
 
 Evaluate how different LLMs explain AutoML workflows.
 Test clarity, accuracy, and interpretability of model-generated explanations.
