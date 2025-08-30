@@ -1,0 +1,3 @@
+dotenv
+git+https://github.com/amelinenar/alpha-automl-explaination-llm.git/@0.3.0
+python-frontmatter
