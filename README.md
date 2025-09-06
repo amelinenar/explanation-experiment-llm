@@ -3,7 +3,7 @@
 This repository is designed to test and observe the explainability capability of different Large Language Models (LLMs) in the context of AutoML.
 It provides an environment to experiment, evaluate, and compare how various models generate explanations for automated machine learning processes.
 
-## 🚀 Getting Started
+## Getting Started
 
 Follow the steps below to set up and run the project:
 
@@ -32,7 +32,7 @@ If you encounter SSH-related errors while installing dependencies, run:
 python -m pip install --upgrade pip setuptools wheel
 ```
 
-## 🎯 Objective
+##  Objective
 
 Evaluate how different LLMs explain AutoML workflows.
 Test clarity, accuracy, and interpretability of model-generated explanations.
