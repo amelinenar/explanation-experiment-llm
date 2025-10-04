@@ -7,3 +7,4 @@ METRICS = []
 ARCHIVE_NAMES = ['dataset']
 dataset_names_for_task = {'regression': REGRESSION_DATASET,'classification':CLASSIFICATION_DATASET, 'semi_supervised_classification':SEMI_SUPERVISED_DATASET,'timeseries_forcasting':TIMESERIES_DATASET}
 LLMs = { 'deepseek-r1:14b', 'llama4'}
+#LLMs = { 'gemma3' }
