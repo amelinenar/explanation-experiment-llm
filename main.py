@@ -13,7 +13,7 @@ from utils.constant import LLMs
 from utils.constant import dataset_names_for_task
 
 
-from prompt import explain_process
+from prompt import explain_process,judging_explanation
 from dotenv import load_dotenv
 
 def create_fit_classifier(task_name,X_train,y_train, X_test,y_test,target_column):
@@ -92,12 +92,28 @@ if __name__ == "__main__":
                     output_directory = tmp_output_directory + dataset_name + '/' + llm + '/'
                     create_directory(output_directory)
                     file_dir =  os.path.join(output_directory , 'summary_result.txt')
+                  
+                    dir_test = "/home/nguenang/Master_thesis/experiment_setup/results/regression/196_autoMpg/deepseek-r1:14b/summary_result.txt"
          
                     explain_process('full_log_MainProcess.txt', llm, file_dir)
                     print(" ")
                     
-                    generate_results(root_dir, task_name, dataset_name, llm)
+                    print("TESTING ")
+                    
+                    print(f'file dir: {file_dir}')
                 
+                    for llm_judge in LLMs:
+                        judge_dir = os.path.join(output_directory, f'evaluation_'+llm_judge+'.txt')
+                        
+                        if llm_judge is not llm:
+                            
+                            
+                    
+                            judging_explanation('full_log_MainProcess.txt',file_dir,llm,judge_dir)
+                
+                    
+                    generate_results(root_dir, task_name, dataset_name, llm)
+                    
                 
                     print(f"DONE SUMMARIZATION: output stored in {file_dir}")
 
