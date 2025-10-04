@@ -1,0 +1,925 @@
+2025-10-02 16:10:30,299 - Process-3 - root - DEBUG - Logging initialized for Process-3, writing to full_log_Process-3.txt
+2025-10-02 16:10:30,301 - Process-3 - alpha_automl.pipeline_synthesis.setup_search - DEBUG - Creating a manual grammar
+2025-10-02 16:10:30,301 - Process-3 - alpha_automl.primitive_loader - DEBUG - Hierarchy of all primitives loaded
+2025-10-02 16:10:30,302 - Process-3 - alpha_automl.grammar_loader - DEBUG - Creating task grammar for task SEMISUPERVISED_TASK
+2025-10-02 16:10:30,303 - Process-3 - alpha_automl.grammar_loader - DEBUG - Task grammar: Grammar with 30 productions (start state = S)
+    S -> IMPUTER ENCODERS FEATURE_SCALER SEMISUPERVISED_CLASSIFIER CLASSIFIER
+    S -> IMPUTER ENCODERS FEATURE_SCALER LABELPROPAGATION_CLASSIFIER
+    ENCODERS -> 'E'
+    IMPUTER -> 'sklearn.impute.SimpleImputer'
+    FEATURE_SCALER -> 'sklearn.preprocessing.MaxAbsScaler'
+    FEATURE_SCALER -> 'sklearn.preprocessing.RobustScaler'
+    FEATURE_SCALER -> 'sklearn.preprocessing.StandardScaler'
+    FEATURE_SCALER -> 'E'
+    CLASSIFIER -> 'sklearn.discriminant_analysis.LinearDiscriminantAnalysis'
+    CLASSIFIER -> 'sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis'
+    CLASSIFIER -> 'sklearn.ensemble.BaggingClassifier'
+    CLASSIFIER -> 'sklearn.ensemble.ExtraTreesClassifier'
+    CLASSIFIER -> 'sklearn.ensemble.GradientBoostingClassifier'
+    CLASSIFIER -> 'sklearn.ensemble.RandomForestClassifier'
+    CLASSIFIER -> 'sklearn.naive_bayes.BernoulliNB'
+    CLASSIFIER -> 'sklearn.naive_bayes.GaussianNB'
+    CLASSIFIER -> 'sklearn.naive_bayes.MultinomialNB'
+    CLASSIFIER -> 'sklearn.neighbors.KNeighborsClassifier'
+    CLASSIFIER -> 'sklearn.linear_model.LogisticRegression'
+    CLASSIFIER -> 'sklearn.linear_model.PassiveAggressiveClassifier'
+    CLASSIFIER -> 'sklearn.linear_model.SGDClassifier'
+    CLASSIFIER -> 'sklearn.svm.LinearSVC'
+    CLASSIFIER -> 'sklearn.svm.SVC'
+    CLASSIFIER -> 'sklearn.tree.DecisionTreeClassifier'
+    CLASSIFIER -> 'xgboost.XGBClassifier'
+    CLASSIFIER -> 'lightgbm.LGBMClassifier'
+    SEMISUPERVISED_CLASSIFIER -> 'alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox'
+    SEMISUPERVISED_CLASSIFIER -> 'sklearn.semi_supervised.SelfTrainingClassifier'
+    LABELPROPAGATION_CLASSIFIER -> 'alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading'
+    LABELPROPAGATION_CLASSIFIER -> 'alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation'
+2025-10-02 16:10:30,303 - Process-3 - alpha_automl.grammar_loader - DEBUG - Creating game grammar
+2025-10-02 16:10:30,325 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - ------ITER 1------
+2025-10-02 16:10:30,325 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:30,325 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:30,334 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.038112085
+2025-10-02 16:10:30,335 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:30,335 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:30,335 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER SEMISUPERVISED_CLASSIFIER CLASSIFIER
+2025-10-02 16:10:30,335 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:30,335 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:30,340 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037153058
+2025-10-02 16:10:30,340 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:30,340 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:30,340 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,340 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,341 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,345 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03705745
+2025-10-02 16:10:30,345 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:30,345 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:30,345 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER SEMISUPERVISED_CLASSIFIER CLASSIFIER
+2025-10-02 16:10:30,346 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:30,346 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:30,346 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:30,346 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:30,346 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:30,350 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03683356
+2025-10-02 16:10:30,350 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:30,350 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:30,351 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,351 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,351 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,351 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:30,351 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,351 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,355 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.036757316
+2025-10-02 16:10:30,356 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 1
+2025-10-02 16:10:30,356 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,356 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:30,356 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,357 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: LABELPROPAGATION_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:30,357 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:30,357 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:30,361 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037235927
+2025-10-02 16:10:30,361 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:30,361 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,362 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> E
+2025-10-02 16:10:30,362 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,362 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,366 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037249032
+2025-10-02 16:10:30,366 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:30,366 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,367 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: LABELPROPAGATION_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,367 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,367 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,371 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03758924
+2025-10-02 16:10:30,371 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:30,372 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,372 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
+2025-10-02 16:10:30,372 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.MaxAbsScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,372 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.MaxAbsScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,377 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037312686
+2025-10-02 16:10:30,377 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:30,377 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,377 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.RobustScaler
+2025-10-02 16:10:30,378 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,378 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,382 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037368834
+2025-10-02 16:10:30,383 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 28
+2025-10-02 16:10:30,383 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: LABELPROPAGATION_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,383 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:30,383 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,383 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:30,384 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,384 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,388 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.0372488
+2025-10-02 16:10:30,388 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:30,388 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,388 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> E
+2025-10-02 16:10:30,389 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,389 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,393 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03773663
+2025-10-02 16:10:30,393 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:30,393 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,393 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
+2025-10-02 16:10:30,394 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.MaxAbsScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,394 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.MaxAbsScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,398 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037784226
+2025-10-02 16:10:30,398 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:30,398 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,399 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.RobustScaler
+2025-10-02 16:10:30,399 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,399 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,403 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037801392
+2025-10-02 16:10:30,403 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:30,404 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,404 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.StandardScaler
+2025-10-02 16:10:30,404 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,404 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,410 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037191227
+2025-10-02 16:10:30,411 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 6
+2025-10-02 16:10:30,411 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.StandardScaler
+2025-10-02 16:10:30,411 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:30,412 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,412 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:30,412 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,412 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,418 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.0368829
+2025-10-02 16:10:30,418 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:30,418 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,418 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:30,419 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,419 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,423 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03778205
+2025-10-02 16:10:30,423 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:30,423 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,424 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:30,424 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,424 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,424 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:30,425 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,425 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,440 - Process-3 - alpha_automl.pipeline_synthesis.pipeline_builder - DEBUG - New pipelined created:
+Pipeline(steps=[('sklearn.impute.SimpleImputer',
+                 SimpleImputer(strategy='most_frequent')),
+                ('sklearn.preprocessing.StandardScaler', StandardScaler()),
+                ('alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading',
+                 SkLabelSpreading())])
+2025-10-02 16:10:30,635 - Process-3 - alpha_automl.scorer - DEBUG - Score: 0.222
+2025-10-02 16:10:30,636 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:30,637 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,640 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:30,641 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,641 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,642 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:30,642 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,643 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,643 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin 1
+2025-10-02 16:10:30,643 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:30,644 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,644 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:30,644 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,645 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,645 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:30,645 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,646 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,646 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin 1
+2025-10-02 16:10:30,646 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 3
+2025-10-02 16:10:30,647 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:30,647 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:30,647 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,648 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:30,648 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,649 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,649 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
+2025-10-02 16:10:30,649 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:30,650 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,650 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:30,651 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,651 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,651 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
+2025-10-02 16:10:30,651 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:30,652 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,652 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:30,652 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,653 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,653 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
+2025-10-02 16:10:30,653 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:30,653 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,654 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:30,654 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,654 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,655 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
+2025-10-02 16:10:30,655 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:30,655 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,655 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:30,656 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,656 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,656 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
+2025-10-02 16:10:30,657 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 2
+2025-10-02 16:10:30,657 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:30,657 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
+2025-10-02 16:10:30,658 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:30,658 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:30,667 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.038112085
+2025-10-02 16:10:30,667 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:30,668 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:30,668 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER SEMISUPERVISED_CLASSIFIER CLASSIFIER
+2025-10-02 16:10:30,669 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:30,669 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:30,680 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037153058
+2025-10-02 16:10:30,681 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:30,681 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:30,681 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,682 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,682 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,695 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03705745
+2025-10-02 16:10:30,695 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:30,696 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:30,696 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER SEMISUPERVISED_CLASSIFIER CLASSIFIER
+2025-10-02 16:10:30,697 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:30,697 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:30,698 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:30,698 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:30,698 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:30,704 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03683356
+2025-10-02 16:10:30,705 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:30,705 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:30,706 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,706 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,707 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,707 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:30,708 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,708 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,716 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.036757316
+2025-10-02 16:10:30,717 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 1
+2025-10-02 16:10:30,718 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,718 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:30,719 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,719 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: LABELPROPAGATION_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:30,719 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:30,720 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:30,751 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037235927
+2025-10-02 16:10:30,756 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:30,756 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,757 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> E
+2025-10-02 16:10:30,759 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,763 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,818 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037249032
+2025-10-02 16:10:30,819 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:30,820 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,820 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: LABELPROPAGATION_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,821 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,825 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,850 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03758924
+2025-10-02 16:10:30,852 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:30,853 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,854 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
+2025-10-02 16:10:30,857 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.MaxAbsScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,858 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.MaxAbsScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,888 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037312686
+2025-10-02 16:10:30,893 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:30,895 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,896 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.RobustScaler
+2025-10-02 16:10:30,901 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,903 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,934 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037368834
+2025-10-02 16:10:30,935 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 5
+2025-10-02 16:10:30,935 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.RobustScaler
+2025-10-02 16:10:30,936 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:30,936 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,936 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:30,937 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.RobustScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,937 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.RobustScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,953 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03708696
+2025-10-02 16:10:30,954 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:30,954 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,954 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: LABELPROPAGATION_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:30,955 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:30,955 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:30,974 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03750847
+2025-10-02 16:10:30,974 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:30,974 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:30,975 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: LABELPROPAGATION_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,975 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:30,975 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:31,002 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037801392
+2025-10-02 16:10:31,002 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:31,002 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:31,003 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:31,003 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.RobustScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:31,003 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.RobustScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:31,035 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037910003
+2025-10-02 16:10:31,035 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:31,035 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:31,036 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: LABELPROPAGATION_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:31,036 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:31,036 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:31,036 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:31,037 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:31,037 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:31,057 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037194792
+2025-10-02 16:10:31,058 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 29
+2025-10-02 16:10:31,058 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: LABELPROPAGATION_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:31,058 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:31,058 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:31,059 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:31,059 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:31,059 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:31,077 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.038047556
+2025-10-02 16:10:31,077 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:31,078 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:31,078 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:31,078 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:31,078 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:31,079 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:31,079 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:31,079 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:31,087 - Process-3 - alpha_automl.pipeline_synthesis.pipeline_builder - DEBUG - New pipelined created:
+Pipeline(steps=[('sklearn.impute.SimpleImputer',
+                 SimpleImputer(strategy='most_frequent')),
+                ('sklearn.preprocessing.RobustScaler', RobustScaler()),
+                ('alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation',
+                 SkLabelPropagation())])
+2025-10-02 16:10:35,453 - Process-3 - alpha_automl.scorer - DEBUG - Score: 0.214
+2025-10-02 16:10:35,454 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:35,454 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,455 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:35,455 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,456 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,456 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:35,457 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,464 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,465 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:35,465 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,465 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:35,466 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,466 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,466 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:35,466 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,467 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,467 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:35,467 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,467 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:35,467 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,468 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,468 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:35,476 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,476 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,477 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 3
+2025-10-02 16:10:35,477 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:35,478 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:35,484 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,485 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:35,485 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,485 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,486 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:35,486 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,486 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:35,487 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,487 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,487 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:35,487 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,488 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:35,498 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,498 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,499 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:35,499 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,499 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:35,500 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,500 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,500 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:35,501 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,505 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:35,506 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,506 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,507 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 2
+2025-10-02 16:10:35,507 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:35,514 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:35,515 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:35,562 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.038112085
+2025-10-02 16:10:35,562 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:35,563 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:35,563 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER SEMISUPERVISED_CLASSIFIER CLASSIFIER
+2025-10-02 16:10:35,563 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:35,563 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:35,569 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037153058
+2025-10-02 16:10:35,581 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:35,582 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:35,583 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:35,583 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:35,583 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:35,634 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03705745
+2025-10-02 16:10:35,635 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:35,635 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:35,635 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER SEMISUPERVISED_CLASSIFIER CLASSIFIER
+2025-10-02 16:10:35,635 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:35,636 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:35,636 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:35,636 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:35,637 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:35,641 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03683356
+2025-10-02 16:10:35,642 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:35,642 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:35,642 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:35,643 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:35,643 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:35,643 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:35,643 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:35,644 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:35,652 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.036757316
+2025-10-02 16:10:35,653 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 1
+2025-10-02 16:10:35,653 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:35,654 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:35,655 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:35,655 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: LABELPROPAGATION_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,656 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,657 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:35,708 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037235927
+2025-10-02 16:10:35,709 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:35,709 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:35,710 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> E
+2025-10-02 16:10:35,714 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:35,715 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:35,840 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037249032
+2025-10-02 16:10:35,841 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:35,842 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:35,842 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: LABELPROPAGATION_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:35,842 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:35,843 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:35,964 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03758924
+2025-10-02 16:10:35,965 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:35,965 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:35,966 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
+2025-10-02 16:10:35,966 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.MaxAbsScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:35,967 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.MaxAbsScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,024 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037312686
+2025-10-02 16:10:36,025 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:36,025 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,026 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.RobustScaler
+2025-10-02 16:10:36,026 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,027 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,116 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037368834
+2025-10-02 16:10:36,117 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 7
+2025-10-02 16:10:36,120 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> E
+2025-10-02 16:10:36,120 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:36,121 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,121 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:36,121 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,122 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,198 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.036967963
+2025-10-02 16:10:36,199 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:36,199 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,199 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: LABELPROPAGATION_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:36,199 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:36,199 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:36,248 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037442103
+2025-10-02 16:10:36,248 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:36,248 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,248 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: LABELPROPAGATION_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,249 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,249 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,253 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03773663
+2025-10-02 16:10:36,253 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:36,254 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,254 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:36,254 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,254 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,258 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03777371
+2025-10-02 16:10:36,258 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:36,258 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,259 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: LABELPROPAGATION_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:36,259 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:36,259 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:36,259 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:36,259 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:36,259 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation
+2025-10-02 16:10:36,263 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037130006
+2025-10-02 16:10:36,264 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 28
+2025-10-02 16:10:36,264 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: LABELPROPAGATION_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,264 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:36,264 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,264 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:36,264 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,264 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,269 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03741435
+2025-10-02 16:10:36,269 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:36,269 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,269 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:36,269 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,270 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,274 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03830549
+2025-10-02 16:10:36,274 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:36,275 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,275 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:36,275 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,275 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,275 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:36,275 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,275 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,278 - Process-3 - alpha_automl.pipeline_synthesis.pipeline_builder - DEBUG - New pipelined created:
+Pipeline(steps=[('sklearn.impute.SimpleImputer',
+                 SimpleImputer(strategy='most_frequent')),
+                ('alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading',
+                 SkLabelSpreading())])
+2025-10-02 16:10:36,663 - Process-3 - alpha_automl.scorer - DEBUG - Score: 0.236
+2025-10-02 16:10:36,663 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin 1
+2025-10-02 16:10:36,668 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:36,668 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,669 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:36,669 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,670 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,670 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:36,671 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,672 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,672 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin 1
+2025-10-02 16:10:36,672 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:36,673 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,673 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:36,674 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,674 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,675 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:36,676 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,676 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,676 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin 1
+2025-10-02 16:10:36,677 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 3
+2025-10-02 16:10:36,678 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:36,678 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:36,679 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,679 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:36,680 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,681 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,681 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
+2025-10-02 16:10:36,681 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:36,682 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,682 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:36,683 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,683 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,684 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
+2025-10-02 16:10:36,684 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:36,684 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,685 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:36,685 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,686 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,686 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
+2025-10-02 16:10:36,687 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:36,687 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,687 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:36,688 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,688 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,689 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
+2025-10-02 16:10:36,689 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:36,689 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,690 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:36,691 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,691 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading
+2025-10-02 16:10:36,692 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
+2025-10-02 16:10:36,693 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 2
+2025-10-02 16:10:36,693 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:36,694 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
+2025-10-02 16:10:36,695 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:36,695 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:36,735 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.038112085
+2025-10-02 16:10:36,754 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:36,755 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:36,756 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER SEMISUPERVISED_CLASSIFIER CLASSIFIER
+2025-10-02 16:10:36,756 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:36,757 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:36,776 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037153058
+2025-10-02 16:10:36,797 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:36,797 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:36,798 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,798 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,799 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,820 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03705745
+2025-10-02 16:10:36,821 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:36,821 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:36,821 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER SEMISUPERVISED_CLASSIFIER CLASSIFIER
+2025-10-02 16:10:36,822 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:36,822 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:36,822 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:36,822 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:36,823 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:36,829 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03683356
+2025-10-02 16:10:36,830 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:36,831 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:36,831 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,832 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,832 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,832 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:36,833 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,833 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:36,840 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.036757316
+2025-10-02 16:10:36,841 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 0
+2025-10-02 16:10:36,841 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER SEMISUPERVISED_CLASSIFIER CLASSIFIER
+2025-10-02 16:10:36,842 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:36,842 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:36,843 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: CLASSIFIER -> sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:36,843 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:36,843 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:36,850 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037182752
+2025-10-02 16:10:36,851 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:36,852 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:36,852 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: SEMISUPERVISED_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox
+2025-10-02 16:10:36,853 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|CLASSIFIER
+2025-10-02 16:10:36,853 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|CLASSIFIER
+2025-10-02 16:10:36,860 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.036860384
+2025-10-02 16:10:36,861 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:36,861 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:36,862 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: CLASSIFIER -> sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,862 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,862 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,869 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03741382
+2025-10-02 16:10:36,870 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:36,871 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:36,871 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: CLASSIFIER -> sklearn.neighbors.KNeighborsClassifier
+2025-10-02 16:10:36,872 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.neighbors.KNeighborsClassifier
+2025-10-02 16:10:36,872 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.neighbors.KNeighborsClassifier
+2025-10-02 16:10:36,879 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037199073
+2025-10-02 16:10:36,880 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:36,880 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:36,880 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: CLASSIFIER -> sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+2025-10-02 16:10:36,881 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+2025-10-02 16:10:36,881 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+2025-10-02 16:10:36,888 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03762228
+2025-10-02 16:10:36,889 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 2
+2025-10-02 16:10:36,889 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:36,889 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:36,889 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:36,890 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:36,890 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:36,890 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:36,897 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037369683
+2025-10-02 16:10:36,898 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:36,898 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:36,898 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: CLASSIFIER -> sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:36,898 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:36,899 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:36,905 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.036820687
+2025-10-02 16:10:36,906 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:36,906 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:36,907 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: SEMISUPERVISED_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox
+2025-10-02 16:10:36,907 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|CLASSIFIER
+2025-10-02 16:10:36,907 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|CLASSIFIER
+2025-10-02 16:10:36,914 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.036554694
+2025-10-02 16:10:36,915 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:36,915 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:36,915 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: CLASSIFIER -> sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,915 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,916 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,924 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037078325
+2025-10-02 16:10:36,924 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:36,925 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:36,925 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: CLASSIFIER -> sklearn.neighbors.KNeighborsClassifier
+2025-10-02 16:10:36,925 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.neighbors.KNeighborsClassifier
+2025-10-02 16:10:36,925 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.neighbors.KNeighborsClassifier
+2025-10-02 16:10:36,932 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.036863513
+2025-10-02 16:10:36,933 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 26
+2025-10-02 16:10:36,934 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: SEMISUPERVISED_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox
+2025-10-02 16:10:36,934 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:36,934 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|CLASSIFIER
+2025-10-02 16:10:36,934 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:36,935 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|CLASSIFIER
+2025-10-02 16:10:36,935 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|CLASSIFIER
+2025-10-02 16:10:36,942 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037116475
+2025-10-02 16:10:36,942 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:36,943 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|CLASSIFIER
+2025-10-02 16:10:36,943 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: CLASSIFIER -> sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:36,943 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:36,943 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:36,950 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.036522567
+2025-10-02 16:10:36,950 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:36,951 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|CLASSIFIER
+2025-10-02 16:10:36,951 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: CLASSIFIER -> sklearn.neighbors.KNeighborsClassifier
+2025-10-02 16:10:36,951 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.neighbors.KNeighborsClassifier
+2025-10-02 16:10:36,951 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.neighbors.KNeighborsClassifier
+2025-10-02 16:10:36,957 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03656797
+2025-10-02 16:10:36,958 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:36,958 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|CLASSIFIER
+2025-10-02 16:10:36,959 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: CLASSIFIER -> sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,959 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,959 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,965 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03676482
+2025-10-02 16:10:36,966 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:36,966 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|CLASSIFIER
+2025-10-02 16:10:36,966 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: CLASSIFIER -> sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+2025-10-02 16:10:36,967 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+2025-10-02 16:10:36,967 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+2025-10-02 16:10:36,973 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037025902
+2025-10-02 16:10:36,974 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 16
+2025-10-02 16:10:36,974 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: CLASSIFIER -> sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,974 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:36,974 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,975 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:36,975 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,975 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,981 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037324984
+2025-10-02 16:10:36,982 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:36,982 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,982 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> E
+2025-10-02 16:10:36,982 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,983 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,989 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.036957502
+2025-10-02 16:10:36,989 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:36,989 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,990 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
+2025-10-02 16:10:36,990 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.MaxAbsScaler|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,990 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.MaxAbsScaler|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,997 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037022065
+2025-10-02 16:10:36,997 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:36,997 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,997 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.RobustScaler
+2025-10-02 16:10:36,998 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:36,998 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:37,004 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037040286
+2025-10-02 16:10:37,005 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:37,005 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:37,005 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.StandardScaler
+2025-10-02 16:10:37,005 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:37,005 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.StandardScaler|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:37,012 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03648018
+2025-10-02 16:10:37,013 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 7
+2025-10-02 16:10:37,013 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> E
+2025-10-02 16:10:37,013 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:37,013 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:37,014 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:37,014 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:37,014 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:37,022 - Process-3 - alpha_automl.pipeline_synthesis.pipeline_builder - DEBUG - New pipelined created:
+Pipeline(steps=[('sklearn.impute.SimpleImputer',
+                 SimpleImputer(strategy='most_frequent')),
+                ('alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox',
+                 AutonBox(base_estimator=MultinomialNB()))])
+2025-10-02 16:10:39,470 - Process-3 - alpha_automl.scorer - DEBUG - Score: 0.232
+2025-10-02 16:10:39,471 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:39,475 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:39,475 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:39,476 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:39,476 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:39,476 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:39,476 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:39,477 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:39,477 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:39,477 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:39,478 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:39,478 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:39,478 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:39,479 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:39,479 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:39,484 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:39,484 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:39,485 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:39,486 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:39,486 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:39,487 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 3
+2025-10-02 16:10:39,487 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:39,488 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:39,492 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:39,582 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.038112085
+2025-10-02 16:10:39,588 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:39,589 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:39,590 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER SEMISUPERVISED_CLASSIFIER CLASSIFIER
+2025-10-02 16:10:39,595 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:39,596 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:39,667 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037153058
+2025-10-02 16:10:39,669 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:39,670 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:39,674 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:39,676 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:39,676 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:39,742 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03705745
+2025-10-02 16:10:39,742 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:39,743 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:39,743 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER SEMISUPERVISED_CLASSIFIER CLASSIFIER
+2025-10-02 16:10:39,744 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:39,744 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:39,745 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:39,745 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:39,745 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:39,802 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03683356
+2025-10-02 16:10:39,809 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:39,809 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2025-10-02 16:10:39,810 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:39,816 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:39,817 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:39,818 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:39,819 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:39,819 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER
+2025-10-02 16:10:39,937 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.036757316
+2025-10-02 16:10:39,939 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 0
+2025-10-02 16:10:39,941 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER SEMISUPERVISED_CLASSIFIER CLASSIFIER
+2025-10-02 16:10:39,944 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:39,945 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:39,945 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: CLASSIFIER -> sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:39,945 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:39,946 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,028 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037182752
+2025-10-02 16:10:40,034 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:40,035 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:40,037 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: SEMISUPERVISED_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox
+2025-10-02 16:10:40,038 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|CLASSIFIER
+2025-10-02 16:10:40,038 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|CLASSIFIER
+2025-10-02 16:10:40,107 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.036860384
+2025-10-02 16:10:40,112 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:40,113 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:40,114 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: CLASSIFIER -> sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:40,114 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:40,115 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.naive_bayes.MultinomialNB
+2025-10-02 16:10:40,180 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03741382
+2025-10-02 16:10:40,181 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:40,184 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:40,185 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: CLASSIFIER -> sklearn.neighbors.KNeighborsClassifier
+2025-10-02 16:10:40,188 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.neighbors.KNeighborsClassifier
+2025-10-02 16:10:40,189 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.neighbors.KNeighborsClassifier
+2025-10-02 16:10:40,256 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037199073
+2025-10-02 16:10:40,257 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:40,257 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER
+2025-10-02 16:10:40,258 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: CLASSIFIER -> sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+2025-10-02 16:10:40,259 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+2025-10-02 16:10:40,260 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+2025-10-02 16:10:40,319 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03762228
+2025-10-02 16:10:40,321 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 13
+2025-10-02 16:10:40,325 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: CLASSIFIER -> sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,327 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:40,327 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,328 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:40,329 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,334 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,393 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.036820687
+2025-10-02 16:10:40,396 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:40,397 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,398 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: SEMISUPERVISED_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox
+2025-10-02 16:10:40,398 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,399 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,463 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.036865655
+2025-10-02 16:10:40,465 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:40,466 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,467 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> E
+2025-10-02 16:10:40,468 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,477 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,581 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037377417
+2025-10-02 16:10:40,582 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:40,582 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,583 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
+2025-10-02 16:10:40,583 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.MaxAbsScaler|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,583 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.MaxAbsScaler|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,729 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037396803
+2025-10-02 16:10:40,730 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:40,731 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,731 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.RobustScaler
+2025-10-02 16:10:40,732 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,732 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,761 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037424788
+2025-10-02 16:10:40,762 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 5
+2025-10-02 16:10:40,762 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.RobustScaler
+2025-10-02 16:10:40,763 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:40,763 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,764 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:40,765 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.RobustScaler|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,765 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.RobustScaler|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,774 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037083067
+2025-10-02 16:10:40,775 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:40,775 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,776 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: SEMISUPERVISED_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox
+2025-10-02 16:10:40,822 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,822 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,899 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03710424
+2025-10-02 16:10:40,900 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2025-10-02 16:10:40,901 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,901 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:40,902 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.RobustScaler|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,903 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|ENCODERS|sklearn.preprocessing.RobustScaler|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,923 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037934877
+2025-10-02 16:10:40,926 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2025-10-02 16:10:40,930 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,931 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: SEMISUPERVISED_CLASSIFIER -> sklearn.semi_supervised.SelfTrainingClassifier
+2025-10-02 16:10:40,934 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|sklearn.semi_supervised.SelfTrainingClassifier|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:40,935 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|sklearn.semi_supervised.SelfTrainingClassifier|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:41,036 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037251197
+2025-10-02 16:10:41,037 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2025-10-02 16:10:41,037 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:41,038 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: SEMISUPERVISED_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox
+2025-10-02 16:10:41,039 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:41,040 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:41,040 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:41,041 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:41,042 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:41,051 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.03678106
+2025-10-02 16:10:41,053 - Process-3 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 2
+2025-10-02 16:10:41,053 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> E
+2025-10-02 16:10:41,054 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2025-10-02 16:10:41,054 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.RobustScaler|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:41,055 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:41,056 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:41,056 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:41,065 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction -0.037578247
+2025-10-02 16:10:41,065 - Process-3 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2025-10-02 16:10:41,066 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.RobustScaler|SEMISUPERVISED_CLASSIFIER|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:41,067 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: SEMISUPERVISED_CLASSIFIER -> alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox
+2025-10-02 16:10:41,067 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:41,068 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:41,069 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> sklearn.impute.SimpleImputer
+2025-10-02 16:10:41,069 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:41,070 - Process-3 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.impute.SimpleImputer|sklearn.preprocessing.RobustScaler|alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox|sklearn.ensemble.RandomForestClassifier
+2025-10-02 16:10:41,149 - Process-3 - alpha_automl.pipeline_synthesis.pipeline_builder - DEBUG - New pipelined created:
+Pipeline(steps=[('sklearn.impute.SimpleImputer',
+                 SimpleImputer(strategy='most_frequent')),
+                ('sklearn.preprocessing.RobustScaler', RobustScaler()),
+                ('alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox',
+                 AutonBox(base_estimator=RandomForestClassifier()))])
+2025-10-02 16:11:51,803 - Process-3 - alpha_automl.pipeline_synthesis.setup_search - DEBUG - Receiving signal 15, terminating process

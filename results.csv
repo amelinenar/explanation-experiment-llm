@@ -1,0 +1,4 @@
+task,dataset,llm
+regression,196_autoMpg,deepseek-r1:14b
+regression,196_autoMpg,llama4
+classification,299_libras_move,deepseek-r1:14b
