@@ -13,15 +13,15 @@ Follow the steps below to set up and run the project:
 - git clone https://github.com/amelinenar/explanation-experiment-llm.git
 - cd your-repo-name
 ```
-3. Install Dependencies
+2. Install Dependencies
 ```
 pip install -r requirements.txt
 ```
-4. Configure Environment Variables
+3. Configure Environment Variables
 Fill in the required values inside the .env file:
 ```
 URL_API=' '
-ROOT_DIR=''
+ROOT_DIR=' '
 ```
 
 ##  Objective
