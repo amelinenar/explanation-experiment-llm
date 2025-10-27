@@ -11,10 +11,13 @@ from utils.utils import generate_results
 from utils.constant import TASK
 from utils.constant import LLMs
 from utils.constant import dataset_names_for_task
+from utils.constant import SUMMARIZATION_PROMPT,JUDGING_PROMPT
 
 
 from prompt import explain_process,judging_explanation
 from dotenv import load_dotenv
+
+from concurrent.futures import ThreadPoolExecutor
 
 def create_fit_classifier(task_name,X_train,y_train, X_test,y_test,target_column):
     if task_name == 'regression':
@@ -52,11 +55,6 @@ root_dir = os.getenv('ROOT_DIR')
 
 
 if __name__ == "__main__":
-    
-    path_doc = os.path.join(root_dir, 'results.csv')
-    if os.path.exists(path_doc):
-        os.remove(path_doc)
-            
 
     if sys.argv[1] == 'run_all':
         
@@ -86,37 +84,151 @@ if __name__ == "__main__":
                 print('--------------------DONE--------------------')
                 print(" ")
                 
-                for llm in LLMs:
-                    print('\t\tllm: ', llm)
+                # for llm in LLMs:
+                #     print('\t\tllm: ', llm)
                 
-                    output_directory = tmp_output_directory + dataset_name + '/' + llm + '/'
-                    create_directory(output_directory)
-                    file_dir =  os.path.join(output_directory , 'summary_result.txt')
-                  
-                    dir_test = "/home/nguenang/Master_thesis/experiment_setup/results/regression/196_autoMpg/deepseek-r1:14b/summary_result.txt"
-         
-                    explain_process('full_log_MainProcess.txt', llm, file_dir)
-                    print(" ")
-                    
-                    print("TESTING ")
-                    
-                    print(f'file dir: {file_dir}')
+                #     output_directory = tmp_output_directory + dataset_name + '/' + llm + '/'
+                #     create_directory(output_directory)
+                #     file_dir =  os.path.join(output_directory , 'summary_result.txt')
                 
-                    for llm_judge in LLMs:
-                        judge_dir = os.path.join(output_directory, f'evaluation_'+llm_judge+'.txt')
+                #     dir_test = "/home/nguenang/Master_thesis/experiment_setup/results/regression/196_autoMpg/deepseek-r1:14b/summary_result.txt"
+        
+                #     explain_process('full_log_MainProcess.txt', llm, file_dir)
+                #     print(" ")
+                    
+                #     print("TESTING ")
+                    
+                #     print(f'file dir: {file_dir}')
+                
+                #     for llm_judge in LLMs:
+                #         judge_dir = os.path.join(output_directory, f'evaluation_'+llm_judge+'.txt')
                         
-                        if llm_judge is not llm:
+                #         if llm_judge is not llm:
                             
                             
                     
-                            judging_explanation('full_log_MainProcess.txt',file_dir,llm,judge_dir)
+                #             judging_explanation('full_log_MainProcess.txt',file_dir,llm,judge_dir)
                 
                     
-                    generate_results(root_dir, task_name, dataset_name, llm)
+                #     generate_results(root_dir, task_name, dataset_name, llm)
                     
                 
-                    print(f"DONE SUMMARIZATION: output stored in {file_dir}")
+                #     print(f"DONE SUMMARIZATION: output stored in {file_dir}")
 
+
+
+    elif sys.argv[1] == 'fit':
+        for task_name in TASK:
+            print(" ")
+            print('task name: ', task_name)
+        
+            datasets_dict = read_all_dataset(root_dir, task_name)
+            
+            tmp_output_directory = root_dir + '/results/' + task_name + '/' 
+
+            for dataset_name in dataset_names_for_task[task_name]:
+                print('\tdataset name: ', dataset_name)
+                print(" ")
+                
+                x_train = datasets_dict[dataset_name][0]
+                y_train = datasets_dict[dataset_name][1]
+                x_test = datasets_dict[dataset_name][2]
+                y_test = datasets_dict[dataset_name][3] 
+                target_column = datasets_dict[dataset_name][4]
+
+
+                print('-----------------START FITTING--------------')
+                
+                create_fit_classifier(task_name,x_train,y_train,x_test,y_test,target_column)
+                
+                print('--------------------DONE--------------------')
+                print(" ")
+                
+    elif sys.argv[1] == 'summarize':
+        
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            for task in TASK:
+                
+                print(f"\tTASK:   {task}            Document:  full_log_MainProcess_{task}.txt")
+                
+                
+                for dataset_name in dataset_names_for_task[task]:
+            
+                    for llm in LLMs:
+                        print('\t\tllm: ', llm)
+                        
+                        tmp_output_directory = root_dir + '/results/' + task + '/' + dataset_name + '/' + llm + '/'
+                    
+                    # output_directory = tmp_output_directory + dataset_name + '/' + llm + '/'
+
+                        
+                        for prompt in SUMMARIZATION_PROMPT:
+                            
+                            output_directory = tmp_output_directory + prompt + '/'
+                            create_directory(output_directory)
+                            file_dir =  os.path.join(output_directory , 'summary_result.txt')
+                            
+                            
+                        
+                            print('\t\t\tprompt: ', prompt)
+                            print( " ")
+                            args = (f'full_log_MainProcess_{task}.txt', llm, file_dir,prompt)
+                            executor.submit(explain_process, *args)
+                        
+        print( " " )
+                    
+        
+    elif sys.argv[1] == 'judge':
+        
+        with ThreadPoolExecutor(max_workers=2) as executor:
+
+        
+            for task in TASK:
+                # print("\tjudging the TASK:", task)
+                
+                # print(f"\t\t  logs:  full_log_MainProcess_{task}.txt")
+                
+                
+                # tmp_output_directory = root_dir + '/results/' + task + '/' 
+                
+                for dataset_name in dataset_names_for_task[task]:
+                    
+                    for llm in LLMs:
+                        # print("\t\t\t using the LLM:", llm)
+                        
+                        tmp_output_directory = root_dir + '/results/' + task + '/' + dataset_name + '/' + llm + '/'
+                        
+                        for prompt in SUMMARIZATION_PROMPT:
+                    
+                            output_directory = tmp_output_directory + prompt + '/'
+                            create_directory(output_directory)
+                            file_dir =  os.path.join(output_directory , 'summary_result.txt')
+                            
+                            # print(f"\t\t Judging the summary: {file_dir}")
+                            for llm_judge in LLMs:
+                                
+                                judge_dir = os.path.join(output_directory, f'evaluation_'+llm_judge+'.txt')
+                            
+                            # print("\tjudging the TASK:", task)
+                    
+                                print(f"\t\t judging the summary of the logs:  full_log_MainProcess_{task}.txt")
+                                
+                                print("\t\t\t using the LLM:", llm_judge," to judge")
+                                
+                                print(f"\t\t Judging the summary located in the directory: {file_dir}")
+                                        
+                                
+                                for judge_prompt in JUDGING_PROMPT:
+                                    
+                                    print("JUDGING PROMPT:", judge_prompt)
+                                    
+                                    args = (f'full_log_MainProcess_{task}.txt',file_dir,llm_judge,judge_dir,judge_prompt)
+                                    executor.submit(judging_explanation, *args)
+                                    
+                                    
+                        
+                                    
+                                #    print(f"\t\t Judging the summary:  full_log_MainProcess_{task}.txt")
 
 
     else:
@@ -146,7 +258,7 @@ if __name__ == "__main__":
             y_test = datasets_dict[dataset_name][3] 
             target_column = datasets_dict[dataset_name][4]
             
-           
+        
             print('-----------------START FITTING--------------')
             create_fit_classifier(task_name,x_train,y_train,x_test,y_test,target_column)
             print(" ")
