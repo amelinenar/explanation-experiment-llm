@@ -1,0 +1,47 @@
+**Summary of AutomL Logs**
+
+The provided logs appear to be from an Automated Machine Learning (AutoML) system, which is designed to automate the process of applying machine learning to real-world problems. The logs detail the system's progress in profiling data, searching for optimal pipelines, and scoring their performance.
+
+**Step 1: Data Profiling (15:17:03 - 15:17:08)**
+
+* The system initializes the profiling process, logging messages indicate that it is:
+	+ Setting up the logging configuration.
+	+ Profiling the data, which includes:
+		- Identifying column types (e.g., integer, float).
+		- Processing 21 columns.
+
+**Step 2: Data Sampling (15:17:08 - 15:17:12)**
+
+* The system samples the data, reducing it from 7484 rows to 2000 rows.
+* This step is likely performed to improve the efficiency of the AutoML process.
+
+**Step 3: Pipeline Search (15:17:12 - 15:18:50)**
+
+* The system begins searching for optimal pipelines, which involves:
+	+ Finding new pipelines (15:17:12).
+	+ Scoring each pipeline's performance (15:17:19).
+	+ Repeating the process until a search timeout is reached (15:18:50).
+* Two pipelines are found and scored during this process.
+
+**Pipeline 1:**
+
+* Score: 0.7735470941883767 (15:17:19)
+* The system logs a success message, indicating that the pipeline was scored successfully.
+
+**Pipeline 2:**
+
+* Score: 0.7715430861723447 (15:18:50)
+* The system logs a success message, indicating that the pipeline was scored successfully.
+
+**Step 4: Search Timeout (15:18:50)**
+
+* The system reaches a search timeout, indicating that it has completed searching for optimal pipelines within a specified time limit.
+
+**Key Takeaways:**
+
+1. The AutoML system profiles the data, identifying column types and processing 21 columns.
+2. The system samples the data to improve efficiency.
+3. The system searches for optimal pipelines, scoring two pipelines with performance metrics of 0.7735 and 0.7715, respectively.
+4. The search process times out after approximately 1 minute and 37 seconds.
+
+Overall, the logs provide insight into the AutoML system's progress, from data profiling to pipeline search and scoring. The system appears to be functioning as expected, identifying optimal pipelines and scoring their performance.
