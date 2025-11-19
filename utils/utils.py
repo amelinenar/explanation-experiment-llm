@@ -36,7 +36,7 @@ def read_dataset(root_dir, task_name, dataset_name):
     dataset_dict = {}
     cur_root_dir = root_dir.replace('-temp', '')
     
-    if task_name == 'regression':
+    if task_name.lower() == 'regression':
         root_dir_dataset = cur_root_dir + '/dataset/' + task_name + '/' 
         train_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'train_data.csv')  
         test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
@@ -49,7 +49,7 @@ def read_dataset(root_dir, task_name, dataset_name):
         
         dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
         
-    elif task_name == 'classification':
+    elif task_name.lower() == 'classification':
         root_dir_dataset = cur_root_dir + '/dataset/' + task_name + '/' 
         train_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'train_data.csv')  
         test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
@@ -62,7 +62,7 @@ def read_dataset(root_dir, task_name, dataset_name):
         
         dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
         
-    elif task_name == 'semi_supervised_classification':
+    elif task_name.lower() == 'semisupervised':
         root_dir_dataset = cur_root_dir + '/dataset/' + task_name + '/' 
         train_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'train_data.csv')  
         test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
@@ -76,7 +76,7 @@ def read_dataset(root_dir, task_name, dataset_name):
         dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
         
     
-    elif task_name == 'timeseries_forcasting':
+    elif task_name.lower() == 'time_series_forecast':
         root_dir_dataset = cur_root_dir + '/dataset/' + task_name + '/' 
         train_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'train_data.csv')  
         test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
@@ -96,13 +96,13 @@ def read_all_dataset(root_dir, task_name):
     cur_root_dir = root_dir.replace('-temp', '')
     dataset_names_to_sort = []
     
-    if task_name == 'regression':
+    if task_name.lower() == 'regression':
         
         for dataset_name in REGRESSION_DATASET:
-            root_dir_dataset = cur_root_dir + '/dataset/' + task_name + '/' 
+            root_dir_dataset = cur_root_dir + '/dataset/' + task_name 
             
             train_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'train_data.csv')  
-            test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
+            test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')  
             
             target_column = 'class'
             X_train = train_dataset.drop(columns=[target_column])
@@ -113,7 +113,7 @@ def read_all_dataset(root_dir, task_name):
             dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
                 
     
-    elif task_name == 'classification':
+    elif task_name.lower() == 'classification':
         
         for dataset_name in CLASSIFICATION_DATASET:
             root_dir_dataset = cur_root_dir + '/dataset/' + task_name + '/' 
@@ -130,7 +130,7 @@ def read_all_dataset(root_dir, task_name):
             dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
             
     
-    elif task_name == 'semi_supervised_classification':
+    elif task_name.lower() == 'semisupervised':
     
         for dataset_name in SEMI_SUPERVISED_DATASET:
             root_dir_dataset = cur_root_dir + '/dataset/' + task_name + '/' 
@@ -147,7 +147,7 @@ def read_all_dataset(root_dir, task_name):
             dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
         
             
-    elif task_name == 'timeseries_forcasting':
+    elif task_name.lower() == 'time_series_forecast':
     
         for dataset_name in TIMESERIES_DATASET:
             root_dir_dataset = cur_root_dir + '/dataset/' + task_name + '/' 
