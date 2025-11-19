@@ -19,30 +19,30 @@ from dotenv import load_dotenv
 
 from concurrent.futures import ThreadPoolExecutor
 
-def create_fit_classifier(task_name,X_train,y_train, X_test,y_test,target_column):
-    if task_name == 'regression':
+def create_fit_classifier(task_name,X_train,y_train, X_test,y_test,target_column,logs_path):
+    if task_name == 'REGRESSION':
           
         from alpha_automl import AutoMLRegressor
-        automl = AutoMLRegressor(time_bound=1)
+        automl = AutoMLRegressor(time_bound=1, txt_file = logs_path)
         # Perform the search
         automl.fit(X_train, y_train)
         
-    elif task_name == 'classification':
+    elif task_name == 'CLASSIFICATION':
         
         from alpha_automl import AutoMLClassifier
-        automl = AutoMLClassifier(time_bound=1, verbose=True)
+        automl = AutoMLClassifier(time_bound=1, verbose=True, txt_file = logs_path)
         automl.fit(X_train, y_train)
 
-    elif task_name == 'timeseries_forcasting':
+    elif task_name.lower() == 'time_series_forecast':
         
         from alpha_automl import AutoMLTimeSeries
-        automl = AutoMLTimeSeries(time_bound=1, date_column='Date', target_column=target_column)
+        automl = AutoMLTimeSeries(time_bound=1, date_column='Date', target_column=target_column, txt_file = logs_path)
         automl.fit(X_train, y_train)
 
-    elif task_name == 'semi_supervised_classification':
+    elif task_name.lower() == 'semisupervised':
         
         from alpha_automl import AutoMLSemiSupervisedClassifier
-        automl = AutoMLSemiSupervisedClassifier(time_bound=1, start_mode='spawn')
+        automl = AutoMLSemiSupervisedClassifier(time_bound=1, start_mode='spawn', txt_file = logs_path)
         automl.fit(X_train, y_train)
  
  
@@ -65,7 +65,8 @@ if __name__ == "__main__":
             datasets_dict = read_all_dataset(root_dir, task_name)
             
             tmp_output_directory = root_dir + '/results/' + task_name + '/' 
-
+            
+          
             for dataset_name in dataset_names_for_task[task_name]:
                 print('\tdataset name: ', dataset_name)
                 print(" ")
@@ -121,10 +122,14 @@ if __name__ == "__main__":
         for task_name in TASK:
             print(" ")
             print('task name: ', task_name)
-        
+            
+  
             datasets_dict = read_all_dataset(root_dir, task_name)
             
             tmp_output_directory = root_dir + '/results/' + task_name + '/' 
+            
+            print(f"DATASET : {dataset_names_for_task[task_name]}")
+
 
             for dataset_name in dataset_names_for_task[task_name]:
                 print('\tdataset name: ', dataset_name)
@@ -135,11 +140,12 @@ if __name__ == "__main__":
                 x_test = datasets_dict[dataset_name][2]
                 y_test = datasets_dict[dataset_name][3] 
                 target_column = datasets_dict[dataset_name][4]
-
+                
+                output_directory = tmp_output_directory + dataset_name + '/'
 
                 print('-----------------START FITTING--------------')
                 
-                create_fit_classifier(task_name,x_train,y_train,x_test,y_test,target_column)
+                create_fit_classifier(task_name,x_train,y_train,x_test,y_test,target_column, output_directory)
                 
                 print('--------------------DONE--------------------')
                 print(" ")
@@ -149,10 +155,13 @@ if __name__ == "__main__":
         with ThreadPoolExecutor(max_workers=2) as executor:
             for task in TASK:
                 
-                print(f"\tTASK:   {task}            Document:  full_log_MainProcess_{task}.txt")
+                print(f"\tTASK:   {task}       ")
                 
                 
                 for dataset_name in dataset_names_for_task[task]:
+                    
+                   # logs_path = root_dir + '/results/' + task + '/' + dataset_name + '/full_log_MainProcess.txt'
+                    logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
             
                     for llm in LLMs:
                         print('\t\tllm: ', llm)
@@ -172,7 +181,11 @@ if __name__ == "__main__":
                         
                             print('\t\t\tprompt: ', prompt)
                             print( " ")
-                            args = (f'full_log_MainProcess_{task}.txt', llm, file_dir,prompt)
+                            
+                            print(f"LOGS: {logs_path}")
+                            args = (logs_path, llm, file_dir,prompt)
+                           # print(logs_path)
+                        
                             executor.submit(explain_process, *args)
                         
         print( " " )
@@ -252,6 +265,7 @@ if __name__ == "__main__":
             create_directory(output_directory)
             datasets_dict = read_dataset(root_dir, task_name, dataset_name)
             
+            
             x_train = datasets_dict[dataset_name][0]
             y_train = datasets_dict[dataset_name][1]
             x_test = datasets_dict[dataset_name][2]
@@ -267,9 +281,9 @@ if __name__ == "__main__":
     
             file_dir =  os.path.join(output_directory , 'summary_result.txt')
     
-            explain_process('full_log_MainProcess.txt', llm, file_dir)
+          #  explain_process('full_log_MainProcess.txt', llm, file_dir)
             
-            generate_results(root_dir, task_name, dataset_name, llm)
+          #  generate_results(root_dir, task_name, dataset_name, llm)
             
             print(" ")
             print('DONE SUMMARIZATION')
