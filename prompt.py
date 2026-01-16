@@ -70,8 +70,17 @@ def explain_process(doc_path, llm, des_path,prompts):
      
         }
 
+        try:
         
-        response = requests.post(url, data=json.dumps(payload), stream=True)
+            response = requests.post(url, data=json.dumps(payload), stream=True)
+        except requests.exceptions.RequestException as e:
+            print("Connection error:", e)
+            exit()
+            
+        #Check HTTP status 
+        if response.status_code != 200:
+            print("Server returned error:", response.status_code, response.text)
+            exit()
         
         with open(des_path, "a", encoding="utf-8") as f:
             
@@ -131,9 +140,13 @@ def judging_explanation(log_path,summary_path, llm, des_path,prompts):
 
 
 
-       # print("CONNECTIOM ESTABLISH ESTABLISHED")
+        print("CONNECTIOM ESTABLISH ESTABLISHED")
+        try:
         
-        response = requests.post(url, data=json.dumps(payload), stream=True)
+            response = requests.post(url, data=json.dumps(payload), stream=True)
+        except requests.exceptions.RequestException as e:
+            print("connection error:", e)
+            exit()
         
         with open(des_path, "a", encoding="utf-8") as f:
         

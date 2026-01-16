@@ -1,0 +1,1 @@
+The AutoML system explored multiple time series forecasting models, including ARIMA, NBEATS, and NHITS, as part of its pipeline search process. Each model configuration was scored based on performance, with scores indicating model effectiveness. The highest-performing model achieved a score of 59.27, demonstrating successful synthesis and evaluation during the AutoML process.

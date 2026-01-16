@@ -9,13 +9,14 @@ from utils.utils import read_all_dataset
 from utils.utils import generate_results
 
 from utils.constant import TASK
-from utils.constant import LLMs
+from utils.constant import LLMs, LLMs_judge
 from utils.constant import dataset_names_for_task
 from utils.constant import SUMMARIZATION_PROMPT,JUDGING_PROMPT
 
 
 from prompt import explain_process,judging_explanation
 from dotenv import load_dotenv
+from result_script import write_csv, result_script
 
 from concurrent.futures import ThreadPoolExecutor
 
@@ -197,12 +198,6 @@ if __name__ == "__main__":
 
         
             for task in TASK:
-                # print("\tjudging the TASK:", task)
-                
-                # print(f"\t\t  logs:  full_log_MainProcess_{task}.txt")
-                
-                
-                # tmp_output_directory = root_dir + '/results/' + task + '/' 
                 
                 for dataset_name in dataset_names_for_task[task]:
                     
@@ -216,34 +211,98 @@ if __name__ == "__main__":
                             output_directory = tmp_output_directory + prompt + '/'
                             create_directory(output_directory)
                             file_dir =  os.path.join(output_directory , 'summary_result.txt')
+                            logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
                             
                             # print(f"\t\t Judging the summary: {file_dir}")
-                            for llm_judge in LLMs:
+                            for llm_judge in LLMs_judge:
                                 
                                 judge_dir = os.path.join(output_directory, f'evaluation_'+llm_judge+'.txt')
-                            
+                                
+                               # judge_dir_temp =  output_directory + f'llm_judge_{llm_judge}' + '/'
+                                #create_directory(judge_dir_temp)
+                                
+                                
                             # print("\tjudging the TASK:", task)
                     
-                                print(f"\t\t judging the summary of the logs:  full_log_MainProcess_{task}.txt")
+                                print(f"\t\t judging the summary of the logs:  full_log_MainProcess.txt")
                                 
-                                print("\t\t\t using the LLM:", llm_judge," to judge")
+                                print(f"\t\t\t using the LLM:", llm_judge, " to judge")
                                 
                                 print(f"\t\t Judging the summary located in the directory: {file_dir}")
                                         
                                 
                                 for judge_prompt in JUDGING_PROMPT:
                                     
+                                   
+                                    
                                     print("JUDGING PROMPT:", judge_prompt)
                                     
-                                    args = (f'full_log_MainProcess_{task}.txt',file_dir,llm_judge,judge_dir,judge_prompt)
+                                    print(f"judge file directory: {judge_dir}")
+                            
+                                    
+                                    args = (logs_path,file_dir,llm_judge,judge_dir,judge_prompt)
                                     executor.submit(judging_explanation, *args)
                                     
                                     
                         
                                     
-                                #    print(f"\t\t Judging the summary:  full_log_MainProcess_{task}.txt")
+        print( " " )                    #    print(f"\t\t Judging the summary:  full_log_MainProcess_{task}.txt")
 
-
+    elif sys.argv[1] == 'metrics':
+        
+                
+            for task in TASK:
+                
+                for dataset_name in dataset_names_for_task[task]:
+                    
+                    for llm in LLMs:
+                        
+                        tmp_output_directory = root_dir + '/results/' + task + '/' + dataset_name + '/' + llm + '/'
+                        
+                        for prompt in SUMMARIZATION_PROMPT:
+                    
+                            output_directory = tmp_output_directory + prompt + '/'
+                            create_directory(output_directory)
+                            file_dir =  os.path.join(output_directory , 'summary_result.txt')
+                            logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
+        
+        
+                            for llm_judge in LLMs:
+                                
+                                judge_dir_temp =  output_directory + '/' + f'llm_judge{llm_judge}' + '/'
+                                #os.path.join(output_directory, f'evaluation_'+llm_judge)
+                                
+                               
+                            
+                            # print("\tjudging the TASK:", task)
+                    
+                                # print(f"\t\t judging the summary of the logs:  full_log_MainProcess.txt")
+                                
+                                # print(f"\t\t\t using the LLM:", llm_judge, " to judge")
+                                
+                                # print(f"\t\t Judging the summary located in the directory: {file_dir}")
+                                        
+                                
+                                for judge_prompt in JUDGING_PROMPT:
+                                    
+                                    judge_dir = os.path.join(judge_dir_temp, f'evaluation_{judge_prompt}.txt') 
+                                    
+                                    print(f"judge file directory: {judge_dir}")
+                                    print("JUDGING PROMPT:", judge_prompt)
+                                    
+                                    
+                                    
+                                    doc = result_script(judge_dir)
+                                    print(doc)
+                                    write_csv(task,dataset_name, llm, prompt, llm_judge, judge_prompt, doc, root_dir+"/"+"metric.csv")
+                            
+  
+            
+        
+        
+        
+      
+        
     else:
         '''this is the code to launch an experiment on a particular task, dataset and llm'''
         
