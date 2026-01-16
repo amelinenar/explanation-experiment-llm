@@ -20,3 +20,10 @@ For each criterion, provide a score on a scale from 1 to 5:
 
 # Summary
 {summary}
+
+
+    *Required Structure
+Each evaluation item consists of two parts:
+- A single line with index, attribute name, score, and label
+^\d+\.\s+(Accuracy|Clarity|Completeness|Relevance)\s+-\s+Score:\s+[1-3]\s+\((Good|Average|Poor)\)$
+- One or more lines of explanation immediately following it
