@@ -9,9 +9,10 @@ dataset_names_for_task = {'REGRESSION': REGRESSION_DATASET,'CLASSIFICATION':CLAS
 #LLMs = { 'deepseek-r1:14b','llama4'}
 LLMs = {'llama4'}
 #PROMPT = ['summarization_prompt', 'judging_prompt']
-#SUMMARIZATION_PROMPT = ['zero_shot', 'zeroShot_instruction', 'Few_shot', 'chain_of_thought','zero-shotCoT']
-SUMMARIZATION_PROMPT = ['zero_shot']
-JUDGING_PROMPT = ['judge_zeroshotInstruction']
-#JUDGING_PROMPT = ['judge_zeroshot', 'judge_zeroshotInstruction']
+SUMMARIZATION_PROMPT = ['zeroshot', 'zeroshot_instruction', 'fewshot', 'chain_of_thought','zeroshot_CoT']
+#SUMMARIZATION_PROMPT = ['zero_shot']
+JUDGING_PROMPT = ['test_judge']
+#JUDGING_PROMPT = ['judge_zeroshot', 'judge_zeroshotInstruction', 'test_judge', 'judging_prompt_zeroShot']
 #prompt_for_promptType ={'summarization'}
-LLMs_judge = { 'deepseek-r1:14b'}
+LLMs_judge = {'deepseek-r1:14b'}
+

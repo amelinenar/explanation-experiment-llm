@@ -1,49 +1,24 @@
-The provided log files describe the process of Automated Machine Learning (AutoML) using the Alpha AutoML system. 
+ The provided log files describe the process of Automated Machine Learning (AutoML) using the AlphaML library. Here's a summary of the key events:
 
-### Overview of the Process
+1. **Data Profiling**: The AutoML process started by profiling the data, which involved checking the data types of each column. The profiling process identified:
+	* 21 columns with various data types (e.g., integers, floats).
+	* No non-numeric features were detected.
+	* Some columns had missing values.
+2. **Data Sampling**: The AutoML process down-sampled the data from 7484 rows to 2000 rows.
+3. **Pipeline Discovery**: The AutoML process discovered new pipelines, which involved finding suitable algorithms and hyperparameters.
+4. **Pipeline Scoring**: The AutoML process scored the discovered pipelines using a scoring function, which evaluated their performance.
+5. **Search Timeout**: The AutoML process reached a search timeout, which indicated that it had explored a sufficient number of pipelines.
+6. **Final Results**: The AutoML process reported two pipelines with their respective scores:
+	* Pipeline 1: Score = 0.7682
+	* Pipeline 2: Score = 0.7662
 
-1. **Profiling Data**: The system profiles the data by checking the type of each column. 
-2. **Identifying Non-Numeric Columns**: It identifies non-numeric columns and proceeds with the AutoML process.
-3. **Scoring Pipelines**: The system scores multiple pipelines and selects the best-performing one.
+The log files provide detailed information about the AutoML process, including data profiling, pipeline discovery, scoring, and search timeouts. The final results show two pipelines with their respective scores, indicating that the AutoML process successfully explored the solution space and identified promising pipelines.
 
-### Detailed Process
+Here are some key takeaways:
 
-1. **Data Profiling**: 
-   - The system checks the data type of each column.
-   - It identifies the columns as numeric or non-numeric.
+* The AutoML process efficiently explored the solution space and identified promising pipelines.
+* The data profiling step helped identify the characteristics of the data, which informed the AutoML process.
+* The scoring function played a crucial role in evaluating the performance of the pipelines.
+* The search timeout indicated that the AutoML process had explored a sufficient number of pipelines.
 
-2. **Pipeline Scoring**:
-   - The system scores multiple pipelines.
-   - It selects the best-performing pipeline with a score of 0.7735470941883767.
-
-3. **Search Timeout**:
-   - The system reaches a search timeout and stops searching for better pipelines.
-
-4. **Final Results**:
-   - The system finds two pipelines with scores of 0.7735470941883767 and 0.7715430861723447.
-   - It logs the results and creates a temporary directory.
-
-### Key Takeaways
-
-* The AutoML system efficiently profiles the data and identifies non-numeric columns.
-* It scores multiple pipelines and selects the best-performing one.
-* The system reaches a search timeout and stops searching for better pipelines.
-
-### Example Use Cases
-
-* This AutoML system can be used for various applications such as:
-  + Predictive maintenance
-  + Quality control
-  + Recommendation systems
-  + Fraud detection
-
-### Advice
-
-* The AutoML system can be further improved by:
-  + Increasing the search timeout
-  + Using more advanced algorithms
-  + Fine-tuning the hyperparameters
-
-### Conclusion
-
-The provided log files describe the process of Automated Machine Learning (AutoML) using the Alpha AutoML system. The system efficiently profiles the data, scores multiple pipelines, and selects the best-performing one. The results show that the system can be used for various applications and can be further improved by increasing the search timeout, using more advanced algorithms, and fine-tuning the hyperparameters.
+Overall, the log files provide valuable insights into the AutoML process, highlighting its efficiency and effectiveness in identifying promising pipelines.
