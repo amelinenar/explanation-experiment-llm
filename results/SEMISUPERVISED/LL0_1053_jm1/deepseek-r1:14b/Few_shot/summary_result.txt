@@ -1,13 +1,1 @@
-The logs from Alpha AutoML indicate the following key points:
-
-1. **Data Profiling**: The system profiled the data and found no non-numeric features or useless columns. Missing values were present.
-
-2. **Data Sampling**: Due to missing values, the dataset was downsampled from 7484 to 2000 samples for efficiency.
-
-3. **Pipeline Search**: Two pipelines were found during the search process:
-   - The first pipeline scored a F1 score of approximately **0.7735**.
-   - The second pipeline scored a slightly lower F1 score of approximately **0.7715**.
-
-4. **Search Completion**: The search reached its timeout after approximately 20 minutes (from 09:56:00 to 09:57:33) and concluded with two pipelines as the best solutions found within the time frame.
-
-The process highlights efficient handling of missing data through downsampling and successful pipeline generation, though the search was limited by a timeout.
+ The log indicates that the data contains missing values, which were handled by sampling down from 7484 rows to 2000 rows. The system found two pipelines, scoring them with F1 scores of approximately 0.768 and 0.766 respectively before reaching a search timeout. A temporary directory was created for logs, and the process exited successfully without errors.

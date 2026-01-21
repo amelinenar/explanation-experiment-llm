@@ -1,16 +1,16 @@
-2026-01-14 09:57:37,277 - MainProcess - root - DEBUG - Logging initialized for MainProcess, writing to full_log_MainProcess.txt
-2026-01-14 09:57:37,290 - MainProcess - datamart_profiler.core - INFO - Setting column names from header
-2026-01-14 09:57:37,290 - MainProcess - datamart_profiler.core - INFO - Identifying types, 2 columns...
-2026-01-14 09:57:37,290 - MainProcess - datamart_profiler.core - INFO - Processing column 0 'Date'...
-2026-01-14 09:57:37,562 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Text [http://schema.org/DateTime]
-2026-01-14 09:57:37,564 - MainProcess - datamart_profiler.core - INFO - Processing column 1 'Close'...
-2026-01-14 09:57:37,637 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Float []
-2026-01-14 09:57:37,638 - MainProcess - alpha_automl.data_profiler - DEBUG - Results of profiling data: non-numeric features = dict_keys(['DATETIME_ENCODER']), useless columns = [], missing values = False
-2026-01-14 09:57:37,644 - MainProcess - alpha_automl.utils - DEBUG - Sampling down data from 3712 to 2001
-2026-01-14 09:57:37,655 - Process-4 - alpha_automl.pipeline_synthesis.setup_search - DEBUG - Creating a manual grammar
-2026-01-14 09:57:37,656 - Process-4 - alpha_automl.primitive_loader - DEBUG - Hierarchy of all primitives loaded
-2026-01-14 09:57:37,658 - Process-4 - alpha_automl.grammar_loader - DEBUG - Creating task grammar for task TIME_SERIES_FORECAST_TASK
-2026-01-14 09:57:37,659 - Process-4 - alpha_automl.grammar_loader - DEBUG - Task grammar: Grammar with 44 productions (start state = S)
+2026-01-21 09:46:37,748 - MainProcess - root - DEBUG - Logging initialized for MainProcess, writing to full_log_MainProcess.txt
+2026-01-21 09:46:37,766 - MainProcess - datamart_profiler.core - INFO - Setting column names from header
+2026-01-21 09:46:37,767 - MainProcess - datamart_profiler.core - INFO - Identifying types, 2 columns...
+2026-01-21 09:46:37,767 - MainProcess - datamart_profiler.core - INFO - Processing column 0 'Date'...
+2026-01-21 09:46:38,101 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Text [http://schema.org/DateTime]
+2026-01-21 09:46:38,103 - MainProcess - datamart_profiler.core - INFO - Processing column 1 'Close'...
+2026-01-21 09:46:38,174 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Float []
+2026-01-21 09:46:38,175 - MainProcess - alpha_automl.data_profiler - DEBUG - Results of profiling data: non-numeric features = dict_keys(['DATETIME_ENCODER']), useless columns = [], missing values = False
+2026-01-21 09:46:38,176 - MainProcess - alpha_automl.utils - DEBUG - Sampling down data from 3712 to 2001
+2026-01-21 09:46:38,188 - Process-4 - alpha_automl.pipeline_synthesis.setup_search - DEBUG - Creating a manual grammar
+2026-01-21 09:46:38,188 - Process-4 - alpha_automl.primitive_loader - DEBUG - Hierarchy of all primitives loaded
+2026-01-21 09:46:38,191 - Process-4 - alpha_automl.grammar_loader - DEBUG - Creating task grammar for task TIME_SERIES_FORECAST_TASK
+2026-01-21 09:46:38,193 - Process-4 - alpha_automl.grammar_loader - DEBUG - Task grammar: Grammar with 44 productions (start state = S)
     S -> IMPUTER ENCODERS FEATURE_SCALER FEATURE_SELECTOR REGRESSOR
     S -> IMPUTER TIME_SERIES_FORECAST
     ENCODERS -> DATETIME_ENCODER
@@ -55,129 +55,129 @@
     TIME_SERIES_FORECAST -> 'alpha_automl.builtin_primitives.time_series_forecasting.DeeparEstimator'
     TIME_SERIES_FORECAST -> 'alpha_automl.builtin_primitives.time_series_forecasting.NBEATSEstimator'
     TIME_SERIES_FORECAST -> 'alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator'
-2026-01-14 09:57:37,660 - Process-4 - alpha_automl.grammar_loader - DEBUG - Creating game grammar
-2026-01-14 09:57:37,690 - Process-4 - alpha_automl.pipeline_search.Coach - DEBUG - ------ITER 1------
-2026-01-14 09:57:37,690 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
-2026-01-14 09:57:37,690 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
-2026-01-14 09:57:37,704 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04596164
-2026-01-14 09:57:37,705 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
-2026-01-14 09:57:37,705 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
-2026-01-14 09:57:37,705 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER FEATURE_SELECTOR REGRESSOR
-2026-01-14 09:57:37,706 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,706 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,712 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04546075
-2026-01-14 09:57:37,712 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
-2026-01-14 09:57:37,713 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
-2026-01-14 09:57:37,713 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER TIME_SERIES_FORECAST
-2026-01-14 09:57:37,713 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
-2026-01-14 09:57:37,713 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
-2026-01-14 09:57:37,718 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04623066
-2026-01-14 09:57:37,719 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
-2026-01-14 09:57:37,719 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
-2026-01-14 09:57:37,719 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER FEATURE_SELECTOR REGRESSOR
-2026-01-14 09:57:37,719 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,719 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,719 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> DATETIME_ENCODER
-2026-01-14 09:57:37,720 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,720 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,724 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045972962
-2026-01-14 09:57:37,724 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
-2026-01-14 09:57:37,725 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
-2026-01-14 09:57:37,725 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER TIME_SERIES_FORECAST
-2026-01-14 09:57:37,725 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
-2026-01-14 09:57:37,725 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
-2026-01-14 09:57:37,725 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
-2026-01-14 09:57:37,725 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: TIME_SERIES_FORECAST
-2026-01-14 09:57:37,726 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: TIME_SERIES_FORECAST
-2026-01-14 09:57:37,732 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04689913
-2026-01-14 09:57:37,733 - Process-4 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 0
-2026-01-14 09:57:37,733 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER FEATURE_SELECTOR REGRESSOR
-2026-01-14 09:57:37,733 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
-2026-01-14 09:57:37,734 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,734 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> DATETIME_ENCODER
-2026-01-14 09:57:37,734 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,734 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,735 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
-2026-01-14 09:57:37,735 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,735 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,740 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.046692453
-2026-01-14 09:57:37,740 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
-2026-01-14 09:57:37,741 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,741 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> DATETIME_ENCODER
-2026-01-14 09:57:37,741 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,741 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,741 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
-2026-01-14 09:57:37,742 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,742 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,742 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
-2026-01-14 09:57:37,742 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,742 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,747 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04717123
-2026-01-14 09:57:37,748 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
-2026-01-14 09:57:37,748 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,748 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> DATETIME_ENCODER
-2026-01-14 09:57:37,749 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,749 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,749 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
-2026-01-14 09:57:37,750 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,750 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,750 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
-2026-01-14 09:57:37,751 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,751 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,751 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> sklearn.feature_selection.GenericUnivariateSelect
-2026-01-14 09:57:37,751 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
-2026-01-14 09:57:37,752 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
-2026-01-14 09:57:37,757 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04774539
-2026-01-14 09:57:37,757 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
-2026-01-14 09:57:37,757 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,758 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> E
-2026-01-14 09:57:37,758 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,758 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,763 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045476608
-2026-01-14 09:57:37,763 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
-2026-01-14 09:57:37,764 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,764 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> E
-2026-01-14 09:57:37,764 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,764 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,765 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> DATETIME_ENCODER
-2026-01-14 09:57:37,765 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,765 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,772 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04597794
-2026-01-14 09:57:37,773 - Process-4 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 2
-2026-01-14 09:57:37,773 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> DATETIME_ENCODER
-2026-01-14 09:57:37,773 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
-2026-01-14 09:57:37,773 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,774 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
-2026-01-14 09:57:37,774 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,774 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,774 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
-2026-01-14 09:57:37,775 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,775 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,775 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> sklearn.feature_selection.GenericUnivariateSelect
-2026-01-14 09:57:37,775 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
-2026-01-14 09:57:37,775 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
-2026-01-14 09:57:37,775 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> sklearn.preprocessing.OrdinalEncoder
-2026-01-14 09:57:37,776 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
-2026-01-14 09:57:37,776 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
-2026-01-14 09:57:37,781 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04718159
-2026-01-14 09:57:37,782 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
-2026-01-14 09:57:37,782 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,782 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
-2026-01-14 09:57:37,782 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,782 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,783 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
-2026-01-14 09:57:37,783 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,783 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,784 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> sklearn.feature_selection.GenericUnivariateSelect
-2026-01-14 09:57:37,784 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
-2026-01-14 09:57:37,784 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
-2026-01-14 09:57:37,784 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> sklearn.preprocessing.OrdinalEncoder
-2026-01-14 09:57:37,784 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
-2026-01-14 09:57:37,784 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
-2026-01-14 09:57:37,785 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.linear_model.ARDRegression
-2026-01-14 09:57:37,785 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.linear_model.ARDRegression
-2026-01-14 09:57:37,785 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.linear_model.ARDRegression
-2026-01-14 09:57:37,796 - Process-4 - alpha_automl.pipeline_synthesis.pipeline_builder - DEBUG - New pipelined created:
+2026-01-21 09:46:38,193 - Process-4 - alpha_automl.grammar_loader - DEBUG - Creating game grammar
+2026-01-21 09:46:38,221 - Process-4 - alpha_automl.pipeline_search.Coach - DEBUG - ------ITER 1------
+2026-01-21 09:46:38,221 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2026-01-21 09:46:38,221 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2026-01-21 09:46:38,234 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04596164
+2026-01-21 09:46:38,235 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2026-01-21 09:46:38,235 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2026-01-21 09:46:38,235 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER FEATURE_SELECTOR REGRESSOR
+2026-01-21 09:46:38,235 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,235 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,240 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04546075
+2026-01-21 09:46:38,241 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2026-01-21 09:46:38,241 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2026-01-21 09:46:38,241 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER TIME_SERIES_FORECAST
+2026-01-21 09:46:38,241 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
+2026-01-21 09:46:38,241 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
+2026-01-21 09:46:38,246 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04623066
+2026-01-21 09:46:38,246 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2026-01-21 09:46:38,246 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2026-01-21 09:46:38,246 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER FEATURE_SELECTOR REGRESSOR
+2026-01-21 09:46:38,246 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,247 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,247 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> DATETIME_ENCODER
+2026-01-21 09:46:38,247 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,247 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,251 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045972962
+2026-01-21 09:46:38,252 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2026-01-21 09:46:38,252 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2026-01-21 09:46:38,252 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER TIME_SERIES_FORECAST
+2026-01-21 09:46:38,252 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
+2026-01-21 09:46:38,252 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
+2026-01-21 09:46:38,252 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
+2026-01-21 09:46:38,253 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: TIME_SERIES_FORECAST
+2026-01-21 09:46:38,253 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: TIME_SERIES_FORECAST
+2026-01-21 09:46:38,257 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04689913
+2026-01-21 09:46:38,258 - Process-4 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 0
+2026-01-21 09:46:38,258 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER FEATURE_SELECTOR REGRESSOR
+2026-01-21 09:46:38,258 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2026-01-21 09:46:38,258 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,258 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> DATETIME_ENCODER
+2026-01-21 09:46:38,258 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,259 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,259 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
+2026-01-21 09:46:38,259 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,259 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,264 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.046692453
+2026-01-21 09:46:38,264 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2026-01-21 09:46:38,265 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,265 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> DATETIME_ENCODER
+2026-01-21 09:46:38,265 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,265 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,265 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
+2026-01-21 09:46:38,266 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,266 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,266 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
+2026-01-21 09:46:38,266 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,266 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,271 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04717123
+2026-01-21 09:46:38,271 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2026-01-21 09:46:38,271 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,271 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> DATETIME_ENCODER
+2026-01-21 09:46:38,272 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,272 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,272 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
+2026-01-21 09:46:38,272 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,272 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,272 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
+2026-01-21 09:46:38,273 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,273 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,273 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> sklearn.feature_selection.GenericUnivariateSelect
+2026-01-21 09:46:38,273 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
+2026-01-21 09:46:38,273 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
+2026-01-21 09:46:38,278 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04774539
+2026-01-21 09:46:38,278 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2026-01-21 09:46:38,278 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,278 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> E
+2026-01-21 09:46:38,278 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|REGRESSOR
+2026-01-21 09:46:38,279 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|REGRESSOR
+2026-01-21 09:46:38,283 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045476608
+2026-01-21 09:46:38,283 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2026-01-21 09:46:38,283 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,284 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> E
+2026-01-21 09:46:38,284 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|REGRESSOR
+2026-01-21 09:46:38,284 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|REGRESSOR
+2026-01-21 09:46:38,284 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> DATETIME_ENCODER
+2026-01-21 09:46:38,284 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
+2026-01-21 09:46:38,284 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
+2026-01-21 09:46:38,289 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04597794
+2026-01-21 09:46:38,290 - Process-4 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 2
+2026-01-21 09:46:38,290 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> DATETIME_ENCODER
+2026-01-21 09:46:38,290 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2026-01-21 09:46:38,290 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,290 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
+2026-01-21 09:46:38,290 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,291 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,291 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
+2026-01-21 09:46:38,291 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,291 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,291 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> sklearn.feature_selection.GenericUnivariateSelect
+2026-01-21 09:46:38,292 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
+2026-01-21 09:46:38,292 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
+2026-01-21 09:46:38,292 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> sklearn.preprocessing.OrdinalEncoder
+2026-01-21 09:46:38,292 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
+2026-01-21 09:46:38,292 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
+2026-01-21 09:46:38,296 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04718159
+2026-01-21 09:46:38,297 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2026-01-21 09:46:38,297 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,297 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
+2026-01-21 09:46:38,297 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,298 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,298 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
+2026-01-21 09:46:38,298 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,298 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,298 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> sklearn.feature_selection.GenericUnivariateSelect
+2026-01-21 09:46:38,299 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
+2026-01-21 09:46:38,299 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
+2026-01-21 09:46:38,299 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> sklearn.preprocessing.OrdinalEncoder
+2026-01-21 09:46:38,299 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
+2026-01-21 09:46:38,299 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|REGRESSOR
+2026-01-21 09:46:38,299 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.linear_model.ARDRegression
+2026-01-21 09:46:38,299 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.linear_model.ARDRegression
+2026-01-21 09:46:38,300 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.linear_model.ARDRegression
+2026-01-21 09:46:38,310 - Process-4 - alpha_automl.pipeline_synthesis.pipeline_builder - DEBUG - New pipelined created:
 Pipeline(steps=[('sklearn.compose.ColumnTransformer',
                  ColumnTransformer(remainder='passthrough',
                                    transformers=[('sklearn.preprocessing.OrdinalEncoder',
@@ -188,8 +188,8 @@ Pipeline(steps=[('sklearn.compose.ColumnTransformer',
                 ('sklearn.feature_selection.GenericUnivariateSelect',
                  GenericUnivariateSelect()),
                 ('sklearn.linear_model.ARDRegression', ARDRegression())])
-2026-01-14 09:57:37,911 - Process-4 - alpha_automl.scorer - DEBUG - Exception scoring a pipeline
-2026-01-14 09:57:37,911 - Process-4 - alpha_automl.scorer - DEBUG - Detailed error:
+2026-01-21 09:46:38,412 - Process-4 - alpha_automl.scorer - DEBUG - Exception scoring a pipeline
+2026-01-21 09:46:38,412 - Process-4 - alpha_automl.scorer - DEBUG - Detailed error:
 Traceback (most recent call last):
   File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/alpha_automl/scorer.py", line 134, in score_pipeline
     scores = cross_val_score(pipeline, X, y, cv=splitting_strategy, scoring=scoring, error_score='raise')
@@ -226,68 +226,91 @@ Traceback (most recent call last):
   File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/utils/validation.py", line 1137, in check_array
     raise ValueError(
 ValueError: Found array with 0 feature(s) (shape=(1500, 0)) while a minimum of 1 is required by ARDRegression.
-2026-01-14 09:57:37,920 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
-2026-01-14 09:57:37,920 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,921 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.linear_model.Ridge
-2026-01-14 09:57:37,921 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|sklearn.linear_model.Ridge
-2026-01-14 09:57:37,921 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|sklearn.linear_model.Ridge
-2026-01-14 09:57:37,928 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.044819523
-2026-01-14 09:57:37,928 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
-2026-01-14 09:57:37,928 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,928 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.linear_model.Ridge
-2026-01-14 09:57:37,928 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|sklearn.linear_model.Ridge
-2026-01-14 09:57:37,929 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|sklearn.linear_model.Ridge
-2026-01-14 09:57:37,929 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
-2026-01-14 09:57:37,929 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|sklearn.linear_model.Ridge
-2026-01-14 09:57:37,929 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|sklearn.linear_model.Ridge
-2026-01-14 09:57:37,934 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045543704
-2026-01-14 09:57:37,934 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
-2026-01-14 09:57:37,934 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:37,935 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> E
-2026-01-14 09:57:37,935 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,935 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,936 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
-2026-01-14 09:57:37,936 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,936 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,943 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04667328
-2026-01-14 09:57:37,944 - Process-4 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 11
-2026-01-14 09:57:37,944 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> E
-2026-01-14 09:57:37,944 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
-2026-01-14 09:57:37,944 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,945 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
-2026-01-14 09:57:37,945 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,945 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,945 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
-2026-01-14 09:57:37,945 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
-2026-01-14 09:57:37,946 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
-2026-01-14 09:57:37,950 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.047135174
-2026-01-14 09:57:37,951 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
-2026-01-14 09:57:37,951 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,951 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
-2026-01-14 09:57:37,952 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,952 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,953 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
-2026-01-14 09:57:37,953 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
-2026-01-14 09:57:37,953 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
-2026-01-14 09:57:37,953 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> sklearn.preprocessing.OrdinalEncoder
-2026-01-14 09:57:37,954 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
-2026-01-14 09:57:37,954 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
-2026-01-14 09:57:37,959 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.046565097
-2026-01-14 09:57:37,960 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
-2026-01-14 09:57:37,960 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,960 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
-2026-01-14 09:57:37,961 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,961 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,961 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
-2026-01-14 09:57:37,961 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
-2026-01-14 09:57:37,961 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
-2026-01-14 09:57:37,961 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> sklearn.preprocessing.OrdinalEncoder
-2026-01-14 09:57:37,962 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
-2026-01-14 09:57:37,962 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
-2026-01-14 09:57:37,962 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.linear_model.ARDRegression
-2026-01-14 09:57:37,962 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.linear_model.ARDRegression
-2026-01-14 09:57:37,962 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.linear_model.ARDRegression
-2026-01-14 09:57:37,970 - Process-4 - alpha_automl.pipeline_synthesis.pipeline_builder - DEBUG - New pipelined created:
+2026-01-21 09:46:38,414 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2026-01-21 09:46:38,414 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,414 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.linear_model.Ridge
+2026-01-21 09:46:38,414 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,414 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,419 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.044819523
+2026-01-21 09:46:38,420 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2026-01-21 09:46:38,420 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,420 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.linear_model.Ridge
+2026-01-21 09:46:38,420 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,420 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,420 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
+2026-01-21 09:46:38,420 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,420 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,425 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045543704
+2026-01-21 09:46:38,425 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2026-01-21 09:46:38,425 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,425 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> E
+2026-01-21 09:46:38,425 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
+2026-01-21 09:46:38,425 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
+2026-01-21 09:46:38,426 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
+2026-01-21 09:46:38,426 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
+2026-01-21 09:46:38,426 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
+2026-01-21 09:46:38,430 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04667328
+2026-01-21 09:46:38,431 - Process-4 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 3
+2026-01-21 09:46:38,431 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
+2026-01-21 09:46:38,431 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2026-01-21 09:46:38,431 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,431 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.linear_model.Ridge
+2026-01-21 09:46:38,431 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,432 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,432 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
+2026-01-21 09:46:38,432 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,432 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,436 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045990475
+2026-01-21 09:46:38,437 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2026-01-21 09:46:38,437 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,437 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.linear_model.Ridge
+2026-01-21 09:46:38,437 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,437 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,438 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> E
+2026-01-21 09:46:38,438 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,438 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,442 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.0454805
+2026-01-21 09:46:38,442 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2026-01-21 09:46:38,442 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,443 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> E
+2026-01-21 09:46:38,443 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
+2026-01-21 09:46:38,443 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
+2026-01-21 09:46:38,443 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
+2026-01-21 09:46:38,443 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
+2026-01-21 09:46:38,443 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
+2026-01-21 09:46:38,448 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.047135174
+2026-01-21 09:46:38,448 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2026-01-21 09:46:38,448 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,448 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> E
+2026-01-21 09:46:38,449 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
+2026-01-21 09:46:38,449 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
+2026-01-21 09:46:38,449 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
+2026-01-21 09:46:38,449 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
+2026-01-21 09:46:38,449 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
+2026-01-21 09:46:38,449 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> sklearn.preprocessing.OrdinalEncoder
+2026-01-21 09:46:38,450 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
+2026-01-21 09:46:38,450 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
+2026-01-21 09:46:38,454 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.046565097
+2026-01-21 09:46:38,454 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2026-01-21 09:46:38,454 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,455 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.tree.DecisionTreeRegressor
+2026-01-21 09:46:38,455 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|sklearn.tree.DecisionTreeRegressor
+2026-01-21 09:46:38,455 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|sklearn.tree.DecisionTreeRegressor
+2026-01-21 09:46:38,459 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.046430416
+2026-01-21 09:46:38,460 - Process-4 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 4
+2026-01-21 09:46:38,460 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
+2026-01-21 09:46:38,460 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2026-01-21 09:46:38,460 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,460 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> E
+2026-01-21 09:46:38,461 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
+2026-01-21 09:46:38,461 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
+2026-01-21 09:46:38,461 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> sklearn.preprocessing.OrdinalEncoder
+2026-01-21 09:46:38,461 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
+2026-01-21 09:46:38,461 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|REGRESSOR
+2026-01-21 09:46:38,461 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.linear_model.ARDRegression
+2026-01-21 09:46:38,462 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.linear_model.ARDRegression
+2026-01-21 09:46:38,462 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.linear_model.ARDRegression
+2026-01-21 09:46:38,469 - Process-4 - alpha_automl.pipeline_synthesis.pipeline_builder - DEBUG - New pipelined created:
 Pipeline(steps=[('sklearn.compose.ColumnTransformer',
                  ColumnTransformer(remainder='passthrough',
                                    transformers=[('sklearn.preprocessing.OrdinalEncoder',
@@ -296,305 +319,237 @@ Pipeline(steps=[('sklearn.compose.ColumnTransformer',
                                                   [0])])),
                 ('sklearn.preprocessing.MaxAbsScaler', MaxAbsScaler()),
                 ('sklearn.linear_model.ARDRegression', ARDRegression())])
-2026-01-14 09:57:37,997 - Process-4 - alpha_automl.scorer - DEBUG - Score: 40.97771555748286
-2026-01-14 09:57:37,998 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin 1
-2026-01-14 09:57:37,998 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
-2026-01-14 09:57:37,998 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:37,998 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.linear_model.Ridge
-2026-01-14 09:57:37,998 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|sklearn.linear_model.Ridge
-2026-01-14 09:57:37,998 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|sklearn.linear_model.Ridge
-2026-01-14 09:57:38,000 - MainProcess - alpha_automl.automl_manager - DEBUG - Found new pipeline
-2026-01-14 09:57:38,001 - MainProcess - alpha_automl.automl_api - INFO - Found pipeline, time=0:00:00, scoring...
-2026-01-14 09:57:38,006 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04478198
-2026-01-14 09:57:38,007 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
-2026-01-14 09:57:38,007 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:38,007 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.linear_model.Ridge
-2026-01-14 09:57:38,008 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|sklearn.linear_model.Ridge
-2026-01-14 09:57:38,008 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|sklearn.linear_model.Ridge
-2026-01-14 09:57:38,008 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
-2026-01-14 09:57:38,008 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|sklearn.linear_model.Ridge
-2026-01-14 09:57:38,008 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|sklearn.linear_model.Ridge
-2026-01-14 09:57:38,014 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.0454805
-2026-01-14 09:57:38,014 - Process-4 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 3
-2026-01-14 09:57:38,014 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
-2026-01-14 09:57:38,015 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
-2026-01-14 09:57:38,015 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:38,015 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.linear_model.Ridge
-2026-01-14 09:57:38,015 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|sklearn.linear_model.Ridge
-2026-01-14 09:57:38,015 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|sklearn.linear_model.Ridge
-2026-01-14 09:57:38,015 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
-2026-01-14 09:57:38,016 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.linear_model.Ridge
-2026-01-14 09:57:38,016 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.linear_model.Ridge
-2026-01-14 09:57:38,023 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04590825
-2026-01-14 09:57:38,023 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
-2026-01-14 09:57:38,023 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:38,024 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.linear_model.Ridge
-2026-01-14 09:57:38,024 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|sklearn.linear_model.Ridge
-2026-01-14 09:57:38,024 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|sklearn.linear_model.Ridge
-2026-01-14 09:57:38,024 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.RobustScaler
-2026-01-14 09:57:38,024 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.RobustScaler|sklearn.linear_model.Ridge
-2026-01-14 09:57:38,025 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.RobustScaler|sklearn.linear_model.Ridge
-2026-01-14 09:57:38,030 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045204386
-2026-01-14 09:57:38,030 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
-2026-01-14 09:57:38,031 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:38,031 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.tree.DecisionTreeRegressor
-2026-01-14 09:57:38,031 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|sklearn.tree.DecisionTreeRegressor
-2026-01-14 09:57:38,031 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|sklearn.tree.DecisionTreeRegressor
-2026-01-14 09:57:38,039 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.046386644
-2026-01-14 09:57:38,039 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
-2026-01-14 09:57:38,039 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:38,040 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.tree.DecisionTreeRegressor
-2026-01-14 09:57:38,040 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|sklearn.tree.DecisionTreeRegressor
-2026-01-14 09:57:38,040 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|sklearn.tree.DecisionTreeRegressor
-2026-01-14 09:57:38,040 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
-2026-01-14 09:57:38,040 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.tree.DecisionTreeRegressor
-2026-01-14 09:57:38,041 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.tree.DecisionTreeRegressor
-2026-01-14 09:57:38,046 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.046806075
-2026-01-14 09:57:38,046 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
-2026-01-14 09:57:38,047 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|REGRESSOR
-2026-01-14 09:57:38,047 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> xgboost.XGBRegressor
-2026-01-14 09:57:38,047 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|xgboost.XGBRegressor
-2026-01-14 09:57:38,047 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|xgboost.XGBRegressor
-2026-01-14 09:57:38,053 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045797102
-2026-01-14 09:57:38,054 - Process-4 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 38
-2026-01-14 09:57:38,054 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> xgboost.XGBRegressor
-2026-01-14 09:57:38,054 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
-2026-01-14 09:57:38,055 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|xgboost.XGBRegressor
-2026-01-14 09:57:38,055 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.MaxAbsScaler
-2026-01-14 09:57:38,055 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|xgboost.XGBRegressor
-2026-01-14 09:57:38,055 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|xgboost.XGBRegressor
-2026-01-14 09:57:38,061 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04621829
-2026-01-14 09:57:38,061 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
-2026-01-14 09:57:38,061 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|xgboost.XGBRegressor
-2026-01-14 09:57:38,061 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> sklearn.preprocessing.RobustScaler
-2026-01-14 09:57:38,062 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.RobustScaler|xgboost.XGBRegressor
-2026-01-14 09:57:38,062 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.RobustScaler|xgboost.XGBRegressor
-2026-01-14 09:57:38,067 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04552152
-2026-01-14 09:57:38,068 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
-2026-01-14 09:57:38,068 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|xgboost.XGBRegressor
-2026-01-14 09:57:38,068 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> sklearn.preprocessing.OrdinalEncoder
-2026-01-14 09:57:38,068 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|FEATURE_SCALER|xgboost.XGBRegressor
-2026-01-14 09:57:38,069 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|FEATURE_SCALER|xgboost.XGBRegressor
-2026-01-14 09:57:38,074 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045211297
-2026-01-14 09:57:38,074 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
-2026-01-14 09:57:38,075 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|xgboost.XGBRegressor
-2026-01-14 09:57:38,075 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> alpha_automl.builtin_primitives.datetime_encoder.DummyEncoder
-2026-01-14 09:57:38,075 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.datetime_encoder.DummyEncoder|FEATURE_SCALER|xgboost.XGBRegressor
-2026-01-14 09:57:38,075 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.datetime_encoder.DummyEncoder|FEATURE_SCALER|xgboost.XGBRegressor
-2026-01-14 09:57:38,080 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04690731
-2026-01-14 09:57:38,080 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
-2026-01-14 09:57:38,081 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|FEATURE_SCALER|xgboost.XGBRegressor
-2026-01-14 09:57:38,081 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> E
-2026-01-14 09:57:38,081 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|xgboost.XGBRegressor
-2026-01-14 09:57:38,081 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|xgboost.XGBRegressor
-2026-01-14 09:57:38,086 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045911673
-2026-01-14 09:57:38,087 - Process-4 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 7
-2026-01-14 09:57:38,087 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SCALER -> E
-2026-01-14 09:57:38,087 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
-2026-01-14 09:57:38,087 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|xgboost.XGBRegressor
-2026-01-14 09:57:38,088 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> sklearn.preprocessing.OrdinalEncoder
-2026-01-14 09:57:38,088 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|xgboost.XGBRegressor
-2026-01-14 09:57:38,088 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|xgboost.XGBRegressor
-2026-01-14 09:57:38,099 - Process-4 - alpha_automl.pipeline_synthesis.pipeline_builder - DEBUG - New pipelined created:
+2026-01-21 09:46:38,492 - Process-4 - alpha_automl.scorer - DEBUG - Score: 40.97771555748286
+2026-01-21 09:46:38,493 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
+2026-01-21 09:46:38,493 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2026-01-21 09:46:38,493 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,493 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.linear_model.Ridge
+2026-01-21 09:46:38,493 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,494 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,494 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> sklearn.feature_selection.GenericUnivariateSelect
+2026-01-21 09:46:38,494 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,494 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,496 - MainProcess - alpha_automl.automl_manager - DEBUG - Found new pipeline
+2026-01-21 09:46:38,497 - MainProcess - alpha_automl.automl_api - INFO - Found pipeline, time=0:00:00, scoring...
+2026-01-21 09:46:38,500 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04653931
+2026-01-21 09:46:38,500 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2026-01-21 09:46:38,500 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,501 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.linear_model.Ridge
+2026-01-21 09:46:38,501 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,501 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,501 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> E
+2026-01-21 09:46:38,501 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,501 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,506 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04590825
+2026-01-21 09:46:38,506 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2026-01-21 09:46:38,506 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,507 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.tree.DecisionTreeRegressor
+2026-01-21 09:46:38,507 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.tree.DecisionTreeRegressor
+2026-01-21 09:46:38,507 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.tree.DecisionTreeRegressor
+2026-01-21 09:46:38,511 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04687031
+2026-01-21 09:46:38,512 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2026-01-21 09:46:38,512 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:38,512 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.tree.DecisionTreeRegressor
+2026-01-21 09:46:38,512 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.tree.DecisionTreeRegressor
+2026-01-21 09:46:38,512 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.tree.DecisionTreeRegressor
+2026-01-21 09:46:38,513 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> sklearn.feature_selection.GenericUnivariateSelect
+2026-01-21 09:46:38,513 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.tree.DecisionTreeRegressor
+2026-01-21 09:46:38,513 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.tree.DecisionTreeRegressor
+2026-01-21 09:46:38,518 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04742498
+2026-01-21 09:46:38,518 - Process-4 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 28
+2026-01-21 09:46:38,518 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: REGRESSOR -> sklearn.linear_model.Ridge
+2026-01-21 09:46:38,519 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2026-01-21 09:46:38,519 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,519 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> sklearn.preprocessing.OrdinalEncoder
+2026-01-21 09:46:38,519 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,519 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,524 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045451377
+2026-01-21 09:46:38,524 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2026-01-21 09:46:38,524 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,524 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> sklearn.feature_selection.SelectPercentile
+2026-01-21 09:46:38,525 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectPercentile|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,525 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectPercentile|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,529 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04675607
+2026-01-21 09:46:38,530 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2026-01-21 09:46:38,530 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,530 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> alpha_automl.builtin_primitives.datetime_encoder.DummyEncoder
+2026-01-21 09:46:38,530 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.datetime_encoder.DummyEncoder|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,530 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.datetime_encoder.DummyEncoder|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,535 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.047108743
+2026-01-21 09:46:38,536 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2026-01-21 09:46:38,536 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,536 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> sklearn.feature_selection.SelectKBest
+2026-01-21 09:46:38,536 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectKBest|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,536 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectKBest|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,541 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045953076
+2026-01-21 09:46:38,541 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2026-01-21 09:46:38,541 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,542 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> alpha_automl.builtin_primitives.datetime_encoder.CyclicalFeature
+2026-01-21 09:46:38,542 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.datetime_encoder.CyclicalFeature|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,542 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.datetime_encoder.CyclicalFeature|sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,547 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045828898
+2026-01-21 09:46:38,547 - Process-4 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 10
+2026-01-21 09:46:38,547 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: FEATURE_SELECTOR -> sklearn.feature_selection.SelectKBest
+2026-01-21 09:46:38,548 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2026-01-21 09:46:38,548 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectKBest|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,548 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> sklearn.preprocessing.OrdinalEncoder
+2026-01-21 09:46:38,548 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectKBest|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,548 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectKBest|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,556 - Process-4 - alpha_automl.pipeline_synthesis.pipeline_builder - DEBUG - New pipelined created:
 Pipeline(steps=[('sklearn.compose.ColumnTransformer',
                  ColumnTransformer(remainder='passthrough',
                                    transformers=[('sklearn.preprocessing.OrdinalEncoder',
                                                   OrdinalEncoder(handle_unknown='use_encoded_value',
                                                                  unknown_value=-1),
                                                   [0])])),
-                ('xgboost.XGBRegressor',
-                 XGBRegressor(base_score=None, booster=None, callbacks=None,
-                              colsample_bylevel=None, colsample_bynode=None...
-                              feature_types=None, feature_weights=None,
-                              gamma=None, grow_policy=None,
-                              importance_type=None,
-                              interaction_constraints=None, learning_rate=None,
-                              max_bin=None, max_cat_threshold=None,
-                              max_cat_to_onehot=None, max_delta_step=None,
-                              max_depth=None, max_leaves=None,
-                              min_child_weight=None, missing=nan,
-                              monotone_constraints=None, multi_strategy=None,
-                              n_estimators=None, n_jobs=None,
-                              num_parallel_tree=None, ...))])
-2026-01-14 09:57:38,176 - MainProcess - alpha_automl.scorer - DEBUG - Score: 61.254642231536494
-2026-01-14 09:57:38,176 - MainProcess - alpha_automl.automl_manager - DEBUG - Pipeline scored successfully, score=61.254642231536494
-2026-01-14 09:57:38,176 - MainProcess - alpha_automl.automl_api - INFO - Scored pipeline, score=61.254642231536494
-2026-01-14 09:57:38,261 - Process-4 - alpha_automl.scorer - DEBUG - Score: 49.24685287475586
-2026-01-14 09:57:38,261 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
-2026-01-14 09:57:38,261 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
-2026-01-14 09:57:38,261 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|xgboost.XGBRegressor
-2026-01-14 09:57:38,262 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> alpha_automl.builtin_primitives.datetime_encoder.DummyEncoder
-2026-01-14 09:57:38,262 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.datetime_encoder.DummyEncoder|xgboost.XGBRegressor
-2026-01-14 09:57:38,262 - MainProcess - alpha_automl.automl_manager - DEBUG - Found new pipeline
-2026-01-14 09:57:38,262 - MainProcess - alpha_automl.automl_api - INFO - Found pipeline, time=0:00:00, scoring...
-2026-01-14 09:57:38,262 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.datetime_encoder.DummyEncoder|xgboost.XGBRegressor
-2026-01-14 09:57:38,464 - Process-4 - alpha_automl.pipeline_synthesis.pipeline_builder - DEBUG - New pipelined created:
+                ('sklearn.preprocessing.MaxAbsScaler', MaxAbsScaler()),
+                ('sklearn.feature_selection.SelectKBest', SelectKBest()),
+                ('sklearn.linear_model.Ridge', Ridge())])
+2026-01-21 09:46:38,631 - MainProcess - alpha_automl.scorer - DEBUG - Score: 61.254642231536494
+2026-01-21 09:46:38,631 - MainProcess - alpha_automl.automl_manager - DEBUG - Pipeline scored successfully, score=61.254642231536494
+2026-01-21 09:46:38,631 - MainProcess - alpha_automl.automl_api - INFO - Scored pipeline, score=61.254642231536494
+2026-01-21 09:46:38,659 - Process-4 - alpha_automl.scorer - DEBUG - Score: 40.97405077098025
+2026-01-21 09:46:38,660 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2026-01-21 09:46:38,660 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectKBest|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,660 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> alpha_automl.builtin_primitives.datetime_encoder.DummyEncoder
+2026-01-21 09:46:38,660 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.datetime_encoder.DummyEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectKBest|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,660 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.datetime_encoder.DummyEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectKBest|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,660 - MainProcess - alpha_automl.automl_manager - DEBUG - Found new pipeline
+2026-01-21 09:46:38,661 - MainProcess - alpha_automl.automl_api - INFO - Found pipeline, time=0:00:00, scoring...
+2026-01-21 09:46:38,680 - Process-4 - alpha_automl.pipeline_synthesis.pipeline_builder - DEBUG - New pipelined created:
 Pipeline(steps=[('sklearn.compose.ColumnTransformer',
                  ColumnTransformer(remainder='passthrough',
                                    transformers=[('alpha_automl.builtin_primitives.datetime_encoder.DummyEncoder',
                                                   DummyEncoder(), [0])])),
-                ('xgboost.XGBRegressor',
-                 XGBRegressor(base_score=None, booster=None, callbacks=None,
-                              colsample_bylevel=None, colsample_bynode=None,
-                              colsample_bytree=None, devic...
-                              feature_types=None, feature_weights=None,
-                              gamma=None, grow_policy=None,
-                              importance_type=None,
-                              interaction_constraints=None, learning_rate=None,
-                              max_bin=None, max_cat_threshold=None,
-                              max_cat_to_onehot=None, max_delta_step=None,
-                              max_depth=None, max_leaves=None,
-                              min_child_weight=None, missing=nan,
-                              monotone_constraints=None, multi_strategy=None,
-                              n_estimators=None, n_jobs=None,
-                              num_parallel_tree=None, ...))])
-2026-01-14 09:57:38,644 - MainProcess - alpha_automl.scorer - DEBUG - Score: 63.9572265625
-2026-01-14 09:57:38,644 - MainProcess - alpha_automl.automl_manager - DEBUG - Pipeline scored successfully, score=63.9572265625
-2026-01-14 09:57:38,645 - MainProcess - alpha_automl.automl_api - INFO - Scored pipeline, score=63.9572265625
-2026-01-14 09:57:38,678 - Process-4 - alpha_automl.scorer - DEBUG - Score: 43.43404769897461
-2026-01-14 09:57:38,679 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
-2026-01-14 09:57:38,679 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
-2026-01-14 09:57:38,679 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|xgboost.XGBRegressor
-2026-01-14 09:57:38,679 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> alpha_automl.builtin_primitives.datetime_encoder.CyclicalFeature
-2026-01-14 09:57:38,679 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.datetime_encoder.CyclicalFeature|xgboost.XGBRegressor
-2026-01-14 09:57:38,679 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.datetime_encoder.CyclicalFeature|xgboost.XGBRegressor
-2026-01-14 09:57:38,685 - Process-4 - alpha_automl.pipeline_synthesis.pipeline_builder - DEBUG - New pipelined created:
+                ('sklearn.preprocessing.MaxAbsScaler', MaxAbsScaler()),
+                ('sklearn.feature_selection.SelectKBest', SelectKBest()),
+                ('sklearn.linear_model.Ridge', Ridge())])
+2026-01-21 09:46:38,892 - Process-4 - alpha_automl.scorer - DEBUG - Score: 41.649220663108004
+2026-01-21 09:46:38,893 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
+2026-01-21 09:46:38,893 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2026-01-21 09:46:38,893 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectKBest|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,893 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> alpha_automl.builtin_primitives.datetime_encoder.CyclicalFeature
+2026-01-21 09:46:38,894 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.datetime_encoder.CyclicalFeature|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectKBest|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,894 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.datetime_encoder.CyclicalFeature|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectKBest|sklearn.linear_model.Ridge
+2026-01-21 09:46:38,905 - Process-4 - alpha_automl.pipeline_synthesis.pipeline_builder - DEBUG - New pipelined created:
 Pipeline(steps=[('sklearn.compose.ColumnTransformer',
                  ColumnTransformer(remainder='passthrough',
                                    transformers=[('alpha_automl.builtin_primitives.datetime_encoder.CyclicalFeature',
                                                   CyclicalFeature(), [0])])),
-                ('xgboost.XGBRegressor',
-                 XGBRegressor(base_score=None, booster=None, callbacks=None,
-                              colsample_bylevel=None, colsample_bynode=None,
-                              colsample_bytree=None...
-                              feature_types=None, feature_weights=None,
-                              gamma=None, grow_policy=None,
-                              importance_type=None,
-                              interaction_constraints=None, learning_rate=None,
-                              max_bin=None, max_cat_threshold=None,
-                              max_cat_to_onehot=None, max_delta_step=None,
-                              max_depth=None, max_leaves=None,
-                              min_child_weight=None, missing=nan,
-                              monotone_constraints=None, multi_strategy=None,
-                              n_estimators=None, n_jobs=None,
-                              num_parallel_tree=None, ...))])
-2026-01-14 09:57:38,686 - MainProcess - alpha_automl.automl_manager - DEBUG - Found new pipeline
-2026-01-14 09:57:38,686 - MainProcess - alpha_automl.automl_api - INFO - Found pipeline, time=0:00:01, scoring...
-2026-01-14 09:57:38,945 - Process-4 - alpha_automl.scorer - DEBUG - Score: 0.18440985679626465
-2026-01-14 09:57:38,945 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
-2026-01-14 09:57:38,945 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|xgboost.XGBRegressor
-2026-01-14 09:57:38,945 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> alpha_automl.builtin_primitives.datetime_encoder.Datetime64ExpandEncoder
-2026-01-14 09:57:38,945 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.datetime_encoder.Datetime64ExpandEncoder|xgboost.XGBRegressor
-2026-01-14 09:57:38,946 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.datetime_encoder.Datetime64ExpandEncoder|xgboost.XGBRegressor
-2026-01-14 09:57:38,955 - Process-4 - alpha_automl.pipeline_synthesis.pipeline_builder - DEBUG - New pipelined created:
+                ('sklearn.preprocessing.MaxAbsScaler', MaxAbsScaler()),
+                ('sklearn.feature_selection.SelectKBest', SelectKBest()),
+                ('sklearn.linear_model.Ridge', Ridge())])
+2026-01-21 09:46:39,203 - Process-4 - alpha_automl.scorer - DEBUG - Score: 12.694607947465624
+2026-01-21 09:46:39,203 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2026-01-21 09:46:39,203 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectKBest|sklearn.linear_model.Ridge
+2026-01-21 09:46:39,204 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> alpha_automl.builtin_primitives.datetime_encoder.Datetime64ExpandEncoder
+2026-01-21 09:46:39,204 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.datetime_encoder.Datetime64ExpandEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectKBest|sklearn.linear_model.Ridge
+2026-01-21 09:46:39,204 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.datetime_encoder.Datetime64ExpandEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectKBest|sklearn.linear_model.Ridge
+2026-01-21 09:46:39,205 - MainProcess - alpha_automl.scorer - DEBUG - Score: 61.193425383698965
+2026-01-21 09:46:39,205 - MainProcess - alpha_automl.automl_manager - DEBUG - Pipeline scored successfully, score=61.193425383698965
+2026-01-21 09:46:39,205 - MainProcess - alpha_automl.automl_api - INFO - Scored pipeline, score=61.193425383698965
+2026-01-21 09:46:39,210 - Process-4 - alpha_automl.pipeline_synthesis.pipeline_builder - DEBUG - New pipelined created:
 Pipeline(steps=[('sklearn.compose.ColumnTransformer',
                  ColumnTransformer(remainder='passthrough',
                                    transformers=[('alpha_automl.builtin_primitives.datetime_encoder.Datetime64ExpandEncoder',
                                                   Datetime64ExpandEncoder(),
                                                   [0])])),
-                ('xgboost.XGBRegressor',
-                 XGBRegressor(base_score=None, booster=None, callbacks=None,
-                              colsample_bylevel=None, colsample_bynode=None,
-                              colsa...
-                              feature_types=None, feature_weights=None,
-                              gamma=None, grow_policy=None,
-                              importance_type=None,
-                              interaction_constraints=None, learning_rate=None,
-                              max_bin=None, max_cat_threshold=None,
-                              max_cat_to_onehot=None, max_delta_step=None,
-                              max_depth=None, max_leaves=None,
-                              min_child_weight=None, missing=nan,
-                              monotone_constraints=None, multi_strategy=None,
-                              n_estimators=None, n_jobs=None,
-                              num_parallel_tree=None, ...))])
-2026-01-14 09:57:39,103 - Process-4 - alpha_automl.scorer - DEBUG - Score: 0.16928410530090332
-2026-01-14 09:57:39,103 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
-2026-01-14 09:57:39,103 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|xgboost.XGBRegressor
-2026-01-14 09:57:39,103 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> sklearn.preprocessing.OrdinalEncoder
-2026-01-14 09:57:39,103 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|xgboost.XGBRegressor
-2026-01-14 09:57:39,103 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|xgboost.XGBRegressor
-2026-01-14 09:57:39,103 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
-2026-01-14 09:57:39,104 - Process-4 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 12
-2026-01-14 09:57:39,104 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> sklearn.preprocessing.OrdinalEncoder
-2026-01-14 09:57:39,104 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
-2026-01-14 09:57:39,104 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
-2026-01-14 09:57:39,104 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
-2026-01-14 09:57:39,111 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04596164
-2026-01-14 09:57:39,111 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
-2026-01-14 09:57:39,111 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
-2026-01-14 09:57:39,111 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER FEATURE_SELECTOR REGRESSOR
-2026-01-14 09:57:39,111 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:39,112 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:39,117 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04546075
-2026-01-14 09:57:39,118 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
-2026-01-14 09:57:39,118 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
-2026-01-14 09:57:39,118 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER TIME_SERIES_FORECAST
-2026-01-14 09:57:39,118 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
-2026-01-14 09:57:39,118 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
-2026-01-14 09:57:39,126 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04623066
-2026-01-14 09:57:39,127 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
-2026-01-14 09:57:39,127 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
-2026-01-14 09:57:39,127 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER FEATURE_SELECTOR REGRESSOR
-2026-01-14 09:57:39,127 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:39,127 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:39,127 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> DATETIME_ENCODER
-2026-01-14 09:57:39,128 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:39,128 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
-2026-01-14 09:57:39,134 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045972962
-2026-01-14 09:57:39,135 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
-2026-01-14 09:57:39,135 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
-2026-01-14 09:57:39,135 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER TIME_SERIES_FORECAST
-2026-01-14 09:57:39,135 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
-2026-01-14 09:57:39,135 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
-2026-01-14 09:57:39,135 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
-2026-01-14 09:57:39,136 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: TIME_SERIES_FORECAST
-2026-01-14 09:57:39,136 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: TIME_SERIES_FORECAST
-2026-01-14 09:57:39,144 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04689913
-2026-01-14 09:57:39,144 - Process-4 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 1
-2026-01-14 09:57:39,145 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER TIME_SERIES_FORECAST
-2026-01-14 09:57:39,145 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
-2026-01-14 09:57:39,145 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
-2026-01-14 09:57:39,145 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: TIME_SERIES_FORECAST -> alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
-2026-01-14 09:57:39,145 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
-2026-01-14 09:57:39,145 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
-2026-01-14 09:57:39,152 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045497715
-2026-01-14 09:57:39,153 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
-2026-01-14 09:57:39,153 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
-2026-01-14 09:57:39,153 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: TIME_SERIES_FORECAST -> alpha_automl.builtin_primitives.time_series_forecasting.DeeparEstimator
-2026-01-14 09:57:39,153 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.DeeparEstimator
-2026-01-14 09:57:39,153 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.DeeparEstimator
-2026-01-14 09:57:39,163 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.046084616
-2026-01-14 09:57:39,163 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
-2026-01-14 09:57:39,163 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
-2026-01-14 09:57:39,164 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: TIME_SERIES_FORECAST -> alpha_automl.builtin_primitives.time_series_forecasting.ArimaEstimator
-2026-01-14 09:57:39,164 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.ArimaEstimator
-2026-01-14 09:57:39,164 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.ArimaEstimator
-2026-01-14 09:57:39,174 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045818582
-2026-01-14 09:57:39,175 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
-2026-01-14 09:57:39,175 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
-2026-01-14 09:57:39,175 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: TIME_SERIES_FORECAST -> alpha_automl.builtin_primitives.time_series_forecasting.NBEATSEstimator
-2026-01-14 09:57:39,175 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NBEATSEstimator
-2026-01-14 09:57:39,175 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NBEATSEstimator
-2026-01-14 09:57:39,183 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04534916
-2026-01-14 09:57:39,183 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
-2026-01-14 09:57:39,183 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
-2026-01-14 09:57:39,184 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: TIME_SERIES_FORECAST -> alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
-2026-01-14 09:57:39,184 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
-2026-01-14 09:57:39,184 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
-2026-01-14 09:57:39,184 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
-2026-01-14 09:57:39,184 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
-2026-01-14 09:57:39,184 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
-2026-01-14 09:57:39,463 - MainProcess - alpha_automl.scorer - DEBUG - Score: 59.27204208374023
-2026-01-14 09:57:39,463 - MainProcess - alpha_automl.automl_manager - DEBUG - Pipeline scored successfully, score=59.27204208374023
-2026-01-14 09:57:39,463 - MainProcess - alpha_automl.automl_api - INFO - Scored pipeline, score=59.27204208374023
-2026-01-14 09:57:39,463 - MainProcess - alpha_automl.automl_manager - DEBUG - Found new pipeline
-2026-01-14 09:57:39,463 - MainProcess - alpha_automl.automl_api - INFO - Found pipeline, time=0:00:02, scoring...
-2026-01-14 09:57:41,751 - MainProcess - alpha_automl.scorer - DEBUG - Score: 29.919511699676512
-2026-01-14 09:57:41,751 - MainProcess - alpha_automl.automl_manager - DEBUG - Pipeline scored successfully, score=29.919511699676512
-2026-01-14 09:57:41,752 - MainProcess - alpha_automl.automl_api - INFO - Scored pipeline, score=29.919511699676512
-2026-01-14 09:57:41,752 - MainProcess - alpha_automl.automl_manager - DEBUG - Found new pipeline
-2026-01-14 09:57:41,752 - MainProcess - alpha_automl.automl_api - INFO - Found pipeline, time=0:00:04, scoring...
-2026-01-14 09:57:43,173 - MainProcess - alpha_automl.scorer - DEBUG - Score: 30.218291568756104
-2026-01-14 09:57:43,173 - MainProcess - alpha_automl.automl_manager - DEBUG - Pipeline scored successfully, score=30.218291568756104
-2026-01-14 09:57:43,173 - MainProcess - alpha_automl.automl_api - INFO - Scored pipeline, score=30.218291568756104
-2026-01-14 09:57:53,285 - MainProcess - gluonts.mx.context - INFO - Using CPU
+                ('sklearn.preprocessing.MaxAbsScaler', MaxAbsScaler()),
+                ('sklearn.feature_selection.SelectKBest', SelectKBest()),
+                ('sklearn.linear_model.Ridge', Ridge())])
+2026-01-21 09:46:39,212 - MainProcess - alpha_automl.automl_manager - DEBUG - Found new pipeline
+2026-01-21 09:46:39,212 - MainProcess - alpha_automl.automl_api - INFO - Found pipeline, time=0:00:01, scoring...
+2026-01-21 09:46:39,380 - Process-4 - alpha_automl.scorer - DEBUG - Score: 40.84935883997121
+2026-01-21 09:46:39,381 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
+2026-01-21 09:46:39,381 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2026-01-21 09:46:39,381 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: DATETIME_ENCODER|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectKBest|sklearn.linear_model.Ridge
+2026-01-21 09:46:39,381 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> sklearn.preprocessing.OrdinalEncoder
+2026-01-21 09:46:39,381 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectKBest|sklearn.linear_model.Ridge
+2026-01-21 09:46:39,381 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: sklearn.preprocessing.OrdinalEncoder|sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.SelectKBest|sklearn.linear_model.Ridge
+2026-01-21 09:46:39,381 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
+2026-01-21 09:46:39,381 - Process-4 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 12
+2026-01-21 09:46:39,382 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: DATETIME_ENCODER -> sklearn.preprocessing.OrdinalEncoder
+2026-01-21 09:46:39,382 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - findwin -1
+2026-01-21 09:46:39,382 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2026-01-21 09:46:39,382 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2026-01-21 09:46:39,387 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04596164
+2026-01-21 09:46:39,387 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2026-01-21 09:46:39,387 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2026-01-21 09:46:39,388 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER FEATURE_SELECTOR REGRESSOR
+2026-01-21 09:46:39,388 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:39,388 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:39,392 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04546075
+2026-01-21 09:46:39,392 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2026-01-21 09:46:39,392 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2026-01-21 09:46:39,393 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER TIME_SERIES_FORECAST
+2026-01-21 09:46:39,393 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
+2026-01-21 09:46:39,393 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
+2026-01-21 09:46:39,397 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04623066
+2026-01-21 09:46:39,397 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2026-01-21 09:46:39,397 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2026-01-21 09:46:39,397 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER FEATURE_SELECTOR REGRESSOR
+2026-01-21 09:46:39,398 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:39,398 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:39,398 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> DATETIME_ENCODER
+2026-01-21 09:46:39,398 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:39,398 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+2026-01-21 09:46:39,403 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045972962
+2026-01-21 09:46:39,403 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2026-01-21 09:46:39,403 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S
+2026-01-21 09:46:39,403 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER TIME_SERIES_FORECAST
+2026-01-21 09:46:39,404 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
+2026-01-21 09:46:39,404 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
+2026-01-21 09:46:39,404 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
+2026-01-21 09:46:39,404 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: TIME_SERIES_FORECAST
+2026-01-21 09:46:39,404 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: TIME_SERIES_FORECAST
+2026-01-21 09:46:39,409 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04689913
+2026-01-21 09:46:39,409 - Process-4 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 1
+2026-01-21 09:46:39,409 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER TIME_SERIES_FORECAST
+2026-01-21 09:46:39,409 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1
+2026-01-21 09:46:39,409 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
+2026-01-21 09:46:39,410 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: TIME_SERIES_FORECAST -> alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
+2026-01-21 09:46:39,410 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
+2026-01-21 09:46:39,410 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
+2026-01-21 09:46:39,414 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045497715
+2026-01-21 09:46:39,414 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2
+2026-01-21 09:46:39,415 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
+2026-01-21 09:46:39,415 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: TIME_SERIES_FORECAST -> alpha_automl.builtin_primitives.time_series_forecasting.DeeparEstimator
+2026-01-21 09:46:39,415 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.DeeparEstimator
+2026-01-21 09:46:39,415 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.DeeparEstimator
+2026-01-21 09:46:39,420 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.046084616
+2026-01-21 09:46:39,420 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3
+2026-01-21 09:46:39,420 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
+2026-01-21 09:46:39,420 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: TIME_SERIES_FORECAST -> alpha_automl.builtin_primitives.time_series_forecasting.ArimaEstimator
+2026-01-21 09:46:39,420 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.ArimaEstimator
+2026-01-21 09:46:39,421 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.ArimaEstimator
+2026-01-21 09:46:39,425 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045818582
+2026-01-21 09:46:39,425 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4
+2026-01-21 09:46:39,425 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
+2026-01-21 09:46:39,426 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: TIME_SERIES_FORECAST -> alpha_automl.builtin_primitives.time_series_forecasting.NBEATSEstimator
+2026-01-21 09:46:39,426 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NBEATSEstimator
+2026-01-21 09:46:39,426 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NBEATSEstimator
+2026-01-21 09:46:39,430 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04534916
+2026-01-21 09:46:39,430 - Process-4 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5
+2026-01-21 09:46:39,431 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST
+2026-01-21 09:46:39,431 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: TIME_SERIES_FORECAST -> alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
+2026-01-21 09:46:39,431 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
+2026-01-21 09:46:39,431 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
+2026-01-21 09:46:39,431 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E
+2026-01-21 09:46:39,431 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
+2026-01-21 09:46:39,432 - Process-4 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
+2026-01-21 09:46:40,459 - MainProcess - alpha_automl.scorer - DEBUG - Score: 58.987278336877054
+2026-01-21 09:46:40,459 - MainProcess - alpha_automl.automl_manager - DEBUG - Pipeline scored successfully, score=58.987278336877054
+2026-01-21 09:46:40,460 - MainProcess - alpha_automl.automl_api - INFO - Scored pipeline, score=58.987278336877054
+2026-01-21 09:46:40,460 - MainProcess - alpha_automl.automl_manager - DEBUG - Found new pipeline
+2026-01-21 09:46:40,460 - MainProcess - alpha_automl.automl_api - INFO - Found pipeline, time=0:00:02, scoring...
+2026-01-21 09:46:42,541 - MainProcess - alpha_automl.scorer - DEBUG - Score: 46.49767646749062
+2026-01-21 09:46:42,541 - MainProcess - alpha_automl.automl_manager - DEBUG - Pipeline scored successfully, score=46.49767646749062
+2026-01-21 09:46:42,541 - MainProcess - alpha_automl.automl_api - INFO - Scored pipeline, score=46.49767646749062
+2026-01-21 09:46:42,541 - MainProcess - alpha_automl.automl_manager - DEBUG - Found new pipeline
+2026-01-21 09:46:42,541 - MainProcess - alpha_automl.automl_api - INFO - Found pipeline, time=0:00:04, scoring...
+2026-01-21 09:46:43,702 - MainProcess - alpha_automl.scorer - DEBUG - Score: 58.11728048370755
+2026-01-21 09:46:43,702 - MainProcess - alpha_automl.automl_manager - DEBUG - Pipeline scored successfully, score=58.11728048370755
+2026-01-21 09:46:43,702 - MainProcess - alpha_automl.automl_api - INFO - Scored pipeline, score=58.11728048370755
+2026-01-21 09:46:50,059 - MainProcess - gluonts.mx.context - INFO - Using CPU
+2026-01-21 09:46:50,259 - MainProcess - matplotlib - DEBUG - CACHEDIR=/home/nguenang/.cache/matplotlib
+2026-01-21 09:46:50,263 - MainProcess - matplotlib.font_manager - DEBUG - Using fontManager instance from /home/nguenang/.cache/matplotlib/fontlist-v390.json
