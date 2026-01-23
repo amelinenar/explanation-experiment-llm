@@ -1,0 +1,11 @@
+ 1. Accuracy — Score: 1 (Good)
+The output accurately reflects the information provided in the prompt, with clear and concise details about the AutoML process.
+
+2. Clarity — Score: 1 (Good)
+The output is easy to understand, with a clear and organized structure that makes it simple to follow.
+
+3. Completeness — Score: 1 (Good)
+The output includes all the necessary information, with no apparent omissions or missing details.
+
+4. Relevance — Score: 1 (Good)
+The output is highly relevant to the prompt, with no apparent distractions or off-topic information.

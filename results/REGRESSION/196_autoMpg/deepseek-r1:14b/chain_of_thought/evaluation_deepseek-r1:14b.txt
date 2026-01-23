@@ -1,0 +1,11 @@
+ 1. Accuracy — Score: 1 (Good)  
+   The summary accurately captures the details of the AutoML process, including specific models and steps used.
+
+2. Clarity — Score: 2 (Average)  
+   While informative, the log format makes it somewhat dense and less accessible to non-technical readers.
+
+3. Completeness — Score: 3 (Poor)  
+   The summary lacks context or background information about the AutoML process, making it incomplete for a thorough understanding.
+
+4. Relevance — Score: 1 (Good)  
+   All information is directly relevant to the AutoML process and its execution.

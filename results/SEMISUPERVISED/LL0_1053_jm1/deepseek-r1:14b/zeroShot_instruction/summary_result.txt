@@ -1,3 +1,0 @@
- The logs detail an automated machine learning (AutoML) process. The system begins by initializing logging and analyzing the dataset's columns, identifying their types as integers or floats. It notes missing values but finds no non-numeric features or useless columns. To enhance efficiency, the dataset is downsampled from 7484 to 2000 rows.
-
-The AutoML process then searches for optimal machine learning pipelines. The first pipeline is identified and scored with a performance score of 0.7682 after about 10 seconds. A second pipeline is found and scored slightly lower at 0.7662, taking approximately 15 seconds. The search concludes upon reaching the timeout limit, having evaluated two pipelines efficiently.

@@ -1,126 +1,3 @@
-# import sys
-# import requests ,json
-# import os
-# from utils.constant import SUMMARIZATION_PROMPT, JUDGING_PROMPT
-# from prompts.prompt_manager import PromptManager
-# from dotenv import load_dotenv, dotenv_values
-
-# sys.path.append("..")
-
-# # support_prompt = PromptManager.get_prompt("first_test", document={"full_log.txt"})
-# # helpdesk_prompt = PromptManager.get_prompt("first_test", pipeline="helpdesk", document={""})
- 
-# load_dotenv()
-# url_api = os.getenv("URL_API")
-   
-# def explain_process(doc_path, llm, des_path,prompts):
-    
-#     with open(doc_path, "r", encoding="utf-8") as f:
-#         documents = f.read()   
-#     model = llm
-#     url = url_api  
-#     support_prompt = PromptManager.get_prompt(prompts, document = documents) 
-#     payload = {
-#         "model": model, 
-#         "prompt": f"{support_prompt}",       
-#         #"prompt" : f"{support_prompt} \n\"\"\"\n{documents}\n\"\"\" "
-#         }
-
-#     text = " "
-#     try:  
-#         response = requests.post(url, data=json.dumps(payload), stream=False)
-#     except requests.exceptions.RequestException as e:
-#         print("Connection error:", e)
- 
-#     try:
-        
-#         with open(des_path, "a", encoding="utf-8") as f:
-                        
-#             for line in response.content.splitlines:
-#                 if line:
-#                     data = json.loads(line.decode("utf-8"))
-#                     text += data.get("response", "")
-#             print(text, end="" )
-#             print('response done')
-#             f.write(text)
-    
-#     except FileExistsError:
-#         print("File does not exist")
-
-
-# def judging_explanation(log_path,summary_path, llm, evaluation_path,prompts):
-        
-#     try:   
-#         with open(log_path, "r", encoding="utf-8") as f:
-#             logs = f.read()
-#     except FileNotFoundError:
-#         print("The file does not exist")
-#     try:   
-#         with open(summary_path, "r", encoding="utf-8") as f:
-#             summary = f.read()
-#     except FileNotFoundError:
-#         print("The file does not exist")
- 
-#     model = llm
-#     support_prompt = PromptManager.get_prompt(prompts, logs = logs , summary = summary)
-
-#     url = url_api
-#     payload = {
-#         "model": model,
-#         "prompt": f"{support_prompt}",
-#         #"prompt" : f"{support_prompt} \n\"\"\"\n{summary}\n\"\"\" "            
-#         #"prompt" : f"{support_prompt} \n\"\"\"\n{logs}\n\"\"\"\n{summary}\n\"\"\" "
-    
-#     }
-
-#     try:
-    
-#         response = requests.post(
-#             url, 
-#             data=json.dumps(payload), 
-#             stream=False,
-#             timeout=60
-#             )
-
-
-#         text = ""
-#         for line in response.content.splitlines():
-#             if line:      
-#                 data = json.loads(line.decode('utf-8'))
-#                 text += data.get("response", "")
-#         print(text, end="")
-#         print('response done') 
-#         print(" ")   
-#         print(f'Writing to the file: {evaluation_path}')
-#         try:
-#             with open(evaluation_path, "a", encoding="utf-8") as f:
-#                 f.write(text)
-#         except FileExistsError:
-#             print("File doesnot exist")
-        
-
-    
-#     except requests.exceptions.RequestException as e:
-#         print("connection error:", e)
-#         exit()
-#     except:
-#         print('regular exception')
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # imports library
 import sys
 import os
@@ -154,59 +31,108 @@ def read_file(file_path,mode):
                 
     return return_file
 
+def get_url(llm, support_prompt):
+    load_dotenv()
+    key = os.getenv("OPEN_API_KEY")
+    if llm == 'gpt-4o-mini':
+        url_api = os.getenv("URL_gpt")
+        payload = {
+        "model": llm,
+        "input" : f"{support_prompt}",
+    }
+        
+    else:
+        url_api = os.getenv("URL_API")
+        # Prepare request payload
+        payload = {
+            "model": llm,
+            "prompt": f"{support_prompt}",
+        }
+
+    return url_api,payload,key
 
 def call_llm_api(llm, support_prompt):
     """
     Send prompt to LLM API and return aggregated response text.
     """
-    load_dotenv()
-    url_api = os.getenv("URL_API")
-    model = llm
-    url = url_api
-    
-    # Prepare request payload
-    payload = {
-        "model": model,
-        "prompt": f"{support_prompt}",
-    }
-    # Send request and handle response
-    try:
-        response = requests.post(url, data=json.dumps(payload), stream=False, timeout=60,)
+    url, payload, key = get_url(llm, support_prompt)
+    if llm == 'gpt-4o-mini':
+        headers = {"Content-Type": "application/json",
+                   "Authorization": f"Bearer {key}"}
+        try:
+            print("REQUEST MADE")
+            response = requests.post(url, headers=headers, json=payload, stream=True)
+            print(f"RESPONSE GOTTEN {response}")
+            print(response.text)
 
-    except requests.exceptions.RequestException as e:
-        print("connection error:", e) 
-        
+        except requests.exceptions.RequestException as e:
+            print("connection error:", e) 
+    
+    else:
+        # Send request and handle response
+        try:
+            response = requests.post(url, data=json.dumps(payload), stream=False,)
+
+        except requests.exceptions.RequestException as e:
+            print("connection error:", e) 
+            
     return response    
  
  
-def print_response(response,path):
-            
-    text = " "
-    # Parse streamed response lines
-    for line in response.content.splitlines():
-        if line:
-            data = json.loads(line.decode("utf-8"))
-            text += data.get("response", "")
-
-    # Output response and write to evaluation file
-    print(" ")
-    print("----------------------------------------------")
-    print("Got response")
-    print("----------------------------------------------")
-    print(text, end="")
-    print(" ")
-    print("----------------------------------------------")
-    print("response done")
-    print("----------------------------------------------")
-    print(" ")
-    print("----------------------------------------------")
-    print(f"Writing to the file: {path}")
-    print("----------------------------------------------")
-    try:
+def print_response(response,path,llm):
+    
+    #text = " "
+    if llm == 'gpt-4o-mini':
+        text=" "
         with open(path, "a", encoding="utf-8") as f:
-            f.write(text)
-    except FileExistsError:
-        print("File doesnot exist")
+            for output in response.json()['output']:
+                    for content in output['content']:
+                        if content:
+                            print(content)
+                            chunk = content.get("text", "")
+                            if chunk:
+                                print(chunk, end="", flush=True)
+                                text += chunk
+                                print(" ")
+                                print("----------------------------------------------")
+                                print("response done")
+                                print("----------------------------------------------")
+                                print(" ")
+                                print("----------------------------------------------")
+                                print(f"Writing to the file: {path}")
+                                print("----------------------------------------------")
+                                
+                                f.write(text)
+                            # print(text, end="", flush=True)
+                            # f.write(text)    
+    else:         
+        text = " "
+        # Parse streamed response lines
+        for line in response.content.splitlines():
+            if line:
+                data = json.loads(line.decode("utf-8"))
+                text += data.get("response", "")
+                
+
+        # Output response and write to evaluation file
+        print(" ")
+        print("----------------------------------------------")
+        print("Got response")
+        print("----------------------------------------------")
+        print(text, end="")
+        print(" ")
+        print("----------------------------------------------")
+        print("response done")
+        print("----------------------------------------------")
+        print(" ")
+        print("----------------------------------------------")
+        print(f"Writing to the file: {path}")
+        print("----------------------------------------------")
+        try:
+            with open(path, "a", encoding="utf-8") as f:
+                f.write(text)
+        except FileExistsError:
+            print("File doesnot exist")
 
     
 def explain_process(doc_path, llm, des_path, prompts):
@@ -214,14 +140,15 @@ def explain_process(doc_path, llm, des_path, prompts):
     Reads a document, sends it to the LLM API for explanation,
     and appends the generated response to a destination file
     """
-
+    
     # Read input document
     log_file = read_file(doc_path,"r")
-    
+
     # Generate prompt using PromptManager
     support_prompt = PromptManager.get_prompt(prompts, document=log_file)
-    response = call_llm_api(llm, support_prompt)
-    print_response(response, des_path)
+    
+    response = call_llm_api(llm,support_prompt)
+    print_response(response, des_path, llm)
     
  
 
@@ -239,6 +166,6 @@ def judging_explanation(log_path, summary_path, llm, evaluation_path, prompts):
     
     support_prompt = PromptManager.get_prompt(prompts, logs=logs, summary=summary)
     response = call_llm_api(llm, support_prompt)
-    print_response(response, evaluation_path)
+    print_response(response, evaluation_path,llm)
     
     

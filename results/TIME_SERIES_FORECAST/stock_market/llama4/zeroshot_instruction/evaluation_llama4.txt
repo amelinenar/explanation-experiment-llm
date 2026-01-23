@@ -1,0 +1,13 @@
+ ## Output
+
+1. Accuracy — Score: 1 (Good)
+The summary accurately reflects the content provided, focusing on the essential details of the AutoML process.
+
+2. Clarity — Score: 1 (Good)
+The summary is clear and easy to understand, providing a concise overview of the AutoML process and its various stages.
+
+3. Completeness — Score: 1 (Good)
+The summary covers all the necessary information, including the scoring, pipeline, and time taken for the AutoML process.
+
+4. Relevance — Score: 1 (Good)
+The summary is highly relevant to the context, providing essential information about the AutoML process, its results, and the scoring.
