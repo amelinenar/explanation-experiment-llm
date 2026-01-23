@@ -33,7 +33,7 @@ def read_file(file_path,mode):
 
 def get_url(llm, support_prompt):
     load_dotenv()
-    key = os.getenv("OPEN_API_KEY")
+    key = os.getenv("KEY")
     if llm == 'gpt-4o-mini':
         url_api = os.getenv("URL_gpt")
         payload = {
