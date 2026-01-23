@@ -1,0 +1,11 @@
+ 1. Accuracy — Score: 2 (Average)
+The summary contains a mix of relevant and irrelevant information. While it does provide details about the AutoML process, it also includes minor off-topic content.
+
+2. Clarity — Score: 2 (Average)
+The summary is mostly clear but does contain some redundant information. The main points are somewhat obscured by minor details.
+
+3. Completeness — Score: 2 (Average)
+The summary does cover the main points of the AutoML process but lacks a concise and focused presentation. Some details are provided but could be more comprehensive.
+
+4. Relevance — Score: 2 (Average)
+The summary includes mostly relevant information but does contain some minor off-topic content. The main points are relevant but could be more focused.

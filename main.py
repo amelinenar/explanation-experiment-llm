@@ -77,7 +77,7 @@ def generate_jobs():
 def iterate_loop():
     jobs = []
     for task in TASK:
-        for dataset_name, sum_llm, sum_prompt in product(dataset_names_for_task[task],LLMs, SUMMARIZATION_PROMPT):
+        for dataset_name, sum_llm, sum_prompt in product(dataset_names_for_task[task], LLMs, SUMMARIZATION_PROMPT):
             output_directory = root_dir + '/results/' + task + '/' + dataset_name + '/' + sum_llm + '/' + sum_prompt + '/'
             create_directory(output_directory)
             summary_dir =  os.path.join(output_directory , 'summary_result.txt')
@@ -199,7 +199,7 @@ if __name__ == "__main__":
                 print('\t\t\tprompt: ', sum_prompt)
                 print( " ")
                 print(f"LOGS: {logs_path}")
-        
+ 
                 args = (logs_path, sum_llm, file_dir,sum_prompt) 
                 executor.submit(explain_process, *args)
   
@@ -228,22 +228,20 @@ if __name__ == "__main__":
         print( " " )  
             
 
-    elif sys.argv[1] == 'metrics':
+    elif sys.argv[1] == 'generate_csv_file':
         jobs = iterate_loop()
         for logs_path, summary_dir, sum_prompt, output_directory, sum_llm, task, dataset_name in jobs:
             for  llm_judge, judge_prompt in product(LLMs_judge,JUDGING_PROMPT ):
-     
-                judge_dir_temp =  output_directory + '/' + f'llm_judge{llm_judge}' + '/'
                 # print("\tjudging the TASK:", task)
                 # print(f"\t\t judging the summary of the logs:  full_log_MainProcess.txt")
                 # print(f"\t\t\t using the LLM:", llm_judge, " to judge")
                 # print(f"\t\t Judging the summary located in the directory: {file_dir}")                   
-                judge_dir = os.path.join(judge_dir_temp, f'evaluation_{judge_prompt}.txt')           
+                judge_dir = os.path.join(output_directory, f'evaluation_{llm_judge}.txt')           
                 print(f"judge file directory: {judge_dir}")
                 print("JUDGING PROMPT:", judge_prompt)        
                 doc = result_script(judge_dir)
                 print(doc)
-                write_csv(task,dataset_name, sum_llm, sum_prompt, llm_judge, judge_prompt, doc, root_dir+"/"+"metric.csv")     
+                write_csv(task,dataset_name, sum_llm, sum_prompt, llm_judge, judge_prompt, doc, root_dir+"/"+"result.csv")     
     
         
     else:

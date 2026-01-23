@@ -1,0 +1,11 @@
+ 1. Accuracy — Score: 1 (Good)  
+   The summary accurately describes the AutoML process and scoring mechanism without errors.
+
+2. Clarity — Score: 2 (Average)  
+   While detailed, some technical terms might be unclear to non-experts.
+
+3. Completeness — Score: 2 (Average)  
+   Provides sufficient information about the AutoML workflow but lacks deeper insights into specific components.
+
+4. Relevance — Score: 1 (Good)  
+   All content is directly related to understanding the AutoML process.

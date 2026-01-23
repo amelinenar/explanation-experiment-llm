@@ -1,1 +1,0 @@
- The log indicates that the data contains missing values, which were handled by sampling down from 7484 rows to 2000 rows. The system found two pipelines, scoring them with F1 scores of approximately 0.768 and 0.766 respectively before reaching a search timeout. A temporary directory was created for logs, and the process exited successfully without errors.

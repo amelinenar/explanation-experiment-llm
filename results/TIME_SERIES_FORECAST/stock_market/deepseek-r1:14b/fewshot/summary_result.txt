@@ -1,0 +1,48 @@
+ The log output you've shared appears to be a part of an automated machine learning (AutoML) pipeline, specifically involving time series forecasting. Here's a breakdown of what's happening:
+
+### Key Observations:
+1. **Processes and Timestamps**:
+   - The logs show activity from `MainProcess` and other processes like `PipelineProcess`.
+   - All timestamps are around `08:44` on `2026-01-22`.
+
+2. **Scoring Pipelines**:
+   - Multiple pipelines are being scored, with scores ranging between approximately 29.92 to 59.27.
+   - Example entries:
+     ```
+     Scored pipeline, score=59.27204208374023
+     Scored pipeline, score=29.919511699676512
+     Scored pipeline, score=30.218291568756104
+     ```
+   - This suggests that the system is evaluating different machine learning models or configurations.
+
+3. **Model Evaluations**:
+   - Models like `ArimaEstimator`, `NBEATSEstimator`, and others are being tested.
+   - Example entries:
+     ```
+     MOVE ACTION: TIME_SERIES_FORECAST -> alpha_automl.builtin_primitives.time_series_forecasting.ArimaEstimator
+     MOVE ACTION: TIME_SERIES_FORECAST -> alpha_automl.builtin_primitives.time_series_forecasting.NBEATSEstimator
+     ```
+
+4. **Pipeline Management**:
+   - The system is managing pipelines, scoring them, and logging when a new pipeline is found.
+   - Example entries:
+     ```
+     Found new pipeline
+     ```
+
+5. **Resource Usage**:
+   - The system is using CPU for computations (`gluonts.mx.context`), as no GPU usage is mentioned.
+
+6. **Visualization**:
+   - Matplotlib is being used for visualization, and fonts are being configured.
+   - Example entry:
+     ```
+     matplotlib.font_manager - DEBUG - Using fontManager instance from /home/nguenang/.cache/matplotlib/fontlist-v390.json
+     ```
+
+---
+
+### Summary:
+The logs indicate that an AutoML system is actively evaluating different time series forecasting models. Each pipeline (model configuration) is scored, and the results are logged. The system appears to be iterating through various models (e.g., ARIMA, NBEATS) and configurations to find the best-performing one. All computations are being performed on CPU, and some visualization or logging with matplotlib is also occurring.
+
+If you have any specific questions about the logs or need further clarification, feel free to ask!
