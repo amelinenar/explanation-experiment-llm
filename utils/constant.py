@@ -16,4 +16,3 @@ JUDGING_PROMPT = ['test_judge']
 #prompt_for_promptType ={'summarization'}
 #LLMs_judge = {'gpt-4o-mini'}
 LLMs_judge = { 'deepseek-r1:14b','llama4', 'gpt-4o-mini'}
-
