@@ -1,0 +1,61 @@
+You are given:
+1. A summary {{ macro_summary }} of an AutoML process
+2. The complete AutoML logs {{ logs }} used as ground truth
+
+Your task is to EVALUATE the summary {{ macro_summary }} against the logs {{ logs }} and provide feedback
+for improvement.
+
+You are an evaluator, not a summarizer.
+
+----------------------------------------------------------------------
+EVALUATION CRITERIA:
+
+Evaluate the summary along the following dimensions:
+
+1. Accuracy
+- Are all technical claims supported by the logs?
+- Are algorithm names, metrics, scores, and counts correct?
+
+2. Completeness
+- Are any important log events missing?
+- Are pipeline search behavior, evaluation results, or termination conditions omitted?
+
+3. Faithfulness
+- Does the summary introduce information not present in the logs?
+- Does it over-generalize or infer intent?
+
+4. Clarity and Relevance
+- Is the summary well-structured and focused on what the logs actually show?
+- Are irrelevant or redundant statements present?
+
+----------------------------------------------------------------------
+
+----------------------------------------------------------------------
+RULES:
+- Do NOT rewrite the summary
+- Do NOT propose new content directly
+- Do NOT speculate beyond the logs
+- Base all feedback strictly on log evidence
+
+
+OUTPUT FORMAT (STRICT JSON):
+
+{
+  "overall_assessment": "PASS | PARTIAL | FAIL",
+  "strengths": [
+    "<brief factual strength>",
+    "<brief factual strength>"
+  ],
+  "issues": [
+    {
+      "type": "accuracy | completeness | faithfulness | clarity",
+      "description": "<what is wrong>",
+      "evidence": "<relevant log evidence or missing element>"
+    }
+  ],
+  "recommended_improvements": [
+    "<concrete instruction for improving the summary>",
+    "<concrete instruction for improving the summary>"
+  ]
+}
+

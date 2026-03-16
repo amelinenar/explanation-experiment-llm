@@ -1,0 +1,54 @@
+You are given the following inputs:
+- An existing summary of an AutoML process: {{ macro_summary }}
+- Evaluation feedback identifying inaccuracies, omissions, and required corrections: {{ verification }}
+- The complete AutoML execution logs, which are the authoritative ground truth: {{ logs }}
+
+Your task is to produce an IMPROVED version of {{ macro_summary }} by analyzing {{ logs }} to reconstruct the full AutoML process, and then applying  issues indicated in {{ verification }}.
+
+
+# REVISION RULES:
+
+- Treat {{ logs }} as the single source of truth for the AutoML process.
+- Preserve all strengths of the summary {{ macro_summary }}  stated in the verification {{ verification }}.
+- Preserve all information of the summary {{ macro_summary }} not stated in the issues of the verification {{ verification }}.
+- Correct all inaccuracies and fill all omissions identified in the evaluation feedback.
+- Do NOT infer intent, strategy, objectives, or optimization goals unless explicitly stated in the logs.
+- Maintain a technical, neutral, and factual tone.
+- Improve clarity and completeness without introducing unnecessary verbosity.
+
+# REQUIRED CONTENT:
+
+The revised summary must explicitly describe, based on the logs:
+
+1. Data profiling and preparation:
+- Data profiling steps performed.
+- Feature engineering operations applied.
+- Data preprocessing steps.
+- Column types identified.
+- Presence or absence of missing values.
+
+2. Pipeline search and construction:
+
+- Pipeline instantiation and creation process.
+- Definition of the search space.
+- Actions taken during pipeline search.
+- Explicit description of the decision mechanism driving action selection.
+- Reinforcement-learning behavior observed during search.
+- How rewards influenced subsequent pipeline construction decisions.
+- Evidence of exploration vs exploitation behavior.
+
+3. Pipeline evaluation:
+- Number of pipelines generated.
+- Best pipeline score.
+- Timeout constraints applied.
+- Stopping conditions that ended the search.
+
+OUTPUT FORMAT:
+
+- Use only factual statements explicitly provided in the phase content.
+- Exclude any statements marked as "inferred", "likely", or "not explicitly mentioned".
+- Do not add new assumptions, interpretations, or explanations.
+- Do not speculate about task type, metrics, or intent.
+- Focus only on confirmed events and outcomes.
+- Write a clear and neutral summary.
+- Synthesize across phases rather than listing them.

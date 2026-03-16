@@ -1,0 +1,68 @@
+Task: Segment the following AutoML system logs {{ document }} into logical process phases.
+
+Instructions:
+- Do NOT summarize.
+- Do NOT remove any content.
+- Do NOT interpret or explain anything.
+- Preserve all original log lines exactly as written.
+- Group the logs into coherent phases based on process progression.
+- Each fact must correspond to explicit a set of log evidence.
+- Do not include duplicate facts within the chunk.
+
+
+
+Extract facts into the following categories:
+
+1. dataset_facts:
+   - Feature counts
+   - Column names
+   - Data types
+   - Missing values
+   - Dataset size
+   - Sampling decisions
+
+2. search_space_facts:
+   - Pipeline structure definitions
+   - Component registries
+   - Grammar rules
+   - Hyperparameter ranges
+   - Task type if explicitly stated
+
+3. search_process_facts:
+   - Iterations
+   - Simulations
+   - Trials
+   - MOVE ACTION
+   - Rollouts
+   - Predictions
+   - Search step
+   - Exploration events
+   - Reward values
+   - Score updates tied to decisions
+   - Action probabilities (if logged)
+   - Policy outputs (if logged)
+   - Value estimates (if logged)
+   - Selection confidence scores
+   - Tree expansion events (if logged)
+   - Node visit counts (if logged)
+
+4. evaluation_facts:
+   - Pipeline constructions
+   - Model instantiations
+   - Hyperparameters
+   - Scores
+   - Metrics
+   - Validation results
+
+5. termination_facts:
+   - Timeouts
+   - Stopping conditions
+   - Final pipeline count
+   - Total search time
+   - Best model selection
+
+
+#Output Format
+- Add clear section headers in the format:
+
+=== PHASE: <Phase Name> ===

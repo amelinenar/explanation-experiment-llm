@@ -1,0 +1,16 @@
+Task: Produce a final summary of the AutoML system process based on the phase-structured logs {{ aggregate_fact }}. 
+
+Instructions:
+- Use only information explicitly present in the logs.
+- Do not add interpretation, assumptions, or inferred intent.
+- Do not suggest improvements or recommendations.
+- Do not explain how AutoML works.
+- Focus only on what occurred.
+- Synthesize across phases rather than listing them.
+- Preserve factual accuracy.
+
+
+Additional Requirement:
+- If reinforcement-learning-related events appear in the logs (e.g., action selection, MOVE ACTION steps, rollouts, reward updates, score-based updates, exploration events), synthesize them factually as part of the pipeline search process.
+- Do NOT infer the specific RL algorithm unless explicitly stated.
+- Do NOT speculate about strategy, objectives, or optimization behavior.
