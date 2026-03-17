@@ -34,7 +34,7 @@ def read_file(file_path,mode):
 def get_url(llm, support_prompt):
     load_dotenv()
     key = os.getenv("KEY")
-    if llm == 'gpt-4o-mini':
+    if (llm == 'gpt-4o-mini') | (llm == 'gpt-4.1-mini') :
         url_api = os.getenv("URL_gpt")
         payload = {
         "model": llm,
@@ -56,7 +56,7 @@ def call_llm_api(llm, support_prompt):
     Send prompt to LLM API and return aggregated response text.
     """
     url, payload, key = get_url(llm, support_prompt)
-    if llm == 'gpt-4o-mini':
+    if (llm == 'gpt-4o-mini') | (llm == 'gpt-4.1-mini'):
         headers = {"Content-Type": "application/json",
                    "Authorization": f"Bearer {key}"}
         try:
@@ -72,6 +72,8 @@ def call_llm_api(llm, support_prompt):
         # Send request and handle response
         try:
             response = requests.post(url, data=json.dumps(payload), stream=False,)
+            print()
+            print(response)
 
         except requests.exceptions.RequestException as e:
             print("connection error:", e) 
@@ -82,13 +84,13 @@ def call_llm_api(llm, support_prompt):
 def print_response(response,path,llm):
     
     #text = " "
-    if llm == 'gpt-4o-mini':
+    if (llm == 'gpt-4o-mini') | (llm == 'gpt-4.1-mini'):
         text=" "
-        with open(path, "a", encoding="utf-8") as f:
+        with open(path, "w", encoding="utf-8") as f:
             for output in response.json()['output']:
                     for content in output['content']:
                         if content:
-                            print(content)
+                            # print(content)
                             chunk = content.get("text", "")
                             if chunk:
                                 print(chunk, end="", flush=True)
@@ -129,20 +131,20 @@ def print_response(response,path,llm):
         print(f"Writing to the file: {path}")
         print("----------------------------------------------")
         try:
-            with open(path, "a", encoding="utf-8") as f:
+            with open(path, "w", encoding="utf-8") as f:
                 f.write(text)
         except FileExistsError:
             print("File doesnot exist")
 
     
-def explain_process(doc_path, llm, des_path, prompts):
+def explain_process(logs, llm, des_path, prompts):
     """
     Reads a document, sends it to the LLM API for explanation,
     and appends the generated response to a destination file
     """
     
     # Read input document
-    log_file = read_file(doc_path,"r")
+    log_file = read_file(logs,"r")
 
     # Generate prompt using PromptManager
     support_prompt = PromptManager.get_prompt(prompts, document=log_file)
