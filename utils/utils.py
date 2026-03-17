@@ -1,4 +1,4 @@
-import os
+import os, re
 import pandas as pd
 import numpy as np
 
@@ -193,6 +193,32 @@ def generate_results(root_dir, task_name, dataset_name, llm):
     return res
 
 
+
+def filter_automl_logs(log_text_path):
+    
+    with open(log_text_path, "r", encoding="utf-8") as f:
+        log_text = f.read()
+        
+    # 1. Remove timestamps
+    log_text = re.sub(r'^\d{4}-\d{2}-\d{2} [\d:,]+ - ', '', log_text, flags=re.MULTILINE)
+
+    # 2. Remove MCTS simulation spam
+    log_text = re.sub(r'.*MCTS SIMULATION \d+.*\n?', '', log_text)
+
+    # 3. Remove MOVE ACTION lines
+    log_text = re.sub(r'.*MOVE ACTION:.*\n?', '', log_text)
+
+    # 4. Deduplicate identical lines
+    lines = log_text.splitlines()
+    seen = set()
+    filtered = []
+    for line in lines:
+        if line not in seen:
+            seen.add(line)
+            filtered.append(line)
+
+    return "\n".join(filtered)
+    
     
     
     
