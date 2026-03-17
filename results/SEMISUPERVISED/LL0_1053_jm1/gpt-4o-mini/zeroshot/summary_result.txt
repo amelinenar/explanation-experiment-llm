@@ -1,9 +1,0 @@
- The document consists of log entries from a system process, indicating various stages of data profiling and model scoring in a machine learning pipeline. 
-
-1. **Initialization**: Logging is set up and recommends using "fork" on non-Windows platforms.
-2. **Data Profiling**: The process identifies column names and types for 21 columns in a dataset, detailing integer and float types for each column.
-3. **Data Issues**: It notes that there are missing values in the data and samples down from 7484 rows to 2000 for processing.
-4. **Pipeline Scoring**: Two pipelines were found and scored successfully, achieving scores of approximately 0.7735 and 0.7715. 
-5. **Completion**: The process logs indicate a timeout for the search, finalizing the exploration of available pipelines.
-
-Overall, the document captures the process of profiling data and evaluating machine learning algorithms in an automated workflow.

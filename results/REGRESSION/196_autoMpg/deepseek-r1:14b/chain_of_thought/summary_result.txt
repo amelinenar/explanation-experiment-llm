@@ -1,1 +1,0 @@
- The logs indicate that Alpha AutoML successfully found **151 pipelines** and scored them. The best-performing pipeline achieved a score of approximately **3.32**.

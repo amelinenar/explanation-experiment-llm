@@ -85,7 +85,7 @@ def iterate_loop():
     jobs = []
     for task in TASK:
         for dataset_name, sum_llm, sum_prompt in product(dataset_names_for_task[task], LLMs, SUMMARIZATION_PROMPT):
-            output_directory = root_dir + '/results_H_new/' + task + '/' + dataset_name + '/' + sum_llm + '/'
+            output_directory = root_dir + '/results/' + task + '/' + dataset_name + '/' + sum_llm + '/'
             create_directory(output_directory)
             summary_dir =  os.path.join(output_directory , 'summary_test.txt')
             if(task == "CLASSIFICATION") | (task == "REGRESSION"):
@@ -274,7 +274,8 @@ if __name__ == "__main__":
             
             # with open(filter_path, mode="w" , encoding="utf-8") as f:
             #     f.write(filter_logs)
-                
+            
+            print(f"LOG PATH: {logs_path}")
 
             explain_process(logs_path, sum_llm, file_dir,sum_prompt)
 

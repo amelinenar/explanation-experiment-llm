@@ -1,4 +1,5 @@
-import os, re
+import os
+import re
 import pandas as pd
 import numpy as np
 
@@ -39,55 +40,90 @@ def read_dataset(root_dir, task_name, dataset_name):
     if task_name.lower() == 'regression':
         root_dir_dataset = cur_root_dir + '/dataset/' + task_name + '/' 
         train_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'train_data.csv')  
-        test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
+        # test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
         
-        target_column = 'class'
+        if dataset_name == '26_radon_seed_dataset':
+            target_column = 'log_radon'
+        if dataset_name == '57_sunspot':
+            target_column = 'sunspots'
+        if dataset_name == '534_cps_85_wages':
+            target_column = 'WAGE'
+        if dataset_name == '196_autoMpg':
+            target_column = 'class'
+        
         X_train = train_dataset.drop(columns=[target_column])
         y_train = train_dataset[[target_column]]
-        X_test = test_dataset.drop(columns=[target_column])
-        y_test = test_dataset[[target_column]] 
+        # X_test = test_dataset.drop(columns=[target_column])
+        # y_test = test_dataset[[target_column]] 
         
-        dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
+        dataset_dict[dataset_name] = (X_train, y_train,target_column)
         
     elif task_name.lower() == 'classification':
         root_dir_dataset = cur_root_dir + '/dataset/' + task_name + '/' 
         train_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'train_data.csv')  
-        test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
+        # test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
         
-        target_column = 'class'
+        if dataset_name == '185_baseball_dataset':
+            target_column = 'Hall_of_Fame'
+        if dataset_name == '1491_one_hundred_plants':
+            target_column = 'Class'
+        if dataset_name == '1567_poker_hand' :
+            target_column = 'Class'
+        if dataset_name == '299_libras_move':
+            target_column = 'class'
+        
+  
         X_train = train_dataset.drop(columns=[target_column])
         y_train = train_dataset[[target_column]]
-        X_test = test_dataset.drop(columns=[target_column])
-        y_test = test_dataset[[target_column]] 
+        # X_test = test_dataset.drop(columns=[target_column])
+        # y_test = test_dataset[[target_column]] 
         
-        dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
+        dataset_dict[dataset_name] = (X_train, y_train, target_column)
         
     elif task_name.lower() == 'semisupervised':
         root_dir_dataset = cur_root_dir + '/dataset/' + task_name + '/' 
         train_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'train_data.csv')  
-        test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
+        # test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
         
-        target_column = 'defects'
-        X_train = train_dataset.drop(columns=[target_column])
+        if dataset_name == 'LL0_1053_jm1':
+            target_column = 'defects'
+        if dataset_name == 'SEMI_155_pokerhand_dataset':
+            target_column = 'class'
+        if dataset_name == 'SEMI_1217_click_dataset' :
+            target_column = 'click'
+        if dataset_name == 'SEMI_1459_artificial_characters_dataset':
+            target_column = 'Class'
+            
         y_train = train_dataset[[target_column]]
-        X_test = test_dataset.drop(columns=[target_column])
-        y_test = test_dataset[[target_column]] 
+        X_train = train_dataset.drop(columns=[target_column])
         
-        dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
+        # X_test = test_dataset.drop(columns=[target_column])
+        # y_test = test_dataset[[target_column]] 
+        
+        dataset_dict[dataset_name] = (X_train, y_train,target_column)
         
     
     elif task_name.lower() == 'time_series_forecast':
         root_dir_dataset = cur_root_dir + '/dataset/' + task_name + '/' 
         train_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'train_data.csv')  
-        test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
+        # test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
         
-        target_column = 'Close'
+        if dataset_name == '56_sunspots_monthly':
+            target_column = 'sunspots'
+        if dataset_name == 'LL1_336_MS_Geolife':
+            target_column = 'Transportation'
+        if dataset_name == 'LL1_crime_chicago' :
+            target_column = 'location1'
+        if dataset_name == 'stock_market':
+            target_column = 'Close'
+        
+        
         X_train = train_dataset
         y_train = train_dataset[[target_column]]
-        X_test = test_dataset
-        y_test = test_dataset[[target_column]] 
+        # X_test = test_dataset
+        # y_test = test_dataset[[target_column]] 
         
-        dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test, target_column)
+        dataset_dict[dataset_name] = (X_train, y_train, target_column)
 
     return dataset_dict
 
@@ -95,6 +131,7 @@ def read_all_dataset(root_dir, task_name):
     dataset_dict = {}
     cur_root_dir = root_dir.replace('-temp', '')
     dataset_names_to_sort = []
+    date_column = ''
     
     if task_name.lower() == 'regression':
         
@@ -102,15 +139,29 @@ def read_all_dataset(root_dir, task_name):
             root_dir_dataset = cur_root_dir + '/dataset/' + task_name 
             
             train_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'train_data.csv')  
-            test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')  
+            # test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')  
             
-            target_column = 'class'
+            if dataset_name == '196_autoMpg':
+                target_column = 'class'
+            elif dataset_name == '26_radon_seed_dataset':
+                target_column = 'log_radon'
+            elif dataset_name == '534_cps_85_wages':
+                target_column = 'WAGE'
+            elif dataset_name == 'advertising_dataset':
+                target_column = 'Sales'
+                
+            # if dataset_name == '196_autoMpg':
+                # target_column = 'class'
+             
+            print("Target column:", target_column)
+            print("Available columns:", train_dataset.columns.tolist())
+    
             X_train = train_dataset.drop(columns=[target_column])
             y_train = train_dataset[[target_column]]
-            X_test = test_dataset.drop(columns=[target_column])
-            y_test = test_dataset[[target_column]] 
+            # X_test = test_dataset.drop(columns=[target_column])
+            # y_test = test_dataset[[target_column]] 
             
-            dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
+            dataset_dict[dataset_name] = (X_train, y_train,target_column,date_column)
                 
     
     elif task_name.lower() == 'classification':
@@ -121,13 +172,21 @@ def read_all_dataset(root_dir, task_name):
             train_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'train_data.csv')  
             test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
             
-            target_column = 'class'
+            if dataset_name == '185_baseball_dataset':
+                target_column = 'Hall_of_Fame'
+            if dataset_name == '1491_one_hundred_plants':
+                target_column = 'Class'
+            if dataset_name == '1567_poker_hand' :
+                target_column = 'Class'
+            if dataset_name == '299_libras_move':
+                target_column = 'class'
+          
             X_train = train_dataset.drop(columns=[target_column])
             y_train = train_dataset[[target_column]]
-            X_test = test_dataset.drop(columns=[target_column])
-            y_test = test_dataset[[target_column]] 
+            # X_test = test_dataset.drop(columns=[target_column])
+            # y_test = test_dataset[[target_column]] 
             
-            dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
+            dataset_dict[dataset_name] = (X_train, y_train, target_column,date_column)
             
     
     elif task_name.lower() == 'semisupervised':
@@ -138,13 +197,21 @@ def read_all_dataset(root_dir, task_name):
             train_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'train_data.csv')  
             test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
             
-            target_column = 'defects'
+            if dataset_name == 'LL0_1053_jm1':
+                target_column = 'defects'
+            if dataset_name == 'SEMI_155_pokerhand_dataset':
+                target_column = 'class'
+            if dataset_name == 'SEMI_1217_click_dataset' :
+                target_column = 'click'
+            if dataset_name == 'SEMI_1459_artificial_characters_dataset':
+                target_column = 'Class'
+
             X_train = train_dataset.drop(columns=[target_column])
             y_train = train_dataset[[target_column]]
-            X_test = test_dataset.drop(columns=[target_column])
-            y_test = test_dataset[[target_column]] 
+            # X_test = test_dataset.drop(columns=[target_column])
+            # y_test = test_dataset[[target_column]] 
             
-            dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
+            dataset_dict[dataset_name] = (X_train, y_train, target_column, date_column)
         
             
     elif task_name.lower() == 'time_series_forecast':
@@ -154,14 +221,30 @@ def read_all_dataset(root_dir, task_name):
             
             train_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'train_data.csv')  
             test_dataset = pd.read_csv(root_dir_dataset + '/' + dataset_name + '/' + 'test_data.csv')   
-            
-            target_column = 'Close'
+                
+            if dataset_name == '56_sunspots_monthly':
+                target_column = 'sunspots'
+                date_column = 'year-month'
+            # if dataset_name == 'LL1_336_MS_Geolife':
+            #     target_column = 'Transportation'
+            #     date_column = 'date_time'
+            if dataset_name == 'LL1_crime_chicago' :
+                target_column = 'location1'
+                date_column = 'time'
+            if dataset_name == 'stock_market':
+                target_column = 'Close'
+                date_column = 'Date'
+            if dataset_name == '57_sunspot':
+                target_column = 'sunspots'
+                date_column = 'year'
+                
+        
             X_train = train_dataset
             y_train = train_dataset[[target_column]]
-            X_test = test_dataset
-            y_test = test_dataset[[target_column]] 
+            # X_test = test_dataset
+            # y_test = test_dataset[[target_column]] 
             
-            dataset_dict[dataset_name] = (X_train, y_train, X_test, y_test,target_column)
+            dataset_dict[dataset_name] = (X_train, y_train,target_column,date_column)
     
            
     return dataset_dict     
@@ -193,7 +276,7 @@ def generate_results(root_dir, task_name, dataset_name, llm):
     return res
 
 
-
+    
 def filter_automl_logs(log_text_path):
     
     with open(log_text_path, "r", encoding="utf-8") as f:
@@ -218,10 +301,6 @@ def filter_automl_logs(log_text_path):
             filtered.append(line)
 
     return "\n".join(filtered)
-    
-    
-    
-    
     
     
     

@@ -1,5 +1,0 @@
- The AutoML process begins by initializing logging and identifying column names and types for a dataset containing 21 columns. Most columns are identified as integers, with a few classified as floats. During the profiling, it is noted that there are no non-numeric or useless columns, but some missing values are present. Consequently, the data is sampled down from 7484 rows to 2000 for efficiency.
-
-Following the profiling, the system finds and evaluates new pipelines. The first pipeline score is recorded at approximately 0.7735, while a subsequent pipeline is scored at about 0.7715. The search process encounters a timeout after which it confirms the discovery of 2 viable pipelines. A temporary directory is created for logging purposes.
-
-Overall, the process showcases the profiling of a dataset, sampling for manageable size, and evaluation of different pipelines, with performance scored and logged throughout the operation.
