@@ -32,30 +32,30 @@ import gc
 
 
 
-def create_fit_classifier(task_name,X_train,y_train,target_column,logs_path,date_column):
+def create_fit_classifier(task_name,X_train,y_train,target_column,logs_path,date_column, original_logs):
     if task_name == 'REGRESSION':
           
         from alpha_automl import AutoMLRegressor
-        automl = AutoMLRegressor(time_bound=1, txt_file = logs_path)
+        automl = AutoMLRegressor(time_bound=1, txt_file = logs_path, output_folder=original_logs)
         # Perform the search
         automl.fit(X_train, y_train)
         
     elif task_name == 'CLASSIFICATION':
         
         from alpha_automl import AutoMLClassifier
-        automl = AutoMLClassifier(time_bound=1, verbose=True, txt_file = logs_path)
+        automl = AutoMLClassifier(time_bound=1, verbose=True, txt_file = logs_path,  output_folder=original_logs)
         automl.fit(X_train, y_train)
 
     elif task_name.lower() == 'time_series_forecast':
         
         from alpha_automl import AutoMLTimeSeries
-        automl = AutoMLTimeSeries(time_bound=1, date_column=date_column, target_column=target_column, txt_file = logs_path)
+        automl = AutoMLTimeSeries(time_bound=1, date_column=date_column, target_column=target_column, txt_file = logs_path,  output_folder=original_logs)
         automl.fit(X_train, y_train)
 
     elif task_name.lower() == 'semisupervised':
         
         from alpha_automl import AutoMLSemiSupervisedClassifier
-        automl = AutoMLSemiSupervisedClassifier(time_bound=1, start_mode='spawn', txt_file = logs_path)
+        automl = AutoMLSemiSupervisedClassifier(time_bound=1, start_mode='spawn', txt_file = logs_path,  output_folder=original_logs)
         automl.fit(X_train, y_train)
     
 
@@ -199,10 +199,12 @@ if __name__ == "__main__":
                 date_column = datasets_dict[dataset_name][3]
                 
                 output_directory = tmp_output_directory + dataset_name + '/'
+                
+                output_dir = tmp_output_directory + dataset_name + '/'
 
                 print('-----------------START FITTING--------------')
                 
-                create_fit_classifier(task_name,x_train,y_train,target_column, output_directory, date_column)
+                create_fit_classifier(task_name,x_train,y_train,target_column, output_directory, date_column, output_dir)
                 
                 print('--------------------DONE--------------------')
                 print(" ")
