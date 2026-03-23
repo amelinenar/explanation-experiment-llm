@@ -25,6 +25,7 @@ from result_script import write_csv, result_script
 # from pipeline.stage1_dataprofiling import judging_explanation_T
 from pipeline.Hierarchical_pipeline import phase_segmentation, micro_summarization,extract_pure_json,macro_summarization,verification,revised_summary,regex_filtering,fact_aggregation
 from pipeline.Hierarchical_pipeline import fact_extraction
+from filtering_logs import filtering_logs, remove_consecutive_duplicates
 
 from concurrent.futures import ThreadPoolExecutor
 import gc
@@ -85,7 +86,7 @@ def iterate_loop():
     jobs = []
     for task in TASK:
         for dataset_name, sum_llm, sum_prompt in product(dataset_names_for_task[task], LLMs, SUMMARIZATION_PROMPT):
-            output_directory = root_dir + '/results/' + task + '/' + dataset_name + '/' + sum_llm + '/'
+            output_directory = root_dir + '/results/' + task + '/' + dataset_name + '/' + sum_llm + '/' + sum_prompt + '/'
             create_directory(output_directory)
             summary_dir =  os.path.join(output_directory , 'summary_test.txt')
             if(task == "CLASSIFICATION") | (task == "REGRESSION"):
@@ -94,6 +95,7 @@ def iterate_loop():
                 logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
                 
             # logs_path = "/home/nguenang/Master_thesis/experiment_setup/results/AUTOSKLN_LOGS/CLASSIFICATION/logs_cls.txt"
+            # logs_path = "/home/nguenang/Master_thesis/experiment_setup/log_analysis_out.txt"
 
             jobs.append((logs_path, summary_dir, sum_prompt, output_directory,sum_llm,task,dataset_name))
 
@@ -204,7 +206,7 @@ if __name__ == "__main__":
 
                 print('-----------------START FITTING--------------')
                 
-                create_fit_classifier(task_name,x_train,y_train,target_column, output_directory, date_column, output_dir)
+                # create_fit_classifier(task_name,x_train,y_train,target_column, output_directory, date_column, output_dir)
                 
                 print('--------------------DONE--------------------')
                 print(" ")
@@ -219,14 +221,18 @@ if __name__ == "__main__":
                 
                 if(task_name =="CLASSIFICATION") | (task_name =="REGRESSION"):
                     print("------------FILTERING THE LOGS-----------------")               
-                
-                    filter_logs = filter_automl_logs(logs_path)
+
+                    fil_tmp = os.path.join(output_directory, 'fil_tmp.txt')
+                    filter_path = os.path.join(output_directory, 'filter_logs.txt')
+                    filtering_logs(logs_path, fil_tmp)
+                    
+                    remove_consecutive_duplicates(fil_tmp, filter_path)
                     # print("FILTER LOGs:", filter_logs)
                     
-                    filter_path = os.path.join(output_directory, 'filter_logs.txt')
+                    # filter_path = os.path.join(output_directory, 'filter_logs.txt')
                     
-                    with open(filter_path, mode="w" , encoding="utf-8") as f:
-                        f.write(filter_logs)
+                    # with open(filter_path, mode="w" , encoding="utf-8") as f:
+                    #     f.write(filter_logs)
                     
                
                
