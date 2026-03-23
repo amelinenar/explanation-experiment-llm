@@ -1,0 +1,194 @@
+ Certainly! Below is a step-by-step explanation describing the **pipeline search process method** used by this AutoML system, based on the provided logs. I structure it from **data profiling**, through iterative **pipeline construction** and **evaluation** along the Multi-Armed Tree Search (MCTS)-based game tree search.
+
+---
+
+# Pipeline Search Process Explanation
+
+---
+
+## 1. Data Profiling
+
+- The system begins by **profiling the dataset**:
+  - Sets column names from the header.
+  - Identifies column types for 11 columns, all of which are of type integer (including an identifier column 'd3mIndex').
+  - Profiles dataset stats: no non-numeric features, no useless columns, no missing values.
+- Sampling is done to reduce the data size from **663,361 rows down to 2,000 rows** for efficient pipeline synthesis.
+
+---
+
+## 2. Setup of Pipeline Search
+
+- The system **creates a manual grammar** for the search space defining pipeline components and their valid combinations:
+  - Pipeline structure defined as start state `S`, with possible expansions like:
+
+    ```
+    S -> IMPUTER ENCODERS FEATURE_SCALER SEMISUPERVISED_CLASSIFIER CLASSIFIER
+    S -> IMPUTER ENCODERS FEATURE_SCALER LABELPROPAGATION_CLASSIFIER
+    ```
+
+  - Various options for each component (e.g., multiple scalers, classifiers, and semi-supervised components).
+  
+- A **game grammar** and underlying MCTS game for pipeline construction is created.
+
+---
+
+## 3. Pipeline Construction via MCTS Game
+
+The pipeline search here uses **Monte Carlo Tree Search** (MCTS) with a game simulation approach to construct and evaluate pipelines step-by-step by applying production rules from the grammar.
+
+---
+
+### Iteration 1: Initial MCTS Simulation (Exploring pipeline structures)
+
+- **Simulation 1:**
+
+  - Pipeline: `S`
+  - Prediction = 0.0044 (score estimate)
+
+- **Simulation 2:**
+
+  - Pipeline: expands `S` to:  
+    `IMPUTER | ENCODERS | FEATURE_SCALER | SEMISUPERVISED_CLASSIFIER | CLASSIFIER`
+  - Prediction = 0.0037
+
+- **Simulation 3:**
+
+  - Pipeline: expands `S` to:  
+    `IMPUTER | ENCODERS | FEATURE_SCALER | LABELPROPAGATION_CLASSIFIER`
+  - Prediction = 0.0050
+
+- **Simulation 4:**
+
+  - Again, pipeline with `SEMISUPERVISED_CLASSIFIER` + `CLASSIFIER`
+  - Further expand `ENCODERS` -> `E` (empty)
+  - Pipeline now:  
+    `IMPUTER | FEATURE_SCALER | SEMISUPERVISED_CLASSIFIER | CLASSIFIER`
+  - Prediction = 0.00325
+
+- **Simulation 5:**
+
+  - Pipeline: Similar to Simulation 3 path, expanding `ENCODERS` -> `E`, pipeline now:  
+    `IMPUTER | FEATURE_SCALER | LABELPROPAGATION_CLASSIFIER`
+  - Prediction = 0.00457
+
+- Coach (strategy selector) chooses **Action 1**, extending pipeline with:
+
+  ```
+  S -> IMPUTER ENCODERS FEATURE_SCALER LABELPROPAGATION_CLASSIFIER
+  ```
+
+---
+
+### Iteration 2: Refining pipeline components (feature scaler)
+
+- Multiple simulations explore various scalers inside `FEATURE_SCALER`:
+
+  - Possible scalers tried:
+    - `sklearn.preprocessing.MaxAbsScaler` (score ~0.00540)
+    - `sklearn.preprocessing.StandardScaler` (~0.00524)
+    - `sklearn.preprocessing.RobustScaler` (~0.00442)
+    - No scaler (`E` empty) (~0.00464)
+  
+- The system also expands from `LABELPROPAGATION_CLASSIFIER` to explore specific classifier primitives:
+  - `SkLabelPropagation` (~0.00418)
+  - `SkLabelSpreading` (~0.00393)
+
+- Empty expansions used for both `IMPUTER` and `ENCODERS` to reduce complexity.
+
+---
+
+### Pipeline Created
+
+- Initially built pipeline:
+
+```python
+Pipeline(steps=[('alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading', SkLabelSpreading())])
+```
+
+- **Pipeline Evaluation Result: FAIL**
+
+  - Exception:  
+    ```
+    AttributeError: 'DataFrame' object has no attribute 'toarray'
+    ```
+  - Reason: The pipeline's function transformer tries to convert a pandas DataFrame to an array using `toarray()`, which is incorrect since `toarray()` is a SciPy sparse matrix method, not a pandas DataFrame method.
+  - This causes scoring to fail.
+
+---
+
+### Continuing Search
+
+- MCTS simulations continue with pipeline variation on feature scaler, classifier, etc.
+- Another pipeline successfully built:
+
+```python
+Pipeline([
+  ('sklearn.preprocessing.RobustScaler', RobustScaler()),
+  ('alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading', SkLabelSpreading())
+])
+```
+
+- This pipeline successfully scores with score ~0.168.
+
+---
+
+### Later Failure Case: Memory Error during Scoring
+
+- A later pipeline with `StandardScaler` and `SkLabelSpreading` is also built:
+
+```python
+Pipeline([
+  ('sklearn.preprocessing.StandardScaler', StandardScaler()),
+  ('alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading', SkLabelSpreading())
+])
+```
+
+- This pipeline evaluation fails with a **MemoryError**:
+
+  ```
+  Unable to allocate 2.05 TiB for an array with shape (530688, 530688)
+  ```
+  
+- Reason: Label propagation classifier builds a graph affinity matrix with size quadratic in sample number. Even with downsampling, the dataset size is too large for available memory, causing scoring to fail.
+
+---
+
+## 4. Search Termination
+
+- After repeated attempts and time passing (~5 minutes), the search reaches the timeout.
+- The process is signaled to terminate cleanly.
+- Overall, **no fully successful pipelines** were found by the main process.
+- Final output: **No pipelines were found**.
+
+---
+
+# Summary: Step-by-Step Construction & Status
+
+| Step                      | Pipeline Composition                                                                             | Status  | Reason                                  |
+|---------------------------|------------------------------------------------------------------------------------------------|---------|-----------------------------------------|
+| Data Profiling             | 11 integer columns, no missing values, downsampled 663k to 2k rows                              | Success | Profiling complete                      |
+| Setup Search Grammar      | Grammar defines pipeline components and structure                                               | Success | Ready for MCTS Game search              |
+| Iteration 1 Simulation    | Starting with full pipeline: imputer, encoders, scaler, semi-supervised classifier, classifier | N/A     | Initial exploration                      |
+| Simulation Expansions     | Explored LABELPROPAGATION_CLASSIFIER pipelines                                                  | N/A     | Explore concrete classifier options     |
+| Pipeline Creation 1       | `SkLabelSpreading` pipeline without preprocessing                                               | Fail    | `toarray()` called on pandas DataFrame  |
+| Pipeline Creation 2       | Added `RobustScaler` + `SkLabelSpreading`                                                      | Success | Able to score with score 0.168          |
+| Pipeline Creation 3       | `StandardScaler` + `SkLabelSpreading`                                                          | Fail    | MemoryError due to large affinity matrix|
+| Search Timeout & End      | Search terminated after timeout with no pipeline found                                         | Fail    | No other pipeline successful            |
+
+---
+
+# Key Points on the Pipeline Construction Process
+
+- **MCTS Game-Based Search**: Pipelines built by applying grammar moves stepwise.
+- **Predictions**: Each simulation step predicts pipeline performance (approximate).
+- **Coach Strategy**: Chooses the grammar expansion (action) for next steps.
+- **Pipeline Builder**: Constructs pipeline objects from grammar choices.
+- **Pipeline Evaluation**: Pipelines are scored via cross-validation.
+- **Failures**:
+  - Incorrect data format handling (DataFrame vs sparse matrix).
+  - Scalability issue in Label Propagation classifier causing huge memory consumption.
+- **Successes** are limited to pipelines that successfully score on downsampled data with manageable transformations.
+
+---
+
+This detailed process outlines the AutoML system's overall approach—from data profiling to stepwise pipeline construction, scoring, failure handling, and ultimately termination with no viable pipeline found in this log session.

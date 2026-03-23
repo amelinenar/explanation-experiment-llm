@@ -1,0 +1,205 @@
+ Certainly! Below is a step-by-step, well-structured explanation of the **pipeline search process** method of this AutoML system, based on the provided logs.
+
+---
+
+# Explanation of the Pipeline Search Process in the AutoML System
+
+## 1. Data Profiling Stage
+
+- **Timestamp:** 2026-03-23 11:50:25,933 to 11:50:26,386
+- **Process:** `MainProcess`
+- **Actions:**
+  - The system initializes logging.
+  - Reads the dataset header and identifies 3 columns.
+  - Profiles each column:
+    - Column 0: `'year-month'` identified as Text and DateTime type.
+    - Column 1: `'sunspots'` identified as Float.
+    - Column 2: `'d3mIndex'` identified as Integer and identifier.
+  - Non-numeric features identified as a key `DATETIME_ENCODER`.
+  - No useless columns or missing values detected.
+  - Data sampling applied: original 3204 samples are downsampled to 2000.
+  
+**Outcome:**  
+Detailed understanding of data types and relevant features is established, setting the stage for pipeline creation. This profiling allows the pipeline search to leverage appropriate preprocessing for time series data.
+
+---
+
+## 2. Grammar and Pipeline Search Setup
+
+- **Timestamp:** 11:50:26,401 to 11:50:26,405
+- **Process:** `Process-1`
+- **Actions:**
+  - Manual grammar for pipeline construction is created.
+  - All available primitives and relevant pipeline components are loaded, including encoders, scalers, selectors, regressors, and specialized time series forecasting primitives.
+  - Task grammar for `TIME_SERIES_FORECAST_TASK` is created.
+  - The grammar defines the pipeline structure with 44 productions and start symbol `S`:
+  
+    ```
+    S -> IMPUTER ENCODERS FEATURE_SCALER FEATURE_SELECTOR REGRESSOR
+    S -> IMPUTER TIME_SERIES_FORECAST
+    ```
+
+  - Each component has further expansions for details, e.g., regressors like `XGBRegressor`, `RandomForestRegressor`, and time series estimators like `NHITSEstimator`, `ArimaEstimator`, etc.
+  - A "game grammar" for pipeline search strategy is also created.
+
+**Outcome:**  
+The grammar defines possible pipeline configurations and search space for the AutoML system, including classic regression pipelines and specialized time series forecast models.
+
+---
+
+## 3. Pipeline Search via Monte Carlo Tree Search (MCTS) and Game-based Exploration
+
+- **Timestamp:** Starting 11:50:26,441 onwards
+- **Process:** `Process-1`
+- **Methods:** `Coach`, `MCTS`, `PipelineGame`, `PipelineLogic`
+
+---
+
+### Iteration 1: Initial Exploration and Simulation
+
+#### Simulation 1
+- **State (Pipeline):** `S` (start state)
+- **Action:** None (initial state)
+- **Prediction RMSE (or loss):** ~0.04596
+- **Status:** Evaluation of empty or base pipeline (fallback estimate)
+
+#### Simulation 2
+- **State:** `S`
+- **Action:** `S -> IMPUTER ENCODERS FEATURE_SCALER FEATURE_SELECTOR REGRESSOR`
+- **Pipeline Components:**
+
+  ```
+  IMPUTER | ENCODERS | FEATURE_SCALER | FEATURE_SELECTOR | REGRESSOR
+  ```
+  
+- **Prediction:** 0.04546
+- **Status:** Pipeline constructed with full preprocessing and regressor steps; performance is slightly improved.
+
+#### Simulation 3
+- **State:** `S`
+- **Action:** `S -> IMPUTER TIME_SERIES_FORECAST`
+- **Pipeline Components:**
+  
+  ```
+  IMPUTER | TIME_SERIES_FORECAST
+  ```
+  
+- **Prediction:** 0.04623 (slightly worse than Simulation 2)
+- **Status:** Simplified pipeline focusing on time series primitives without explicit scalers or selectors.
+
+#### Simulation 4
+- **State:** `S`
+- **Action:** `S -> IMPUTER ENCODERS FEATURE_SCALER FEATURE_SELECTOR REGRESSOR`
+  
+- **Additional Action:** Expand `ENCODERS -> DATETIME_ENCODER`
+  
+- **Pipeline Components:**
+
+  ```
+  IMPUTER | DATETIME_ENCODER | FEATURE_SCALER | FEATURE_SELECTOR | REGRESSOR
+  ```
+  
+- **Prediction:** 0.04597
+- **Status:** Pipeline enhanced by adding datetime encoding, expected for time series features to improve model input representation.
+
+#### Simulation 5
+- **State:** `S`
+- **Action:** `S -> IMPUTER TIME_SERIES_FORECAST`
+  
+- **Additional Action:** `IMPUTER -> E` (i.e., empty or no imputer)
+  
+- **Pipeline Components:**
+  
+  ```
+  TIME_SERIES_FORECAST
+  ```
+  
+- **Prediction:** 0.04689 (worst so far)
+- **Status:** Pipeline attempts time series model only with no imputer; likely suboptimal but valid.
+
+---
+
+### Coach Decision After Iteration 1:
+
+- Chooses the pipeline:
+
+  ```
+  S -> IMPUTER TIME_SERIES_FORECAST
+  ```
+
+- Updates MCTS for the next simulations focusing on this pipeline structure.
+
+---
+
+### Iteration 2: Fine Tuning Time Series Forecast Component
+
+#### Simulation 1
+- **Pipeline:** `IMPUTER | NHITSEstimator` (chosen time series model)
+- **Prediction:** 0.04550
+- **Status:** NHITSEstimator evaluated; decent prediction.
+
+#### Simulation 2
+- **Pipeline:** `IMPUTER | DeeparEstimator`
+- **Prediction:** 0.04608
+- **Status:** DeeparEstimator slightly less performant.
+
+#### Simulation 3
+- **Pipeline:** `IMPUTER | ArimaEstimator`
+- **Prediction:** 0.04582
+- **Status:** ArimaEstimator evaluated with reasonable results.
+
+#### Simulation 4
+- **Pipeline:** `IMPUTER | NBEATSEstimator`
+- **Prediction:** 0.04535 (best so far)
+- **Status:** NBEATSEstimator shows best performance among time series estimators.
+
+#### Simulation 5
+- **Pipeline:** `IMPUTER | NHITSEstimator`
+- **Action:** `IMPUTER -> E` (no imputer)
+- **Resulting Pipeline:**
+
+  ```
+  NHISETSEstimator (no imputer)
+  ```
+  
+- **Prediction:** (not explicitly given in logs but presumably similar)
+- **Status:** Minor change, imputation dropped; pipeline converges on the best-performing estimator configurations.
+
+---
+
+## 4. Summary of Pipeline Construction and Status
+
+| Iteration | Pipeline Components                                           | Status                         | Reason/Comment                                   |
+|-----------|--------------------------------------------------------------|--------------------------------|-------------------------------------------------|
+| 1- Sim1   | `S` (start)                                                  | Baseline evaluation             | Initial, no actions                              |
+| 1- Sim2   | `IMPUTER | ENCODERS | FEATURE_SCALER | FEATURE_SELECTOR | REGRESSOR` | Success, good prediction (0.04546)             | Full pipeline tried with classical ML components|
+| 1- Sim3   | `IMPUTER | TIME_SERIES_FORECAST`                            | Slightly worse (0.04623)        | Simple, focuses on time series primitives       |
+| 1- Sim4   | `IMPUTER | DATETIME_ENCODER | FEATURE_SCALER | FEATURE_SELECTOR | REGRESSOR` | Success, improved representation                | Adds datetime encoding improves feature handling |
+| 1- Sim5   | `TIME_SERIES_FORECAST` (No imputer)                         | Less successful (0.04689)       | Lack of imputation might cause degraded performance|
+| 2- Sim1   | `IMPUTER | NHITSEstimator`                                  | Success (0.04550)               | Time series estimator evaluated                  |
+| 2- Sim2   | `IMPUTER | DeeparEstimator`                                 | Moderate (0.04608)              | Outro time series model less good than NHI      |
+| 2- Sim3   | `IMPUTER | ArimaEstimator`                                 | Success (0.04582)               | Classical time series model tested               |
+| 2- Sim4   | `IMPUTER | NBEATSEstimator`                               | Best (0.04535)                  | Best performing time series model found         |
+| 2- Sim5   | `NHISETSEstimator` (No imputer)                            | Similar performance             | No imputer change fine-tunes pipeline            |
+
+---
+
+## 5. Failures and Reasoning
+
+- Pipelines without imputation on missing or non-numeric data usually perform worse or inconsistently.
+- Simple pipeline without feature engineering (e.g. Sim3 with direct time series only) performed worse than those with encoding/scaling.
+- Classical regressors appear slightly better initially but ultimately specialized time series models perform best.
+- No explicit pipeline is marked as "fail" in logs, but lower prediction quality signals less optimal configurations.
+
+---
+
+# Final Notes
+
+- **Pipeline search** leverages **grammar rules** and **MCTS simulations** as a pipeline construction game.
+- Multiple pipeline architectures are explored iteratively.
+- Time series forecasting primitives specialized for data type and task ultimately outperform classical ML regressors.
+- The system intelligently balances pipeline complexity against performance, dropping unnecessary components (like imputer) when not needed.
+
+---
+
+If you want, I can also describe how the pipeline game and MCTS interact in greater detail! Would you like that?

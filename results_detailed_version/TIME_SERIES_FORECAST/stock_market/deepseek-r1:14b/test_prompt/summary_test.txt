@@ -1,0 +1,104 @@
+ Here's a structured explanation of the end-to-end construction of the machine learning pipeline based on the provided logs:
+
+---
+
+### **End-to-End Construction of the Machine Learning Pipeline**
+
+#### **1. Data Profiling**
+The process begins with an initial assessment of the data to understand its characteristics, identify missing values, and determine the need for preprocessing steps.
+
+- **Objective**: To prepare the data for modeling by handling missing values and ensuring it is suitable for time series forecasting.
+- **Action**: The pipeline starts with an imputer (IMPUTER) to handle any missing values in the dataset.
+
+---
+
+#### **2. Pipeline Construction via MCTS (Monte Carlo Tree Search)**
+
+The logs indicate that multiple iterations (simulations) were conducted using a Monte Carlo Tree Search approach to explore different pipeline configurations. Each simulation represents a "game" where components are added to the pipeline, and their effectiveness is evaluated.
+
+##### **Simulation 1: Initial Pipeline Construction**
+- **State**: The pipeline starts empty.
+- **Action**: The first move adds an imputer (IMPUTER) to handle missing values. This step is crucial for ensuring that the data is complete before feeding it into a forecasting model.
+- **Status**: Successful.
+
+##### **Simulation 2: Adding Time Series Forecasting Components**
+- **State**: After successfully adding IMPUTER, the next move adds a time series forecasting component (TIME_SERIES_FORECAST).
+- **Action**: The pipeline now consists of two components:
+  - IMPUTER
+  - TIME_SERIES_FORECAST
+- **Status**: Successful.
+
+---
+
+#### **3. Exploring Different Forecasting Models**
+The MCTS algorithm explores different estimators for the time series forecasting component by iterating through various models. Each iteration represents a new configuration of the pipeline.
+
+##### **Iteration 1: Testing NHITS Estimator**
+- **State**: The pipeline now contains:
+  - IMPUTER
+  - TIME_SERIES_FORECAST (configured with NHITS)
+- **Action**: The NHITS estimator is added to the forecasting component.
+- **Status**: Successful. The pipeline is scored, and a score of **61.2188** is recorded.
+
+##### **Iteration 2: Testing DeepAR Estimator**
+- **State**: The pipeline now contains:
+  - IMPUTER
+  - TIME_SERIES_FORECAST (configured with DeepAR)
+- **Action**: The DeepAR estimator is added to the forecasting component.
+- **Status**: Not explicitly mentioned, but it may have failed or been scored less favorably than NHITS.
+
+##### **Iteration 3: Testing ARIMA Estimator**
+- **State**: The pipeline now contains:
+  - IMPUTER
+  - TIME_SERIES_FORECAST (configured with ARIMA)
+- **Action**: The ARIMA estimator is added to the forecasting component.
+- **Status**: Not explicitly mentioned, but it may have failed or been scored less favorably than NHITS.
+
+##### **Iteration 4: Testing NBEATS Estimator**
+- **State**: The pipeline now contains:
+  - IMPUTER
+  - TIME_SERIES_FORECAST (configured with NBEATS)
+- **Action**: The NBEATS estimator is added to the forecasting component.
+- **Status**: Not explicitly mentioned, but it may have failed or been scored less favorably than NHITS.
+
+##### **Iteration 5: Testing NHITS Estimator Again**
+- **State**: The pipeline now contains:
+  - IMPUTER
+  - TIME_SERIES_FORECAST (configured with NHITS)
+- **Action**: The NHITS estimator is added to the forecasting component again.
+- **Status**: Successful, and the same score of **61.2188** is recorded.
+
+---
+
+#### **4. Scoring and Evaluation**
+After each pipeline configuration is built, it is scored to evaluate its performance.
+
+- **Successful Pipeline Configuration**:
+  - Components: IMPUTER + TIME_SERIES_FORECAST (NHITS estimator)
+  - Score: **61.2188**
+  - Status: Successful
+  - Reason for Success: The combination of imputation and the NHITS estimator proved to be effective in handling the data and producing accurate forecasts.
+
+- **Failed Pipeline Configurations**:
+  - Some configurations may have failed due to reasons such as:
+    - Insufficient data for a particular model (e.g., ARIMA requires a minimum number of time series points).
+    - Compatibility issues between components.
+    - Computational limitations (e.g., lack of GPU support for certain models).
+
+---
+
+#### **5. Final Pipeline**
+The most successful pipeline configuration identified during the MCTS iterations is selected as the final model.
+
+- **Final Components**:
+  - IMPUTER
+  - TIME_SERIES_FORECAST (NHITS estimator)
+- **Status**: Successful
+- **Reason for Selection**: The NHITS estimator provided the best score of **61.2188**, indicating that it performed well on the given dataset.
+
+---
+
+### **Conclusion**
+The pipeline construction process involved multiple iterations and evaluations using a Monte Carlo Tree Search approach. The initial step focused on handling missing values with an imputer, followed by testing various time series forecasting models. The NHITS estimator emerged as the most effective configuration, resulting in a successful pipeline that achieved a score of **61.2188**.
+
+This structured approach ensures that the final pipeline is both robust and optimized for the given dataset and task.

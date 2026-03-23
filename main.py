@@ -86,7 +86,7 @@ def iterate_loop():
     jobs = []
     for task in TASK:
         for dataset_name, sum_llm, sum_prompt in product(dataset_names_for_task[task], LLMs, SUMMARIZATION_PROMPT):
-            output_directory = root_dir + '/results/' + task + '/' + dataset_name + '/' + sum_llm + '/' + sum_prompt + '/'
+            output_directory = root_dir + '/results_detailed_version/' + task + '/' + dataset_name + '/' + sum_llm + '/' + sum_prompt + '/'
             create_directory(output_directory)
             summary_dir =  os.path.join(output_directory , 'summary_test.txt')
             if(task == "CLASSIFICATION") | (task == "REGRESSION"):
