@@ -1,16 +1,11 @@
-Task: Produce a final summary of the AutoML system process based on the phase-structured logs {{ aggregate_fact }}. 
+Task: give  step by step explanation of the pipeline search process method of this automl system using the provided phase-structured logs  {{  aggregate_fact  }}, explain the end to end construction of the 
+pipeline,  the explanation must follow a clean structure starting with the data profiling, for each game, iteration, state the pipeline (with different componect) state the status of the pipeline 
+( if sucess or fail) and explain the reason why it fail.
 
 Instructions:
 - Use only information explicitly present in the logs.
-- Do not add interpretation, assumptions, or inferred intent.
-- Do not suggest improvements or recommendations.
-- Do not explain how AutoML works.
 - Focus only on what occurred.
 - Synthesize across phases rather than listing them.
 - Preserve factual accuracy.
 
 
-Additional Requirement:
-- If reinforcement-learning-related events appear in the logs (e.g., action selection, MOVE ACTION steps, rollouts, reward updates, score-based updates, exploration events), synthesize them factually as part of the pipeline search process.
-- Do NOT infer the specific RL algorithm unless explicitly stated.
-- Do NOT speculate about strategy, objectives, or optimization behavior.

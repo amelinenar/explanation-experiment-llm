@@ -26,6 +26,13 @@ def filtering_logs(logs_doc, file_path):
     COLUMN_TYPE_RE = re.compile(r'Column type\s+(.+)')
     PROFILING_SUMMARY_RE = re.compile(r'Results of profiling data:\s*(.*)')
 
+    #Termination
+    TERM_RE = re.compile(
+    r'Reached search timeout|'
+    r'Receiving signal \d+, terminating process|'
+    r'Found \d+ pipelines'
+)
+
     def parse_logs(log_text):
         data = defaultdict(lambda: {
             "simulations": defaultdict(lambda: {
@@ -37,6 +44,10 @@ def filtering_logs(logs_doc, file_path):
                 
         })
         profiling_info = []
+        
+        termination_info = []
+
+
 
         current_iter = None
         current_sim = None
@@ -60,9 +71,7 @@ def filtering_logs(logs_doc, file_path):
             type_match = COLUMN_TYPE_RE.search(line)
             if type_match:
                 profiling_info.append(f"Type: {type_match.group(1)}")
-            
-        
-        
+  
         for line in log_text.splitlines():
             iter_match = ITER_RE.search(line)
             if iter_match:
@@ -94,10 +103,16 @@ def filtering_logs(logs_doc, file_path):
 
             if FAIL_RE.search(line) and current_iter and current_sim:
                 data[current_iter]["simulations"][current_sim]["status"] = "failed"
+                
+                
+        for line in log_text.splitlines():
+            termination_match =  TERM_RE.search(line)
+            if termination_match:
+                termination_info.append(termination_match.group(0))
 
-        return data, profiling_info
+        return data, profiling_info, termination_info
 
-    parsed, profiling_info = parse_logs(log_text)
+    parsed, profiling_info ,termination_info= parse_logs(log_text)
 
     # print(parsed)
     # print(profiling_info)
@@ -114,7 +129,7 @@ def filtering_logs(logs_doc, file_path):
 
 
     with open(file_path, "w", encoding="utf-8") as f:
-        f.write("LOG ANALYSIS REPORT\n")
+        f.write("LOGS\n")
         f.write("=" * 50 + "\n\n")
         f.write("DATA PROFILING\n")
         
@@ -142,7 +157,17 @@ def filtering_logs(logs_doc, file_path):
                 f.write("\n")  # spacing between simulations
 
             f.write("\n")  # spacing between iterations
+         
+         
+        
+        f.write("TERMINATION\n")
+        
+        for line in termination_info:
+            f.write(line + "\n")
             
+        f.write("\n\n")
+            
+   
 
 def remove_consecutive_duplicates(file_path, output_file):
     prev_line = None

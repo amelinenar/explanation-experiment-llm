@@ -1,0 +1,256 @@
+ === PHASE: dataset_facts ===
+DATA PROFILING
+Columns detected: 65
+Column 0: d3mIndex
+Type: http://schema.org/Integer [http://schema.org/identifier]
+Column 1: V1
+Type: http://schema.org/Float []
+Column 2: V2
+Type: http://schema.org/Float []
+Column 3: V3
+Type: http://schema.org/Float []
+Column 4: V4
+Type: http://schema.org/Float []
+Column 5: V5
+Type: http://schema.org/Float []
+Column 6: V6
+Type: http://schema.org/Float []
+Column 7: V7
+Type: http://schema.org/Float []
+Column 8: V8
+Type: http://schema.org/Float []
+Column 9: V9
+Type: http://schema.org/Float []
+Column 10: V10
+Type: http://schema.org/Float []
+Column 11: V11
+Type: http://schema.org/Float []
+Column 12: V12
+Type: http://schema.org/Float []
+Column 13: V13
+Type: http://schema.org/Float []
+Column 14: V14
+Type: http://schema.org/Float []
+Column 15: V15
+Type: http://schema.org/Float []
+Column 16: V16
+Type: http://schema.org/Integer []
+Column 17: V17
+Type: http://schema.org/Float []
+Column 18: V18
+Type: http://schema.org/Float []
+Column 19: V19
+Type: http://schema.org/Float []
+Column 20: V20
+Type: http://schema.org/Float []
+Column 21: V21
+Type: http://schema.org/Float []
+Column 22: V22
+Type: http://schema.org/Float []
+Column 23: V23
+Type: http://schema.org/Float []
+Column 24: V24
+Type: http://schema.org/Float []
+Column 25: V25
+Type: http://schema.org/Float []
+Column 26: V26
+Type: http://schema.org/Float []
+Column 27: V27
+Type: http://schema.org/Float []
+Column 28: V28
+Type: http://schema.org/Float []
+Column 29: V29
+Type: http://schema.org/Float []
+Column 30: V30
+Type: http://schema.org/Float []
+Column 31: V31
+Type: http://schema.org/Float []
+Column 32: V32
+Type: http://schema.org/Float []
+Column 33: V33
+Type: http://schema.org/Float []
+Column 34: V34
+Type: http://schema.org/Float []
+Column 35: V35
+Type: http://schema.org/Float []
+Column 36: V36
+Type: http://schema.org/Float []
+Column 37: V37
+Type: http://schema.org/Float []
+Column 38: V38
+Type: http://schema.org/Float []
+Column 39: V39
+Type: http://schema.org/Float []
+Column 40: V40
+Type: http://schema.org/Float []
+Column 41: V41
+Type: http://schema.org/Float []
+Column 42: V42
+Type: http://schema.org/Float []
+Column 43: V43
+Type: http://schema.org/Float []
+Column 44: V44
+Type: http://schema.org/Float []
+Column 45: V45
+Type: http://schema.org/Float []
+Column 46: V46
+Type: http://schema.org/Float []
+Column 47: V47
+Type: http://schema.org/Float []
+Column 48: V48
+Type: http://schema.org/Float []
+Column 49: V49
+Type: http://schema.org/Float []
+Column 50: V50
+Type: http://schema.org/Float []
+Column 51: V51
+Type: http://schema.org/Float []
+Column 52: V52
+Type: http://schema.org/Float []
+Column 53: V53
+Type: http://schema.org/Float []
+Column 54: V54
+Type: http://schema.org/Float []
+Column 55: V55
+Type: http://schema.org/Float []
+Column 56: V56
+Type: http://schema.org/Float []
+Column 57: V57
+Type: http://schema.org/Float []
+Column 58: V58
+Type: http://schema.org/Float []
+Column 59: V59
+Type: http://schema.org/Float []
+Column 60: V60
+Type: http://schema.org/Float []
+Column 61: V61
+Type: http://schema.org/Float []
+Column 62: V62
+Type: http://schema.org/Float []
+Column 63: V63
+Type: http://schema.org/Float []
+Column 64: V64
+Type: http://schema.org/Float []
+non-numeric features = dict_keys([])
+useless columns = []
+missing values = False
+
+=== PHASE: search_process_facts ===
+ITERATION 1
+----------------------------------------
+Coach Actions: [0, 1, 2]
+
+  Simulation 1
+    Status: created
+    Score: 0.8006230529595015
+
+  Simulation 2
+    Status: success
+    Score: 0.9532710280373832
+
+  Simulation 3
+    Status: created
+    Score: 0.6915887850467289
+
+  Simulation 4
+    Status: success
+    Score: 0.9158878504672897
+
+  Simulation 5
+    Status: created
+    Score: 0.8193146417445483
+
+=== PHASE: evaluation_facts ===
+  Simulation 1
+    Pipelines:
+      - S
+      - IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|CLASSIFIER
+      - IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.ensemble.GradientBoostingClassifier
+      - FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|sklearn.neighbors.KNeighborsClassifier
+
+  Simulation 2
+    Pipelines:
+      - S
+      - IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+      - IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|CLASSIFIER
+      - FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - FEATURE_SCALER|CLASSIFIER
+
+  Simulation 3
+    Pipelines:
+      - S
+      - IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.ensemble.ExtraTreesClassifier
+      - IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+      - FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - FEATURE_SCALER|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|sklearn.ensemble.GradientBoostingClassifier
+
+  Simulation 4
+    Pipelines:
+      - S
+      - IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.naive_bayes.GaussianNB
+      - IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|sklearn.ensemble.ExtraTreesClassifier
+      - FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - FEATURE_SCALER|CLASSIFIER
+
+  Simulation 5
+    Pipelines:
+      - S
+      - IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|CLASSIFIER
+      - IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.neighbors.KNeighborsClassifier
+      - IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|CLASSIFIER
+      - sklearn.preprocessing.MaxAbsScaler|sklearn.naive_bayes.GaussianNB

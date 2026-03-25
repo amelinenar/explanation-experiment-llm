@@ -1,0 +1,44 @@
+ === PHASE: Dataset Analysis ===
+
+- **Feature counts**: 65 columns detected
+- **Column names**:
+  - d3mIndex (Type: Integer)
+  - V1-V64 (Types: Float)
+- **Data types**:
+  - http://schema.org/Integer for column 0
+  - http://schema.org/Float for columns 1-64
+- **Missing values**: False
+- **Non-numeric features**: None
+- **Useless columns**: None
+
+=== PHASE: Search Space ===
+
+- **Pipeline structure definitions**:
+  - Simulations use pipelines with varying components like IMPUTER, ENCODERS, FEATURE_SCALER, FEATURE_SELECTOR, and CLASSIFIER.
+  - Example pipeline structures include:
+    - IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    - sklearn.preprocessing.MaxAbsScaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.ensemble.GradientBoostingClassifier
+- **Component registries**:
+  - Includes various models like GradientBoostingClassifier, KNeighborsClassifier, LinearDiscriminantAnalysis, and GaussianNB.
+- **Grammar rules**: Not explicitly detailed in logs.
+
+=== PHASE: Search Process ===
+
+- **Iterations**: At least one iteration conducted (Iteration 1)
+- **Simulations**: Five simulations run (Simulations 1 to 5), each with varying statuses (success/created) and scores
+  - Simulation 1: Score = 0.800623
+  - Simulation 2: Score = 0.953271
+  - Simulation 3: Score = 0.691588
+  - Simulation 4: Score = 0.915887
+  - Simulation 5: Score = 0.819314
+
+=== PHASE: Evaluation ===
+
+- **Pipeline constructions**: Multiple pipeline configurations tested in each simulation, including different preprocessing and modeling steps.
+- **Model instantiations**:
+  - Models include GradientBoostingClassifier, KNeighborsClassifier, GaussianNB, LinearDiscriminantAnalysis, etc.
+- **Hyperparameters**: Not explicitly detailed but inferred from model types used.
+
+=== PHASE: Termination ===
+
+- **Termination facts**: No explicit termination conditions or results provided in the logs beyond Iteration 1.

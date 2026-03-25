@@ -1,0 +1,3 @@
+ ### Summary:
+
+The AutoML system processed a dataset with an undefined number of features and samples. Data preprocessing included the use of MaxAbsScaler for scaling and FeatureSelector for feature selection. During the pipeline search phase, multiple models were evaluated across several iterations and simulations. A score of 0.85 was achieved in some runs, while the best-performing model attained a score of 0.95. The system utilized reinforcement learning to guide its actions during the search process, with rewards influencing subsequent decisions. Exploration vs exploitation behavior was observed, balancing between trying new models and sticking with effective ones. Pipelines were generated until stopping conditions or timeouts were met.

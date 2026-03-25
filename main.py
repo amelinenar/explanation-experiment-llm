@@ -297,7 +297,7 @@ if __name__ == "__main__":
         #with ThreadPoolExecutor(max_workers=2) as executor:
         for task in TASK:
             for dataset_name, sum_llm in product(dataset_names_for_task[task], LLMs):
-                output_directory = root_dir + '/results_H_new/' + task + '/' + dataset_name + '/' + sum_llm + '/'
+                output_directory = root_dir + '/results_Hierarchical/' + task + '/' + dataset_name + '/' + sum_llm + '/'
                 create_directory(output_directory)
                 summary_dir =  os.path.join(output_directory , 'fact.txt')
                 if(task == "CLASSIFICATION") | (task == "REGRESSION"):
@@ -305,10 +305,12 @@ if __name__ == "__main__":
                 else:
                     logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
                 
+                # logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
+                
                 print( " ")
                 print(f"LOGS: {logs_path}")
                 
-                fact_extraction(logs_path, sum_llm, summary_dir)
+                # fact_extraction(logs_path, sum_llm, summary_dir)
                 
                 
                 
@@ -333,6 +335,10 @@ if __name__ == "__main__":
                 # #     phases = json.load(f)
                     
                 # # micro_summarization(summary_dir, sum_llm, micro_summary_dir, phases) 
+                
+                
+                
+                
                 
                 
                 

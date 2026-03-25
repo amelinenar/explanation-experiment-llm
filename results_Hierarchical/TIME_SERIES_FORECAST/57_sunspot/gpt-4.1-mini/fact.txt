@@ -1,0 +1,148 @@
+ === PHASE: Dataset Profiling ===
+2026-03-23 11:36:23,856 - MainProcess - root - DEBUG - Logging initialized for MainProcess, writing to full_log_MainProcess.txt  
+2026-03-23 11:36:23,858 - MainProcess - datamart_profiler.core - INFO - Setting column names from header  
+2026-03-23 11:36:23,858 - MainProcess - datamart_profiler.core - INFO - Identifying types, 5 columns...  
+2026-03-23 11:36:23,858 - MainProcess - datamart_profiler.core - INFO - Processing column 0 'year'...  
+2026-03-23 11:36:23,866 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Text [http://schema.org/DateTime]  
+2026-03-23 11:36:23,867 - MainProcess - datamart_profiler.core - INFO - Processing column 1 'sunspots'...  
+2026-03-23 11:36:23,875 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Float []  
+2026-03-23 11:36:23,875 - MainProcess - datamart_profiler.core - INFO - Processing column 2 'd3mIndex'...  
+2026-03-23 11:36:23,882 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Integer [http://schema.org/identifier]  
+2026-03-23 11:36:23,882 - MainProcess - datamart_profiler.core - INFO - Processing column 3 'sd'...  
+2026-03-23 11:36:23,889 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Float []  
+2026-03-23 11:36:23,889 - MainProcess - datamart_profiler.core - INFO - Processing column 4 'observations'...  
+2026-03-23 11:36:23,896 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Integer []  
+2026-03-23 11:36:23,896 - MainProcess - alpha_automl.data_profiler - DEBUG - Results of profiling data: non-numeric features = dict_keys(['DATETIME_ENCODER']), useless columns = [], missing values = False  
+2026-03-23 11:36:23,897 - MainProcess - alpha_automl.utils - DEBUG - Not doing sampling for small dataset (size = 180)  
+
+=== PHASE: Search Space Setup ===
+2026-03-23 11:36:23,910 - Process-1 - alpha_automl.pipeline_synthesis.setup_search - DEBUG - Creating a manual grammar  
+2026-03-23 11:36:23,910 - Process-1 - alpha_automl.primitive_loader - DEBUG - Hierarchy of all primitives loaded  
+2026-03-23 11:36:23,912 - Process-1 - alpha_automl.grammar_loader - DEBUG - Creating task grammar for task TIME_SERIES_FORECAST_TASK  
+2026-03-23 11:36:23,913 - Process-1 - alpha_automl.grammar_loader - DEBUG - Task grammar: Grammar with 44 productions (start state = S)  
+    S -> IMPUTER ENCODERS FEATURE_SCALER FEATURE_SELECTOR REGRESSOR  
+    S -> IMPUTER TIME_SERIES_FORECAST  
+    ENCODERS -> DATETIME_ENCODER  
+    IMPUTER -> 'E'  
+    FEATURE_SCALER -> 'sklearn.preprocessing.MaxAbsScaler'  
+    FEATURE_SCALER -> 'sklearn.preprocessing.RobustScaler'  
+    FEATURE_SCALER -> 'sklearn.preprocessing.StandardScaler'  
+    FEATURE_SCALER -> 'E'  
+    FEATURE_SELECTOR -> 'sklearn.feature_selection.GenericUnivariateSelect'  
+    FEATURE_SELECTOR -> 'sklearn.feature_selection.SelectPercentile'  
+    FEATURE_SELECTOR -> 'sklearn.feature_selection.SelectKBest'  
+    FEATURE_SELECTOR -> 'E'  
+    DATETIME_ENCODER -> 'sklearn.preprocessing.OrdinalEncoder'  
+    DATETIME_ENCODER -> 'alpha_automl.builtin_primitives.datetime_encoder.CyclicalFeature'  
+    DATETIME_ENCODER -> 'alpha_automl.builtin_primitives.datetime_encoder.Datetime64ExpandEncoder'  
+    DATETIME_ENCODER -> 'alpha_automl.builtin_primitives.datetime_encoder.DummyEncoder'  
+    REGRESSOR -> 'sklearn.linear_model.ARDRegression'  
+    REGRESSOR -> 'sklearn.tree.DecisionTreeRegressor'  
+    REGRESSOR -> 'sklearn.ensemble.ExtraTreesRegressor'  
+    REGRESSOR -> 'sklearn.gaussian_process.GaussianProcessRegressor'  
+    REGRESSOR -> 'sklearn.ensemble.GradientBoostingRegressor'  
+    REGRESSOR -> 'sklearn.neighbors.KNeighborsRegressor'  
+    REGRESSOR -> 'sklearn.linear_model.Lars'  
+    REGRESSOR -> 'sklearn.linear_model.Lasso'  
+    REGRESSOR -> 'sklearn.linear_model.LassoCV'  
+    REGRESSOR -> 'sklearn.svm.LinearSVR'  
+    REGRESSOR -> 'sklearn.linear_model.PassiveAggressiveRegressor'  
+    REGRESSOR -> 'sklearn.ensemble.RandomForestRegressor'  
+    REGRESSOR -> 'sklearn.linear_model.Ridge'  
+    REGRESSOR -> 'sklearn.linear_model.SGDRegressor'  
+    REGRESSOR -> 'sklearn.svm.SVR'  
+    REGRESSOR -> 'sklearn.linear_model.BayesianRidge'  
+    REGRESSOR -> 'sklearn.linear_model.ElasticNet'  
+    REGRESSOR -> 'sklearn.linear_model.HuberRegressor'  
+    REGRESSOR -> 'sklearn.linear_model.LinearRegression'  
+    REGRESSOR -> 'sklearn.linear_model.RANSACRegressor'  
+    REGRESSOR -> 'sklearn.linear_model.RidgeCV'  
+    REGRESSOR -> 'sklearn.linear_model.TheilSenRegressor'  
+    REGRESSOR -> 'xgboost.XGBRegressor'  
+    REGRESSOR -> 'lightgbm.LGBMRegressor'  
+    TIME_SERIES_FORECAST -> 'alpha_automl.builtin_primitives.time_series_forecasting.ArimaEstimator'  
+    TIME_SERIES_FORECAST -> 'alpha_automl.builtin_primitives.time_series_forecasting.DeeparEstimator'  
+    TIME_SERIES_FORECAST -> 'alpha_automl.builtin_primitives.time_series_forecasting.NBEATSEstimator'  
+    TIME_SERIES_FORECAST -> 'alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator'  
+2026-03-23 11:36:23,913 - Process-1 - alpha_automl.grammar_loader - DEBUG - Creating game grammar  
+
+=== PHASE: Search Process - Iteration 1 ===
+2026-03-23 11:36:23,942 - Process-1 - alpha_automl.pipeline_search.Coach - DEBUG - ------ITER 1------  
+2026-03-23 11:36:23,943 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1  
+2026-03-23 11:36:23,943 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S  
+2026-03-23 11:36:23,955 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04596164  
+2026-03-23 11:36:23,956 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2  
+2026-03-23 11:36:23,956 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S  
+2026-03-23 11:36:23,956 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER FEATURE_SELECTOR REGRESSOR  
+2026-03-23 11:36:23,956 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR  
+2026-03-23 11:36:23,956 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR  
+2026-03-23 11:36:23,961 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04546075  
+2026-03-23 11:36:23,962 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3  
+2026-03-23 11:36:23,962 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S  
+2026-03-23 11:36:23,962 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER TIME_SERIES_FORECAST  
+2026-03-23 11:36:23,962 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST  
+2026-03-23 11:36:23,962 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST  
+2026-03-23 11:36:23,966 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04623066  
+2026-03-23 11:36:23,967 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4  
+2026-03-23 11:36:23,967 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S  
+2026-03-23 11:36:23,967 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER ENCODERS FEATURE_SCALER FEATURE_SELECTOR REGRESSOR  
+2026-03-23 11:36:23,967 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR  
+2026-03-23 11:36:23,967 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR  
+2026-03-23 11:36:23,967 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: ENCODERS -> DATETIME_ENCODER  
+2026-03-23 11:36:23,968 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR  
+2026-03-23 11:36:23,968 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR  
+2026-03-23 11:36:23,975 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045972962  
+2026-03-23 11:36:23,976 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5  
+2026-03-23 11:36:23,976 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: S  
+2026-03-23 11:36:23,976 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER TIME_SERIES_FORECAST  
+2026-03-23 11:36:23,977 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST  
+2026-03-23 11:36:23,977 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST  
+2026-03-23 11:36:23,977 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E  
+2026-03-23 11:36:23,977 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: TIME_SERIES_FORECAST  
+2026-03-23 11:36:23,977 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: TIME_SERIES_FORECAST  
+2026-03-23 11:36:23,983 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04689913  
+2026-03-23 11:36:23,984 - Process-1 - alpha_automl.pipeline_search.Coach - DEBUG - COACH ACTION 1  
+2026-03-23 11:36:23,984 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: S -> IMPUTER TIME_SERIES_FORECAST  
+
+=== PHASE: Search Process - Iteration 1 Continued - Time Series Forecast Selection ===
+2026-03-23 11:36:23,984 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 1  
+2026-03-23 11:36:23,984 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST  
+2026-03-23 11:36:23,985 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: TIME_SERIES_FORECAST -> alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator  
+2026-03-23 11:36:23,985 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator  
+2026-03-23 11:36:23,985 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator  
+2026-03-23 11:36:23,991 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045497715  
+2026-03-23 11:36:23,991 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 2  
+2026-03-23 11:36:23,991 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST  
+2026-03-23 11:36:23,991 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: TIME_SERIES_FORECAST -> alpha_automl.builtin_primitives.time_series_forecasting.DeeparEstimator  
+2026-03-23 11:36:23,992 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.DeeparEstimator  
+2026-03-23 11:36:23,992 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.DeeparEstimator  
+2026-03-23 11:36:23,998 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.046084616  
+2026-03-23 11:36:23,998 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 3  
+2026-03-23 11:36:23,998 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST  
+2026-03-23 11:36:23,998 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: TIME_SERIES_FORECAST -> alpha_automl.builtin_primitives.time_series_forecasting.ArimaEstimator  
+2026-03-23 11:36:23,999 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.ArimaEstimator  
+2026-03-23 11:36:23,999 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.ArimaEstimator  
+2026-03-23 11:36:24,005 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.045818582  
+2026-03-23 11:36:24,006 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 4  
+2026-03-23 11:36:24,006 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST  
+2026-03-23 11:36:24,006 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: TIME_SERIES_FORECAST -> alpha_automl.builtin_primitives.time_series_forecasting.NBEATSEstimator  
+2026-03-23 11:36:24,006 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NBEATSEstimator  
+2026-03-23 11:36:24,006 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NBEATSEstimator  
+2026-03-23 11:36:24,013 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - Prediction 0.04534916  
+2026-03-23 11:36:24,013 - Process-1 - alpha_automl.pipeline_search.MCTS - DEBUG - MCTS SIMULATION 5  
+2026-03-23 11:36:24,013 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|TIME_SERIES_FORECAST  
+2026-03-23 11:36:24,013 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: TIME_SERIES_FORECAST -> alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator  
+2026-03-23 11:36:24,014 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator  
+2026-03-23 11:36:24,014 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator  
+2026-03-23 11:36:24,014 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineLogic - DEBUG - MOVE ACTION: IMPUTER -> E  
+2026-03-23 11:36:24,014 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator  
+2026-03-23 11:36:24,014 - Process-1 - alpha_automl.pipeline_search.pipeline.PipelineGame - DEBUG - PIPELINE: alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator  
+
+=== PHASE: Post-Search System Info and Library Loading ===
+2026-03-23 11:36:47,842 - MainProcess - gluonts.mx.context - INFO - Using CPU  
+2026-03-23 11:36:48,629 - MainProcess - matplotlib - DEBUG - matplotlib data path: /home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/matplotlib/mpl-data  
+2026-03-23 11:36:48,649 - MainProcess - matplotlib - DEBUG - CONFIGDIR=/home/nguenang/.config/matplotlib  
+2026-03-23 11:36:48,651 - MainProcess - matplotlib - DEBUG - interactive is False  
+2026-03-23 11:36:48,651 - MainProcess - matplotlib - DEBUG - platform is linux  
+2026-03-23 11:36:48,717 - MainProcess - matplotlib - DEBUG - CACHEDIR=/home/nguenang/.cache/matplotlib  
+2026-03-23 11:36:48,728 - MainProcess - matplotlib.font_manager - DEBUG - Using fontManager instance from /home/nguenang/.cache/matplotlib/fontlist-v390.json  

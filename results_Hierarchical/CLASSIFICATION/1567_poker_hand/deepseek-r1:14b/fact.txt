@@ -1,0 +1,28 @@
+ ### Dataset Facts:
+- **Feature counts**: 11
+- **Column names**: d3mIndex, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10
+- **Data types**: All columns are integers (http://schema.org/Integer)
+- **Missing values**: False
+- **Non-numeric features**: None
+
+### Search Space Facts:
+- **Pipeline structure definitions**: Pipelines include components like IMPUTER, ENCODERS, FEATURE_SCALER, FEATURE_SELECTOR, and CLASSIFIER.
+- **Component registries**: sklearn.preprocessing.MaxAbsScaler, sklearn.feature_selection.GenericUnivariateSelect, sklearn.ensemble.GradientBoostingClassifier, sklearn.discriminant_analysis.LinearDiscriminantAnalysis, sklearn.ensemble.ExtraTreesClassifier, sklearn.naive_bayes.GaussianNB, sklearn.neighbors.KNeighborsClassifier.
+
+### Search Process Facts:
+- **Iterations**: 1
+- **Simulations**:
+  - Simulation 1: Status - Success, Score - 0.5001512180368972
+  - Simulation 2: Status - Created, Score - 0.47904191616766467
+  - Simulation 3: Status - Created, Score - 0.45708582834331335
+  - Simulation 4: Status - Failed, Score - 0.47904191616766467
+  - Simulation 5: Status - Failed, Score - 0.4810379241516966
+
+### Evaluation Facts:
+- **Pipeline constructions**: Pipelines include various combinations of components ending with different classifiers (e.g., GradientBoostingClassifier, LinearDiscriminantAnalysis, ExtraTreesClassifier, GaussianNB, KNeighborsClassifier).
+- **Scores**: Scores vary per simulation, indicating model performance.
+
+### Termination Facts:
+- **Iterations completed**: 1
+- **Final pipeline count**: Not explicitly stated.
+- **Total search time**: Not explicitly stated.

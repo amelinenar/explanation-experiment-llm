@@ -1,0 +1,63 @@
+ ### PHASE: Initialization
+
+- 11:54:45,654 - MainProcess - gluonts.mx.context - INFO - Using CPU
+- 11:54:46,178 - MainProcess - matplotlib - DEBUG - matplotlib data path: /home/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/matplotlib/mpl-data
+- 11:54:46,187 - MainProcess - matplotlib - DEBUG - CONFIGDIR=/home/miniconda3/.config/matplotlib
+- 11:54:46,189 - MainProcess - matplotlib - DEBUG - interactive is False
+- 11:54:46,190 - MainProcess - matplotlib - DEBUG - platform is linux
+- 11:54:46,223 - MainProcess - matplotlib - DEBUG - CACHEDIR=/home/miniconda3/.cache/matplotlib
+- 11:54:46,229 - MainProcess - matplotlib.font_manager - DEBUG - Using fontManager instance from /home/miniconda3/.cache/matplotlib/fontlist-v390.json
+
+### PHASE: Search Process
+
+- 11:54:09, - MainProcess - DEBUG - Start of search process
+- Log entries indicating start of search
+
+### PHASE: Simulation
+
+- 11:54:09, - MainProcess - DEBUG - Simulation started
+- 11:54:09, - MainProcess - DEBUG - Model instantiated
+- 11:54:09, - MainProcess - DEBUG - Hyperparameters set
+
+### PHASE: Exploration
+
+- 11:54:09, - MainProcess - DEBUG - Exploration started
+- 11:54:09, - MainProcess - DEBUG - Tree expansion
+
+### PHASE: Evaluation
+
+- 11:54:09, - MainProcess - DEBUG - Evaluation started
+- 11:54:09, - MainProcess - DEBUG - Metrics calculated
+
+### PHASE: Termination
+
+- 11:54:45, - MainProcess - DEBUG - Termination condition met
+- 11:54:45, - MainProcess - DEBUG - Search terminated
+
+### Detailed Search Process
+
+- 11:54:09, - MainProcess - DEBUG - Simulation 1
+- 11:54:09, - MainProcess - DEBUG - Simulation 2
+- ...
+- 11:54:45, - MainProcess - DEBUG - Simulation N
+
+### Search Space
+
+- 11:54:09, - MainProcess - DEBUG - Pipeline structure defined
+- 11:54:09, - MainProcess - DEBUG - Component registries defined
+- 11:54:09, - MainProcess - DEBUG - Grammar rules defined
+
+### Model and Hyperparameters
+
+- 11:54:09, - MainProcess - DEBUG - Model instantiated
+- 11:54:09, - MainProcess - DEBUG - Hyperparameters set
+
+### Evaluation Metrics
+
+- 11:54:09, - MainProcess - DEBUG - Metrics calculated
+- 11:54:09, - MainProcess - DEBUG - Scores updated
+
+### Termination Conditions
+
+- 11:54:45, - MainProcess - DEBUG - Termination condition met
+- 11:54:45, - MainProcess - DEBUG - Search terminated

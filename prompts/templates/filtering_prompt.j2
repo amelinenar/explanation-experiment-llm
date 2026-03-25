@@ -1,0 +1,31 @@
+You are an expert in log parsing and regular expressions.
+
+Given a sample of application logs, your task is to generate Python regular expressions (using re.compile) to extract key structured information.
+
+Instructions:
+1. Carefully analyze the log format and identify repeated patterns.
+2. Create concise and robust regex patterns for important events such as:
+   - Iteration counters
+   - Simulation steps
+   - Pipeline states
+   - Actions (e.g., coach or move actions)
+   - Pipeline creation events
+   - Scores (floating point numbers)
+   - Success or failure indicators
+   - Profiling steps (column processing, types, summaries)
+3. Each regex must:
+   - Use capturing groups where useful
+   - Be resilient to spacing variations
+   - Avoid overly greedy matches
+4. Return the result as clean Python code using `re.compile`.
+5. Use clear variable names ending in `_RE`.
+
+Output format example:
+
+# ================= REGEX =================
+ITER_RE = re.compile(...)
+SIM_RE = re.compile(...)
+...
+
+Now analyze the following logs {{ document }} and generate the regex patterns:
+

@@ -1,0 +1,51 @@
+ ### PHASE: Initialization
+
+- IMPUTER: Encoded initialization settings
+- FEATURE SELECTOR: Initialized feature selection
+- CLASSIFIER: Initialized classification models
+
+### PHASE: Data Loading
+
+- DATASET SIZE: 1000 rows, 10 columns
+- FEATURE COUNTS: 5 numerical features, 3 categorical features
+- COLUMN NAMES: id, feature1, feature2, ..., feature10
+- DATA TYPES: int64, float64, object
+- MISSING VALUES: 0.1% of total values
+
+### PHASE: Search Space Definition
+
+- PIPELINE STRUCTURE: Defined as sequence of components (feature selector, classifier)
+- COMPONENT REGISTRY: Registered components (feature selectors, classifiers)
+- GRAMMAR RULES: Defined for pipeline construction
+- HYPERPARAMETER RANGES: Defined for each component
+- TASK TYPE: Classification
+
+### PHASE: Search Process
+
+- ITERATIONS: 1000
+- SIMULATIONS: 10
+- TRIALS: 5
+- MOVE ACTION: Selected based on scores
+- ROLLBACKS: 0.1% of total actions
+- PREDICTIONS: Made using classification models
+- SEARCH STEP: Selected based on scores
+- EXPLORATION EVENTS: 10% of total events
+- REWARD VALUES: Calculated based on scores
+- SCORE UPDATES: Made based on new information
+
+### PHASE: Evaluation
+
+- PIPELINE CONSTRUCTIONS: 100
+- MODEL INSTANTIATIONS: 10
+- HYPERPARAMETERS: Tuned using grid search
+- SCORES: Calculated using metrics (accuracy, f1-score)
+- METRICS: Accuracy, f1-score, precision, recall
+- VALIDATION RESULTS: Reported for each pipeline
+
+### PHASE: Termination
+
+- TIMEOUTS: 1000 seconds
+- STOPPING CRITERIA: Maximum iterations reached
+- FINAL PIPELINE COUNT: 10
+- TOTAL SEARCH TIME: 1000 seconds
+- BEST MODEL SELECTION: Selected based on scores
