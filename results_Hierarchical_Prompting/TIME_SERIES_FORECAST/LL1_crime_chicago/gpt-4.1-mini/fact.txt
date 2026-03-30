@@ -1,0 +1,70 @@
+ === PHASE: dataset_facts ===
+DATA PROFILING
+Columns detected: 5
+Column 0: time
+Type: http://schema.org/Integer []
+Column 1: location1
+Type: http://schema.org/Integer []
+Column 2: d3mIndex
+Type: http://schema.org/Integer [http://schema.org/identifier]
+Column 3: location2
+Type: http://schema.org/Integer [http://schema.org/Boolean]
+Column 4: location3
+Type: http://schema.org/Integer [http://schema.org/Boolean]
+non-numeric features = dict_keys([])
+useless columns = []
+missing values = False
+
+=== PHASE: Pipeline search and synthesis ===
+ITERATION 1
+----------------------------------------
+Coach Actions: [1]
+
+  Simulation 1
+    Status: None
+    Score: None
+    Pipelines:
+      - S
+      - IMPUTER|TIME_SERIES_FORECAST
+      - IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
+
+  Simulation 2
+    Status: None
+    Score: None
+    Pipelines:
+      - S
+      - IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+      - IMPUTER|TIME_SERIES_FORECAST
+      - IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NBEATSEstimator
+
+  Simulation 3
+    Status: None
+    Score: None
+    Pipelines:
+      - S
+      - IMPUTER|TIME_SERIES_FORECAST
+      - IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.ArimaEstimator
+
+  Simulation 4
+    Status: None
+    Score: None
+    Pipelines:
+      - S
+      - IMPUTER|TIME_SERIES_FORECAST
+      - TIME_SERIES_FORECAST
+      - IMPUTER|TIME_SERIES_FORECAST
+      - IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.DeeparEstimator
+
+  Simulation 5
+    Status: None
+    Score: None
+    Pipelines:
+      - S
+      - IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+      - IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+      - IMPUTER|TIME_SERIES_FORECAST
+      - IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
+      - alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
+
+=== PHASE: termination_facts ===
+TERMINATION

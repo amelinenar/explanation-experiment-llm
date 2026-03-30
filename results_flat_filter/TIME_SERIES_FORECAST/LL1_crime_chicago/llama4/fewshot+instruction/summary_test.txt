@@ -1,0 +1,71 @@
+ **AutoML Process Summarization**
+
+### Data Profiling Phase
+
+* Columns detected: 5
+* Column types:
+	+ Column 0: time (Integer)
+	+ Column 1: location1 (Integer)
+	+ Column 2: d3mIndex (Integer)
+	+ Column 3: location2 (Integer)
+	+ Column 4: location3 (Integer)
+* Non-numeric features: None
+* Missing values: False
+
+### Pipeline Search and Synthesis Phase
+
+#### Iteration 1
+
+##### Simulation 1
+* Status: None
+* Score: None
+* Pipelines:
+	+ S
+	+ IMPUTER|TIME_SERIES_FORECAST
+	+ IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
+
+##### Simulation 2
+* Status: None
+* Score: None
+* Pipelines:
+	+ S
+	+ IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+	+ IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
+
+##### Simulation 3
+* Status: None
+* Score: None
+* Pipelines:
+	+ S
+	+ IMPUTER|TIME_SERIES_FORECAST
+	+ IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.ArimaEstimator
+
+##### Simulation 4
+* Status: None
+* Score: None
+* Pipelines:
+	+ S
+	+ IMPUTER|TIME_SERIES_FORECAST
+	+ TIME_SERIES_FORECAST
+	+ IMPUTER|TIME_SERIES_FORECAST
+	+ IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.DeeparEstimator
+
+##### Simulation 5
+* Status: None
+* Score: None
+* Pipelines:
+	+ S
+	+ IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+	+ IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+	+ IMPUTER|TIME_SERIES_FORECAST
+	+ IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
+	+ alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
+
+### Termination
+
+The AutoML process has terminated with the following results:
+
+* No pipelines have been selected or scored.
+* The process has explored various pipeline configurations, including time series forecasting and regression.
+
+Note that the specific details of the pipelines and their performance metrics are not provided in the output.

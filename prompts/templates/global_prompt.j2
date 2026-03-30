@@ -1,11 +1,97 @@
-Task: give  step by step explanation of the pipeline search process method of this automl system using the provided phase-structured logs  {{  aggregate_fact  }}, explain the end to end construction of the 
-pipeline,  the explanation must follow a clean structure starting with the data profiling, for each game, iteration, state the pipeline (with different componect) state the status of the pipeline 
-( if sucess or fail) and explain the reason why it fail.
+Task: Generate a detailed textual explanation of the AutoML pipeline search process using the provided logs {{ aggregate_fact }}.
 
-Instructions:
-- Use only information explicitly present in the logs.
-- Focus only on what occurred.
-- Synthesize across phases rather than listing them.
-- Preserve factual accuracy.
+The explanation must follow a strict, traceable, and step-by-step structure similar to pipeline profiler / AMTseer.
 
+---
 
+### 1. Title
+The document MUST start exactly with:
+AutoML Process Summarization
+
+---
+
+### 2. Data Profiling Phase
+- Describe ONLY what is explicitly present in the logs:
+  - number of columns
+  - feature types (numeric, categorical, etc.)
+  - missing values
+  - useless columns
+- Do NOT infer or assume anything not stated.
+
+---
+
+### 3. Pipeline Search and Synthesis Phase
+
+Structure MUST strictly follow:
+Iteration → Simulation → Pipeline Evolution
+
+For each iteration:
+  For each simulation:
+
+    #### Simulation X
+    - Status: (success / created)
+    - Score: (exact value)
+
+    ##### Pipeline Construction Process (Step-by-Step Evolution)
+
+    For each pipeline transition:
+      - Start from the simplest pipeline (e.g., "S" or base pipeline).
+      - Describe each modification step explicitly:
+          • which component is ADDED (e.g., IMPUTER added)
+          • which component is REMOVED (if any)
+          • which component is REPLACED (e.g., FEATURE_SCALER → MaxAbsScaler)
+      - Show the resulting pipeline after each step.
+
+    Example format:
+      Step 1: S
+      Step 2: + IMPUTER → IMPUTER|CLASSIFIER
+      Step 3: + FEATURE_SCALER → IMPUTER|FEATURE_SCALER|CLASSIFIER
+      Step 4: Replace FEATURE_SCALER with MaxAbsScaler → MaxAbsScaler|CLASSIFIER
+
+    ##### Component-Level Explanation
+    - For each added/replaced component:
+        • explain its role in the pipeline
+        • explain why it is relevant given the dataset characteristics from the logs
+
+    ##### Outcome Explanation (MANDATORY)
+    - Clearly state:
+        • why the pipeline PASSED (success)
+        • or why it FAILED / remained "created"
+        • or why it has a LOWER score compared to others
+    - Explanations MUST be:
+        • deterministic (NO "maybe", "likely", "possibly")
+        • grounded in logs (e.g., score comparison, presence/absence of components)
+        • consistent with pipeline structure
+
+---
+
+### 4. Cross-Simulation Evolution (Optional but Preferred)
+- Highlight how pipelines evolve across simulations:
+  - which components persist
+  - which components are replaced frequently
+  - which configurations improve score
+
+---
+
+### 5. Termination Phase
+- Clearly explain why the AutoML search stopped.
+- Use ONLY explicit log signals (e.g., "Reached search timeout", "signal 15").
+- Do NOT infer additional stopping criteria.
+
+---
+
+### Strict Constraints
+- No hallucination.
+- No generic ML explanations disconnected from logs.
+- No vague language (forbidden: "likely", "maybe", "possibly").
+- Every explanation must be traceable to:
+    • pipeline structure OR
+    • score OR
+    • dataset profiling info.
+
+---
+
+### Output Style
+- Structured, technical, and step-by-step
+- Similar to system tracing tools (AMTseer / pipeline profiler)
+- Focus on pipeline evolution, not just final results

@@ -1,0 +1,26 @@
+ The pipeline search process involves an automated exploration of various machine learning models and preprocessing techniques to identify the most effective configuration for a given task, such as time-series forecasting. Here's a structured breakdown of how it works:
+
+1. **Process Management**:
+   - The system uses multiple processes (e.g., MainProcess, Process-1) to handle different aspects of pipeline generation and evaluation, allowing for parallel processing to speed up the search.
+
+2. **Pipeline Construction**:
+   - Pipelines are created by combining various steps: feature scaling (e.g., RobustScaler, StandardScaler), feature selection methods (e.g., GenericUnivariateSelect), and regression models (e.g., LinearRegression).
+   - Each pipeline is a sequence of these steps, designed to preprocess data and apply the model.
+
+3. **Evaluation Methodology**:
+   - Each generated pipeline is scored using a metric like RMSE or MAE. The score reflects how well the model's predictions align with actual values.
+   - Scoring occurs immediately after a pipeline is created, enabling quick assessment of its performance.
+
+4. **Search Technique**:
+   - Monte Carlo Tree Search (MCTS) is employed to explore the search space efficiently. Multiple simulations (e.g., SIMULATION 1, 2) evaluate different pipeline configurations to identify promising ones.
+
+5. **Timeout and Termination**:
+   - The search process stops when a predefined timeout is reached. At this point, all evaluated pipelines are considered, and the best-performing one is selected.
+
+6. **Pipeline Count**:
+   - A total of 143 pipelines were explored, indicating an extensive search through various configurations.
+
+7. **Efficiency Considerations**:
+   - The use of parallel processing and MCTS ensures that the system efficiently explores the solution space without exhaustive testing, focusing on more promising candidates early in the process.
+
+This systematic approach ensures that the best-performing model is identified within the given constraints, optimizing both performance and computational efficiency.

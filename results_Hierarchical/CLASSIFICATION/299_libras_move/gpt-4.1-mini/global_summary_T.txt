@@ -1,7 +1,0 @@
- The AutoML process began with dataset profiling, identifying 90 columns composed entirely of numeric float features representing longitude and latitude coordinates, without missing values or useless columns. 
-
-During the pipeline search phase, multiple iterations occurred involving a sequence of coach actions represented by numeric codes, reflecting reinforcement-learning-related steps for pipeline generation and evaluation. Five simulations were conducted in the first iteration, each assigned a performance score ranging approximately from 0.097 to 0.208, indicating progressive evaluation of candidate pipelines.
-
-In the evaluation phase, each simulation explored a variety of data processing and modeling pipelines. These pipelines frequently included steps such as imputers, encoders, feature scalers (including MaxAbsScaler, StandardScaler, and RobustScaler), different feature selectors (GenericUnivariateSelect, SelectPercentile), and a broad range of classifiers (e.g., GradientBoostingClassifier, ExtraTreesClassifier, KNeighborsClassifier, GaussianNB variants, LinearSVC, LogisticRegression, LightGBM classifier, DecisionTreeClassifier, RandomForestClassifier, and others). Pipelines were repeatedly tested with varying configurations of preprocessing and classifiers across simulations.
-
-The process concluded successfully after the fifth simulation of the first iteration, completing the search and evaluation of multiple pipelines with various preprocessing and classification strategies.

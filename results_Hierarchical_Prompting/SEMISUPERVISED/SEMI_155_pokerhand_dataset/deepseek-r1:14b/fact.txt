@@ -1,0 +1,49 @@
+ ### Dataset Facts
+- **Feature counts**: 11 features  
+- **Column names**:  
+  - feature_0  
+  - feature_1  
+  - feature_2  
+  - feature_3  
+  - feature_4  
+  - feature_5  
+  - feature_6  
+  - feature_7  
+  - feature_8  
+  - feature_9  
+  - feature_10  
+- **Data types**: All columns are integer type.  
+- **Missing values**: No missing values detected.  
+- **Dataset size**: Not explicitly mentioned in the logs.  
+- **Sampling decisions**: Not explicitly mentioned in the logs.  
+
+---
+
+### Pipeline Search and Synthesis
+#### Iterations
+1. **Iteration 1**:
+   - **Simulations**:
+     - **Simulation 1**:
+       - Status: Created  
+       - Pipelines: Multiple pipeline structures with components like IMPUTER, ENCODERS, FEATURE_SCALER, SEMISUPERVISED_CLASSIFIER, and LABELPROPAGATION_CLASSIFIER.  
+     - **Simulation 2**: Failed (Score: None)  
+     - **Simulation 3**: Failed (Score: None)  
+     - **Simulation 4**: Created  
+     - **Simulation 5**: Failed (Score: None)  
+
+   - **Pipelines**:
+     - Includes components like:
+       - IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER  
+       - IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER  
+       - ENCODERS|LABELPROPAGATION_CLASSIFIER  
+
+#### Search Step
+- The search process terminated due to a timeout.  
+
+---
+
+### Termination Facts
+- **Timeout**: Search timeout reached.  
+- **Stopping conditions**: Signal 15 received, terminating the process.  
+- **Final pipeline count**: 0 pipelines found.  
+- **Best model selection**: No best model selected (found 0 pipelines).

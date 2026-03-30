@@ -1,0 +1,156 @@
+ AutoML Process Summarization
+
+---
+
+### 2. Data Profiling Phase
+
+- Number of columns: 8  
+- Column types:  
+  • Column 0: d3mIndex — Integer (identifier)  
+  • Columns 1 to 5 (V1 to V5) — Integer features  
+  • Columns 6 to 7 (V6, V7) — Float features  
+- Non-numeric features: None detected  
+- Useless columns: None  
+- Missing values: No missing values detected  
+
+---
+
+### 3. Pipeline Search and Synthesis Phase
+
+#### Iteration 1
+
+This iteration involved 5 simulations, each exploring multiple candidate pipelines composed of preprocessing and modelling primitives.
+
+---
+
+#### Simulation 1
+
+- Status: success  
+- Score: 0.6865177832919769  
+
+##### Pipeline Construction Process (Step-by-Step Evolution)
+
+The pipeline evolution progresses from the simplest base pipeline "S" through several additive transformations:
+
+Step 1: S  
+Step 2: + IMPUTER → IMPUTER|LABELPROPAGATION_CLASSIFIER  
+Step 3: + ENCODES → IMPUTER|ENCODERS|LABELPROPAGATION_CLASSIFIER  
+Step 4: + FEATURE_SCALER → IMPUTER|ENCODERS|FEATURE_SCALER|LABELPROPAGATION_CLASSIFIER  
+
+Several variants replace the generic FEATURE_SCALER with specific scalers:  
+Step 5: Replace FEATURE_SCALER with MaxAbsScaler → IMPUTER|ENCODERS|sklearn.preprocessing.MaxAbsScaler|LABELPROPAGATION_CLASSIFIER  
+Step 6: Replace FEATURE_SCALER with RobustScaler → IMPUTER|ENCODERS|sklearn.preprocessing.RobustScaler|LABELPROPAGATION_CLASSIFIER  
+Step 7: Replace FEATURE_SCALER with StandardScaler → IMPUTER|ENCODERS|sklearn.preprocessing.StandardScaler|LABELPROPAGATION_CLASSIFIER  
+
+Alternate models replacing the default LABELPROPAGATION include:  
+Step 8: Replace LABELPROPAGATION_CLASSIFIER with alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading → IMPUTER|ENCODERS|alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading  
+
+Further pipeline expansions:  
+Step 9: + SEMISUPERVISED_CLASSIFIER + CLASSIFIER layering → IMPUTER|ENCODERS|FEATURE_SCALER|SEMISUPERVISED_CLASSIFIER|CLASSIFIER  
+
+Additional classifiers tested under the SEMISUPERVISED_CLASSIFIER wrapper include:  
+- sklearn.naive_bayes.BernoulliNB  
+- sklearn.svm.LinearSVC  
+- sklearn.svm.SVC  
+- alpha_automl.builtin_primitives.semisupervised_classifier.AutonBox  
+
+Also layered pipelines with sklearn.semi_supervised.SelfTrainingClassifier combined with LinearSVC appear in the evolution.
+
+##### Component-Level Explanation
+
+- IMPUTER: Fills missing or unusable data entries; relevant since data has no missing values but imputation is a standard preprocessing to ensure robustness.  
+- ENCODES: Encodes categorical variables; dataset contains no categorical or non-numeric features, but encoding step might normalize or format data for downstream components.  
+- FEATURE_SCALER (and variants like MaxAbsScaler, RobustScaler, StandardScaler): Normalize numeric feature scale, improving model convergence and performance. Given all features are numeric integers/floats, scaling is relevant.  
+- LABELPROPAGATION_CLASSIFIER, SkLabelSpreading, SkLabelPropagation: Semi-supervised label propagation algorithms. Given the selection of semi-supervised components, the problem likely involves partially labeled data or benefits from leveraging unlabeled samples.  
+- SEMISUPERVISED_CLASSIFIER wrappers and MODEL replacements (e.g. LinearSVC, SVC, BernoulliNB): Reflect exploration of classifier types under semi-supervised paradigms to improve predictions.  
+- SelfTrainingClassifier wrapping LinearSVC: An approach to leverage pseudo-labeling in semi-supervised fashion.  
+
+##### Outcome Explanation
+
+This simulation achieved the highest score (0.6865) among all simulations, likely due to successful integrations of imputation, encoding, robust feature scaling, and semi-supervised classifiers configured in diverse ways. Pipelines incorporating RobustScaler with label propagation classifiers performed well. The presence of multiple tested classifiers under the semi-supervised wrapper indicates broad exploration of modeling capability, resulting in the best pipeline configuration discovered.
+
+---
+
+#### Simulation 2
+
+- Status: failed  
+- Score: None  
+
+##### Pipeline Construction Process (Step-by-Step Evolution)
+
+Similar pipeline structures as Simulation 1 were attempted: imputer addition, encoding, multiple scaling strategies (MaxAbsScaler, StandardScaler, RobustScaler), and label propagation classifiers. Pipelines also explored combinations of semi-supervised classifiers, including linear SVC, BernoulliNB, and AutonBox. SelfTrainingClassifier with LinearSVC was also part of the candidate pipelines.
+
+##### Outcome Explanation
+
+Despite similar pipeline configurations, this simulation failed to produce a valid score. The logs indicate failure without providing a numerical score, suggesting problems during pipeline execution such as runtime errors or failed convergence in the training phase. Since the pipeline structures closely mirror Simulation 1’s successful pipelines, failure is attributable to execution rather than design.
+
+---
+
+#### Simulation 3
+
+- Status: failed  
+- Score: 0.24  
+
+##### Pipeline Construction Process (Step-by-Step Evolution)
+
+Pipeline transitions mimic previous simulations with incremental additions of IMPUTER, ENCODES, feature scalers (RobustScaler, StandardScaler), various label propagation classifiers, and semi-supervised classifiers encapsulating models like LinearSVC, SVC, BernoulliNB, and AutonBox.
+
+##### Outcome Explanation
+
+Simulation 3 produced a low score (0.24), substantially below Simulation 1’s best. Since pipeline components and structures remain similar, this score discrepancy likely reflects suboptimal hyperparameters or unstable training results during this simulation's evaluation, possibly due to data splits or random factors affecting semi-supervised classifier performance.
+
+---
+
+#### Simulation 4
+
+- Status: created  
+- Score: 0.152  
+
+##### Pipeline Construction Process (Step-by-Step Evolution)
+
+Simulated pipelines constructed through incremental addition of IMPUTER, ENCODES, various scalers (RobustScaler, StandardScaler, MaxAbsScaler), label propagation classifiers, semi-supervised classifiers, and a full range of classifier models: KNeighborsClassifier, LinearSVC, SVC, AutonBox, BernoulliNB. Also included SelfTrainingClassifier layered with LinearSVC.
+
+##### Outcome Explanation
+
+With status "created," the pipeline presumably had not completed training and evaluation at log capture time, reflected in a low current score (0.152). This indicates the pipeline was under construction or evaluation, hence no conclusive performance assessment is available.
+
+---
+
+#### Simulation 5
+
+- Status: created  
+- Score: None  
+
+##### Pipeline Construction Process (Step-by-Step Evolution)
+
+Continued expansions of previous patterns: S base pipelines elaborated with IMPUTER, ENCODES, various scalers, label propagation classifiers, and semi-supervised classifiers embedded with models such as SVC, LinearSVC, KNeighborsClassifier, and AutonBox. SelfTrainingClassifier combinations also attempted.
+
+##### Outcome Explanation
+
+Simulation 5 remains in the "created" state without a score, implying it is pending evaluation or has been queued. No performance data is available for further interpretation.
+
+---
+
+### 4. Cross-Simulation Evolution
+
+- Core preprocessing components consistently include IMPUTER and ENCODES despite the lack of missing values or categorical data, indicating a default or conservative pipeline construction approach.  
+- Feature scaling (FEATURE_SCALER) is a persistent component across simulations, with specific scalers (RobustScaler, StandardScaler, MaxAbsScaler) frequently replaced to search for best scaling fit.  
+- Label propagation classifiers (LABELPROPAGATION_CLASSIFIER, SkLabelPropagation, SkLabelSpreading) are pervasive, reflecting an emphasis on semi-supervised learning tailored to the dataset characteristics and task nature.  
+- Semi-supervised classifier wrappers combined with various classifiers (LinearSVC, SVC, BernoulliNB, AutonBox) illustrate systematic exploration of classifier diversity within semi-supervised contexts.  
+- Pipeline scores improve when RobustScaler and semi-supervised label propagation are jointly employed, particularly in Simulation 1.  
+- Simulations 2 and 3, despite similar component structures, encountered execution instability or suboptimal fitting, correlating with failed and low scores respectively.  
+- Ongoing simulations (4 and 5) preserve similar pipeline templates with small variations and new classifiers (KNeighborsClassifier), indicating iterative refinement.
+
+---
+
+### 5. Termination Phase
+
+- AutoML search terminated due to explicit timeout signal: "Reached search timeout" and "Receiving signal 15, terminating process."  
+- Search process ceased upon time limit exhaustion as per log, not due to convergence or early stopping.  
+- One final pipeline was found before termination, presumably the best pipeline identified by search.
+
+---
+
+# Summary
+
+The AutoML process for this dataset started by profiling the fully numeric, missing-value-free dataset of 8 columns. The pipeline search focused on integrating imputation (as a default step), encoding (even without categorical features), multiple feature scalers, and various semi-supervised classifiers. Search iteration 1 included five simulations with a mix of pipeline constructions. Simulation 1 succeeded with a top score by extensively testing label propagation classifiers with robust and standard scaling. Other simulations experienced failures or lower scores despite similar structures, indicating that implementation or training nuances influenced outcomes. The search ended explicitly due to timeout, not completion of all trials, returning the best pipeline discovered at the time.

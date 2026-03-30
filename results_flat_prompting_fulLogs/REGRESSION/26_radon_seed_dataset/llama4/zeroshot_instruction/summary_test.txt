@@ -1,0 +1,26 @@
+ ## Step 1: Initialization of the AutoML Process
+The AutoML process begins with the initialization of the search for an optimal pipeline. This involves setting up the environment, defining the search space, and determining the evaluation metrics.
+
+## Step 2: Exploration of the Search Space
+The system explores the search space by iteratively generating and evaluating different pipelines. Each pipeline consists of a series of steps, including data preprocessing, feature engineering, and model selection.
+
+## Step 3: Generation of Pipelines
+The AutoML system generates pipelines by combining different components, such as imputers, encoders, feature scalers, and regressors. For example, one pipeline might include an imputing step, followed by encoding, feature scaling, and finally, a regression model.
+
+## Step 4: Evaluation of Pipelines
+Each generated pipeline is evaluated based on a scoring function, which assesses its performance on a given task. The scoring function used here appears to be a form of cross-validation that evaluates how well each pipeline performs on unseen data.
+
+## Step 5: Selection of Pipelines
+The system selects pipelines based on their performance scores. Pipelines with better scores are more likely to be selected for further evaluation or as candidates for the final model.
+
+## Step 6: Iterative Refinement
+The AutoML process iteratively refines the search by adjusting parameters, exploring different combinations of components, and evaluating their impact on performance. This process continues until a stopping criterion is met, such as a maximum time limit or a satisfactory performance level.
+
+## Step 7: Termination and Output
+The process terminates when a predefined condition is met, such as a maximum search time or a satisfactory performance level. The best pipeline found during the search is then output, along with its performance score.
+
+## Step 8: Logging and Reporting
+Throughout the process, the system logs key events, such as pipeline generation, evaluation, and selection. This logging provides insights into the search process and helps in understanding how the final pipeline was derived.
+
+## Conclusion
+The AutoML process involves an iterative and systematic approach to finding an optimal pipeline for a given task. By exploring a vast search space, evaluating numerous pipelines, and refining the search based on performance scores, the system aims to identify a pipeline that achieves a satisfactory level of performance within the given constraints.

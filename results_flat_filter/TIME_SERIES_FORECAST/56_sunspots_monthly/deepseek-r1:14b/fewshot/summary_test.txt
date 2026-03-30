@@ -1,0 +1,64 @@
+ ### AutoML Process Summarization
+
+---
+
+#### **Data Profiling Phase**
+
+- **Columns**: 3
+  - Column 0: `year-month` (Type: Text/DateTime)
+  - Column 1: `sunspots` (Type: Float)
+  - Column 2: `d3mIndex` (Type: Integer)
+
+- **Non-Numeric Features**: Contains 'DATETIME_ENCODER'.
+- **Missing Values**: False.
+- **Useless Columns**: None.
+
+---
+
+#### **Pipeline Search and Synthesis Phase**
+
+##### **Iteration 1**
+
+###### **Simulation Overview**
+Multiple simulations were conducted to explore various pipeline configurations for time series forecasting. Each simulation evaluated different models and components.
+
+---
+
+### Simulation Details
+
+1. **Simulation 1**:
+   - **Pipelines Evaluated**:
+     - `IMPUTER|TIME_SERIES_FORECAST`
+     - `IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator`
+
+2. **Simulation 2**:
+   - **Pipelines Evaluated**:
+     - `IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR`
+     - `IMPUTER|TIME_SERIES_FORECAST`
+     - `IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.DeeparEstimator`
+
+3. **Simulation 3**:
+   - **Pipelines Evaluated**:
+     - `IMPUTER|TIME_SERIES_FORECAST`
+     - `IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.ArimaEstimator`
+
+4. **Simulation 4**:
+   - **Pipelines Evaluated**:
+     - `IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR`
+     - `IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR`
+     - `IMPUTER|TIME_SERIES_FORECAST`
+     - `IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NBEATSEstimator`
+
+5. **Simulation 5**:
+   - **Pipelines Evaluated**:
+     - `IMPUTER|TIME_SERIES_FORECAST`
+     - `TIME_SERIES_FORECAST`
+     - `IMPUTER|TIME_SERIES_FORECAST`
+     - `IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator`
+     - `alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator`
+
+---
+
+### Summary of Findings
+- The AutoML process explored various time series forecasting models, including NHITS, DeepAR, Arima, and NBEATs.
+- Multiple pipeline configurations were evaluated to identify the most effective model for the given dataset.

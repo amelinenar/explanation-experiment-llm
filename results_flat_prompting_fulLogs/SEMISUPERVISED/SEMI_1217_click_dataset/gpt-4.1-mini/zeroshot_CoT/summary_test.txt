@@ -1,0 +1,60 @@
+ Let’s think step by step.
+
+### Step 1: Data Loading and Profiling
+- Logging initialized and dataset with 12 columns (d3mIndex, impression, url_hash, ad_id, advertiser_id, depth, position, query_id, keyword_id, title_id, description_id, user_id) was profiled.
+- Column types identified, mostly Integer and some Float.
+- No missing values detected, no useless columns found, and all features are numeric.
+
+### Step 2: Data Sampling
+- The dataset size was downsampled from 119,685 rows to 2,000 samples for exploration during pipeline search.
+
+### Step 3: Pipeline Search Initialization
+- Manual grammar created for the AutoML search with 30 productions.
+- Grammar includes choices for imputers, encoders, feature scalers (MaxAbsScaler, RobustScaler, StandardScaler, or none), classifiers (various sklearn classifiers plus xgboost and lightgbm), semi-supervised classifiers (AutonBox, SelfTrainingClassifier), and label propagation classifiers (SkLabelPropagation, SkLabelSpreading).
+- Task set as SEMISUPERVISED_TASK.
+
+### Step 4: Pipeline Search via Monte Carlo Tree Search (MCTS)
+- Multiple MCTS simulations run to explore pipeline configurations, starting from initial state:
+  - Pipelines with structure like IMPUTER -> ENCODERS -> FEATURE_SCALER -> SEMISUPERVISED_CLASSIFIER -> CLASSIFIER
+  - Alternative with LABELPROPAGATION_CLASSIFIER instead of CLASSIFIER.
+- Exploration included actions:
+  - Removing optional components, e.g., ENCODERS -> E (empty), IMPUTER -> E.
+  - Trying different FEATURE_SCALER options and eventually removing them.
+  - Selecting specific classifiers and label propagation variants (SkLabelPropagation, SkLabelSpreading).
+  
+### Step 5: Pipeline Construction
+- Pipelines progressively simplified during search:
+  - Initial complex pipelines including IMPUTER, ENCODERS, FEATURE_SCALER, LABELPROPAGATION_CLASSIFIER.
+  - Actions reducing complexity to just LABELPROPAGATION_CLASSIFIER alone.
+- Example pipeline created:
+  - `Pipeline(steps=[('alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading', SkLabelSpreading())])`
+- Later pipelines included scalers with label propagation classifiers, e.g.:
+  - `Pipeline(steps=[('sklearn.preprocessing.RobustScaler', RobustScaler()), ('alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelPropagation', SkLabelSpreading())])`
+  - `Pipeline(steps=[('sklearn.preprocessing.StandardScaler', StandardScaler()), ('alpha_automl.builtin_primitives.semisupervised_classifier.SkLabelSpreading', SkLabelSpreading())])`
+
+### Step 6: Pipeline Scoring and Errors
+- First error encountered:
+  - AttributeError: DataFrame has no attribute 'toarray' in `semisupervised_classifier.py` during a transformation step.
+- Despite error, search continued exploring alternative pipeline configurations.
+- Second major error encountered:
+  - MemoryError during scoring with RBF kernel at affinity matrix computation in label propagation.
+  - This was caused by large matrix computation on data with shape (95,748, 95,748) requiring 68.3 GiB memory.
+- Due to memory exhaustion, scoring of some pipelines failed.
+
+### Step 7: Search Termination and Results
+- Search reached timeout shortly after memory error.
+- Final logs report:
+  - Found 0 pipelines after termination.
+  - No usable pipelines found or returned.
+  
+### Summary of Pipeline Search Process
+- AutoML system started with a rich grammar allowing multiple preprocessing and classification components.
+- Pipeline search explored various combinations, including dropping optional components (imputer, encoder, scaler).
+- Label propagation-based semi-supervised classifiers were frequently selected and evaluated.
+- Pipeline complexity decreased progressively to simpler forms.
+- Transformations requiring sparse matrix `toarray()` caused attribute errors with pandas DataFrame input.
+- Later, pipeline scoring failed due to extreme memory use when computing affinity graph kernel for large data.
+- These failures prevented successful pipeline completions.
+- The search terminated with no valid pipeline found within the allotted time and computing resources.
+
+**Conclusion:** The pipeline search went through progressive exploration and pruning of pipeline components, with a focus on semi-supervised classifiers, but ultimately failed due to data transformation incompatibilities and memory-intensive scoring computations on large datasets. No pipeline was successfully validated or returned.

@@ -1,0 +1,19 @@
+ The pipeline search process in the AutoML system involves evaluating multiple machine learning pipelines composed of various components such as imputers, encoders, feature scalers, and classifiers. Here's a structured explanation:
+
+1. **Processes Involved**: The system uses multiple processes (MainProcess and Process-1) to handle different tasks, likely allowing parallel evaluation of pipelines to speed up the process.
+
+2. **Pipeline Evaluation**: Each pipeline is scored based on performance, with the score indicating effectiveness. In this case, a lower score might indicate better performance, though the exact metric isn't specified.
+
+3. **Pipeline Components**: Pipelines consist of:
+   - **Imputer**: Handles missing data.
+   - **Encoder**: Converts categorical variables into numerical form.
+   - **Feature Scaler**: Normalizes feature values to improve model performance.
+   - **Classifier**: Predicts outcomes based on processed features.
+
+4. **Search Process**: The system evaluates different combinations of these components, moving through actions like selecting an encoder or imputer ("MOVE ACTION: ENCODERS -> E"). This iterative process aims to find the optimal pipeline configuration.
+
+5. **Timeout and Results**: Despite reaching a search timeout after just over a minute, the system successfully evaluated 30 pipelines, demonstrating efficient exploration within limited time constraints.
+
+6. **Outcome**: The best-performing pipeline found had a score of approximately 0.2083, indicating satisfactory performance given the evaluation criteria.
+
+In summary, the AutoML system efficiently explores various machine learning pipelines by evaluating different component combinations in parallel, stopping after finding 30 pipelines and scoring the best one within a minute.

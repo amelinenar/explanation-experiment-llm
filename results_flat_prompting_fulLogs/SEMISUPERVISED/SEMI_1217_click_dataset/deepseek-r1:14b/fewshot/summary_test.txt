@@ -1,0 +1,19 @@
+ The error occurs because the Label Propagation algorithm in scikit-learn is attempting to compute an extremely large affinity matrix using the RBF kernel on a dataset with 95748 samples. This computation requires creating a (95748, 95748) matrix, which exceeds available memory.
+
+**Key Points:**
+
+1. **Memory Requirement:** The RBF kernel computes pairwise distances between all data points, resulting in an n x n matrix where n = 95748. This requires ~68 GB of memory for a single-precision float array.
+
+2. **Causes:**
+   - Large dataset size (95k samples).
+   - Use of RBF kernel which scales quadratically with the number of samples.
+   - Limited system memory unable to handle such large computations.
+
+3. **Solutions:**
+   - **Reduce Dataset Size:** Use a subset of the data for training or apply dimensionality reduction techniques like PCA or t-SNE before applying Label Propagation.
+   - **Alternative Algorithms:** Consider using more scalable algorithms that are less memory-intensive, such as some instance-based methods or approximate nearest neighbors approaches.
+   - **Optimize Parameters:** Adjust parameters like `gamma` in the RBF kernel to smaller values if possible, though this might affect performance.
+   - **Increase System Resources:** Upgrade system RAM if feasible, though this is a temporary fix.
+
+**Recommendation:**
+Given the constraints, it's advisable to switch to algorithms with better scalability for large datasets or implement dimensionality reduction techniques before applying complex kernels like RBF.

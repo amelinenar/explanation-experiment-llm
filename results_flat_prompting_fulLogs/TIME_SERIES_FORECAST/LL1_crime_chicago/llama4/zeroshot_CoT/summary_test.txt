@@ -1,0 +1,34 @@
+ ## Step 1: Understanding the Pipeline Search Process
+The pipeline search process involves exploring different combinations of machine learning models and techniques to find the best approach for a given problem. In this case, the problem seems to be related to time series forecasting.
+
+## Step 2: Identifying the Starting Point
+The process starts with an initial state where the system has a set of predefined models or techniques to consider. This includes a variety of time series forecasting models such as ARIMA, Exponential Smoothing, etc., and more specifically, models like NHITSEstimator, DeeparEstimator, etc.
+
+## 3: Exploring the Decision Tree
+The decision tree begins with a choice between different models or techniques. The logs indicate that the system starts with a basic set of models and iteratively refines its choices based on some form of evaluation or scoring.
+
+## 4: Analyzing the Logs for Specific Decisions
+- The logs show that the system starts by considering a basic set of models, including NHITSEstimator and DeeparEstimator.
+- It then iteratively refines its choices, considering factors such as performance metrics or computational efficiency.
+- Specific decisions include choosing between NHITSEstimator, DeeparEstimator, and ArimaEstimator.
+
+## 5: Understanding the Evaluation Metrics
+The system uses evaluation metrics to assess the performance of each model or technique. These metrics could include accuracy, precision, recall, F1 score, mean squared error, etc., depending on the nature of the problem.
+
+## 6: Observing the Final Choice
+The final choice seems to be NHITSEstimator, which suggests that this model performed well according to the evaluation metrics used.
+
+## 7: Conclusion on the Pipeline Search Process
+The pipeline search process involves systematically exploring different models and techniques, evaluating their performance, and selecting the best approach based on predefined criteria. In this case, NHITSEstimator emerged as a strong candidate for the given problem.
+
+## 8: Detailed Analysis of Logs
+- **Initial State**: The system begins with a set of predefined models.
+- **Decision Points**: The system iteratively refines its choices based on performance metrics.
+- **Final State**: NHITSEstimator is selected as the best model.
+
+## 9: Insights into Model Selection
+- The selection of NHITSEstimator suggests it outperformed other models like DeeparEstimator and ArimaEstimator.
+- The process indicates a thorough evaluation based on metrics not explicitly mentioned but implied through the selection process.
+
+## 10: Conclusion
+The pipeline search process demonstrates a systematic approach to model selection, emphasizing performance evaluation and iterative refinement. NHITSEstimator's selection indicates its suitability for the given forecasting problem.

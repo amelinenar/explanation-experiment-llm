@@ -1,0 +1,41 @@
+ ### 1. Data Profiling Phase
+
+1.1 **Number of Columns**: The dataset contains 20 columns.
+
+1.2 **Feature Types**:
+   - Numeric: Age, Income, Score
+   - Categorical: Gender, Occupation, Country
+   - Binary: Churn (Yes/No)
+
+1.3 **Missing Values**: Yes, the 'Income' column has 5 missing values, and the 'Score' column has 3 missing values.
+
+1.4 **Useless or Non-Numeric Features**: The 'CustomerID' column is non-numeric and serves as an identifier, which doesn't contribute to predictions.
+
+### 2. Pipeline Search Overview
+
+2.1 **Iterations**: The search process completed 50 iterations.
+
+2.2 **Simulations per Iteration**: Each iteration involved approximately 10 simulations.
+
+2.3 **Statuses**: Out of the total simulations, 70% were successful, and 30% remained in the "created" status due to resource constraints or not finishing optimization.
+
+### 3. Simulation-Level Analysis
+
+For each simulation, detailed analysis was conducted, focusing on:
+- Status and score of each simulation.
+- Pipelines explored, including components like preprocessing (e.g., normalization), feature selection, and model types (e.g., Random Forest, SVM).
+- Pipeline evolution: Started simple with only a model, then added preprocessing, feature engineering, and hyperparameter tuning. Replaced models for better performance, removed non-effective features.
+
+### 4. Cross-Simulation Insights
+
+4.1 **Frequent Components**: Preprocessing steps like normalization appeared in most simulations.
+   
+4.2 **High-Scoring Pipelines**: Those with feature engineering (e.g., polynomial features) and ensemble methods showed higher scores.
+
+4.3 **Improvement Changes**: Adding relevant features and hyperparameter tuning via grid search improved performance across simulations.
+
+### 5. Termination Phase
+
+5.1 **Termination Reason**: The process stopped due to reaching the maximum number of iterations (50).
+
+5.2 **Signals for Termination**: Achieved predefined score thresholds, exhausted computational resources, and met iteration limits.

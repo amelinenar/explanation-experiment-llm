@@ -1,0 +1,144 @@
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+REGRESSION,advertising_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Accuracy,3,Good
+REGRESSION,advertising_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Clarity,3,Good
+REGRESSION,advertising_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Completeness,2,Average
+REGRESSION,advertising_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Relevance,2,Average
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+REGRESSION,advertising_dataset,llama4,Hierachical prompt,deepseek-r1:14b,judge_zeroshot,Accuracy,2,Fair
+REGRESSION,advertising_dataset,llama4,Hierachical prompt,deepseek-r1:14b,judge_zeroshot,Clarity,3,Good
+REGRESSION,advertising_dataset,llama4,Hierachical prompt,deepseek-r1:14b,judge_zeroshot,Completeness,2,Fair
+REGRESSION,advertising_dataset,llama4,Hierachical prompt,deepseek-r1:14b,judge_zeroshot,Relevance,2,Fair
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+REGRESSION,advertising_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Accuracy,4,Excellent
+REGRESSION,advertising_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Clarity,4,Excellent
+REGRESSION,advertising_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Completeness,2,Average
+REGRESSION,advertising_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Relevance,3,Good
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+REGRESSION,534_cps_85_wages,llama4,Hierachical prompt,llama4,judge_zeroshot,Accuracy,4,Excellent
+REGRESSION,534_cps_85_wages,llama4,Hierachical prompt,llama4,judge_zeroshot,Clarity,4,Excellent
+REGRESSION,534_cps_85_wages,llama4,Hierachical prompt,llama4,judge_zeroshot,Completeness,3,Good
+REGRESSION,534_cps_85_wages,llama4,Hierachical prompt,llama4,judge_zeroshot,Relevance,4,Excellent
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+REGRESSION,534_cps_85_wages,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Accuracy,3,Good
+REGRESSION,534_cps_85_wages,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Clarity,3,Good
+REGRESSION,534_cps_85_wages,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Completeness,2,Average
+REGRESSION,534_cps_85_wages,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Relevance,3,Good
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+REGRESSION,196_autoMpg,llama4,Hierachical prompt,llama4,judge_zeroshot,Accuracy,3,Good
+REGRESSION,196_autoMpg,llama4,Hierachical prompt,llama4,judge_zeroshot,Clarity,3,Good
+REGRESSION,196_autoMpg,llama4,Hierachical prompt,llama4,judge_zeroshot,Completeness,2,Average
+REGRESSION,196_autoMpg,llama4,Hierachical prompt,llama4,judge_zeroshot,Relevance,3,Good
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+REGRESSION,196_autoMpg,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Accuracy,4,Excellent
+REGRESSION,196_autoMpg,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Clarity,4,Excellent
+REGRESSION,196_autoMpg,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Completeness,3,Good
+REGRESSION,196_autoMpg,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Relevance,4,Excellent
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+REGRESSION,26_radon_seed_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Accuracy,3,Good
+REGRESSION,26_radon_seed_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Clarity,4,Excellent
+REGRESSION,26_radon_seed_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Completeness,3,Good
+REGRESSION,26_radon_seed_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Relevance,4,Excellent
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+CLASSIFICATION,299_libras_move,llama4,Hierachical prompt,llama4,judge_zeroshot,Accuracy,2,Average
+CLASSIFICATION,299_libras_move,llama4,Hierachical prompt,llama4,judge_zeroshot,Clarity,3,Good
+CLASSIFICATION,299_libras_move,llama4,Hierachical prompt,llama4,judge_zeroshot,Completeness,2,Average
+CLASSIFICATION,299_libras_move,llama4,Hierachical prompt,llama4,judge_zeroshot,Relevance,2,Average
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+CLASSIFICATION,185_baseball_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Accuracy,2,Average
+CLASSIFICATION,185_baseball_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Clarity,3,Good
+CLASSIFICATION,185_baseball_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Completeness,2,Average
+CLASSIFICATION,185_baseball_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Relevance,2,Average
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+CLASSIFICATION,185_baseball_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Accuracy,4,Excellent
+CLASSIFICATION,185_baseball_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Clarity,4,Excellent
+CLASSIFICATION,185_baseball_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Completeness,2,Average
+CLASSIFICATION,185_baseball_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Relevance,4,Excellent
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+CLASSIFICATION,1491_one_hundred_plants,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Accuracy,4,Excellent
+CLASSIFICATION,1491_one_hundred_plants,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Clarity,4,Excellent
+CLASSIFICATION,1491_one_hundred_plants,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Completeness,3,Good
+CLASSIFICATION,1491_one_hundred_plants,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Relevance,4,Excellent
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+SEMISUPERVISED,LL0_1053_jm1,llama4,Hierachical prompt,llama4,judge_zeroshot,Accuracy,3,Average
+SEMISUPERVISED,LL0_1053_jm1,llama4,Hierachical prompt,llama4,judge_zeroshot,Clarity,3,Good
+SEMISUPERVISED,LL0_1053_jm1,llama4,Hierachical prompt,llama4,judge_zeroshot,Completeness,2,Average
+SEMISUPERVISED,LL0_1053_jm1,llama4,Hierachical prompt,llama4,judge_zeroshot,Relevance,2,Average
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+SEMISUPERVISED,SEMI_155_pokerhand_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Accuracy,4,Excellent
+SEMISUPERVISED,SEMI_155_pokerhand_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Clarity,4,Excellent
+SEMISUPERVISED,SEMI_155_pokerhand_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Completeness,3,Good
+SEMISUPERVISED,SEMI_155_pokerhand_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Relevance,4,Excellent
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+SEMISUPERVISED,SEMI_155_pokerhand_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Accuracy,4,Excellent
+SEMISUPERVISED,SEMI_155_pokerhand_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Clarity,4,Excellent
+SEMISUPERVISED,SEMI_155_pokerhand_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Completeness,3,Good
+SEMISUPERVISED,SEMI_155_pokerhand_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Relevance,4,Excellent
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+SEMISUPERVISED,SEMI_1217_click_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Accuracy,2,Average
+SEMISUPERVISED,SEMI_1217_click_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Clarity,3,Good
+SEMISUPERVISED,SEMI_1217_click_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Completeness,2,Average
+SEMISUPERVISED,SEMI_1217_click_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Relevance,2,Average
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+SEMISUPERVISED,SEMI_1217_click_dataset,llama4,Hierachical prompt,deepseek-r1:14b,judge_zeroshot,Accuracy,3,Good
+SEMISUPERVISED,SEMI_1217_click_dataset,llama4,Hierachical prompt,deepseek-r1:14b,judge_zeroshot,Clarity,4,Excellent
+SEMISUPERVISED,SEMI_1217_click_dataset,llama4,Hierachical prompt,deepseek-r1:14b,judge_zeroshot,Completeness,3,Good
+SEMISUPERVISED,SEMI_1217_click_dataset,llama4,Hierachical prompt,deepseek-r1:14b,judge_zeroshot,Relevance,3,Good
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+SEMISUPERVISED,SEMI_1217_click_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Accuracy,3,Good
+SEMISUPERVISED,SEMI_1217_click_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Clarity,3,Good
+SEMISUPERVISED,SEMI_1217_click_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Completeness,2,Average
+SEMISUPERVISED,SEMI_1217_click_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Relevance,3,Good
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+SEMISUPERVISED,SEMI_1459_artificial_characters_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Accuracy,3,Good
+SEMISUPERVISED,SEMI_1459_artificial_characters_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Clarity,3,Good
+SEMISUPERVISED,SEMI_1459_artificial_characters_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Completeness,2,Average
+SEMISUPERVISED,SEMI_1459_artificial_characters_dataset,llama4,Hierachical prompt,llama4,judge_zeroshot,Relevance,3,Good
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+SEMISUPERVISED,SEMI_1459_artificial_characters_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Accuracy,4,Excellent
+SEMISUPERVISED,SEMI_1459_artificial_characters_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Clarity,4,Excellent
+SEMISUPERVISED,SEMI_1459_artificial_characters_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Completeness,3,Good
+SEMISUPERVISED,SEMI_1459_artificial_characters_dataset,deepseek-r1:14b,Hierachical prompt,llama4,judge_zeroshot,Relevance,4,Excellent
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label
+task,dataset,llm_summarizer,summarization_prompt,judging_llm,judging_prompt,metric,score,label

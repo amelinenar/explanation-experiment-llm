@@ -1,0 +1,54 @@
+ === PHASE: Data Profiling ===
+
+- Columns: 11
+- Column names: Not provided
+- Data types: Not provided
+- Missing values: Not provided
+- Dataset size: Not provided
+- Sampling decisions: Not provided
+
+=== PHASE: Pipeline Search ===
+
+- Pipeline structure definitions: 
+  - IMPUTER
+  - FEATURE SCALER
+  - LABEL PROPAGATION CLASSIFIER
+  - SEMI SUPERVISED LEARNING
+- Component registries: 
+  - sklearn.preprocessing.RobustScaler
+  - sklearn.preprocessing.StandardScaler
+- Grammar rules: Not provided
+- Iterations: 5
+- Simulations: 5
+- Trials: Not provided
+- MOVE ACTION: Not provided
+- Rollouts: Not provided
+- Predictions: Not provided
+- Search step: Not provided
+- Exploration events: Not provided
+- Reward values: Not provided
+- Score updates: Not provided
+- Action probabilities: Not provided
+- Policy outputs: Not provided
+- Value estimates: Not provided
+- Selection confidence: Not provided
+- Tree expansion: Not provided
+- Node visits: Not provided
+
+=== PHASE: Termination ===
+
+- Timeouts: 
+  - Search timeout
+  - Signal 15
+- Stopping conditions: 
+  - Search timeout
+- Final pipeline count: 0
+- Total search time: Not provided
+- Best model selection: Not provided
+
+=== PHASE: Scoring ===
+
+- Scores: 
+  - Not provided
+- Validation results: 
+  - Not provided

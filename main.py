@@ -86,17 +86,19 @@ def iterate_loop():
     jobs = []
     for task in TASK:
         for dataset_name, sum_llm, sum_prompt in product(dataset_names_for_task[task], LLMs, SUMMARIZATION_PROMPT):
-            output_directory = root_dir + '/results_detailed_version/' + task + '/' + dataset_name + '/' + sum_llm + '/' + sum_prompt + '/'
+            # output_directory = root_dir + '/results_Hierarchical_Prompting/' + task + '/' + dataset_name + '/' + sum_llm + '/' + sum_prompt + '/'
+            output_directory = root_dir + '/results_Hierarchical_Prompting/' + task + '/' + dataset_name + '/' + sum_llm + '/'
             create_directory(output_directory)
             summary_dir =  os.path.join(output_directory , 'summary_test.txt')
-            if(task == "CLASSIFICATION") | (task == "REGRESSION"):
-                logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'filter_logs.txt')
-            else:
-                logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
+            # if(task == "CLASSIFICATION") | (task == "REGRESSION"):
+            #     logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'filter_logs.txt')
+            # else:
+            #     logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
                 
             # logs_path = "/home/nguenang/Master_thesis/experiment_setup/results/AUTOSKLN_LOGS/CLASSIFICATION/logs_cls.txt"
             # logs_path = "/home/nguenang/Master_thesis/experiment_setup/log_analysis_out.txt"
 
+            logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'filter_logs.txt')
             jobs.append((logs_path, summary_dir, sum_prompt, output_directory,sum_llm,task,dataset_name))
 
     return jobs
@@ -219,14 +221,14 @@ if __name__ == "__main__":
                 
                 ### Filter the logs
                 
-                if(task_name =="CLASSIFICATION") | (task_name =="REGRESSION"):
-                    print("------------FILTERING THE LOGS-----------------")               
+                # if(task_name =="CLASSIFICATION") | (task_name =="REGRESSION"):
+                print("------------FILTERING THE LOGS-----------------")               
 
-                    fil_tmp = os.path.join(output_directory, 'fil_tmp.txt')
-                    filter_path = os.path.join(output_directory, 'filter_logs.txt')
-                    filtering_logs(logs_path, fil_tmp)
-                    
-                    remove_consecutive_duplicates(fil_tmp, filter_path)
+                fil_tmp = os.path.join(output_directory, 'fil_tmp.txt')
+                filter_path = os.path.join(output_directory, 'filter_logs.txt')
+                filtering_logs(logs_path, fil_tmp)
+                
+                remove_consecutive_duplicates(fil_tmp, filter_path)
                     # print("FILTER LOGs:", filter_logs)
                     
                     # filter_path = os.path.join(output_directory, 'filter_logs.txt')
@@ -297,20 +299,20 @@ if __name__ == "__main__":
         #with ThreadPoolExecutor(max_workers=2) as executor:
         for task in TASK:
             for dataset_name, sum_llm in product(dataset_names_for_task[task], LLMs):
-                output_directory = root_dir + '/results_Hierarchical/' + task + '/' + dataset_name + '/' + sum_llm + '/'
+                output_directory = root_dir + '/results_Hierarchical_Prompting/' + task + '/' + dataset_name + '/' + sum_llm + '/'
                 create_directory(output_directory)
                 summary_dir =  os.path.join(output_directory , 'fact.txt')
-                if(task == "CLASSIFICATION") | (task == "REGRESSION"):
-                    logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'filter_logs.txt')
-                else:
-                    logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
+                # if(task == "CLASSIFICATION") | (task == "REGRESSION"):
+                #     logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'filter_logs.txt')
+                # else:
+                #     logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
                 
                 # logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
-                
+                logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'filter_logs.txt')
                 print( " ")
                 print(f"LOGS: {logs_path}")
                 
-                # fact_extraction(logs_path, sum_llm, summary_dir)
+                fact_extraction(logs_path, sum_llm, summary_dir)
                 
                 
                 
@@ -346,11 +348,11 @@ if __name__ == "__main__":
                 
                 
                 
-                # # macro summary generation
+                # # # macro summary generation
                  
                 global_summary_dir = os.path.join(output_directory, 'global_summary_T.txt') 
                 macro_summarization(summary_dir, sum_llm, global_summary_dir, logs_path )  
-        #    
+            
                 ### VERIFICATION STEP
                 verification_dir = os.path.join(output_directory, 'verification.json') 
                 verification(global_summary_dir, logs_path, sum_llm, verification_dir)
@@ -370,14 +372,15 @@ if __name__ == "__main__":
         
         for task in TASK:
             for dataset_name, sum_llm in product(dataset_names_for_task[task], LLMs):
-                output_directory = root_dir + '/results_H_new/' + task + '/' + dataset_name + '/' + sum_llm + '/'
+                output_directory = root_dir + '/results_Hierarchical_Prompting/' + task + '/' + dataset_name + '/' + sum_llm + '/'
                 create_directory(output_directory)
                 summary_dir =  os.path.join(output_directory , 'global_summary_revised.txt')
-                if(task == "CLASSIFICATION") | (task == "REGRESSION"):
-                    logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'filter_logs.txt')
-                else:
-                    logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
+                # if(task == "CLASSIFICATION") | (task == "REGRESSION"):
+                #     logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'filter_logs.txt')
+                # else:
+                #     logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
     
+                logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'filter_logs.txt')
                 print( " ")
                 print(f"LOGS: {logs_path}")
 
@@ -502,7 +505,7 @@ if __name__ == "__main__":
                 # if len(doc) != 0:
                 #     print(len(doc))
                 #     print(f"list is: {doc}")
-                result_dir = os.path.join(root_dir, f"results_F_H.csv")
+                result_dir = os.path.join(root_dir, f"results_Hierarchical_prompting.csv")
                 write_csv(task,dataset_name, sum_llm, sum_prompt, llm_judge, judge_prompt, row , result_dir)     
         
             

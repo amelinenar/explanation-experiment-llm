@@ -1,0 +1,30 @@
+ ## Step 1: Initialization of the AutoML Process
+The AutoML process begins with the initialization of the search for optimal pipelines. This involves setting up the environment, defining the search space, and determining the criteria for evaluation.
+
+## Step 2: Definition of the Search Space
+The search space is defined by the possible combinations of preprocessing steps and machine learning algorithms. In this case, the focus is on feature scaling and classification algorithms.
+
+## Step 3: Execution of the Search Process
+The search process involves iteratively exploring different combinations of preprocessing steps and machine learning algorithms. This includes:
+- Applying feature scaling (e.g., MaxAbsScaler).
+- Selecting classification algorithms (e.g., GradientBoostingClassifier, KNeighborsClassifier).
+
+## Step 4: Evaluation of Pipelines
+Each pipeline is evaluated based on its performance using a specific metric (e.g., accuracy). The evaluation process involves:
+- Training the model.
+- Predicting outcomes.
+- Calculating performance metrics.
+
+## Step 5: Selection of Optimal Pipelines
+The optimal pipelines are selected based on their performance metrics. In this case, the top-performing pipelines include:
+- MaxAbsScaler + GradientBoostingClassifier
+- MaxAbsScaler + KNeighborsClassifier
+
+## Step 6: Termination of the Search Process
+The search process terminates when a predefined condition is met, such as a timeout or a specified number of iterations. In this case, the search process terminates after 1 minute and 7 seconds.
+
+## Step 7: Reporting of Results
+The results of the search process are reported, including the top-performing pipelines and their corresponding performance metrics. The top 10 pipelines are identified, and their performance metrics are reported.
+
+## Conclusion
+The AutoML process involves the systematic exploration of different pipelines, evaluation of their performance, and selection of the optimal pipeline. The logs provide a detailed record of the search process, including the explored pipelines, their performance metrics, and the termination of the search process.

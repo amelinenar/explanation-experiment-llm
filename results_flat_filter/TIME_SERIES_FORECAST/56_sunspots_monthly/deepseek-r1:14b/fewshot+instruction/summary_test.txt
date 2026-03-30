@@ -1,0 +1,38 @@
+ ### Data Profiling Phase
+- Columns: 3
+- Column Details:
+  - Column 0: 'year-month' → Text/DateTime
+  - Column 1: 'sunspots' → Float
+  - Column 2: 'd3mIndex' → Integer
+- Non-Numeric Features: ['DATETIME_ENCODER']
+- Useless Columns: None
+- Missing Values: False
+
+### Pipeline Search and Synthesis Phase
+
+#### Iteration 1
+Multiple simulations were conducted, each exploring various pipeline configurations. The process focused on time series forecasting tasks, utilizing different combinations of primitives and estimators.
+
+**Simulation 1**
+- Pipelines:
+  - S
+  - IMPUTER → TIME_SERIES_FORECAST (using NHITS estimator)
+
+**Simulation 2**
+- Pipelines:
+  - IMPUTER → ENCODERS → FEATURE_SCALER → FEATURE_SELECTOR → REGRESSOR
+  - IMPUTER → TIME_SERIES_FORECAST (using DeepAR estimator)
+
+**Simulation 3**
+- Pipelines:
+  - IMPUTER → TIME_SERIES_FORECAST (using ARIMA estimator)
+
+**Simulation 4**
+- Pipelines:
+  - IMPUTER → TIME_SERIES_FORECAST (using NBEATS estimator)
+  - Additional configurations with DATETIME_ENCODER and other preprocessing steps
+
+**Simulation 5**
+- Explored multiple time series forecasting configurations, including various NHITS estimator setups.
+
+The process involved evaluating different pipeline structures to identify effective forecasting methods. The use of various estimators like NHITS, DeepAR, ARIMA, and NBEATS indicates a comprehensive exploration of time series forecasting techniques.

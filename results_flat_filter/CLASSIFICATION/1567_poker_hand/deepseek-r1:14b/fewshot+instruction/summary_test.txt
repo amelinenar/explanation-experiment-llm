@@ -1,0 +1,101 @@
+ ### Data Profiling Phase
+- **Columns**: 11
+- **Features**:
+  - Column 0: `d3mIndex` (Integer)
+  - Columns 1-10: `V1` to `V10` (Integers)
+- **Non-numeric features**: None
+- **Useless columns**: None
+- **Missing values**: False
+
+### Pipeline Search and Synthesis Phase
+
+#### Iteration 1
+
+##### Simulation Overview:
+- **Simulation 1**:
+  - Status: Success
+  - Score: 0.5001512180368972
+  - Pipelines:
+    ```
+    S
+    IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    sklearn.preprocessing.MaxAbsScaler|FEATURE_SELECTOR|CLASSIFIER
+    sklearn.preprocessing.MaxAbscaler|sklearn.feature_selection.GenericUnivariateSelect|CLASSIFIER
+    IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    sklearn.preprocessing.MaxAbscaler|FEATURE_SELECTOR|CLASSIFIER
+    sklearn.preprocessing.MaxAbscaler|sklearn.feature_selection.GenericUnivariateSelect|CLASSIFIER
+    sklearn.preprocessing.MaxAbscaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.ensemble.GradientBoostingClassifier
+    ```
+
+- **Simulation 2**:
+  - Status: Created
+  - Score: 0.47904191616766467
+  - Pipelines:
+    ```
+    S
+    IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    sklearn.preprocessing.MaxAbscaler|FEATURE_SELECTOR|CLASSIFIER
+    sklearn.preprocessing.MaxAbscaler|sklearn.feature_selection.GenericUnivariateSelect|CLASSIFIER
+    sklearn.preprocessing.MaxAbscaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+    ```
+
+- **Simulation 3**:
+  - Status: Created
+  - Score: 0.45708582834331335
+  - Pipelines:
+    ```
+    S
+    IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    sklearn.preprocessing.MaxAbscaler|FEATURE_SELECTOR|CLASSIFIER
+    sklearn.preprocessing.MaxAbscaler|sklearn.feature_selection.GenericUnivariateSelect|CLASSIFIER
+    sklearn.preprocessing.MaxAbscaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.ensemble.ExtraTreesClassifier
+    ```
+
+- **Simulation 4**:
+  - Status: Failed
+  - Score: 0.47904191616766467
+  - Pipelines:
+    ```
+    S
+    IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    sklearn.preprocessing.MaxAbscaler|FEATURE_SELECTOR|CLASSIFIER
+    sklearn.preprocessing.MaxAbscaler|sklearn.feature_selection.GenericUnivariateSelect|CLASSIFIER
+    sklearn.preprocessing.MaxAbscaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.naive_bayes.GaussianNB
+    ```
+
+- **Simulation 5**:
+  - Status: Failed
+  - Score: 0.4810379241516966
+  - Pipelines:
+    ```
+    S
+    IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    sklearn.preprocessing.MaxAbscaler|FEATURE_SELECTOR|CLASSIFIER
+    IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+    sklearn.preprocessing.MaxAbscaler|FEATURE_SELECTOR|CLASSIFIER
+    sklearn.preprocessing.MaxAbscaler|sklearn.feature_selection.GenericUnivariateSelect|CLASSIFIER
+    sklearn.preprocessing.MaxAbscaler|sklearn.feature_selection.GenericUnivariateSelect|sklearn.neighbors.KNeighborsClassifier
+    ```
+
+### Termination
+- **Termination Reason**: Reached search timeout
+- **Signal Received**: 15 (Terminating process)
+- **Pipelines Found**: 1

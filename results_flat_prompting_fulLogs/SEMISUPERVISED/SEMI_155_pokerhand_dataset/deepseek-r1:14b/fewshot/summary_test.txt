@@ -1,0 +1,11 @@
+ The error occurs because the label propagation algorithm is attempting to compute a large RBF kernel matrix that exceeds available memory, causing the process to terminate with no pipelines found. Here are the key points and suggested solutions:
+
+1. **Memory Limitation**: The RBF kernel computation requires excessive memory for a large dataset (530k samples), leading to a failure.
+
+2. **Solutions**:
+   - **Reduce Dataset Size**: Use a subset of the data.
+   - **Optimize Kernel Computation**: Explore methods that avoid storing the full matrix, like low-rank approximations or distributed computing.
+   - **Choose Scalable Algorithms**: Replace label propagation with more memory-efficient models.
+   - **Increase Resources**: Use a machine with more RAM or cloud resources.
+
+3. **Conclusion**: Adjusting the dataset size or algorithm choice can help resolve the memory issue and allow successful pipeline evaluation.

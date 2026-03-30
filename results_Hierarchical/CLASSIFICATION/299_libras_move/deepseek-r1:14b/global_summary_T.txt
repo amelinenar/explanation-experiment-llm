@@ -1,1 +1,0 @@
- The AutoML system processed a dataset with undefined features and size, using MaxAbsScaler and FeatureSelector for preprocessing and feature selection. During the search phase, it evaluated different models like KNeighborsClassifier through multiple iterations and simulations, achieving a score of 0.85. The best model selected had a score of 0.95.

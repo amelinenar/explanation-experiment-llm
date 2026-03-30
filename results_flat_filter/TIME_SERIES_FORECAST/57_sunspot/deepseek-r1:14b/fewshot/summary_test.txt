@@ -1,0 +1,52 @@
+ ### AutoML Process Summarization
+
+---
+
+#### **Data Profiling Phase**
+
+- **Columns detected:** 5
+  - Column 0: `year` (Type: Text [DateTime])
+  - Column 1: `sunspots` (Type: Float)
+  - Column 2: `d3mIndex` (Type: Integer [identifier])
+  - Column 3: `sd` (Type: Float)
+  - Column 4: `observations` (Type: Integer)
+
+- **Non-numeric features:** `dict_keys(['DATETIME_ENCODER'])`
+  - Indicates the presence of a datetime feature requiring encoding.
+
+- **Useless columns:** None
+  - All columns are considered useful for modeling.
+
+- **Missing values:** False
+  - The dataset contains no missing values.
+
+---
+
+#### **Pipeline Search and Synthesis Phase**
+
+##### **Iteration 1**
+
+###### **Simulation Overview:**
+The process explores various pipeline configurations to identify the optimal model. Each simulation evaluates different combinations of data processing steps and forecasting models.
+
+**Simulations in Iteration 1:**
+
+1. **Simulation 1:**
+   - **Pipelines:** `IMPUTER|TIME_SERIES_FORECAST` using `NHITSEstimator`.
+
+2. **Simulation 2:**
+   - Includes multiple components (`ENCODERS`, `FEATURE_SCALER`, `FEATURE_SELECTOR`) before a REGRESSOR.
+
+3. **Simulation 3:**
+   - Uses the `ArimaEstimator` for time series forecasting.
+
+4. **Simulation 4:**
+   - Explores combinations with `DATETIME_ENCODER` and multiple estimators (`NBEATSEstimator`, others).
+
+5. **Simulation 5:**
+   - Tests various configurations, including repeated use of `NHITSEstimator`.
+
+---
+
+### Summary
+The AutoML process begins with a thorough data profiling phase to understand the dataset's structure. It then systematically explores diverse pipeline architectures in the synthesis phase, focusing on effective time series forecasting using estimators like NHITS and NBEATS. This structured approach ensures comprehensive evaluation of potential models to achieve optimal performance.

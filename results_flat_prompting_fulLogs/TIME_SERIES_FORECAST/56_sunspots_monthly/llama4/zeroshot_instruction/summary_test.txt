@@ -1,0 +1,26 @@
+ ## Step 1: Initialization of the AutoML Process
+The AutoML process begins with the initialization of the system, where it sets up the environment for the pipeline search. This involves configuring the necessary components, such as the context for the machine learning tasks.
+
+## Step 2: Definition of the Search Space
+The system defines the search space for the pipeline, which includes various time series forecasting models. The models considered are NHITSEstimator, ArimaEstimator, and DeeparEstimator, among others. These models are part of the AutoML system's library for time series forecasting.
+
+## Step 3: Commencement of the Pipeline Search
+The AutoML system starts the pipeline search process. This involves exploring different combinations of models and their hyperparameters to find the best-performing pipeline for the given task.
+
+## 4: Exploration of Different Models
+The system explores different models, including NHITSEstimator, ArimaEstimator, and DeeparEstimator. For each model, it considers various hyperparameters and configurations to optimize performance.
+
+## 5: Evaluation of Model Performance
+The AutoML system evaluates the performance of each model configuration using metrics such as accuracy or error rates. This step is crucial in determining the best-performing pipeline.
+
+## 6: Selection of the Best Pipeline
+After evaluating the performance of different model configurations, the AutoML system selects the best-performing pipeline. This pipeline is chosen based on its performance metrics, such as error rates or accuracy.
+
+## 7: Optimization and Refining
+The system may further optimize and refine the selected pipeline by adjusting hyperparameters or exploring additional model configurations. This step aims to improve the performance of the selected pipeline.
+
+## 8: Finalization of the Pipeline
+The AutoML process finalizes the best pipeline, which is then ready for deployment. This pipeline is the result of the systematic exploration and evaluation of different model configurations.
+
+## Conclusion
+The AutoML process involves a systematic and thorough exploration of different model configurations, evaluation of their performance, and selection of the best-performing pipeline. The logs provided detail the steps involved in this process, from initialization to the final selection of the best pipeline.

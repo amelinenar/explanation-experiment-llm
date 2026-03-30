@@ -16,27 +16,36 @@ Do not speculate beyond the logs.
 
 Accuracy:
 - Assesses faithfulness of the summary to the logs only.
-- Penalize hallucinations, unsupported algorithm claims, incorrect metrics, or contradictions.
+- Penalize hallucinations, incorrect claims or explanations, incorrect metrics, or contradictions.
 - Do NOT penalize missing information here (covered under Completeness).
+- Do NOT penalize correct reasoning even if not explicitly stated in the logs.
+- Do not penalize speculative explanations.
+
+
 
 Clarity:
 - Assesses readability and coherence.
 - The summary should be logically structured and easy to follow.
 - Do not penalize correct use of technical terminology.
+- The explanations should be clear. 
 
 Completeness:
 - Assesses coverage of major AutoML stages present in the logs, such as:
-  - Data profiling or preparation
-  - Search space or grammar definition
-  - Pipeline search or optimization process
-  - Evaluation or scoring outcomes
-  - Termination conditions
+  - Data profiling or preparation.
+  - Pipeline search and pipeline synthesis.
+      - State all the iterations.
+      - State all the different simulations in an iteration.
+      - Explanation of how the pipelines were build in each simulation.
+  - Evaluation or scoring outcomes.
+  - Termination conditions.
+- PENALIZE  missing component of a step for example missing iterations or simulations.
 
 Relevance:
 - Assesses focus on log-derived AutoML information.
 - Penalize unnecessary explanations or content not present in the logs.
-- Penalize interpretations of intent or optimization goals.
 - Penalize recommendations or suggestions for improvement.
+- PENALIZE raw python code produce by the llm.
+- PENALIZE Best Practices suggestions
 
 --------------------------------------------------
 

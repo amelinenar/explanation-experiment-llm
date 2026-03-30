@@ -1,0 +1,14 @@
+ The error encountered during the execution of the pipeline arises from attempting to allocate excessive memory while computing an RBF kernel matrix for label propagation in semi-supervised learning. Here's a concise breakdown and solution:
+
+**Problem Analysis:**
+- The SkLabelSpreading estimator uses label propagation, which constructs a graph with pairwise similarities.
+- For 95k samples, the required affinity matrix is (95748 x 95748), needing ~68.3 GiB of memory, which isn't feasible.
+
+**Solution:**
+1. **Reduce Dataset Size**: Use a subset of data or apply sampling techniques to decrease the number of samples.
+2. **Alternative Algorithms**: Consider using more scalable semi-supervised methods like Self-training or Co-training.
+3. **Optimize Pipeline Steps**: Integrate dimensionality reduction (e.g., PCA) before label propagation to reduce feature space and kernel matrix size.
+4. **Hyperparameter Tuning**: Adjust the gamma parameter in RBF kernel if possible, though this may not directly solve memory issues.
+
+**Conclusion:**
+Switching to a more scalable algorithm or reducing dataset complexity is recommended to handle large datasets efficiently.

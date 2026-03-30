@@ -1,0 +1,26 @@
+ ## Step 1: Initialization of the AutoML Process
+The AutoML process begins with the initialization of the search for an optimal pipeline. This involves setting up the environment, loading necessary components, and configuring the search parameters.
+
+## Step 2: Pipeline Search Process
+The system starts searching for the best pipeline by exploring different combinations of algorithms and hyperparameters. This process involves generating pipelines, evaluating their performance, and selecting the most promising ones for further exploration.
+
+## Step 3: Evaluation of Pipelines
+During the evaluation phase, the system assesses the performance of each pipeline using a specified scoring metric. This step is crucial as it determines the effectiveness of each pipeline in solving the given problem.
+
+## Step 4: Encountering Computational Limitations
+As the search progresses, the system encounters computational limitations. Specifically, it attempts to allocate a large amount of memory for an array operation, which fails due to insufficient resources (2.05 TiB for an array with shape (530688, 530688)).
+
+## Step 5: Termination of the Search Process
+The search process is terminated due to the inability to allocate the required memory. This termination occurs at 11:20:13, as indicated by the logs.
+
+## Step 6: Final Assessment and Reporting
+After the termination of the search process, the system reports that no pipelines were found. This outcome suggests that either no suitable pipelines were identified within the given constraints or the search process was terminated prematurely due to computational limitations.
+
+## Step 7: Conclusion of the AutoML Process
+The AutoML process concludes without finding a suitable pipeline. This conclusion is based on the logs provided, which indicate that the search process was terminated due to memory allocation issues rather than the identification of an optimal pipeline.
+
+## Summary:
+- The AutoML process initiated a search for an optimal pipeline.
+- The search encountered computational limitations, specifically memory allocation issues.
+- The process terminated without identifying a suitable pipeline.
+- The final report indicated that no pipelines were found, likely due to the premature termination caused by computational constraints.

@@ -1,0 +1,15 @@
+ The AutoML pipeline search process is structured into several key stages, as outlined below:
+
+1. **Pipeline Construction**: The system begins by constructing various machine learning pipelines. Each pipeline consists of feature processing steps (e.g., normalization using MaxAbsScaler), feature selection techniques (e.g., SelectPercentile or GenericUnivariateSelect), and different model types such as GaussianNB, KNeighborsClassifier, GradientBoostingClassifier, and SVM.
+
+2. **Model Selection and Configuration**: For each constructed pipeline, the system evaluates it by testing various configurations. This includes experimenting with different preprocessing methods and model architectures to identify optimal combinations.
+
+3. **Hyperparameter Tuning**: Once a suitable model is selected within a pipeline, the system proceeds to optimize its hyperparameters. Examples include adjusting learning_rate and n_estimators for GradientBoostingClassifier to enhance performance.
+
+4. **Evaluation Metric**: Each pipeline's effectiveness is assessed using Log Loss as the evaluation metric, which is typical in classification tasks to measure prediction accuracy.
+
+5. **Iterative Search**: The AutoML system continues this iterative process of constructing, tuning, and evaluating pipelines until it reaches a predefined search timeout. During this period, 30 distinct pipelines are evaluated.
+
+6. **Termination**: Upon reaching the search timeout, the process concludes, having explored all possible configurations within the allowed time frame.
+
+This structured approach ensures that the AutoML system efficiently explores the model space, balances computational resources, and identifies the best-performing pipeline based on the given evaluation criteria.

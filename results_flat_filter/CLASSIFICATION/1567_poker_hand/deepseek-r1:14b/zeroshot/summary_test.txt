@@ -1,0 +1,7 @@
+ The AutoML process begins with **Data Profiling**, where it identifies 11 integer columns without any missing or non-numeric features. 
+
+In **Iteration 1**, the system evaluates various machine learning pipelines through multiple simulations. Each simulation attempts different preprocessing steps and classifiers, aiming to find the highest-performing model. Despite some simulations succeeding or failing, the search is terminated due to a timeout after identifying one effective pipeline.
+
+**Summary:**
+- **Data Profiling**: 11 integer columns identified.
+- **Iteration 1**: Multiple pipelines tested with varying success rates; terminated upon timeout, resulting in one best pipeline found.

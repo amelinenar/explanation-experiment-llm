@@ -1,0 +1,76 @@
+ ## AutoML Process Explanation
+
+The provided logs detail the Automated Machine Learning (AutoML) process, which involves data profiling, pipeline search, and synthesis. Here's a breakdown of the key components:
+
+### Data Profiling
+
+* **Columns detected:** 3
+* **Column types:**
+	+ `year-month`: Text/DateTime
+	+ `sunspots`: Float
+	+ `d3mIndex`: Integer
+* **Non-numeric features:** `DATETIME_ENCODER`
+* **Useless columns:** None
+* **Missing values:** False
+
+### Iteration 1: Pipeline Search and Synthesis
+
+The AutoML process performs multiple simulations to find the best pipeline for the given data. Each simulation involves creating and evaluating different pipelines.
+
+#### Simulation 1
+
+* **Status:** None
+* **Score:** None
+* **Pipelines:**
+	1. `S` (empty pipeline)
+	2. `IMPUTER|TIME_SERIES_FORECAST` (imputer + time series forecasting)
+	3. `IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator` (imputer + NHITSEstimator)
+
+#### Simulation 2
+
+* **Status:** None
+* **Score:** None
+* **Pipelines:**
+	1. `S` (empty pipeline)
+	2. `IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR` (imputer + encoder + feature scaler + selector + regressor)
+	3. `IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.DeeparEstimator` (imputer + DeeparEstimator)
+
+#### Simulation 3
+
+* **Status:** None
+* **Score:** None
+* **Pipelines:**
+	1. `S` (empty pipeline)
+	2. `IMPUTER|TIME_SERIES_FORECAST` (imputer + time series forecasting)
+	3. `IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.ArimaEstimator` (imputer + ArimaEstimator)
+
+#### Simulation 4
+
+* **Status:** None
+* **Score:** None
+* **Pipelines:**
+	1. `S` (empty pipeline)
+	2. `IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR` (imputer + encoder + feature scaler + selector + regressor)
+	3. `IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR` (imputer + datetime encoder + feature scaler + selector + regressor)
+	4. `IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NBEATSEstimator` (imputer + NBEATSEstimator)
+
+#### Simulation 5
+
+* **Status:** None
+* **Score:** None
+* **Pipelines:**
+	1. `S` (empty pipeline)
+	2. `IMPUTER|TIME_SERIES_FORECAST` (imputer + time series forecasting)
+	3. `IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator` (imputer + NHITSEstimator)
+
+### Termination
+
+The AutoML process terminates after multiple simulations, indicating that it has explored various pipeline configurations to find the best one for the given data.
+
+### Insights
+
+* The data has a mix of text, float, and integer columns.
+* The process explores different pipelines, including time series forecasting, regression, and feature engineering techniques.
+* The `NHITSEstimator` and `NBEATSEstimator` are used as part of the pipeline, which might indicate that the data has a strong temporal component.
+
+Overall, the AutoML process is designed to efficiently search for the best pipeline configuration for a given dataset, taking into account various factors such as data types, feature engineering, and model selection.

@@ -1,0 +1,172 @@
+ Here's a detailed step-by-step analysis of the AutoML logs and answers to your questions:
+
+---
+
+## 1. Data Profiling Phase
+
+### 1.1 How many columns are detected?  
+- **12 columns**, as logged here:  
+  `2026-03-23 11:23:37,602 - MainProcess - datamart_profiler.core - INFO - Identifying types, 12 columns...`
+
+### 1.2 What are the feature types?  
+- Columns and types identified:  
+  - d3mIndex: Integer (identifier)  
+  - impression: Integer  
+  - url_hash: Float  
+  - ad_id: Integer (identifier)  
+  - advertiser_id: Integer (identifier)  
+  - depth: Integer  
+  - position: Integer  
+  - query_id: Integer (identifier)  
+  - keyword_id: Integer (identifier)  
+  - title_id: Integer (identifier)  
+  - description_id: Integer (identifier)  
+  - user_id: Integer (identifier)
+
+### 1.3 Are there missing values?  
+- **No missing values**, confirmed by:  
+  `2026-03-23 11:24:40,495 - MainProcess - alpha_automl.data_profiler - DEBUG - Results of profiling data: ... missing values = False`
+
+### 1.4 Are there useless or non-numeric features?  
+- **No useless columns** and **no non-numeric features** detected:  
+  `non-numeric features = dict_keys([]), useless columns = [], missing values = False`
+
+---
+
+## 2. Pipeline Search Overview
+
+### 2.1 How many iterations are present?  
+- The logs show at least **1 iteration explicitly logged**:  
+  `2026-03-23 11:24:41,007 - Process-1 - alpha_automl.pipeline_search.Coach - DEBUG - ------ITER 1------`
+
+### 2.2 How many simulations exist in each iteration?  
+- Within Iteration 1, there are **at least 5 simulations**, for example:  
+  - `MCTS SIMULATION 1`  
+  - `MCTS SIMULATION 2`  
+  - ... up to `MCTS SIMULATION 5`
+
+### 2.3 What are the statuses observed (success / created)?  
+- Statuses in logs largely show pipelines being **created** and tested with MCTS simulations.  
+- Explicit successes are implied by pipeline creation and scoring logs, e.g.:  
+  - `New pipelined created: Pipeline(steps=[(...)]`  
+  - Score logged: `Score: 0.302`  
+- Failures or exceptions observed related to pipeline evaluation/scoring (see below).
+
+---
+
+## 3. Simulation-Level Analysis  
+
+Due to extensive logs, synthesizing main patterns and examples:
+
+### 3.1 What is the status and score?  
+- Many pipelines are **created**, tested, but often **fail scoring initially** (exceptions).  
+- One successful scoring recorded:  
+  - Pipeline with RobustScaler + SkLabelSpreading scored **0.302** (moderate performance).  
+
+### 3.2 What pipelines are explored?  
+- Pipelines mainly include combinations of:  
+  - IMPUTER (missing values handled, though none in data)  
+  - ENCODERS (mostly skipped as per logs: ENCODERS -> E)  
+  - FEATURE_SCALER (MaxAbsScaler / StandardScaler / RobustScaler / None)  
+  - SEMISUPERVISED_CLASSIFIER (AutonBox, SelfTrainingClassifier)  
+  - LABELPROPAGATION_CLASSIFIER variants (SkLabelPropagation, SkLabelSpreading)  
+  - CLASSIFIER (various sklearn classifiers and ensemble models)
+
+- Early pipelines tested simpler structures, e.g.:  
+  - `LABELPROPAGATION_CLASSIFIER` alone  
+  - Pipelines with IMPUTER and LABELPROPAGATION_CLASSIFIER without encoders or scalers  
+- Later pipelines add feature scalers like RobustScaler and standard scalers.
+
+### 3.3 Pipeline Construction Evolution
+
+- **Start:** Simple classifier alone or with minimal preprocessing:  
+  - `LABELPROPAGATION_CLASSIFIER`
+
+- **Added Components:**  
+  - Added IMPUTER to handle missing data (even though none exist)  
+  - Adding FEATURE_SCALER: MaxAbsScaler, StandardScaler, RobustScaler  
+  - Adding ENCODERS (often removed after initial testing)  
+  - Adding or switching between LabelPropagation and LabelSpreading classifiers
+
+- **Removed Components:**  
+  - ENCODERS frequently removed (`ENCODERS -> E`)  
+  - IMPUTERS removed in some pipelines (`IMPUTER -> E`)
+
+- **Replaced Components:**  
+  - Switch between different scalers: MaxAbsScaler↔StandardScaler↔RobustScaler  
+  - Swap among LabelPropagation and LabelSpreading classifiers in semi-supervised component
+
+### 3.4 Component Roles
+
+- **IMPUTER:** Handles missing values; although data has no missing values, retained for robustness or standard pipeline form.  
+- **ENCODERS:** Transform categorical features (none present here), so removed early.  
+- **FEATURE_SCALER:** Normalize/scale numeric data to improve classifier performance and numerical stability.  
+- **LABELPROPAGATION_CLASSIFIER:** Semi-supervised learning classifiers relying on kernel/graph-based label spreading (SkLabelPropagation, SkLabelSpreading).  
+- **SEMISUPERVISED_CLASSIFIER:** Custom or standard semi-supervised classifiers like AutonBox, SelfTrainingClassifier.  
+- **CLASSIFIER:** Various supervised classifiers (LDA, SVM, Random Forest, etc.), rarely reaching final pipeline in logs.
+
+### 3.5 Outcome Explanation
+
+- **Why pipelines succeeded or failed:**  
+  - Pipelines that tried to apply `.toarray()` method on pandas DataFrame failed during scoring (AttributeError), indicating incompatible pipeline step transformations.  
+  - Very large affinity matrices were attempted (shape 95748 x 95748) leading to memory errors (68.3 GB allocation failure), causing pipeline scoring failure by memory errors. This implies scalability issues with some semi-supervised methods on large datasets.  
+  - Pipelines that reduced complexity (e.g., removing encoders and imputers, adding robust scaler) achieved manageable computation and scored around **0.3**.  
+- **Score comparison:**  
+  - Score 0.302 recorded is the only successful score in logs, indicating moderate predictive power.  
+- **Dataset properties:**  
+  - No missing data, all numeric features (mostly integer), modest dimensionality (~12 columns) but large number of rows (~119,685 observations).
+
+---
+
+## 4. Cross-Simulation Insights
+
+### 4.1 Which components appear frequently?  
+- **IMPUTER** (often added then removed)  
+- **FEATURE_SCALERs:** RobustScaler, StandardScaler, MaxAbsScaler  
+- **LABELPROPAGATION_CLASSIFIER** and variations (SkLabelPropagation, SkLabelSpreading) dominate as classifiers in pipelines.
+
+### 4.2 Which pipeline structures lead to higher scores?  
+- Pipelines involving **RobustScaler + SkLabelSpreading** or **StandardScaler + SkLabelSpreading** produced scores around 0.3, suggesting these semi-supervised classifiers coupled with scaling are beneficial.
+
+### 4.3 What changes improve performance across simulations?  
+- Removing ENCODERS and IMPUTER components (which were unnecessary for dataset) reduces complexity and errors.  
+- Using RobustScaler or StandardScaler instead of no scaler improves pipeline stability and scoring.  
+- Choice of label spreading classifier variant affects performance and memory efficiency.
+
+---
+
+## 5. Termination Phase
+
+### 5.1 Why did the AutoML process stop?  
+- Reached **search timeout** at around 11:24:44:838, logged here:  
+  `2026-03-23 11:24:44,838 - MainProcess - alpha_automl.automl_manager - DEBUG - Reached search timeout`
+
+- Memory errors during scoring, and inability to handle large affinity matrices halted progress.  
+
+### 5.2 What signals indicate termination?  
+- Signal 15 received, terminating child pipeline search process:  
+  `2026-03-23 11:24:44,838 - Process-1 - alpha_automl.pipeline_synthesis.setup_search - DEBUG - Receiving signal 15, terminating process`
+
+- Final logs stating no pipelines found or results:  
+  `No pipelines were found` repeated multiple times  
+  Indicates no final validated pipeline to return.
+
+---
+
+# **Summary and Recommendations**
+
+- **Profiling:** Data is numeric, no missing values, 12 columns, no irrelevant columns.  
+- **Pipeline Search:** Tried many pipelines focusing heavily on semi-supervised classifiers with scaling.  
+- **Key Failure Reasons:**  
+  - Pipeline incompatibility with pandas DataFrame methods (toarray error).  
+  - Huge memory allocations with kernel/graph-based label propagation on large data.  
+- **Successes:** Pipelines using RobustScaler + SkLabelSpreading yielded best scores (~0.3).  
+- **Improvements for next runs:**  
+  - Fix pipeline `.toarray()` call to handle DataFrame properly (e.g., convert to numpy arrays).  
+  - Limit dataset size or use approximate methods to reduce memory load from kernel computations.  
+  - Drop unused components like ENCODERS and IMPUTER aggressively based on profiling.  
+- **Termination:** Timeout and resource exhaustion stopped the process with no final pipeline found.
+
+---
+
+If you want me to analyze specific simulations or pipelines in more detail, just let me know!

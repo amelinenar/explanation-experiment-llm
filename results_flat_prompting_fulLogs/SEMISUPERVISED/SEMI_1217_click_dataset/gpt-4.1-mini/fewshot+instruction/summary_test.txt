@@ -1,0 +1,23 @@
+ AutoML Process Summarization
+
+### Data Profiling Phase
+- Columns: 12
+- All columns are numeric, mostly integer types with one float column.
+- No missing values detected.
+- No useless columns identified.
+- The data was sampled down from 119,685 to 2,000 instances for processing.
+
+### Pipeline Search and Synthesis Phase
+
+- A manual grammar was created specifically for a semi-supervised classification task.
+- The initial grammar defined pipeline structures involving imputers, encoders, feature scalers, semi-supervised classifiers, and classifiers.
+- The grammar included multiple candidate transformers and classifiers, including semi-supervised classifiers such as AutonBox, SelfTrainingClassifier, and label propagation variations (SkLabelPropagation, SkLabelSpreading).
+- The AutoML process ran multiple Monte Carlo Tree Search (MCTS) simulations to explore pipeline constructions.
+- Pipelines were progressively built by selecting components for imputing, encoding (often skipped as 'E'), feature scaling (MaxAbsScaler, StandardScaler, RobustScaler, or skipped), and semi-supervised classifiers.
+- The label propagation-based classifiers were frequently selected and refined.
+- Some pipelines consisting mainly of a scaler and a semi-supervised classifier were created and evaluated.
+- Exceptions occurred during pipeline scoring:
+  - A pipeline failed because a DataFrame object was incorrectly processed with a `.toarray()` call.
+  - Another failure was due to a memory allocation error when computing pairwise distances, trying to allocate about 68.3 GiB for a large affinity matrix.
+- Despite multiple pipelines being built and scored, none were successfully finalized.
+- The search terminated due to timeout and no valid pipelines were found.

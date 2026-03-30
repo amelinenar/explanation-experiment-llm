@@ -1,0 +1,40 @@
+ AutoML Process Summarization
+
+### Data Profiling Phase
+- Columns: 5
+- Column types:
+  - year: Text (DateTime)
+  - sunspots: Float
+  - d3mIndex: Integer (identifier)
+  - sd: Float
+  - observations: Integer
+- Non-numeric features include a 'DATETIME_ENCODER'
+- No useless columns detected
+- Missing values: False
+
+### Pipeline Search and Synthesis Phase
+
+#### Iteration 1
+
+##### Simulation 1
+- Pipeline explored: S → IMPUTER → TIME_SERIES_FORECAST → NHITSEstimator
+
+##### Simulation 2
+- Pipelines explored include encoding, scaling, selecting features, and regression components:
+  - S → IMPUTER → ENCODERS → FEATURE_SCALER → FEATURE_SELECTOR → REGRESSOR
+  - S → IMPUTER → TIME_SERIES_FORECAST → DeeparEstimator
+
+##### Simulation 3
+- Pipeline explored: S → IMPUTER → TIME_SERIES_FORECAST → ArimaEstimator
+
+##### Simulation 4
+- Pipelines explored:
+  - S → IMPUTER → ENCODERS → FEATURE_SCALER → FEATURE_SELECTOR → REGRESSOR
+  - S → IMPUTER → DATETIME_ENCODER → FEATURE_SCALER → FEATURE_SELECTOR → REGRESSOR
+  - S → IMPUTER → TIME_SERIES_FORECAST → NBEATSEstimator
+
+##### Simulation 5
+- Pipelines focused on time series forecasting with NHITSEstimator including multiple times the IMPUTER and TIME_SERIES_FORECAST stages.
+
+### Termination
+- The search process ended after these simulations without further actions logged.

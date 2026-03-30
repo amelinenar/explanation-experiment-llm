@@ -1,0 +1,27 @@
+ The logs indicate a detailed pipeline search process using the MCTS algorithm to explore various time series forecasting models. Here's a structured breakdown of the process:
+
+1. **Environment Setup**:
+   - The MainProcess initializes the environment, importing necessary modules and setting up logging configuration.
+   - It defaults to CPU usage as indicated by "gluonts.mx.context - INFO - Using CPU".
+
+2. **Pipeline Search Initialization**:
+   - A separate Process-Task is spawned for pipeline search operations.
+   - The task involves exploring different configurations of time series forecasting models.
+
+3. **MCTS Algorithm Execution**:
+   - MCTS simulations are conducted to evaluate various model configurations.
+   - Each simulation (`MCTS SIMULATION 1`, `2`, etc.) tests a specific estimator (e.g., NHITS, DeepAR) within the pipeline.
+
+4. **Pipeline Configuration and Evolution**:
+   - The pipeline starts with an initial setup involving the Imputer step for handling missing data followed by a generic Time Series Forecasting (TIME_SERIES_FORECAST) step.
+   - Each move action updates the pipeline configuration by selecting a specific estimator, leading to the evaluation of that model.
+
+5. **Model Evaluation**:
+   - For each simulation, predictions are generated using the selected model, and performance metrics are logged.
+   - These metrics help determine the effectiveness of each model configuration within the pipeline.
+
+6. **Decision Making**:
+   - The MCTS algorithm iterates through simulations, evaluating different estimators and their configurations.
+   - Based on prediction results, decisions are made to refine the pipeline for optimal performance.
+
+This structured approach ensures that all possible configurations are explored efficiently, leveraging the strengths of each estimator to find the best-performing model for time series forecasting.

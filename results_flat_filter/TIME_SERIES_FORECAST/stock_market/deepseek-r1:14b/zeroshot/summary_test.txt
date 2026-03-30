@@ -1,0 +1,14 @@
+ The AutoML process detailed in the logs involves a systematic exploration of various machine learning pipelines to find the most effective model for the given dataset. Here's a concise summary:
+
+1. **Data Profiling**: The dataset has two columns, "Date" (DateTime type) and "Close" (Float). Non-numeric features are encoded using DATETIME_ENCODER, with no missing values or useless columns.
+
+2. **Iteration Process**: Five simulations were conducted in Iteration 1:
+   - **Simulations 3 and 5** succeeded with high scores (~61%), indicating effective model configurations.
+   - **Simulations 2 and 4** failed with lower scores (~40%), suggesting suboptimal configurations.
+   - **Simulation 1** was created but didn't run, so no score is available.
+
+3. **Pipeline Configurations**: Each simulation tested different combinations of steps including IMPUTER, ENCODERS (e.g., DATETIME_ENCODER, OrdinalEncoder), FEATURE_SCALER, FEATURE_SELECTOR, and REGRESSOR or forecasting models like ARIMA, NHITS, NBEATS.
+
+4. **Outcome**: The successful simulations used effective feature engineering and model selection, balancing preprocessing steps to achieve better performance. AutoML efficiently explores various configurations to identify the best-performing models based on evaluation scores.
+
+This process highlights AutoML's ability to systematically test multiple configurations, leveraging efficient data handling and model selection to optimize performance for time series forecasting tasks.

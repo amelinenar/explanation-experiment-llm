@@ -1,0 +1,40 @@
+ === PHASE: Initialization ===
+No information available.
+
+=== PHASE: Dataset ===
+No information available.
+
+=== PHASE: Search ===
+No information available.
+
+=== PHASE: Termination ===
+Timeout: Search timed out.
+Termination signal: 15.
+Termination reason: Search timeout.
+
+=== PHASE: Pipeline ===
+No information available.
+
+=== PHASE: Model ===
+No information available.
+
+=== PHASE: Evaluation ===
+No information available.
+
+=== PHASE: Conclusion ===
+No information available.
+
+=== PHASE: Additional Information ===
+No additional information available.
+
+
+### Facts
+
+- **Termination Reason**: The search process terminated due to a timeout.
+- **Timeout**: The search timed out.
+- **Termination Signal**: The termination signal was 15.
+- **Final Pipeline Count**: 2 pipelines were found.
+- **Search Duration**: The search process timed out, but no specific duration was provided.
+
+### Additional Information
+No additional information is available.

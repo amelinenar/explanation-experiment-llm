@@ -1,0 +1,73 @@
+ === PHASE: Data Profiling ===
+- Columns detected: 11
+- Column names: d3mIndex, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10
+- Data types: 
+  - d3mIndex: http://schema.org/Integer
+  - V1: http://schema.org/Integer
+  - V2: http://schema.org/Integer
+  - V3: http://schema.org/Integer
+  - V4: http://schema.org/Integer
+  - V5: http://schema.org/Integer
+  - V6: http://schema.org/Integer
+  - V7: http://schema.org/Integer
+  - V8: http://schema.org/Integer
+  - V9: http://schema.org/Integer
+  - V10: http://schema.org/Integer
+- Non-numeric features: 
+- Useless columns: 
+- Missing values: False
+
+=== PHASE: Pipeline Search and Synthesis ===
+- Pipeline structure definitions: 
+  - IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+  - IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+  - FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+  - IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+  - IMPUTER|FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+  - FEATURE_SCALER|FEATURE_SELECTOR|CLASSIFIER
+- Component registries: 
+  - sklearn.preprocessing.MaxAbsScaler
+  - sklearn.feature_selection.GenericUnivariateSelect
+  - sklearn.ensemble.GradientBoostingClassifier
+  - sklearn.naive_bayes.GaussianNB
+  - sklearn.neighbors.KNeighborsClassifier
+  - sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+  - sklearn.ensemble.ExtraTreesClassifier
+- Grammar rules: 
+- Iterations: 5
+- Simulations: 
+  - Simulation 1: success, score=0.5001512180368972
+  - Simulation 2: created, score=0.47904191616766467
+  - Simulation 3: created, score=0.45708582834331335
+  - Simulation 4: failed, score=0.47904191616766467
+  - Simulation 5: failed, score=0.4810379241516966
+- Trials: 
+- MOVE ACTION: 
+- Rollouts: 
+- Predictions: 
+- Search step: 
+- Exploration events: 
+- Reward values: 
+- Score updates tied to decisions: 
+- Action probabilities: 
+- Policy outputs: 
+- Value estimates: 
+- Selection confidence scores: 
+- Tree expansion events: 
+- Node visit counts: 
+
+=== PHASE: Termination ===
+- Timeouts: 
+  - Search timeout
+- Stopping conditions: 
+- Final pipeline count: 1
+- Total search time: 
+- Best model selection: 
+
+### Additional Observations
+
+- The search process terminated due to a timeout.
+- The best score achieved was 0.5001512180368972.
+- A total of 5 simulations were conducted.
+- The search process involved multiple iterations and trials.
+- The data set consists of 11 columns, all of which are of integer type.

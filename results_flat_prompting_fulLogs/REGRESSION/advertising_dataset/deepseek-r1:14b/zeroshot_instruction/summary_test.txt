@@ -1,0 +1,11 @@
+ The AutoML system utilizes a Monte Carlo Tree Search (MCTS) approach to explore and optimize machine learning pipelines. The process involves constructing various pipelines using components such as preprocessing (e.g., RobustScaler), feature selection (e.g., GenericUnivariateSelect), and regression models (e.g., LinearRegression). Each pipeline is scored based on its performance, with the score indicating effectiveness.
+
+The logs demonstrate the creation of 143 distinct pipelines during the search phase. The MCTS algorithm evaluates each pipeline by scoring it, aiming to identify the optimal configuration. Despite the exploration process reaching a predefined timeout, several viable pipelines were identified and scored.
+
+Key steps include:
+1. **Pipeline Construction**: Formation of machine learning workflows using specific algorithms.
+2. **MCTS Exploration**: Utilizing an advanced search technique to navigate through possible configurations.
+3. **Scoring Evaluation**: Assessing each pipeline's performance to determine effectiveness.
+4. **Timeout Handling**: Stopping the search process after a set period, having evaluated 143 pipelines.
+
+This structured approach ensures efficient exploration of the solution space while adhering to computational constraints.

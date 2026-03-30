@@ -1,0 +1,60 @@
+ ```json
+=== PHASE: Dataset Profiling ===
+- Columns detected: 3
+- Column 0: year-month, Type: http://schema.org/Text [http://schema.org/DateTime]
+- Column 1: sunspots, Type: http://schema.org/Float []
+- Column 2: d3mIndex, Type: http://schema.org/Integer [http://schema.org/identifier]
+- non-numeric features = dict_keys(['DATETIME_ENCODER'])
+- useless columns = []
+- missing values = False
+
+=== PHASE: Pipeline Search and Synthesis ===
+- Simulation 1:
+  - Status: None
+  - Score: None
+  - Pipelines:
+    - S
+    - IMPUTER|TIME_SERIES_FORECAST
+    - IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
+
+- Simulation 2:
+  - Status: None
+  - Score: None
+  - Pipelines:
+    - S
+    - IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+    - IMPUTER|TIME_SERIES_FORECAST
+    - IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.DeeparEstimator
+
+- Simulation 3:
+  - Status: None
+  - Score: None
+  - Pipelines:
+    - S
+    - IMPUTER|TIME_SERIES_FORECAST
+    - IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.ArimaEstimator
+
+- Simulation 4:
+  - Status: None
+  - Score: None
+  - Pipelines:
+    - S
+    - IMPUTER|ENCODERS|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+    - IMPUTER|DATETIME_ENCODER|FEATURE_SCALER|FEATURE_SELECTOR|REGRESSOR
+    - IMPUTER|TIME_SERIES_FORECAST
+    - IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NBEATSEstimator
+
+- Simulation 5:
+  - Status: None
+  - Score: None
+  - Pipelines:
+    - S
+    - IMPUTER|TIME_SERIES_FORECAST
+    - TIME_SERIES_FORECAST
+    - IMPUTER|TIME_SERIES_FORECAST
+    - IMPUTER|alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
+    - alpha_automl.builtin_primitives.time_series_forecasting.NHITSEstimator
+
+=== PHASE: Termination ===
+- TERMINATION
+```

@@ -1,0 +1,22 @@
+ ## Step 1: Initialization of the AutoML Process
+The AutoML process begins with the initialization of the search for an optimal pipeline. This involves setting up the environment, defining the search space, and determining the criteria for evaluating pipelines.
+
+## Step 2: Definition of the Search Space
+The search space is defined by the possible combinations of preprocessing steps, feature selection methods, and machine learning models. In this case, the logs indicate that the process involves simple imputation, feature selection (e.g., SelectPercentile), and regression models (e.g., LassoCV).
+
+## Step 3: Exploration of the Search Space
+The AutoML system explores the search space through a series of iterations, where each iteration involves creating a new pipeline by combining different components (e.g., imputation strategies, feature selection methods, and models). The logs show that the system generates multiple pipelines, with each pipeline being evaluated.
+
+## 4: Evaluation of Pipelines
+Each pipeline is evaluated based on a scoring function, which assesses the performance of the pipeline. The logs indicate that the system uses a scoring function to evaluate pipelines, with the goal of finding the best-performing pipeline.
+
+## 5: Termination of the Search Process
+The search process terminates when a predefined condition is met, such as a timeout or a satisfactory performance level. In this case, the logs show that the search process terminates after a certain amount of time (01:00:00) and that 143 pipelines were found and evaluated.
+
+## 6: Selection of the Best Pipeline
+The best pipeline is selected based on its performance score. The logs indicate that the system identifies a pipeline with a score of 3.3215148620879, which is considered the best pipeline.
+
+## 7: Conclusion of the AutoML Process
+The AutoML process concludes with the identification of the best pipeline, which can be used for future predictions or further optimization. The logs provide a summary of the search process, including the number of pipelines evaluated and the best pipeline found.
+
+In summary, the logs describe the AutoML process as involving the initialization of the search, exploration of the search space, evaluation of pipelines, termination of the search process, selection of the best pipeline, and conclusion of the process. The system evaluates 143 pipelines and identifies the best pipeline with a score of 3.3215148620879.

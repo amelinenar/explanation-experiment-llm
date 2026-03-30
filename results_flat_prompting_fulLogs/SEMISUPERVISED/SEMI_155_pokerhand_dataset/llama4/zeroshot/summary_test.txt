@@ -1,0 +1,78 @@
+ The error message you've encountered indicates that there's an issue with memory allocation when trying to perform an operation in your scikit-learn based semi-supervised learning pipeline. Specifically, it seems like the system is trying to allocate an enormous amount of memory (2.05 TiB) for an operation that involves creating a large array, which it cannot do.
+
+The error occurs in this part of your code:
+
+```python
+def _build_graph(self):
+    affinity_matrix = self._get_kernel(self.X_)
+```
+
+This part of the code is trying to compute an affinity matrix for the data points, which is a necessary step in many semi-supervised learning algorithms.
+
+Here are a few potential solutions:
+
+### 1. Reduce the size of your dataset
+
+If possible, try to reduce the number of data points you're working with. This could involve:
+
+- **Subsampling**: Randomly select a subset of your data points to work with.
+- **Data aggregation**: Combine multiple data points into a single, representative data point.
+
+### 2. Optimize your algorithm
+
+Some algorithms are more memory-efficient than others. Consider:
+
+- **Using more efficient data structures**: For example, sparse matrices can be more memory-efficient than dense matrices.
+- **Parallel processing**: If you have a multi-core processor, you can try to parallelize your computations to reduce memory usage.
+
+### 3. Increase your available memory
+
+If possible, try to increase the amount of available memory. This could involve:
+
+- **Upgrading your hardware**: Adding more RAM to your machine can help.
+- **Using a cloud service**: If you're working in a cloud environment, you can try to use a larger instance type with more available memory.
+
+### 4. Use more efficient libraries or implementations
+
+Some libraries or implementations are more memory-efficient than others. Consider:
+
+- **Using scikit-learn's sparse matrix support**: If you're working with large, sparse matrices, consider using scikit-learn's sparse matrix support.
+- **Using more efficient algorithms**: Some algorithms are more memory-efficient than others. For example, you could try using a different algorithm for computing the affinity matrix.
+
+### 5. Process data in chunks
+
+Instead of loading the entire dataset into memory, try processing it in chunks. This can help reduce memory usage.
+
+Here is an example of how you might do this:
+
+```python
+import numpy as np
+
+def process_data_in_chunks(data, chunk_size):
+    for i in range(0, len(data), chunk_size):
+        chunk = data[i:i + chunk_size]
+        # Process the chunk
+        process_chunk(chunk)
+
+def process_chunk(chunk):
+    # Your processing code here
+    pass
+```
+
+### 6. Use Dask
+
+Dask is a library that provides a flexible way to parallelize existing serial code. It can help you scale your computations to larger-than-memory datasets.
+
+Here is an example of how you might use Dask:
+
+```python
+import dask.array as da
+
+# Create a Dask array
+x = da.random.random((10000, 10000), chunks=(1000, 1000))
+
+# Perform computations on the Dask array
+y = x + x.T
+```
+
+These are just a few potential solutions. The best approach will depend on your specific use case and requirements.
