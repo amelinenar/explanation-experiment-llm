@@ -86,8 +86,8 @@ def iterate_loop():
     jobs = []
     for task in TASK:
         for dataset_name, sum_llm, sum_prompt in product(dataset_names_for_task[task], LLMs, SUMMARIZATION_PROMPT):
-            # output_directory = root_dir + '/results_Hierarchical_Prompting/' + task + '/' + dataset_name + '/' + sum_llm + '/' + sum_prompt + '/'
-            output_directory = root_dir + '/results_Hierarchical_Prompting/' + task + '/' + dataset_name + '/' + sum_llm + '/'
+            output_directory = root_dir + '/results_flat_filter/' + task + '/' + dataset_name + '/' + sum_llm + '/' + sum_prompt + '/'
+            # output_directory = root_dir + '/results_Hierarchical_Prompting/' + task + '/' + dataset_name + '/' + sum_llm + '/'
             create_directory(output_directory)
             summary_dir =  os.path.join(output_directory , 'summary_test.txt')
             # if(task == "CLASSIFICATION") | (task == "REGRESSION"):
@@ -99,6 +99,7 @@ def iterate_loop():
             # logs_path = "/home/nguenang/Master_thesis/experiment_setup/log_analysis_out.txt"
 
             logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'filter_logs.txt')
+            # logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
             jobs.append((logs_path, summary_dir, sum_prompt, output_directory,sum_llm,task,dataset_name))
 
     return jobs
@@ -505,7 +506,7 @@ if __name__ == "__main__":
                 # if len(doc) != 0:
                 #     print(len(doc))
                 #     print(f"list is: {doc}")
-                result_dir = os.path.join(root_dir, f"results_Hierarchical_prompting.csv")
+                result_dir = os.path.join(root_dir, f"results_Flat_prompting.csv")
                 write_csv(task,dataset_name, sum_llm, sum_prompt, llm_judge, judge_prompt, row , result_dir)     
         
             

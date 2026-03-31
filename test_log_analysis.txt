@@ -1,7 +1,0 @@
-{
-  "pipeline_steps": "",
-  "profiling": {
-    "columns": [],
-    "summary": null
-  }
-}

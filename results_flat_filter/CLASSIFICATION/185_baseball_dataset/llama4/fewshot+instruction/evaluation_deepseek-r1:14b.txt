@@ -1,0 +1,11 @@
+ 1. Accuracy — Score: 4 (Excellent)  
+   The summary accurately reflects key points from the logs, such as the number of pipelines and components used.
+
+2. Clarity — Score: 3 (Good)  
+   The summary is logically structured and easy to follow, effectively conveying technical details without unnecessary complexity.
+
+3. Completeness — Score: 2 (Average)  
+   While covering major aspects, it misses some specific details from the logs, like exact termination reasons or hyperparameters explored.
+
+4. Relevance — Score: 4 (Excellent)  
+   The summary focuses solely on log-derived AutoML information without introducing unrelated content.
