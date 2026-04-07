@@ -4,8 +4,8 @@
 2. **Clarity — Score: 4 (Excellent)**
    - The summary is well-structured and easy to follow, with logical sections and clear explanations of technical terms.
 
-3. **Completeness — Score: 2 (Average)**
+3. **Completeness — Score: 1 (Poor)**
    - While the summary covers major stages like data profiling and pipeline search, it misses specific details such as the number of iterations or simulations per iteration mentioned in the logs.
 
-4. **Relevance — Score: 4 (Excellent)**
+4. **Relevance — Score: 2 (Average)**
    - The summary focuses on AutoML information derived from the logs without including unnecessary content or speculative recommendations.

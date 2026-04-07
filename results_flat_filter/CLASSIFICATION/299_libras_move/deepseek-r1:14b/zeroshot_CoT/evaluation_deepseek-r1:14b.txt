@@ -4,8 +4,8 @@
 2. **Clarity**: Score: 4 (Excellent)  
    The explanation is clear, logically structured, and easy to follow, effectively conveying the AutoML process without unnecessary complexity.
 
-3. **Completeness**: Score: 2 (Good)  
+3. **Completeness**: Score: 2 (Average))  
    The summary covers most major stages of the pipeline search but misses some details from the logs, such as the exact number of simulations or specific configurations found.
 
-4. **Relevance**: Score: 4 (Excellent)  
+4. **Relevance**: Score: 1 (Poor) 
    Focused on AutoML information derived from the logs, avoiding irrelevant content while explaining the process thoroughly.

@@ -6,7 +6,7 @@ The summary accurately reflects the logs, providing a clear and faithful represe
 ### Clarity: Score: 4 (Excellent)
 The summary is well-structured, easy to follow, and provides a clear overview of the AutoML process. The language is precise, and technical terms are used correctly. The summary effectively conveys the key points of the logs.
 
-### Completeness: Score: 4 (Excellent)
+### Completeness: Score: 1 (Poor)
 The summary covers all major aspects of the AutoML process, including data profiling, pipeline search, simulation iterations, and termination conditions. The summary provides a comprehensive overview of the logs, highlighting the exploration of various pipelines and the evaluation of their performance.
 
 ### Relevance: Score: 4 (Excellent)
