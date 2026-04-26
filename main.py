@@ -69,7 +69,7 @@ def generate_jobs():
             
                 for llm in LLMs:
                     
-                    tmp_output_directory = root_dir + '/results/' + task + '/' + dataset_name + '/' + llm + '/'
+                    tmp_output_directory = root_dir + '/RESULT_old/AUTO_SKLN/' + task + '/' + dataset_name + '/' + llm + '/'
                     
                     for sum_prompt in SUMMARIZATION_PROMPT:
                 
@@ -86,10 +86,10 @@ def iterate_loop():
     jobs = []
     for task in TASK:
         for dataset_name, sum_llm, sum_prompt in product(dataset_names_for_task[task], LLMs, SUMMARIZATION_PROMPT):
-            output_directory = root_dir + '/results_flat_filter/' + task + '/' + dataset_name + '/' + sum_llm + '/' + sum_prompt + '/'
+            output_directory = root_dir + '/RESULT_old/results_Hierachical_prompt_AUTOSKLN/' + task + '/' + dataset_name + '/' + sum_llm + '/' 
             # output_directory = root_dir + '/results_Hierarchical_Prompting/' + task + '/' + dataset_name + '/' + sum_llm + '/'
             create_directory(output_directory)
-            summary_dir =  os.path.join(output_directory , 'summary_test.txt')
+            summary_dir =  os.path.join(output_directory , 'summary_result.txt')
             # if(task == "CLASSIFICATION") | (task == "REGRESSION"):
             #     logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'filter_logs.txt')
             # else:
@@ -387,7 +387,8 @@ if __name__ == "__main__":
 
                 for llm_judge, judge_prompt in product(LLMs_judge, JUDGING_PROMPT): 
                     final_dir = output_directory + judge_prompt + '/'     
-                    judge_dir = os.path.join(output_directory, f'evaluation_'+llm_judge+'.txt')
+                    create_directory(final_dir)
+                    judge_dir = os.path.join(final_dir, f'evaluation_'+llm_judge+'.txt')
                     # judge_dir = os.path.join(output_directory, f'evaluation_{llm_judge}_mismatch.txt')
                     
                     print(f"\t\t judging the summary of the logs: {logs_path}")
@@ -412,8 +413,10 @@ if __name__ == "__main__":
         # with ThreadPoolExecutor(max_workers=4) as executor:
                 
         for logs_path, file_dir, sum_prompt, output_directory ,_ ,_, _ in jobs:
-            for llm_judge, judge_prompt in product(LLMs_judge, JUDGING_PROMPT):      
-                judge_dir = os.path.join(output_directory, f'evaluation_'+llm_judge+'.txt')
+            for llm_judge, judge_prompt in product(LLMs_judge, JUDGING_PROMPT):
+                dir_temp = output_directory + judge_prompt + '/'
+                create_directory(dir_temp)      
+                judge_dir = os.path.join(dir_temp, f'evaluation_'+llm_judge+'.txt')
                 # judge_dir = os.path.join(output_directory, f'evaluation_{llm_judge}_mismatch.txt')
                 
                 print(f"\t\t judging the summary of the logs: {logs_path}")
@@ -497,7 +500,7 @@ if __name__ == "__main__":
                 # print(f"\t\t judging the summary of the logs:  full_log_MainProcess.txt")
                 # print(f"\t\t\t using the LLM:", llm_judge, " to judge")
                 # print(f"\t\t Judging the summary located in the directory: {file_dir}")                   
-                judge_dir = os.path.join(output_directory, f'evaluation_{llm_judge}.txt')           
+                judge_dir = os.path.join(output_directory, f'evaluation_REVISED{llm_judge}.txt')           
                 print(f"judge file directory: {judge_dir}")
                 print("JUDGING PROMPT:", judge_prompt)        
                 row = result_script(judge_dir)
@@ -506,7 +509,7 @@ if __name__ == "__main__":
                 # if len(doc) != 0:
                 #     print(len(doc))
                 #     print(f"list is: {doc}")
-                result_dir = os.path.join(root_dir, f"results_Flat_prompting.csv")
+                result_dir = os.path.join(root_dir, f"result_category6_H_autoskln.csv")
                 write_csv(task,dataset_name, sum_llm, sum_prompt, llm_judge, judge_prompt, row , result_dir)     
         
             
