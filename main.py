@@ -86,7 +86,7 @@ def iterate_loop():
     jobs = []
     for task in TASK:
         for dataset_name, sum_llm, sum_prompt in product(dataset_names_for_task[task], LLMs, SUMMARIZATION_PROMPT):
-            output_directory = root_dir + '/RESULT_old/results_Hierachical_prompt_AUTOSKLN/' + task + '/' + dataset_name + '/' + sum_llm + '/' 
+            output_directory = root_dir + '/results/' + task + '/' + dataset_name + '/' + sum_llm + '/' 
             # output_directory = root_dir + '/results_Hierarchical_Prompting/' + task + '/' + dataset_name + '/' + sum_llm + '/'
             create_directory(output_directory)
             summary_dir =  os.path.join(output_directory , 'summary_result.txt')
@@ -466,26 +466,7 @@ if __name__ == "__main__":
                              
                 with open(phase_filter, mode="w" , encoding="utf-8") as f:
                         f.write(text)
-                    
-                           
-            
-                
-                
-                
-                
-   
-                
-                
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
+
      
      
             

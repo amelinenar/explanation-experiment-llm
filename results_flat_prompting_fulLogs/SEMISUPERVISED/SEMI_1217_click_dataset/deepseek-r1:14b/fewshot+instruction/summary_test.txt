@@ -1,9 +1,0 @@
- The error occurs because the script attempts to create a massive 95748x95748 matrix, which requires around 68 GB of memory. This is not feasible with standard system configurations.
-
-**Solution:**
-1. **Increase Memory**: Upgrade your system's RAM if possible.
-2. **Optimize Dataset Size**: Use a smaller subset of the data for training.
-3. **Use Alternative Algorithms**: Replace label propagation with more scalable algorithms like Random Forests or Gradient Boosting.
-4. **Distributed Computing**: Consider using distributed frameworks (e.g., Dask) for large datasets.
-
-By addressing these factors, you can prevent memory errors and successfully run your AutoML process.
