@@ -29,5 +29,3 @@ ROOT_DIR=' '
 Evaluate how different LLMs explain AutoML workflows.
 Test clarity, accuracy, and interpretability of model-generated explanations.
 Provide a reproducible framework for researchers and developers to experiment.
-
-## How to run
