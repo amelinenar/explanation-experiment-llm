@@ -32,3 +32,16 @@ Provide a reproducible framework for researchers and developers to experiment.
 
 
 ## How to run
+
+### Flat Prompting
+
+- 
+Parameters: fit, summarize, judge
+
+To fit the notebook or python file : python main.py fit
+To summarize  : python main.py summarize 
+To judge: python main.py judge
+
+
+### Hierarchical Prompting 
+
