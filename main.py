@@ -86,7 +86,7 @@ def iterate_loop():
     jobs = []
     for task in TASK:
         for dataset_name, sum_llm, sum_prompt in product(dataset_names_for_task[task], LLMs, SUMMARIZATION_PROMPT):
-            output_directory = root_dir + '/results/' + task + '/' + dataset_name + '/' + sum_llm + '/' 
+            output_directory = root_dir + '/output/' + task + '/' + dataset_name + '/' + sum_llm + '/' 
             # output_directory = root_dir + '/results_Hierarchical_Prompting/' + task + '/' + dataset_name + '/' + sum_llm + '/'
             create_directory(output_directory)
             summary_dir =  os.path.join(output_directory , 'summary_result.txt')
@@ -181,13 +181,15 @@ if __name__ == "__main__":
 
 
     elif sys.argv[1] == 'fit':
+        import time
+        start = time.time()
 
         for task_name in TASK:
             print(" ")
             print('task name: ', task_name)
             print(f"DATASET : {dataset_names_for_task[task_name]}")
             datasets_dict = read_all_dataset(root_dir, task_name)
-            tmp_output_directory = root_dir + '/results/' + task_name + '/' 
+            tmp_output_directory = root_dir + '/output/' + task_name + '/' 
             print(f"DATASET : {dataset_names_for_task[task_name]}")
 
             for dataset_name in dataset_names_for_task[task_name]:
@@ -204,12 +206,13 @@ if __name__ == "__main__":
                 date_column = datasets_dict[dataset_name][3]
                 
                 output_directory = tmp_output_directory + dataset_name + '/'
+                # create_directory(output_directory)
                 
                 output_dir = tmp_output_directory + dataset_name + '/'
 
                 print('-----------------START FITTING--------------')
                 
-                # create_fit_classifier(task_name,x_train,y_train,target_column, output_directory, date_column, output_dir)
+                create_fit_classifier(task_name,x_train,y_train,target_column, output_directory, date_column, output_dir)
                 
                 print('--------------------DONE--------------------')
                 print(" ")
@@ -238,9 +241,10 @@ if __name__ == "__main__":
                     #     f.write(filter_logs)
                     
                
-               
-               
+                end = time.time()
+
                 
+                print("Running time:", end - start, "seconds")
     # elif sys.argv[1] == 'summarize':
         
     #     jobs = iterate_loop()
