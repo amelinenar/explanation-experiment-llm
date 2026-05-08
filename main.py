@@ -98,7 +98,7 @@ def iterate_loop():
             # logs_path = "/home/nguenang/Master_thesis/experiment_setup/results/AUTOSKLN_LOGS/CLASSIFICATION/logs_cls.txt"
             # logs_path = "/home/nguenang/Master_thesis/experiment_setup/log_analysis_out.txt"
 
-            logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'filter_logs.txt')
+            logs_path = os.path.join(root_dir, 'output', task, dataset_name, 'filter_logs.txt')
             # logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
             jobs.append((logs_path, summary_dir, sum_prompt, output_directory,sum_llm,task,dataset_name))
 
@@ -244,7 +244,99 @@ if __name__ == "__main__":
                 end = time.time()
 
                 
-                print("Running time:", end - start, "seconds")
+                print("Running time in seconds:", end - start, "seconds")
+                print("Running time in minutes:", (end - start)/60, "minutes")
+                print("Running time in hours:", (end - start)/3600, "hours")
+                
+                
+                
+    elif sys.argv[1] == 'fit_autosklearn':
+        import time
+        start = time.time()
+
+        for task_name in TASK:
+            print(" ")
+            print('task name: ', task_name)
+            print(f"DATASET : {dataset_names_for_task[task_name]}")
+            datasets_dict = read_all_dataset(root_dir, task_name)
+            tmp_output_directory = root_dir + '/output/' + task_name + '/' 
+            print(f"DATASET : {dataset_names_for_task[task_name]}")
+
+            for dataset_name in dataset_names_for_task[task_name]:
+                print('\tdataset name: ', dataset_name)
+                print(" ")
+                
+                # datasets_dict = read_all_dataset(root_dir, task_name)
+                
+                x_train = datasets_dict[dataset_name][0]
+                y_train = datasets_dict[dataset_name][1]
+                # x_test = datasets_dict[dataset_name][2]
+                # y_test = datasets_dict[dataset_name][3] 
+                target_column = datasets_dict[dataset_name][2]
+                date_column = datasets_dict[dataset_name][3]
+                
+                output_directory = tmp_output_directory + dataset_name + '/'
+                # create_directory(output_directory)
+                
+                output_dir = tmp_output_directory + dataset_name + '/'
+
+                print('-----------------START FITTING--------------')
+                
+                create_fit_classifier(task_name,x_train,y_train,target_column, output_directory, date_column, output_dir)
+                
+                print('--------------------DONE--------------------')
+                print(" ")
+               
+               
+                
+              
+              
+                logs_path = os.path.join(output_directory, 'full_log_MainProcess.txt')
+                
+                ### Filter the logs
+                
+                # if(task_name =="CLASSIFICATION") | (task_name =="REGRESSION"):
+                print("------------FILTERING THE LOGS-----------------")               
+
+                fil_tmp = os.path.join(output_directory, 'fil_tmp.txt')
+                filter_path = os.path.join(output_directory, 'filter_logs.txt')
+                filtering_logs(logs_path, fil_tmp)
+                
+                remove_consecutive_duplicates(fil_tmp, filter_path)
+                    # print("FILTER LOGs:", filter_logs)
+                    
+                    # filter_path = os.path.join(output_directory, 'filter_logs.txt')
+                    
+                    # with open(filter_path, mode="w" , encoding="utf-8") as f:
+                    #     f.write(filter_logs)
+                    
+               
+                end = time.time()
+
+                
+                print("Running time in seconds:", end - start, "seconds")
+                print("Running time in minutes:", (end - start)/60, "minutes")
+                print("Running time in hours:", (end - start)/3600, "hours")
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
     # elif sys.argv[1] == 'summarize':
         
     #     jobs = iterate_loop()
@@ -271,8 +363,9 @@ if __name__ == "__main__":
     #     print( " " )
     
     
-    elif sys.argv[1] == 'summarize':
-        
+    elif sys.argv[1] == 'flat_summarization':
+        start = time.time()
+
         jobs = iterate_loop()
         
         # with ThreadPoolExecutor(max_workers=0) as executor:
@@ -281,21 +374,21 @@ if __name__ == "__main__":
             print('\t\t\tprompt: ', sum_prompt)
             print( " ")
             print(f"LOGS: {logs_path}")
-            
-            # filter_logs = filter_automl_logs(logs_path)
-            # # print("FILTER LOGs:", filter_logs)
-            
-            # filter_path = os.path.join(output_directory, 'filter_logs')
-            
-            # with open(filter_path, mode="w" , encoding="utf-8") as f:
-            #     f.write(filter_logs)
-            
             print(f"LOG PATH: {logs_path}")
+            
+            print(f"=====LLM SUMMARIZER:{sum_llm}")
 
             explain_process(logs_path, sum_llm, file_dir,sum_prompt)
 
 
         print( " " )
+        end = time.time()
+
+                
+        print("Running time in seconds:", end - start, "seconds")
+        print("Running time in minutes:", (end - start)/60, "minutes")
+        print("Running time in hours:", (end - start)/3600, "hours")
+        
  
     ### summarization using Hierachical prompt modelling
     

@@ -51,7 +51,11 @@ JUDGING_PROMPT = ['judge_zeroshot']
 LLMs_judge = { 'deepseek-r1:14b','llama4', 'gpt-4.1-mini'}
 
 
-
+.env file 
+URL_API=' '
+FILE_PATH=''
+ROOT_DIR=''
+KEY=''  ( for gpt-4.1-mini)
 
 
 ### Flat Prompting
