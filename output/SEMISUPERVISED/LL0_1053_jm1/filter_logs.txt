@@ -1,0 +1,53 @@
+LOGS
+==================================================
+
+DATA PROFILING
+Columns detected: 21
+Column 0: loc
+Type: http://schema.org/Integer []
+Column 1: v(g)
+Type: http://schema.org/Integer []
+Column 2: ev(g)
+Type: http://schema.org/Integer []
+Column 3: iv(g)
+Type: http://schema.org/Integer []
+Column 4: n
+Type: http://schema.org/Integer []
+Column 5: v
+Type: http://schema.org/Float []
+Column 6: l
+Type: http://schema.org/Float []
+Column 7: d
+Type: http://schema.org/Float []
+Column 8: i
+Type: http://schema.org/Float []
+Column 9: e
+Type: http://schema.org/Float []
+Column 10: b
+Type: http://schema.org/Float []
+Column 11: t
+Type: http://schema.org/Float []
+Column 12: lOCode
+Type: http://schema.org/Integer []
+Column 13: lOComment
+Type: http://schema.org/Integer []
+Column 14: lOBlank
+Type: http://schema.org/Integer []
+Column 15: locCodeAndComment
+Type: http://schema.org/Integer []
+Column 16: uniq_Op
+Type: http://schema.org/Integer []
+Column 17: uniq_Opnd
+Type: http://schema.org/Integer []
+Column 18: total_Op
+Type: http://schema.org/Integer []
+Column 19: total_Opnd
+Type: http://schema.org/Integer []
+Column 20: branchCount
+Type: http://schema.org/Integer []
+non-numeric features = dict_keys([]), useless columns = [], missing values = True
+
+TERMINATION
+Reached search timeout
+Found 2 pipelines
+

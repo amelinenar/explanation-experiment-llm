@@ -63,8 +63,13 @@ KEY=''  ( for gpt-4.1-mini)
 - 
 Parameters: fit, summarize, judge, run_all
 
+a) fit parameter
+
 To fit the notebook or python file : python main.py fit
 The parameter can be modify on the constant.py file. experiment_setup/utils/constant.py.  
+The logs for autosklearn is available in the folder autosklearn_logs for the CLASSIFICATION and REGRESSION task.  
+
+
 
 
 To summarize  : python main.py summarize 

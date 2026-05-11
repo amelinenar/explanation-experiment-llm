@@ -1,1 +1,0 @@
- The logs show an AutoML job starting with SMAC4AC for pipeline optimization. The system submitted 21 target algorithm runs, gathered statistics on configurations and runtime, identified a final incumbent configuration, and shut down cleanly after loading models and closing infrastructure.

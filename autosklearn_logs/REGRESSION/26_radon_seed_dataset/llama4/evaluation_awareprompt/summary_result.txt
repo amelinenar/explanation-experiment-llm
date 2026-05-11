@@ -1,3 +1,0 @@
- Here is a summary of the log:
-
-The AutoML process started and ran for approximately 108 seconds. It evaluated 15 different configurations and selected a final incumbent configuration. The process used a combination of data preprocessing, feature engineering, and model selection to optimize performance. The final configuration used a random forest regressor with specific hyperparameters. The process completed, and the infrastructure was shut down.

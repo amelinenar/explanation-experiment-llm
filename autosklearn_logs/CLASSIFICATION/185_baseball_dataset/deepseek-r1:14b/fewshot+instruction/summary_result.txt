@@ -1,1 +1,0 @@
- The AutoML run using SMAC for classification completed successfully after exploring 19 configurations. The best-performing model identified was a random forest with specific hyperparameters. Runtime was efficient, utilizing approximately 106 seconds of the allocated time. The process concluded cleanly, indicating a successful experiment setup and execution.

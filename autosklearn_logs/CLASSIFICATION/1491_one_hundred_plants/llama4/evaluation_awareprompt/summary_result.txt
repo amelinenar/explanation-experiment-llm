@@ -1,3 +1,0 @@
- Here is a summary of the log:
-
-The AutoML process started and ran for approximately 107.96 seconds. During this time, 19 configurations were tested, and the final incumbent configuration was identified. The process used a combination of data preprocessing, feature engineering, and classification algorithms to optimize performance. The estimated cost of the final incumbent configuration was 0.026. The AutoML process then shut down, loaded models, and closed the dask infrastructure.

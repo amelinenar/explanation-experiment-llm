@@ -3,7 +3,7 @@ import sys
 import os
 import json
 import requests
-from utils.constant import SUMMARIZATION_PROMPT, JUDGING_PROMPT
+from utils.constant import SUMMARIZATION_FLAT_PROMPT, JUDGING_PROMPT
 from prompts.prompt_manager import PromptManager
 from dotenv import load_dotenv, dotenv_values
 

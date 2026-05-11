@@ -1,9 +1,0 @@
- The AutoML system utilized SMAC4AC as its optimization framework to determine the most effective configuration for the given dataset. Key decisions included:
-
-1. **Data Preprocessing**: The system chose the 'feature_type' preprocessor, employing numerical imputation with the mean strategy and standardization. For text processing, TF-IDF encoding was applied with a character analyzer, using n-grams up to size 4.
-
-2. **Feature Reduction**: Principal Component Analysis (PCA) was selected to reduce dimensionality, retaining 100 components to balance variance retention and computational efficiency.
-
-3. **Model Selection**: The Random Forest regressor was chosen due to its robust performance across various data types and minimal tuning requirements. 
-
-The optimization process involved 15 configurations, with the final model achieving a low estimated cost of 0.0013, indicating efficient resource use. This configuration effectively handled both numerical and textual features while maintaining good predictive accuracy.

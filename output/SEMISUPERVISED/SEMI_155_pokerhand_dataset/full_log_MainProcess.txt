@@ -1,0 +1,89 @@
+2026-05-07 11:47:18,481 - MainProcess - root - DEBUG - Logging initialized for MainProcess, writing to full_log_MainProcess.txt
+2026-05-07 11:47:18,483 - MainProcess - alpha_automl.utils - DEBUG - We recommend to use "fork" in non-Windows platforms.
+2026-05-07 11:47:21,255 - MainProcess - datamart_profiler.core - INFO - Setting column names from header
+2026-05-07 11:47:21,255 - MainProcess - datamart_profiler.core - INFO - Identifying types, 11 columns...
+2026-05-07 11:47:21,255 - MainProcess - datamart_profiler.core - INFO - Processing column 0 'd3mIndex'...
+2026-05-07 11:47:37,133 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Integer [http://schema.org/identifier]
+2026-05-07 11:47:37,133 - MainProcess - datamart_profiler.core - INFO - Processing column 1 's1'...
+2026-05-07 11:47:57,980 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Integer []
+2026-05-07 11:47:57,980 - MainProcess - datamart_profiler.core - INFO - Processing column 2 'r1'...
+2026-05-07 11:48:21,490 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Integer []
+2026-05-07 11:48:21,490 - MainProcess - datamart_profiler.core - INFO - Processing column 3 's2'...
+2026-05-07 11:48:41,814 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Integer []
+2026-05-07 11:48:41,814 - MainProcess - datamart_profiler.core - INFO - Processing column 4 'r2'...
+2026-05-07 11:49:04,598 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Integer []
+2026-05-07 11:49:04,598 - MainProcess - datamart_profiler.core - INFO - Processing column 5 's3'...
+2026-05-07 11:49:24,708 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Integer []
+2026-05-07 11:49:24,708 - MainProcess - datamart_profiler.core - INFO - Processing column 6 'r3'...
+2026-05-07 11:49:47,371 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Integer []
+2026-05-07 11:49:47,371 - MainProcess - datamart_profiler.core - INFO - Processing column 7 's4'...
+2026-05-07 11:50:07,448 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Integer []
+2026-05-07 11:50:07,449 - MainProcess - datamart_profiler.core - INFO - Processing column 8 'r4'...
+2026-05-07 11:50:30,462 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Integer []
+2026-05-07 11:50:30,462 - MainProcess - datamart_profiler.core - INFO - Processing column 9 's5'...
+2026-05-07 11:50:50,536 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Integer []
+2026-05-07 11:50:50,536 - MainProcess - datamart_profiler.core - INFO - Processing column 10 'r5'...
+2026-05-07 11:51:13,720 - MainProcess - datamart_profiler.core - INFO - Column type http://schema.org/Integer []
+2026-05-07 11:51:13,823 - MainProcess - alpha_automl.data_profiler - DEBUG - Results of profiling data: non-numeric features = dict_keys([]), useless columns = [], missing values = False
+2026-05-07 11:51:15,755 - MainProcess - alpha_automl.utils - DEBUG - Sampling down data from 663361 to 2000
+2026-05-07 11:51:21,571 - MainProcess - alpha_automl.automl_manager - DEBUG - Found new pipeline
+2026-05-07 11:51:21,571 - MainProcess - alpha_automl.automl_api - INFO - Found pipeline, time=0:04:02, scoring...
+2026-05-07 11:51:22,344 - MainProcess - alpha_automl.scorer - DEBUG - Exception scoring a pipeline
+2026-05-07 11:51:22,345 - MainProcess - alpha_automl.scorer - DEBUG - Detailed error:
+Traceback (most recent call last):
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/alpha_automl/scorer.py", line 134, in score_pipeline
+    scores = cross_val_score(pipeline, X, y, cv=splitting_strategy, scoring=scoring, error_score='raise')
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/utils/_param_validation.py", line 218, in wrapper
+    return func(*args, **kwargs)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/model_selection/_validation.py", line 677, in cross_val_score
+    cv_results = cross_validate(
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/utils/_param_validation.py", line 218, in wrapper
+    return func(*args, **kwargs)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/model_selection/_validation.py", line 399, in cross_validate
+    results = parallel(
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/utils/parallel.py", line 82, in __call__
+    return super().__call__(iterable_with_config_and_warning_filters)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/joblib/parallel.py", line 1986, in __call__
+    return output if self.return_generator else list(output)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/joblib/parallel.py", line 1914, in _get_sequential_output
+    res = func(*args, **kwargs)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/utils/parallel.py", line 147, in __call__
+    return self.function(*args, **kwargs)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/model_selection/_validation.py", line 859, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/pipeline.py", line 663, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/alpha_automl/builtin_primitives/semisupervised_classifier.py", line 70, in fit
+    self.pipe.fit(X, y)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/pipeline.py", line 663, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/semi_supervised/_label_propagation.py", line 490, in fit
+    return super().fit(X, y)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/semi_supervised/_label_propagation.py", line 270, in fit
+    graph_matrix = self._build_graph()
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/semi_supervised/_label_propagation.py", line 463, in _build_graph
+    affinity_matrix = self._get_kernel(self.X_)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/semi_supervised/_label_propagation.py", line 147, in _get_kernel
+    return rbf_kernel(X, X, gamma=self.gamma)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/utils/_param_validation.py", line 191, in wrapper
+    return func(*args, **kwargs)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/metrics/pairwise.py", line 1608, in rbf_kernel
+    K = euclidean_distances(X, Y, squared=True)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/utils/_param_validation.py", line 191, in wrapper
+    return func(*args, **kwargs)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/metrics/pairwise.py", line 388, in euclidean_distances
+    return _euclidean_distances(X, Y, X_norm_squared, Y_norm_squared, squared)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/metrics/pairwise.py", line 424, in _euclidean_distances
+    distances = -2 * safe_sparse_dot(X, Y.T, dense_output=True)
+  File "/home/nguenang/miniconda3/envs/envTest_experiment/lib/python3.10/site-packages/sklearn/utils/extmath.py", line 203, in safe_sparse_dot
+    ret = a @ b
+numpy.core._exceptions._ArrayMemoryError: Unable to allocate 2.05 TiB for an array with shape (530688, 530688) and data type float64
+2026-05-07 11:51:22,353 - MainProcess - alpha_automl.automl_manager - DEBUG - Reached search timeout
+2026-05-07 11:51:22,914 - MainProcess - alpha_automl.automl_manager - DEBUG - Found 0 pipelines
+2026-05-07 11:51:22,915 - MainProcess - alpha_automl.automl_api - WARNING - No pipelines were found

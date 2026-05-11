@@ -6,23 +6,18 @@ import pandas as pd
 import numpy as np
 
 from itertools import product
-from utils.utils import create_directory
-from utils.utils import read_dataset
-from utils.utils import read_all_dataset
-from utils.utils import generate_results
-from utils.utils import filter_automl_logs
+from utils.utils import create_directory, create_fit_classifier,  read_dataset, read_all_dataset, generate_results, filter_automl_logs,iterate_loop
+
 
 from utils.constant import TASK
 from utils.constant import LLMs, LLMs_judge
 from utils.constant import dataset_names_for_task
-from utils.constant import SUMMARIZATION_PROMPT,JUDGING_PROMPT, HIERARCHICAL_PROMPT
+from utils.constant import SUMMARIZATION_FLAT_PROMPT,JUDGING_PROMPT, SUMMARIZATION_HIERARCHICAL_PROMPT,AUTOML,PROMPT_STRATEGY
 
 
 from prompt import explain_process,judging_explanation
 from dotenv import load_dotenv
 from result_script import write_csv, result_script
-# from pipeline.stage0_phase_segmentation import explain_process_T
-# from pipeline.stage1_dataprofiling import judging_explanation_T
 from pipeline.Hierarchical_pipeline import phase_segmentation, micro_summarization,extract_pure_json,macro_summarization,verification,revised_summary,regex_filtering,fact_aggregation
 from pipeline.Hierarchical_pipeline import fact_extraction
 from filtering_logs import filtering_logs, remove_consecutive_duplicates
@@ -30,83 +25,6 @@ from filtering_logs import filtering_logs, remove_consecutive_duplicates
 from concurrent.futures import ThreadPoolExecutor
 import gc
 
-
-
-
-def create_fit_classifier(task_name,X_train,y_train,target_column,logs_path,date_column, original_logs):
-    if task_name == 'REGRESSION':
-          
-        from alpha_automl import AutoMLRegressor
-        automl = AutoMLRegressor(time_bound=1, txt_file = logs_path, output_folder=original_logs)
-        # Perform the search
-        automl.fit(X_train, y_train)
-        
-    elif task_name == 'CLASSIFICATION':
-        
-        from alpha_automl import AutoMLClassifier
-        automl = AutoMLClassifier(time_bound=1, verbose=True, txt_file = logs_path,  output_folder=original_logs)
-        automl.fit(X_train, y_train)
-
-    elif task_name.lower() == 'time_series_forecast':
-        
-        from alpha_automl import AutoMLTimeSeries
-        automl = AutoMLTimeSeries(time_bound=1, date_column=date_column, target_column=target_column, txt_file = logs_path,  output_folder=original_logs)
-        automl.fit(X_train, y_train)
-
-    elif task_name.lower() == 'semisupervised':
-        
-        from alpha_automl import AutoMLSemiSupervisedClassifier
-        automl = AutoMLSemiSupervisedClassifier(time_bound=1, start_mode='spawn', txt_file = logs_path,  output_folder=original_logs)
-        automl.fit(X_train, y_train)
-    
-
-def generate_jobs():
-    jobs = []
-
-    for task in TASK:
-        
-            for dataset_name in dataset_names_for_task[task]:
-            
-                for llm in LLMs:
-                    
-                    tmp_output_directory = root_dir + '/RESULT_old/AUTO_SKLN/' + task + '/' + dataset_name + '/' + llm + '/'
-                    
-                    for sum_prompt in SUMMARIZATION_PROMPT:
-                
-                        output_directory = tmp_output_directory + sum_prompt + '/'
-                        create_directory(output_directory)
-                        summary_dir =  os.path.join(output_directory , 'summary_result.txt')
-                        logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
-
-                        jobs.append((logs_path, summary_dir, sum_prompt, output_directory))
-
-    return jobs
-
-def iterate_loop():
-    jobs = []
-    for task in TASK:
-        for dataset_name, sum_llm, sum_prompt in product(dataset_names_for_task[task], LLMs, SUMMARIZATION_PROMPT):
-            output_directory = root_dir + '/output/' + task + '/' + dataset_name + '/' + sum_llm + '/' 
-            # output_directory = root_dir + '/results_Hierarchical_Prompting/' + task + '/' + dataset_name + '/' + sum_llm + '/'
-            create_directory(output_directory)
-            summary_dir =  os.path.join(output_directory , 'summary_result.txt')
-            # if(task == "CLASSIFICATION") | (task == "REGRESSION"):
-            #     logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'filter_logs.txt')
-            # else:
-            #     logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
-                
-            # logs_path = "/home/nguenang/Master_thesis/experiment_setup/results/AUTOSKLN_LOGS/CLASSIFICATION/logs_cls.txt"
-            # logs_path = "/home/nguenang/Master_thesis/experiment_setup/log_analysis_out.txt"
-
-            logs_path = os.path.join(root_dir, 'output', task, dataset_name, 'filter_logs.txt')
-            # logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
-            jobs.append((logs_path, summary_dir, sum_prompt, output_directory,sum_llm,task,dataset_name))
-
-    return jobs
-
-
-            
-    
 
 
 ########################## main ########################
@@ -118,478 +36,1172 @@ if __name__ == "__main__":
 
     results = []
 
-    if sys.argv[1] == 'run_all':
+    if sys.argv[1] == 'run_all_FlatPrompting':
         
+        start_time = time.time()
+
+        print("\n" + "=" * 80)
+        print(" STARTING MODEL TRAINING PIPELINE")
+        print("=" * 80)
+
         for task_name in TASK:
-            print(" ")
-            print('task name: ', task_name)
-        
+
+            # Skip unsupported task
+            if task_name == "TIME_SERIES_FORECAST":
+                continue
+
+            print(f"\n TASK: {task_name}")
+            print("-" * 80)
+
+            dataset_list = dataset_names_for_task[task_name]
+            print(f" Datasets: {dataset_list}")
+
+            # Load all datasets for current task
             datasets_dict = read_all_dataset(root_dir, task_name)
-            
-            tmp_output_directory = root_dir + '/results/' + task_name + '/' 
-            
-        
-            for dataset_name in dataset_names_for_task[task_name]:
-                print('\tdataset name: ', dataset_name)
-                print(" ")
-                
+
+            base_output_dir = os.path.join(root_dir,"results", "ALPHA-AUTOML", task_name )
+
+            for dataset_name in dataset_list:
+
+                print("\n" + "─" * 80)
+                print(f" DATASET: {dataset_name}")
+                print("─" * 80)
+
+                # Extract dataset components
                 x_train = datasets_dict[dataset_name][0]
                 y_train = datasets_dict[dataset_name][1]
-                # x_test = datasets_dict[dataset_name][2]
-                # y_test = datasets_dict[dataset_name][3] 
-                target_column = datasets_dict[dataset_name][4]
+                target_column = datasets_dict[dataset_name][2]
+                date_column = datasets_dict[dataset_name][3]
 
+                # Output paths
+                output_directory = os.path.join(base_output_dir, dataset_name)
+                output_dir = output_directory
 
-                print('-----------------START FITTING--------------')
+                # Optional: create output directory
+                # create_directory(output_directory)
+
+                print("⚙️  Training model...")
+                fit_start = time.time()
+
+                create_fit_classifier(task_name, x_train,y_train,target_column,output_directory,date_column, output_dir)
+
+                fit_end = time.time()
                 
-                create_fit_classifier(task_name,x_train,y_train,target_column)
-                
-                print('--------------------DONE--------------------')
-                print(" ")
-                
-                # for llm in LLMs:
-                #     print('\t\tllm: ', llm)
-                
-                #     output_directory = tmp_output_directory + dataset_name + '/' + llm + '/'
-                #     create_directory(output_directory)
-                #     file_dir =  os.path.join(output_directory , 'summary_result.txt')
-                
-                #     dir_test = "/home/nguenang/Master_thesis/experiment_setup/results/regression/196_autoMpg/deepseek-r1:14b/summary_result.txt"
-        
-                #     explain_process('full_log_MainProcess.txt', llm, file_dir)
-                #     print(" ")
-                    
-                #     print("TESTING ")
-                    
-                #     print(f'file dir: {file_dir}')
-                
-                #     for llm_judge in LLMs:
-                #         judge_dir = os.path.join(output_directory, f'evaluation_'+llm_judge+'.txt')
+               
+                print(f"Training completed in {fit_end - fit_start:.2f} seconds")
+
+                # ------------------------------------------------------------------
+                # Log Processing
+                # ------------------------------------------------------------------
+                print("\n Filtering logs...")
+
+                logs_path = os.path.join(output_directory,"full_log_MainProcess.txt")
+
+                temp_filtered_log = os.path.join(output_directory, "fil_tmp.txt")
+                final_filtered_log = os.path.join(output_directory, "filter_logs.txt")
+
+                filtering_logs(logs_path, temp_filtered_log)
+                remove_consecutive_duplicates(temp_filtered_log, final_filtered_log)
+
+                print("Logs filtered successfully")
+
+        # --------------------------------------------------------------------------
+        # Total Runtime Summary
+        # --------------------------------------------------------------------------
+        total_time = time.time() - start_time
+
+        print("\n" + "=" * 80)
+        print(" PIPELINE COMPLETED")
+        print("=" * 80)
+
+        print(f"  Total Runtime:")
+        print(f"   • Seconds : {total_time:.2f}s")
+        print(f"   • Minutes : {total_time / 60:.2f} min")
+        print(f"   • Hours   : {total_time / 3600:.2f} hr")
+
+        print("=" * 80)
+            
                         
-                #         if llm_judge is not llm:
-                            
-                            
-                    
-                #             judging_explanation('full_log_MainProcess.txt',file_dir,llm,judge_dir)
-                
-                    
-                #     generate_results(root_dir, task_name, dataset_name, llm)
-                    
-                
-                #     print(f"DONE SUMMARIZATION: output stored in {file_dir}")
+        
+        start_time = time.time()
 
+        print("\n" + "=" * 80)
+        print(" STARTING FLAT SUMMARIZATION PIPELINE")
+        print("=" * 80)
 
+        # ==========================================================================
+        # AUTOSKLEARN SUMMARIZATION
+        # ==========================================================================
+        print("\n SUMMARIZING AUTOSKLEARN RESULTS")
+        print("-" * 80)
 
-    elif sys.argv[1] == 'fit':
-        import time
-        start = time.time()
+        for task in ["CLASSIFICATION","REGRESSION"]:
+
+            print(f"\n TASK: {task}")
+
+            for dataset_name, sum_llm, sum_prompt in product(
+                dataset_names_for_task[task],
+                LLMs,
+                SUMMARIZATION_FLAT_PROMPT
+            ):
+
+                print("\n" + "─" * 80)
+                print(f" DATASET : {dataset_name}")
+                print(f" LLM     : {sum_llm}")
+                print(f" PROMPT  : {sum_prompt}")
+                print("─" * 80)
+
+                # Output directory
+                output_directory = os.path.join( root_dir, "results", "AUTOSKLEARN", task, dataset_name, sum_llm, sum_prompt)
+
+                create_directory(output_directory)
+
+                # Summary output file
+                summary_dir = os.path.join( output_directory, "summary_result.txt" )
+
+                # Logs path
+                logs_path = os.path.join(root_dir,"autosklearn_logs",task,dataset_name, "full_log_MainProcess.txt" )
+
+                print(f" Logs Path   : {logs_path}")
+                print(f" Output File : {summary_dir}")
+
+                # ------------------------------------------------------------------
+                # Generate Summary
+                # ------------------------------------------------------------------
+                print("\n⚙️  Generating summary...")
+
+                summary_start = time.time()
+
+                explain_process( logs_path,sum_llm,summary_dir,sum_prompt )
+
+                summary_end = time.time()
+
+                print(
+                    f"Summary generated in "
+                    f"{summary_end - summary_start:.2f} seconds"
+                )
+
+        # ==========================================================================
+        # ALPHA-AUTOML SUMMARIZATION
+        # ==========================================================================
+        print("\n" + "=" * 80)
+        print(" SUMMARIZING ALPHA-AUTOML RESULTS")
+        print("=" * 80)
+
+        jobs = iterate_loop(prompt_strategy="FLAT_PROMPTING", automl="ALPHA-AUTOML")
+
+        for (logs_path,file_dir,sum_prompt,output_directory,sum_llm, _, _,_) in jobs:
+
+            print("\n" + "─" * 80)
+            print(f" LLM     : {sum_llm}")
+            print(f" PROMPT  : {sum_prompt}")
+            print("─" * 80)
+
+            print(f" Logs Path   : {logs_path}")
+            print(f" Output File : {file_dir}")
+
+            # ----------------------------------------------------------------------
+            # Generate Summary
+            # ----------------------------------------------------------------------
+            print("\n⚙️  Generating summary...")
+
+            summary_start = time.time()
+            explain_process(logs_path,sum_llm,file_dir, sum_prompt)
+            summary_end = time.time()
+            print(
+                f" Summary generated in "
+                f"{summary_end - summary_start:.2f} seconds"
+            )
+
+        # ==========================================================================
+        # FINAL RUNTIME SUMMARY
+        # ==========================================================================
+        total_time = time.time() - start_time
+
+        print("\n" + "=" * 80)
+        print("FLAT SUMMARIZATION COMPLETED")
+        print("=" * 80)
+
+        print("  Total Runtime:")
+        print(f"   • Seconds : {total_time:.2f}s")
+        print(f"   • Minutes : {total_time / 60:.2f} min")
+        print(f"   • Hours   : {total_time / 3600:.2f} hr")
+
+        print("=" * 80)       
+        
+        
+        
+        start_time = time.time()
+
+        print("\n" + "=" * 80)
+        print("⚖️  STARTING FLAT SUMMARY EVALUATION")
+        print("=" * 80)
+
+        # ==========================================================================
+        # MAIN LOOP
+        # ==========================================================================
+        for task in TASK:
+
+            print(f"\n TASK: {task}")
+            print("-" * 80)
+
+            for dataset_name, sum_llm, sum_prompt in product(dataset_names_for_task[task],LLMs, SUMMARIZATION_FLAT_PROMPT):
+
+                for automl in AUTOML:
+
+                    # --------------------------------------------------------------
+                    # Skip unsupported combinations
+                    # --------------------------------------------------------------
+                    if (task in ["SEMISUPERVISED", "TIME_SERIES_FORECAST"]and automl == "AUTOSKLEARN" ):
+                        print( f"⚠️  Skipping unsupported combination: " f"{automl} + {task}" )
+                        continue
+
+                    print("\n" + "─" * 80)
+                    print(f" AutoML   : {automl}")
+                    print(f" Dataset  : {dataset_name}")
+                    print(f" Summary LLM : {sum_llm}")
+                    print("─" * 80)
+
+                    # --------------------------------------------------------------
+                    # Output Directory
+                    # --------------------------------------------------------------
+                    output_directory = os.path.join(root_dir,"results", automl, task,dataset_name,sum_llm,sum_prompt )
+
+                    create_directory(output_directory)
+
+                    # --------------------------------------------------------------
+                    # Summary File
+                    # --------------------------------------------------------------
+                    summary_file = os.path.join( output_directory,"summary_result.txt")
+
+                    # --------------------------------------------------------------
+                    # Logs Path
+                    # --------------------------------------------------------------
+                    if automl == "ALPHA-AUTOML":
+
+                        logs_path = os.path.join(  root_dir, "results",automl, task,dataset_name, "filter_logs.txt"  )
+
+                    elif automl == "AUTOSKLEARN":
+
+                        logs_path = os.path.join( root_dir, "autosklearn_logs", task,dataset_name,  "full_log_MainProcess.txt"   )
+
+                    print(f" Logs Path    : {logs_path}")
+                    print(f" Summary File : {summary_file}")
+
+                    # ==============================================================
+                    # JUDGING LOOP
+                    # ==============================================================
+                    for llm_judge, judge_prompt in product(LLMs_judge,JUDGING_PROMPT):
+
+                        print("\n" + "·" * 80)
+                        print(f"⚖️  Judge LLM : {llm_judge}")
+                        print(f" Prompt     : {judge_prompt}")
+                        print("·" * 80)
+
+                        # ----------------------------------------------------------
+                        # Judge Output Directory
+                        # ----------------------------------------------------------
+                        final_dir = os.path.join( output_directory, judge_prompt  )
+                        create_directory(final_dir)
+                        judge_file = os.path.join(  final_dir,f"evaluation_{llm_judge}.txt"  )
+                        print(f" Evaluation Output : {judge_file}")
+
+                        # ----------------------------------------------------------
+                        # Run Evaluation
+                        # ----------------------------------------------------------
+                        print("\n⚙️  Evaluating summary quality...")
+
+                        eval_start = time.time()
+
+                        judging_explanation(   logs_path, summary_file, llm_judge,judge_file,  judge_prompt)
+
+                        eval_end = time.time()
+
+                        print(
+                            f" Evaluation completed in "
+                            f"{eval_end - eval_start:.2f} seconds"
+                        )
+
+        # ==========================================================================
+        # FINAL RUNTIME SUMMARY
+        # ==========================================================================
+        total_time = time.time() - start_time
+
+        print("\n" + "=" * 80)
+        print(" FLAT SUMMARY EVALUATION COMPLETED")
+        print("=" * 80)
+
+        print("  Total Runtime:")
+        print(f"   • Seconds : {total_time:.2f}s")
+        print(f"   • Minutes : {total_time / 60:.2f} min")
+        print(f"   • Hours   : {total_time / 3600:.2f} hr")
+
+        print("=" * 80)  
+        
+     
+    if sys.argv[1] == 'run_all_HierarchicalPrompting':
+        
+        start_time = time.time()
+
+        print("\n" + "=" * 80)
+        print(" STARTING HIERARCHICAL SUMMARIZATION PIPELINE")
+        print("=" * 80)
+
+        # ==========================================================================
+        # MAIN LOOP
+        # ==========================================================================
+        for task in TASK:
+
+            print(f"\n TASK: {task}")
+            print("-" * 80)
+
+            for dataset_name, sum_llm in product(dataset_names_for_task[task], LLMs ):
+
+                for automl in AUTOML:
+
+                    # --------------------------------------------------------------
+                    # Skip unsupported combinations
+                    # --------------------------------------------------------------
+                    if ( task in ["SEMISUPERVISED", "TIME_SERIES_FORECAST"]and automl == "AUTOSKLEARN"):
+                        print( f"⚠️  Skipping unsupported combination: "f"{automl} + {task}" )
+                        continue
+
+                    print("\n" + "─" * 80)
+                    print(f" AutoML   : {automl}")
+                    print(f" Dataset  : {dataset_name}")
+                    print(f" LLM      : {sum_llm}")
+                    print("─" * 80)
+
+                    # --------------------------------------------------------------
+                    # Output Directory
+                    # --------------------------------------------------------------
+                    output_directory = os.path.join(root_dir,"results_Hierarchical_Prompting",automl,task,dataset_name,sum_llm)
+
+                    create_directory(output_directory)
+
+                    # --------------------------------------------------------------
+                    # File Paths
+                    # --------------------------------------------------------------
+                    fact_file = os.path.join(output_directory, "fact.txt")
+                    global_summary_file = os.path.join(output_directory, "global_summary_T.txt")
+                    verification_file = os.path.join(output_directory,"verification.json" )
+                    revised_summary_file = os.path.join(output_directory, "global_summary_revised.txt")
+
+                    # --------------------------------------------------------------
+                    # Logs Path
+                    # --------------------------------------------------------------
+                    if automl == "ALPHA-AUTOML":
+
+                        logs_path = os.path.join(root_dir,"results",automl,task,dataset_name, "filter_logs.txt")
+
+                    elif automl == "AUTOSKLEARN":
+
+                        logs_path = os.path.join( root_dir,"autosklearn_logs",task,dataset_name, "full_log_MainProcess.txt")
+
+                    print(f" Logs Path : {logs_path}")
+                    print(f"⚙️  Applying Hierarchical Prompting")
+
+                    # ==============================================================
+                    # STEP 1 — FACT EXTRACTION
+                    # ==============================================================
+                    print("\n Step 1: Phase Segmentation")
+
+                    step_start = time.time()
+
+                    fact_extraction(logs_path,sum_llm,fact_file)
+
+                    print(
+                        f"  Phase Segmentation completed in "
+                        f"{time.time() - step_start:.2f} seconds"
+                    )
+
+                    # ==============================================================
+                    # STEP 2 — MACRO SUMMARIZATION
+                    # ==============================================================
+                    print("\n Step 2: Macro Summarization")
+
+                    step_start = time.time()
+
+                    macro_summarization(fact_file,sum_llm,global_summary_file,logs_path)
+
+                    print(
+                        f" Macro summarization completed in "
+                        f"{time.time() - step_start:.2f} seconds"
+                    )
+
+                    # ==============================================================
+                    # STEP 3 — VERIFICATION
+                    # ==============================================================
+                    print("\n✔️  Step 3: Verification")
+
+                    step_start = time.time()
+
+                    verification(global_summary_file, logs_path,sum_llm,verification_file)
+
+                    print(
+                        f" Verification completed in "
+                        f"{time.time() - step_start:.2f} seconds"
+                    )
+
+                    # ==============================================================
+                    # STEP 4 — REVISED SUMMARY
+                    # ==============================================================
+                    print("\n♻️  Step 4: Revised Summary Generation")
+
+                    step_start = time.time()
+
+                    revised_summary(global_summary_file,  logs_path,verification_file,sum_llm, revised_summary_file )
+
+                    print(
+                        f" Revised summary generated in "
+                        f"{time.time() - step_start:.2f} seconds"
+                    )
+
+        # ==========================================================================
+        # FINAL RUNTIME SUMMARY
+        # ==========================================================================
+        total_time = time.time() - start_time
+
+        print("\n" + "=" * 80)
+        print(" HIERARCHICAL SUMMARIZATION COMPLETED")
+        print("=" * 80)
+
+        print("  Total Runtime:")
+        print(f"   • Seconds : {total_time:.2f}s")
+        print(f"   • Minutes : {total_time / 60:.2f} min")
+        print(f"   • Hours   : {total_time / 3600:.2f} hr")
+
+        print("=" * 80)
+        
+        
+        start_time = time.time()
+
+        print("\n" + "=" * 80)
+        print("⚖️  STARTING HIERARCHICAL SUMMARY EVALUATION")
+        print("=" * 80)
+
+        # ==========================================================================
+        # MAIN LOOP
+        # ==========================================================================
+        for task in TASK:
+
+            print(f"\n TASK: {task}")
+            print("-" * 80)
+
+            for dataset_name, sum_llm in product(dataset_names_for_task[task],LLMs):
+
+                for automl in AUTOML:
+
+                    # --------------------------------------------------------------
+                    # Skip unsupported combinations
+                    # --------------------------------------------------------------
+                    if (task in ["SEMISUPERVISED", "TIME_SERIES_FORECAST"]and automl == "AUTOSKLEARN" ):
+                        print( f"⚠️  Skipping unsupported combination: " f"{automl} + {task}" )
+                        continue
+
+                    print("\n" + "─" * 80)
+                    print(f" AutoML   : {automl}")
+                    print(f" Dataset  : {dataset_name}")
+                    print(f" Summary LLM : {sum_llm}")
+                    print("─" * 80)
+
+                    # --------------------------------------------------------------
+                    # Output Directory
+                    # --------------------------------------------------------------
+                    output_directory = os.path.join(root_dir,"results_Hierarchical_Prompting", automl, task,dataset_name,sum_llm )
+
+                    create_directory(output_directory)
+
+                    # --------------------------------------------------------------
+                    # Summary File
+                    # --------------------------------------------------------------
+                    summary_file = os.path.join( output_directory,"global_summary_revised.txt"   )
+
+                    # --------------------------------------------------------------
+                    # Logs Path
+                    # --------------------------------------------------------------
+                    if automl == "ALPHA-AUTOML":
+
+                        logs_path = os.path.join(  root_dir, "results",automl, task,dataset_name, "filter_logs.txt"  )
+
+                    elif automl == "AUTOSKLEARN":
+
+                        logs_path = os.path.join( root_dir, "autosklearn_logs", task,dataset_name,  "full_log_MainProcess.txt"   )
+
+                    print(f" Logs Path    : {logs_path}")
+                    print(f" Summary File : {summary_file}")
+
+                    # ==============================================================
+                    # JUDGING LOOP
+                    # ==============================================================
+                    for llm_judge, judge_prompt in product(LLMs_judge,JUDGING_PROMPT):
+
+                        print("\n" + "·" * 80)
+                        print(f"⚖️  Judge LLM : {llm_judge}")
+                        print(f" Prompt     : {judge_prompt}")
+                        print("·" * 80)
+
+                        # ----------------------------------------------------------
+                        # Judge Output Directory
+                        # ----------------------------------------------------------
+                        final_dir = os.path.join( output_directory, judge_prompt  )
+                        create_directory(final_dir)
+                        judge_file = os.path.join(  final_dir,f"evaluation_{llm_judge}.txt"  )
+                        print(f" Evaluation Output : {judge_file}")
+
+                        # ----------------------------------------------------------
+                        # Run Evaluation
+                        # ----------------------------------------------------------
+                        print("\n⚙️  Evaluating summary quality...")
+
+                        eval_start = time.time()
+
+                        judging_explanation(   logs_path, summary_file, llm_judge,judge_file,   judge_prompt    )
+
+                        eval_end = time.time()
+
+                        print(
+                            f" Evaluation completed in "
+                            f"{eval_end - eval_start:.2f} seconds"
+                        )
+
+        # ==========================================================================
+        # FINAL RUNTIME SUMMARY
+        # ==========================================================================
+        total_time = time.time() - start_time
+
+        print("\n" + "=" * 80)
+        print(" HIERARCHICAL SUMMARY EVALUATION COMPLETED")
+        print("=" * 80)
+
+        print("  Total Runtime:")
+        print(f"   • Seconds : {total_time:.2f}s")
+        print(f"   • Minutes : {total_time / 60:.2f} min")
+        print(f"   • Hours   : {total_time / 3600:.2f} hr")
+
+        print("=" * 80)
+      
+    
+    elif sys.argv[1] == "fit":
+
+        start_time = time.time()
+
+        print("\n" + "=" * 80)
+        print(" STARTING MODEL TRAINING PIPELINE")
+        print("=" * 80)
 
         for task_name in TASK:
-            print(" ")
-            print('task name: ', task_name)
-            print(f"DATASET : {dataset_names_for_task[task_name]}")
-            datasets_dict = read_all_dataset(root_dir, task_name)
-            tmp_output_directory = root_dir + '/output/' + task_name + '/' 
-            print(f"DATASET : {dataset_names_for_task[task_name]}")
 
-            for dataset_name in dataset_names_for_task[task_name]:
-                print('\tdataset name: ', dataset_name)
-                print(" ")
-                
-                # datasets_dict = read_all_dataset(root_dir, task_name)
-                
+            # Skip unsupported task
+            if task_name == "TIME_SERIES_FORECAST":
+                continue
+
+            print(f"\n TASK: {task_name}")
+            print("-" * 80)
+
+            dataset_list = dataset_names_for_task[task_name]
+            print(f" Datasets: {dataset_list}")
+
+            # Load all datasets for current task
+            datasets_dict = read_all_dataset(root_dir, task_name)
+
+            base_output_dir = os.path.join(root_dir,"results", "ALPHA-AUTOML", task_name )
+
+            for dataset_name in dataset_list:
+
+                print("\n" + "─" * 80)
+                print(f" DATASET: {dataset_name}")
+                print("─" * 80)
+
+                # Extract dataset components
                 x_train = datasets_dict[dataset_name][0]
                 y_train = datasets_dict[dataset_name][1]
-                # x_test = datasets_dict[dataset_name][2]
-                # y_test = datasets_dict[dataset_name][3] 
                 target_column = datasets_dict[dataset_name][2]
                 date_column = datasets_dict[dataset_name][3]
-                
-                output_directory = tmp_output_directory + dataset_name + '/'
+
+                # Output paths
+                output_directory = os.path.join(base_output_dir, dataset_name)
+                output_dir = output_directory
+
+                # Optional: create output directory
                 # create_directory(output_directory)
-                
-                output_dir = tmp_output_directory + dataset_name + '/'
 
-                print('-----------------START FITTING--------------')
+                print("⚙️  Training model...")
+                fit_start = time.time()
+
+                create_fit_classifier(task_name, x_train,y_train,target_column,output_directory,date_column, output_dir)
+
+                fit_end = time.time()
                 
-                create_fit_classifier(task_name,x_train,y_train,target_column, output_directory, date_column, output_dir)
-                
-                print('--------------------DONE--------------------')
-                print(" ")
                
-               
-                
-              
-              
-                logs_path = os.path.join(output_directory, 'full_log_MainProcess.txt')
-                
-                ### Filter the logs
-                
-                # if(task_name =="CLASSIFICATION") | (task_name =="REGRESSION"):
-                print("------------FILTERING THE LOGS-----------------")               
+                print(f"Training completed in {fit_end - fit_start:.2f} seconds")
 
-                fil_tmp = os.path.join(output_directory, 'fil_tmp.txt')
-                filter_path = os.path.join(output_directory, 'filter_logs.txt')
-                filtering_logs(logs_path, fil_tmp)
-                
-                remove_consecutive_duplicates(fil_tmp, filter_path)
-                    # print("FILTER LOGs:", filter_logs)
-                    
-                    # filter_path = os.path.join(output_directory, 'filter_logs.txt')
-                    
-                    # with open(filter_path, mode="w" , encoding="utf-8") as f:
-                    #     f.write(filter_logs)
-                    
-               
-                end = time.time()
+                # ------------------------------------------------------------------
+                # Log Processing
+                # ------------------------------------------------------------------
+                print("\n Filtering logs...")
 
-                
-                print("Running time in seconds:", end - start, "seconds")
-                print("Running time in minutes:", (end - start)/60, "minutes")
-                print("Running time in hours:", (end - start)/3600, "hours")
-                
-                
-                
-    elif sys.argv[1] == 'fit_autosklearn':
-        import time
-        start = time.time()
+                logs_path = os.path.join(output_directory,"full_log_MainProcess.txt")
 
-        for task_name in TASK:
-            print(" ")
-            print('task name: ', task_name)
-            print(f"DATASET : {dataset_names_for_task[task_name]}")
-            datasets_dict = read_all_dataset(root_dir, task_name)
-            tmp_output_directory = root_dir + '/output/' + task_name + '/' 
-            print(f"DATASET : {dataset_names_for_task[task_name]}")
+                temp_filtered_log = os.path.join(output_directory, "fil_tmp.txt")
+                final_filtered_log = os.path.join(output_directory, "filter_logs.txt")
 
-            for dataset_name in dataset_names_for_task[task_name]:
-                print('\tdataset name: ', dataset_name)
-                print(" ")
-                
-                # datasets_dict = read_all_dataset(root_dir, task_name)
-                
-                x_train = datasets_dict[dataset_name][0]
-                y_train = datasets_dict[dataset_name][1]
-                # x_test = datasets_dict[dataset_name][2]
-                # y_test = datasets_dict[dataset_name][3] 
-                target_column = datasets_dict[dataset_name][2]
-                date_column = datasets_dict[dataset_name][3]
-                
-                output_directory = tmp_output_directory + dataset_name + '/'
-                # create_directory(output_directory)
-                
-                output_dir = tmp_output_directory + dataset_name + '/'
+                filtering_logs(logs_path, temp_filtered_log)
+                remove_consecutive_duplicates(temp_filtered_log, final_filtered_log)
 
-                print('-----------------START FITTING--------------')
-                
-                create_fit_classifier(task_name,x_train,y_train,target_column, output_directory, date_column, output_dir)
-                
-                print('--------------------DONE--------------------')
-                print(" ")
-               
-               
-                
-              
-              
-                logs_path = os.path.join(output_directory, 'full_log_MainProcess.txt')
-                
-                ### Filter the logs
-                
-                # if(task_name =="CLASSIFICATION") | (task_name =="REGRESSION"):
-                print("------------FILTERING THE LOGS-----------------")               
+                print("Logs filtered successfully")
 
-                fil_tmp = os.path.join(output_directory, 'fil_tmp.txt')
-                filter_path = os.path.join(output_directory, 'filter_logs.txt')
-                filtering_logs(logs_path, fil_tmp)
-                
-                remove_consecutive_duplicates(fil_tmp, filter_path)
-                    # print("FILTER LOGs:", filter_logs)
-                    
-                    # filter_path = os.path.join(output_directory, 'filter_logs.txt')
-                    
-                    # with open(filter_path, mode="w" , encoding="utf-8") as f:
-                    #     f.write(filter_logs)
-                    
-               
-                end = time.time()
+        # --------------------------------------------------------------------------
+        # Total Runtime Summary
+        # --------------------------------------------------------------------------
+        total_time = time.time() - start_time
 
-                
-                print("Running time in seconds:", end - start, "seconds")
-                print("Running time in minutes:", (end - start)/60, "minutes")
-                print("Running time in hours:", (end - start)/3600, "hours")
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-    # elif sys.argv[1] == 'summarize':
+        print("\n" + "=" * 80)
+        print(" PIPELINE COMPLETED")
+        print("=" * 80)
+
+        print(f"  Total Runtime:")
+        print(f"   • Seconds : {total_time:.2f}s")
+        print(f"   • Minutes : {total_time / 60:.2f} min")
+        print(f"   • Hours   : {total_time / 3600:.2f} hr")
+
+        print("=" * 80)
         
-    #     jobs = iterate_loop()
-        
-    #     with ThreadPoolExecutor(max_workers=0) as executor:
-    #         for logs_path, file_dir, sum_prompt, output_directory, sum_llm, _, _ in jobs:
-                
-    #             print('\t\t\tprompt: ', sum_prompt)
-    #             print( " ")
-    #             print(f"LOGS: {logs_path}")
-                
-    #             # filter_logs = filter_automl_logs(logs_path)
-    #             # # print("FILTER LOGs:", filter_logs)
-                
-    #             # filter_path = os.path.join(output_directory, 'filter_logs')
-                
-    #             # with open(filter_path, mode="w" , encoding="utf-8") as f:
-    #             #     f.write(filter_logs)
-                    
- 
-    #             args = (logs_path, sum_llm, file_dir,sum_prompt) 
-    #             executor.submit(explain_process, *args)
-  
-    #     print( " " )
+       
+       
+    elif sys.argv[1] == "flat_summarization":
+
+        start_time = time.time()
+
+        print("\n" + "=" * 80)
+        print(" STARTING FLAT SUMMARIZATION PIPELINE")
+        print("=" * 80)
+
+        # ==========================================================================
+        # AUTOSKLEARN SUMMARIZATION
+        # ==========================================================================
+        print("\n SUMMARIZING AUTOSKLEARN RESULTS")
+        print("-" * 80)
+
+        for task in ["CLASSIFICATION"]:
+
+            print(f"\n TASK: {task}")
+
+            for dataset_name, sum_llm, sum_prompt in product(
+                dataset_names_for_task[task],
+                LLMs,
+                SUMMARIZATION_FLAT_PROMPT
+            ):
+
+                print("\n" + "─" * 80)
+                print(f" DATASET : {dataset_name}")
+                print(f" LLM     : {sum_llm}")
+                print(f" PROMPT  : {sum_prompt}")
+                print("─" * 80)
+
+                # Output directory
+                output_directory = os.path.join( root_dir, "results", "AUTOSKLEARN", task, dataset_name, sum_llm, sum_prompt)
+
+                create_directory(output_directory)
+
+                # Summary output file
+                summary_dir = os.path.join( output_directory, "summary_result.txt" )
+
+                # Logs path
+                logs_path = os.path.join(root_dir,"autosklearn_logs",task,dataset_name, "full_log_MainProcess.txt" )
+
+                print(f" Logs Path   : {logs_path}")
+                print(f" Output File : {summary_dir}")
+
+                # ------------------------------------------------------------------
+                # Generate Summary
+                # ------------------------------------------------------------------
+                print("\n⚙️  Generating summary...")
+
+                summary_start = time.time()
+
+                explain_process( logs_path,sum_llm,summary_dir,sum_prompt )
+
+                summary_end = time.time()
+
+                print(
+                    f"Summary generated in "
+                    f"{summary_end - summary_start:.2f} seconds"
+                )
+
+        # ==========================================================================
+        # ALPHA-AUTOML SUMMARIZATION
+        # ==========================================================================
+        print("\n" + "=" * 80)
+        print(" SUMMARIZING ALPHA-AUTOML RESULTS")
+        print("=" * 80)
+
+        jobs = iterate_loop(prompt_strategy="FLAT_PROMPTING", automl="ALPHA-AUTOML")
+
+        for (logs_path,file_dir,sum_prompt,output_directory,sum_llm, _, _,_) in jobs:
+
+            print("\n" + "─" * 80)
+            print(f" LLM     : {sum_llm}")
+            print(f" PROMPT  : {sum_prompt}")
+            print("─" * 80)
+
+            print(f" Logs Path   : {logs_path}")
+            print(f" Output File : {file_dir}")
+
+            # ----------------------------------------------------------------------
+            # Generate Summary
+            # ----------------------------------------------------------------------
+            print("\n⚙️  Generating summary...")
+
+            summary_start = time.time()
+            explain_process(logs_path,sum_llm,file_dir, sum_prompt)
+            summary_end = time.time()
+            print(
+                f" Summary generated in "
+                f"{summary_end - summary_start:.2f} seconds"
+            )
+
+        # ==========================================================================
+        # FINAL RUNTIME SUMMARY
+        # ==========================================================================
+        total_time = time.time() - start_time
+
+        print("\n" + "=" * 80)
+        print("FLAT SUMMARIZATION COMPLETED")
+        print("=" * 80)
+
+        print("  Total Runtime:")
+        print(f"   • Seconds : {total_time:.2f}s")
+        print(f"   • Minutes : {total_time / 60:.2f} min")
+        print(f"   • Hours   : {total_time / 3600:.2f} hr")
+
+        print("=" * 80)         
     
-    
-    elif sys.argv[1] == 'flat_summarization':
-        start = time.time()
-
-        jobs = iterate_loop()
-        
-        # with ThreadPoolExecutor(max_workers=0) as executor:
-        for logs_path, file_dir, sum_prompt, output_directory, sum_llm, _, _ in jobs:
-            
-            print('\t\t\tprompt: ', sum_prompt)
-            print( " ")
-            print(f"LOGS: {logs_path}")
-            print(f"LOG PATH: {logs_path}")
-            
-            print(f"=====LLM SUMMARIZER:{sum_llm}")
-
-            explain_process(logs_path, sum_llm, file_dir,sum_prompt)
-
-
-        print( " " )
-        end = time.time()
-
-                
-        print("Running time in seconds:", end - start, "seconds")
-        print("Running time in minutes:", (end - start)/60, "minutes")
-        print("Running time in hours:", (end - start)/3600, "hours")
         
  
     ### summarization using Hierachical prompt modelling
     
-    elif sys.argv[1] == 'summarize_Hierachical_prompt':
-        
-        #with ThreadPoolExecutor(max_workers=2) as executor:
+    elif sys.argv[1] == "Hierachical_summarization":
+
+        start_time = time.time()
+
+        print("\n" + "=" * 80)
+        print(" STARTING HIERARCHICAL SUMMARIZATION PIPELINE")
+        print("=" * 80)
+
+        # ==========================================================================
+        # MAIN LOOP
+        # ==========================================================================
         for task in TASK:
-            for dataset_name, sum_llm in product(dataset_names_for_task[task], LLMs):
-                output_directory = root_dir + '/results_Hierarchical_Prompting/' + task + '/' + dataset_name + '/' + sum_llm + '/'
-                create_directory(output_directory)
-                summary_dir =  os.path.join(output_directory , 'fact.txt')
-                # if(task == "CLASSIFICATION") | (task == "REGRESSION"):
-                #     logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'filter_logs.txt')
-                # else:
-                #     logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
-                
-                # logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
-                logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'filter_logs.txt')
-                print( " ")
-                print(f"LOGS: {logs_path}")
-                
-                fact_extraction(logs_path, sum_llm, summary_dir)
-                
-                
-                
-                
-                # ## aggregate fact
-                # fact_agg_dir =  os.path.join(output_directory , 'fact_agg_dir.json')
-                
-                # # fact_aggregation(summary_dir, sum_llm, fact_agg_dir)
 
-                # args = (logs_path, sum_llm, summary_dir) 
-                # executor.submit(phase_segmentation, *args)
-        
-                # # micro summary generation ##
-                
+            print(f"\n TASK: {task}")
+            print("-" * 80)
 
-                # micro_summary_dir = os.path.join(output_directory, 'micro_summary.json')
-                # print( " " )
-                
-                # # import json
+            for dataset_name, sum_llm in product(dataset_names_for_task[task], LLMs ):
 
-                # # with open(summary_dir, "r") as f:
-                # #     phases = json.load(f)
-                    
-                # # micro_summarization(summary_dir, sum_llm, micro_summary_dir, phases) 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                # # # macro summary generation
-                 
-                global_summary_dir = os.path.join(output_directory, 'global_summary_T.txt') 
-                macro_summarization(summary_dir, sum_llm, global_summary_dir, logs_path )  
-            
-                ### VERIFICATION STEP
-                verification_dir = os.path.join(output_directory, 'verification.json') 
-                verification(global_summary_dir, logs_path, sum_llm, verification_dir)
-                
-                ###REVISED SUMMARY
-                
-                revised_summary_dir = os.path.join(output_directory, 'global_summary_revised.txt')
-                revised_summary(global_summary_dir, logs_path, verification_dir, sum_llm, revised_summary_dir)
-                    
-            
+                for automl in AUTOML:
+
+                    # --------------------------------------------------------------
+                    # Skip unsupported combinations
+                    # --------------------------------------------------------------
+                    if ( task in ["SEMISUPERVISED", "TIME_SERIES_FORECAST"]and automl == "AUTOSKLEARN"):
+                        print( f"⚠️  Skipping unsupported combination: "f"{automl} + {task}" )
+                        continue
+
+                    print("\n" + "─" * 80)
+                    print(f" AutoML   : {automl}")
+                    print(f" Dataset  : {dataset_name}")
+                    print(f" LLM      : {sum_llm}")
+                    print("─" * 80)
+
+                    # --------------------------------------------------------------
+                    # Output Directory
+                    # --------------------------------------------------------------
+                    output_directory = os.path.join(root_dir,"results_Hierarchical_Prompting",automl,task,dataset_name,sum_llm)
+
+                    create_directory(output_directory)
+
+                    # --------------------------------------------------------------
+                    # File Paths
+                    # --------------------------------------------------------------
+                    fact_file = os.path.join(output_directory, "fact.txt")
+                    global_summary_file = os.path.join(output_directory, "global_summary_T.txt")
+                    verification_file = os.path.join(output_directory,"verification.json" )
+                    revised_summary_file = os.path.join(output_directory, "global_summary_revised.txt")
+
+                    # --------------------------------------------------------------
+                    # Logs Path
+                    # --------------------------------------------------------------
+                    if automl == "ALPHA-AUTOML":
+
+                        logs_path = os.path.join(root_dir,"results",automl,task,dataset_name, "filter_logs.txt")
+
+                    elif automl == "AUTOSKLEARN":
+
+                        logs_path = os.path.join( root_dir,"autosklearn_logs",task,dataset_name, "full_log_MainProcess.txt")
+
+                    print(f" Logs Path : {logs_path}")
+                    print(f"⚙️  Applying Hierarchical Prompting")
+
+                    # ==============================================================
+                    # STEP 1 — FACT EXTRACTION
+                    # ==============================================================
+                    print("\n Step 1: Phase Segmentation")
+
+                    step_start = time.time()
+
+                    fact_extraction(logs_path,sum_llm,fact_file)
+
+                    print(
+                        f"  Phase Segmentation completed in "
+                        f"{time.time() - step_start:.2f} seconds"
+                    )
+
+                    # ==============================================================
+                    # STEP 2 — MACRO SUMMARIZATION
+                    # ==============================================================
+                    print("\n Step 2: Macro Summarization")
+
+                    step_start = time.time()
+
+                    macro_summarization(fact_file,sum_llm,global_summary_file,logs_path)
+
+                    print(
+                        f" Macro summarization completed in "
+                        f"{time.time() - step_start:.2f} seconds"
+                    )
+
+                    # ==============================================================
+                    # STEP 3 — VERIFICATION
+                    # ==============================================================
+                    print("\n✔️  Step 3: Verification")
+
+                    step_start = time.time()
+
+                    verification(global_summary_file, logs_path,sum_llm,verification_file)
+
+                    print(
+                        f" Verification completed in "
+                        f"{time.time() - step_start:.2f} seconds"
+                    )
+
+                    # ==============================================================
+                    # STEP 4 — REVISED SUMMARY
+                    # ==============================================================
+                    print("\n♻️  Step 4: Revised Summary Generation")
+
+                    step_start = time.time()
+
+                    revised_summary(global_summary_file,  logs_path,verification_file,sum_llm, revised_summary_file )
+
+                    print(
+                        f" Revised summary generated in "
+                        f"{time.time() - step_start:.2f} seconds"
+                    )
+
+        # ==========================================================================
+        # FINAL RUNTIME SUMMARY
+        # ==========================================================================
+        total_time = time.time() - start_time
+
+        print("\n" + "=" * 80)
+        print(" HIERARCHICAL SUMMARIZATION COMPLETED")
+        print("=" * 80)
+
+        print("  Total Runtime:")
+        print(f"   • Seconds : {total_time:.2f}s")
+        print(f"   • Minutes : {total_time / 60:.2f} min")
+        print(f"   • Hours   : {total_time / 3600:.2f} hr")
+
+        print("=" * 80)
+
     
-    elif sys.argv[1] == 'judge_H': 
-    
-        jobs = iterate_loop()
-        
-        # with ThreadPoolExecutor(max_workers=4) as executor:
-        
+     
+    elif sys.argv[1] == "judge_H":
+
+        start_time = time.time()
+
+        print("\n" + "=" * 80)
+        print("⚖️  STARTING HIERARCHICAL SUMMARY EVALUATION")
+        print("=" * 80)
+
+        # ==========================================================================
+        # MAIN LOOP
+        # ==========================================================================
         for task in TASK:
-            for dataset_name, sum_llm in product(dataset_names_for_task[task], LLMs):
-                output_directory = root_dir + '/results_Hierarchical_Prompting/' + task + '/' + dataset_name + '/' + sum_llm + '/'
-                create_directory(output_directory)
-                summary_dir =  os.path.join(output_directory , 'global_summary_revised.txt')
-                # if(task == "CLASSIFICATION") | (task == "REGRESSION"):
-                #     logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'filter_logs.txt')
-                # else:
-                #     logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
-    
-                logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'filter_logs.txt')
-                print( " ")
-                print(f"LOGS: {logs_path}")
 
-                for llm_judge, judge_prompt in product(LLMs_judge, JUDGING_PROMPT): 
-                    final_dir = output_directory + judge_prompt + '/'     
-                    create_directory(final_dir)
-                    judge_dir = os.path.join(final_dir, f'evaluation_'+llm_judge+'.txt')
-                    # judge_dir = os.path.join(output_directory, f'evaluation_{llm_judge}_mismatch.txt')
-                    
-                    print(f"\t\t judging the summary of the logs: {logs_path}")
-                    print(f"\t\t\t using the LLM:", llm_judge, " to judge")
-                    print(f"\t\t Judging the summary located in the directory: {summary_dir}")
-                    print("JUDGING PROMPT:", judge_prompt)  
-                    print(f"judge file directory: {judge_dir}")   
-                    
-                    judging_explanation(logs_path,summary_dir,llm_judge,judge_dir,judge_prompt)
-                    args = (logs_path,summary_dir,llm_judge,judge_dir,judge_prompt)
-                    # executor.submit(judging_explanation, *args)
-                    # gc.collect()                    
-                
-        print( " " )  
+            print(f"\n TASK: {task}")
+            print("-" * 80)
 
-                
-            
-    elif sys.argv[1] == 'judge': 
+            for dataset_name, sum_llm in product(dataset_names_for_task[task],LLMs):
+
+                for automl in AUTOML:
+
+                    # --------------------------------------------------------------
+                    # Skip unsupported combinations
+                    # --------------------------------------------------------------
+                    if (task in ["SEMISUPERVISED", "TIME_SERIES_FORECAST"]and automl == "AUTOSKLEARN" ):
+                        print( f"⚠️  Skipping unsupported combination: " f"{automl} + {task}" )
+                        continue
+
+                    print("\n" + "─" * 80)
+                    print(f" AutoML   : {automl}")
+                    print(f" Dataset  : {dataset_name}")
+                    print(f" Summary LLM : {sum_llm}")
+                    print("─" * 80)
+
+                    # --------------------------------------------------------------
+                    # Output Directory
+                    # --------------------------------------------------------------
+                    output_directory = os.path.join(root_dir,"results_Hierarchical_Prompting", automl, task,dataset_name,sum_llm )
+
+                    create_directory(output_directory)
+
+                    # --------------------------------------------------------------
+                    # Summary File
+                    # --------------------------------------------------------------
+                    summary_file = os.path.join( output_directory,"global_summary_revised.txt"   )
+
+                    # --------------------------------------------------------------
+                    # Logs Path
+                    # --------------------------------------------------------------
+                    if automl == "ALPHA-AUTOML":
+
+                        logs_path = os.path.join(  root_dir, "results",automl, task,dataset_name, "filter_logs.txt"  )
+
+                    elif automl == "AUTOSKLEARN":
+
+                        logs_path = os.path.join( root_dir, "autosklearn_logs", task,dataset_name,  "full_log_MainProcess.txt"   )
+
+                    print(f" Logs Path    : {logs_path}")
+                    print(f" Summary File : {summary_file}")
+
+                    # ==============================================================
+                    # JUDGING LOOP
+                    # ==============================================================
+                    for llm_judge, judge_prompt in product(LLMs_judge,JUDGING_PROMPT):
+
+                        print("\n" + "·" * 80)
+                        print(f"⚖️  Judge LLM : {llm_judge}")
+                        print(f" Prompt     : {judge_prompt}")
+                        print("·" * 80)
+
+                        # ----------------------------------------------------------
+                        # Judge Output Directory
+                        # ----------------------------------------------------------
+                        final_dir = os.path.join( output_directory, judge_prompt  )
+                        create_directory(final_dir)
+                        judge_file = os.path.join(  final_dir,f"evaluation_{llm_judge}.txt"  )
+                        print(f" Evaluation Output : {judge_file}")
+
+                        # ----------------------------------------------------------
+                        # Run Evaluation
+                        # ----------------------------------------------------------
+                        print("\n⚙️  Evaluating summary quality...")
+
+                        eval_start = time.time()
+
+                        judging_explanation(   logs_path, summary_file, llm_judge,judge_file,   judge_prompt    )
+
+                        eval_end = time.time()
+
+                        print(
+                            f" Evaluation completed in "
+                            f"{eval_end - eval_start:.2f} seconds"
+                        )
+
+        # ==========================================================================
+        # FINAL RUNTIME SUMMARY
+        # ==========================================================================
+        total_time = time.time() - start_time
+
+        print("\n" + "=" * 80)
+        print(" HIERARCHICAL SUMMARY EVALUATION COMPLETED")
+        print("=" * 80)
+
+        print("  Total Runtime:")
+        print(f"   • Seconds : {total_time:.2f}s")
+        print(f"   • Minutes : {total_time / 60:.2f} min")
+        print(f"   • Hours   : {total_time / 3600:.2f} hr")
+
+        print("=" * 80)
+      
+         
+      
+    elif sys.argv[1] == "judge":
         
-        jobs = iterate_loop()
         
-        # with ThreadPoolExecutor(max_workers=4) as executor:
-                
-        for logs_path, file_dir, sum_prompt, output_directory ,_ ,_, _ in jobs:
-            for llm_judge, judge_prompt in product(LLMs_judge, JUDGING_PROMPT):
-                dir_temp = output_directory + judge_prompt + '/'
-                create_directory(dir_temp)      
-                judge_dir = os.path.join(dir_temp, f'evaluation_'+llm_judge+'.txt')
-                # judge_dir = os.path.join(output_directory, f'evaluation_{llm_judge}_mismatch.txt')
-                
-                print(f"\t\t judging the summary of the logs: {logs_path}")
-                print(f"\t\t\t using the LLM:", llm_judge, " to judge")
-                print(f"\t\t Judging the summary located in the directory: {file_dir}")
-                print("JUDGING PROMPT:", judge_prompt)  
-                print(f"judge file directory: {judge_dir}")  
-                judging_explanation(logs_path,file_dir,llm_judge,judge_dir,judge_prompt) 
-                    # args = (logs_path,file_dir,llm_judge,judge_dir,judge_prompt)
-                    # executor.submit(judging_explanation, *args)
-                    # gc.collect()                    
-                        
-        print( " " )  
-            
-            
-     
-     
-     
-     ### summarization using Hierachical prompt modelling MODIFIED METHODS
-    
-    elif sys.argv[1] == 'summarize_H_new':
-        
-        #with ThreadPoolExecutor(max_workers=2) as executor:
+        start_time = time.time()
+
+        print("\n" + "=" * 80)
+        print("⚖️  STARTING FLAT SUMMARY EVALUATION")
+        print("=" * 80)
+
+        # ==========================================================================
+        # MAIN LOOP
+        # ==========================================================================
         for task in TASK:
-            for dataset_name, sum_llm in product(dataset_names_for_task[task], LLMs):
-                output_directory = root_dir + '/results_test_H/' + task + '/' + dataset_name + '/' + sum_llm + '/'
-                create_directory(output_directory)
-                summary_dir =  os.path.join(output_directory , 'fact.json')
-                # if(task == "CLASSIFICATION") | (task == "REGRESSION"):
-                #     logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'filter_logs.txt')
-                # else:
-                logs_path = os.path.join(root_dir, 'results', task, dataset_name, 'full_log_MainProcess.txt')
-                
-                print( " ")
-                print(f"LOGS: {logs_path}")
-                
-                phase_segmentation(logs_path, sum_llm, summary_dir)
-                
-                import json
-                with open(summary_dir, "r") as f:
-                    phases = json.load(f)
-                    
-                
-                phase_filter =  os.path.join(output_directory , 'phase_filter.txt')    
-                text = regex_filtering(logs_path, phases)
-                
-                             
-                with open(phase_filter, mode="w" , encoding="utf-8") as f:
-                        f.write(text)
 
-     
-     
+            print(f"\n TASK: {task}")
+            print("-" * 80)
+
+            for dataset_name, sum_llm, sum_prompt in product(dataset_names_for_task[task],LLMs, SUMMARIZATION_FLAT_PROMPT):
+
+                for automl in AUTOML:
+
+                    # --------------------------------------------------------------
+                    # Skip unsupported combinations
+                    # --------------------------------------------------------------
+                    if (task in ["SEMISUPERVISED", "TIME_SERIES_FORECAST"]and automl == "AUTOSKLEARN" ):
+                        print( f"⚠️  Skipping unsupported combination: " f"{automl} + {task}" )
+                        continue
+
+                    print("\n" + "─" * 80)
+                    print(f" AutoML   : {automl}")
+                    print(f" Dataset  : {dataset_name}")
+                    print(f" Summary LLM : {sum_llm}")
+                    print("─" * 80)
+
+                    # --------------------------------------------------------------
+                    # Output Directory
+                    # --------------------------------------------------------------
+                    output_directory = os.path.join(root_dir,"results", automl, task,dataset_name,sum_llm,sum_prompt )
+
+                    create_directory(output_directory)
+
+                    # --------------------------------------------------------------
+                    # Summary File
+                    # --------------------------------------------------------------
+                    summary_file = os.path.join( output_directory,"summary_result.txt")
+
+                    # --------------------------------------------------------------
+                    # Logs Path
+                    # --------------------------------------------------------------
+                    if automl == "ALPHA-AUTOML":
+
+                        logs_path = os.path.join(  root_dir, "results",automl, task,dataset_name, "filter_logs.txt"  )
+
+                    elif automl == "AUTOSKLEARN":
+
+                        logs_path = os.path.join( root_dir, "autosklearn_logs", task,dataset_name,  "full_log_MainProcess.txt"   )
+
+                    print(f" Logs Path    : {logs_path}")
+                    print(f" Summary File : {summary_file}")
+
+                    # ==============================================================
+                    # JUDGING LOOP
+                    # ==============================================================
+                    for llm_judge, judge_prompt in product(LLMs_judge,JUDGING_PROMPT):
+
+                        print("\n" + "·" * 80)
+                        print(f"⚖️  Judge LLM : {llm_judge}")
+                        print(f" Prompt     : {judge_prompt}")
+                        print("·" * 80)
+
+                        # ----------------------------------------------------------
+                        # Judge Output Directory
+                        # ----------------------------------------------------------
+                        final_dir = os.path.join( output_directory, judge_prompt  )
+                        create_directory(final_dir)
+                        judge_file = os.path.join(  final_dir,f"evaluation_{llm_judge}.txt"  )
+                        print(f" Evaluation Output : {judge_file}")
+
+                        # ----------------------------------------------------------
+                        # Run Evaluation
+                        # ----------------------------------------------------------
+                        print("\n⚙️  Evaluating summary quality...")
+
+                        eval_start = time.time()
+
+                        judging_explanation(   logs_path, summary_file, llm_judge,judge_file,  judge_prompt)
+
+                        eval_end = time.time()
+
+                        print(
+                            f" Evaluation completed in "
+                            f"{eval_end - eval_start:.2f} seconds"
+                        )
+
+        # ==========================================================================
+        # FINAL RUNTIME SUMMARY
+        # ==========================================================================
+        total_time = time.time() - start_time
+
+        print("\n" + "=" * 80)
+        print(" FLAT SUMMARY EVALUATION COMPLETED")
+        print("=" * 80)
+
+        print("  Total Runtime:")
+        print(f"   • Seconds : {total_time:.2f}s")
+        print(f"   • Minutes : {total_time / 60:.2f} min")
+        print(f"   • Hours   : {total_time / 3600:.2f} hr")
+
+        print("=" * 80)
             
 
     elif sys.argv[1] == 'generate_csv_file':
         csv_df = [ ]
         doc = []
-        jobs = iterate_loop()
-        for logs_path, summary_dir, sum_prompt, output_directory, sum_llm, task, dataset_name in jobs:
-            for  llm_judge, judge_prompt in product(LLMs_judge,JUDGING_PROMPT ):
-                # print("\tjudging the TASK:", task)
-                # print(f"\t\t judging the summary of the logs:  full_log_MainProcess.txt")
-                # print(f"\t\t\t using the LLM:", llm_judge, " to judge")
-                # print(f"\t\t Judging the summary located in the directory: {file_dir}")                   
-                judge_dir = os.path.join(output_directory, f'evaluation_REVISED{llm_judge}.txt')           
-                print(f"judge file directory: {judge_dir}")
-                print("JUDGING PROMPT:", judge_prompt)        
-                row = result_script(judge_dir)
-                # print(f"row: {row}")
-                # doc.append(row)
-                # if len(doc) != 0:
-                #     print(len(doc))
-                #     print(f"list is: {doc}")
-                result_dir = os.path.join(root_dir, f"result_category6_H_autoskln.csv")
-                write_csv(task,dataset_name, sum_llm, sum_prompt, llm_judge, judge_prompt, row , result_dir)     
+        for prompt_strategy in PROMPT_STRATEGY:
+            # prompt_strategy="FLAT_PROMPTING"
+            for automl in AUTOML:
+                jobs = iterate_loop(prompt_strategy=prompt_strategy, automl=automl)
+                for logs_path, summary_dir, sum_prompt, output_directory, sum_llm, task, dataset_name, automl in jobs:
+                    for  llm_judge, judge_prompt in product(LLMs_judge,JUDGING_PROMPT ):
+ 
+                        judge_dir = os.path.join(output_directory, judge_prompt, f'evaluation_{llm_judge}.txt')           
+                        print(f"judge file directory: {judge_dir}")
+                        print("JUDGING PROMPT:", judge_prompt)        
+                        row = result_script(judge_dir)
+                        result_dir = os.path.join(root_dir, f"result.csv")
+                        write_csv(prompt_strategy, automl,task,dataset_name, sum_llm, sum_prompt, llm_judge, judge_prompt, row , result_dir)     
+            
+            
+
+
+    elif sys.argv[1] == "fit_1":
+
+        if len(sys.argv) < 4:
+            print("Usage: python script.py fit_1 <task_name> <dataset_name>")
+            sys.exit(1)
+
+        task_name = sys.argv[2]
+        dataset_name = sys.argv[3]
+
+        output_directory = os.path.join(
+            root_dir,
+            "results",
+            "ALPHA-AUTOML",
+            task_name,
+            dataset_name
+        )
+
+        print("\n")
+        print(f"TASK NAME: {task_name} | DATASET NAME: {dataset_name}")
+        print("\n")
+
+        create_directory(output_directory)
         
+        datasets_dict = read_dataset(root_dir, task_name, dataset_name)      
+        
+        x_train = datasets_dict[dataset_name][0]
+        y_train = datasets_dict[dataset_name][1]
+        # x_test = datasets_dict[dataset_name][2]
+        # y_test = datasets_dict[dataset_name][3] 
+        # target_column = datasets_dict[dataset_name][4]
+        
+        target_column = datasets_dict[dataset_name][2]
+        date_column = datasets_dict[dataset_name][3]
+
+
+        print("-----------------START FITTING--------------")
+        
+        create_fit_classifier(task_name,x_train,y_train,target_column, output_directory, date_column, output_directory)
+
+        print("\n")
+        print("-----------------DONE FITTING---------------")
+    
+            
             
     else:
         '''this is the code to launch an experiment on a particular task, dataset and llm'''
@@ -619,6 +1231,8 @@ if __name__ == "__main__":
         
             print('-----------------START FITTING--------------')
             create_fit_classifier(task_name,x_train,y_train,x_test,y_test,target_column)
+              
+            #create_fit_classifier(task_name,x_train,y_train,target_column, output_directory, date_column, output_dir)
             print(" ")
             print('-----------------DONE FITTING---------------')
 

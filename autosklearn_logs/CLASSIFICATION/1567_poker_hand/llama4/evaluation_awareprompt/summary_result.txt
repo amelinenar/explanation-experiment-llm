@@ -1,7 +1,0 @@
- Here is a summary of the log:
-
-The AutoML process started and ran for approximately 100 seconds. 
-It evaluated 5 different configurations and used a random forest classifier with a specific set of hyperparameters. 
-The process finished, and the final incumbent configuration was identified. 
-The AutoML script then shut down, and the dask infrastructure was closed. 
-The log provides a detailed account of the AutoML process, including the configurations evaluated and the final incumbent configuration.

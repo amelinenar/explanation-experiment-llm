@@ -1,3 +1,0 @@
- Here is a summary of the log:
-
-The AutoML process used SMAC (Sequential Model-based Algorithm Configuration) to search for an optimal pipeline configuration. The search process involved 19 iterations, with the final incumbent configuration achieving an estimated cost of 0.0676. The process used various techniques, including random forest as the classifier, feature agglomeration as the feature preprocessor, and TF-IDF encoding for text features. The optimization process took approximately 106.47 seconds of wall clock time and 100.65 seconds of target algorithm runtime. The final configuration was saved, and the AutoML process was shut down.

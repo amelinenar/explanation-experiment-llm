@@ -1,1 +1,0 @@
- The SMAC AutoML run successfully completed after exploring 35 configurations. The optimal model identified is a Gaussian Process regressor with specific hyperparameters, resulting in an estimated cost of 0.1415. The process finished within the allocated time (108.01 seconds) and resources, with no issues during shutdown.

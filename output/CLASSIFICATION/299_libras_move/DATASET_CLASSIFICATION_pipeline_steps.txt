@@ -1,0 +1,1081 @@
+Round 1
+Game 0
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 1
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 2
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 3
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 4
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,sklearn.feature_selection.SelectPercentile,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 5
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 6
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 7
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,sklearn.ensemble.ExtraTreesClassifier
+Working Pipeline
+Game 8
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 9
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,sklearn.feature_selection.SelectPercentile,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 10
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 11
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 12
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,sklearn.ensemble.ExtraTreesClassifier
+Working Pipeline
+Game 13
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,sklearn.feature_selection.SelectPercentile,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 14
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 15
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 16
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 17
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.feature_selection.SelectPercentile,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 18
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,sklearn.ensemble.ExtraTreesClassifier
+Working Pipeline
+Game 19
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,sklearn.feature_selection.SelectPercentile,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Round 2 - Players Swapped
+Game 0
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 1
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 2
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 3
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 4
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 5
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 6
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 7
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 8
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 9
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 10
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 11
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 12
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 13
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 14
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 15
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 16
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 17
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 18
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 19
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Round 1
+Game 0
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 1
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 2
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 3
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 4
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,sklearn.feature_selection.SelectPercentile,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 5
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 6
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 7
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 8
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 9
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,sklearn.feature_selection.SelectPercentile,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 10
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 11
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 12
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 13
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,sklearn.feature_selection.SelectPercentile,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 14
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 15
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 16
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 17
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.feature_selection.SelectPercentile,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 18
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.RobustScaler,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 19
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,FEATURE_SELECTOR,sklearn.ensemble.ExtraTreesClassifier
+sklearn.preprocessing.StandardScaler,sklearn.feature_selection.SelectPercentile,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Round 2 - Players Swapped
+Game 0
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 1
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 2
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 3
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 4
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 5
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 6
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 7
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 8
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 9
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 10
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 11
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 12
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 13
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 14
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 15
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 16
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 17
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 18
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 19
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Round 1
+Game 0
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 1
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 2
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 3
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 4
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 5
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 6
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 7
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 8
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 9
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 10
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 11
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 12
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 13
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 14
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 15
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 16
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.naive_bayes.GaussianNB
+Non-Working Pipeline
+Game 17
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 18
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 19
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Round 2 - Players Swapped
+Game 0
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 1
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 2
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 3
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 4
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 5
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 6
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 7
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 8
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 9
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.ensemble.ExtraTreesClassifier
+Non-Working Pipeline
+Game 10
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 11
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 12
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 13
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 14
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 15
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 16
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 17
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 18
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,FEATURE_SELECTOR,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,CLASSIFIER
+sklearn.preprocessing.MaxAbsScaler,sklearn.feature_selection.GenericUnivariateSelect,sklearn.discriminant_analysis.LinearDiscriminantAnalysis
+Non-Working Pipeline
+Game 19
+S
+IMPUTER,ENCODERS,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
+IMPUTER,FEATURE_SCALER,FEATURE_SELECTOR,CLASSIFIER
