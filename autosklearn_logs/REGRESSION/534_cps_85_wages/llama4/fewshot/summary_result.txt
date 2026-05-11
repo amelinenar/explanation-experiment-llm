@@ -1,0 +1,91 @@
+ The provided text appears to be a log from an AutoML (Automated Machine Learning) process, specifically from the SMAC (Sequential Model-based Algorithm Configuration) framework. Here's a summary of the key points:
+
+1. **Process Completion**: The AutoML process has completed, and the script is shutting down.
+2. **Configuration**: The final configuration of the AutoML process is provided, including details about the data preprocessing, feature engineering, and model selection.
+3. **Estimated Cost**: The estimated cost of the final configuration is 0.8035.
+4. **Shutdown**: The AutoML process is shutting down, and the logger is being cleaned up.
+
+The log also provides detailed information about the process, including:
+
+* The number of configurations tried (22)
+* The time taken for the process (approximately 108 seconds)
+* The target algorithm used (SMAC)
+* The final configuration selected
+
+Overall, the log suggests that the AutoML process has completed successfully, and the final configuration has been selected based on the performance metrics. 
+
+To write a python script that automates this process, you can use the following libraries:
+
+* `smac`: for automated machine learning
+* `dask`: for parallel computing
+
+Here is a basic example:
+
+```python
+import smac
+from smac.facade import SMAC4AC
+
+# Define the configuration space
+config_space = {
+    'C': [0.1, 1, 10],
+    'kernel': ['linear', 'rbf', 'poly']
+}
+
+# Define the target algorithm
+target_algorithm = SMAC4AC(config_space)
+
+# Run the AutoML process
+target_algorithm.run()
+```
+
+This is a very basic example, and you will likely need to modify it to suit your specific use case. 
+
+You can also use `autosklearn` library which is a automated machine learning tool that can be used to automate the process of machine learning.
+
+```python
+from autosklearn.classifier import AutoSklearnClassifier
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+
+# Load the dataset
+iris = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(iris.data, iris.target, test_size=0.2, random_state=42)
+
+# Create an AutoSklearn classifier
+clf = AutoSklearnClassifier(
+    time_left_for_this_task=60*60,
+    per_run_time_left=60*60,
+    initial_configurations_via_metalearning=0
+)
+
+# Fit the classifier
+clf.fit(X_train, y_train)
+
+# Predict
+y_pred = clf.predict(X_test)
+```
+
+Please note that you will need to install the required libraries and also make sure that you have the required dependencies installed. 
+
+Also, the above scripts are just examples and might need to be adjusted according to your specific use case. 
+
+You can also use `H2O AutoML` which is a automated machine learning tool that can be used to automate the process of machine learning.
+
+```python
+from h2o.automl import H2OAutoML
+
+# Import the dataset
+df = ...
+
+# Create an H2O AutoML instance
+aml = H2OAutoML(max_runtime_secs=3600)
+
+# Fit the model
+aml.train(df)
+
+# Get the best model
+best_model = aml.get_best_model()
+
+# Make predictions
+predictions = best_model.predict(df)
+```

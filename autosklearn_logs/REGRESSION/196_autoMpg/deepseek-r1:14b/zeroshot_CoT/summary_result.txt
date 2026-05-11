@@ -1,0 +1,14 @@
+ The key findings from the experiment using SMAC for AutoML optimization can be summarized as follows:
+
+1. **Optimization Algorithm**: The experiment utilized SMAC, a model-based optimization algorithm, which effectively combined local search and random search strategies to explore the configuration space.
+
+2. **Best Configuration**: The optimal model found consisted of:
+   - **Data Preprocessing**: A feature-type approach with median imputation and min-max scaling for numerical data.
+   - **Feature Processing**: Polynomial features of degree 2, including bias terms and interaction terms.
+   - **Regressor**: A Gaussian Process with optimized hyperparameters (alpha, thetaL, thetaU).
+
+3. **Performance Metrics**: The best configuration achieved an estimated cost of 0.1415, indicating strong performance in prediction or computational efficiency.
+
+4. **Experiment Execution**: The experiment involved evaluating 35 configurations within a wallclock time of approximately 2 minutes and 30 seconds (108 seconds), using Dask for efficient parallel computing to manage workload distribution.
+
+These findings highlight SMAC's effectiveness in identifying an optimal model configuration, demonstrating its capability to efficiently navigate the complex hyperparameter space.

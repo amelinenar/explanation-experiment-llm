@@ -1,0 +1,11 @@
+ 1. Accuracy — Score: 3 (Good)  
+   The summary correctly states that no logs are present to evaluate, avoiding any factual errors or unsupported claims.
+
+2. Clarity — Score: 3 (Good)  
+   The summary is straightforward and easy to understand, clearly conveying the absence of logs without unnecessary complexity.
+
+3. Completeness — Score: 3 (Good)  
+   The summary adequately addresses the lack of logs, ensuring no major stages are overlooked in the context provided.
+
+4. Relevance — Score: 3 (Good)  
+   The summary remains focused solely on the absence of logs, avoiding any irrelevant explanations or interpretations.

@@ -1,0 +1,18 @@
+ **Summary:**
+
+- **Experiment Details:** The experiment was conducted on February 4, 2026, using an AutoML process with SMAC (Sequential Model-Based Algorithm Configuration) to optimize machine learning models.
+
+- **Process Overview:** The AutoML framework evaluated 19 configurations within a time limit of approximately 111.17 seconds. Due to the time constraint, configuration 19 was not completed.
+
+- **Best Performing Model (Incumbent):**
+  - **Classifier:** Random Forest with 'entropy' criterion.
+  - **Hyperparameters:**
+    - Bootstrap enabled.
+    - Max features set to ~0.8368.
+    - Min samples leaf = 2, min samples split = 12.
+  - **Data Preprocessing:**
+    - Numerical data processed with median imputation and minmax scaling.
+    - Text data encoded using TF-IDF (Term Frequency-Inverse Document Frequency) with character-level n-grams of length up to 4.
+  - **Feature Agglomeration:** Euclidean affinity, average linkage, and 316 clusters formed for dimensionality reduction.
+
+- **Completion:** The AutoML process completed successfully, loading models and shutting down infrastructure as scheduled.

@@ -1,0 +1,3 @@
+ Here is a summary of the log:
+
+The AutoML process used SMAC (Sequential Model-based Algorithm Configuration) to optimize a pipeline. The process ran for approximately 106.9 seconds, during which it evaluated 53 configurations. The final incumbent configuration used a Gaussian process regressor with a specific set of hyperparameters. The process completed, and the logger was cleaned up. The estimated cost of the final incumbent was 0.0265.

@@ -1,0 +1,3 @@
+ Here is a summary of the log:
+
+The AutoML process started and ran for approximately 112 seconds. During this time, it evaluated 22 different configurations and selected the best one based on performance metrics. The final configuration used a combination of techniques, including feature preprocessing, transformation, and regression. The process completed, and the system shut down, loading and cleaning up models and infrastructure. The estimated cost of the final configuration was 0.8035.

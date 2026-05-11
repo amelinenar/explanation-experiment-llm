@@ -1,0 +1,11 @@
+ 1. **Accuracy — Score: 3 (Good)**  
+   The summary accurately reflects the logs without introducing errors or hallucinations. However, it omits some specific details from the logs.
+
+2. **Clarity — Score: 4 (Excellent)**  
+   The summary is clear and easy to follow, using appropriate technical terminology without unnecessary complexity.
+
+3. **Completeness — Score: 2 (Average)**  
+   While the summary covers the main stages like configuration testing and shutdown, it misses specific details such as model names and exact issues encountered.
+
+4. **Relevance — Score: 4 (Excellent)**  
+   The summary focuses on AutoML-related information from the logs without adding irrelevant content or interpretations.

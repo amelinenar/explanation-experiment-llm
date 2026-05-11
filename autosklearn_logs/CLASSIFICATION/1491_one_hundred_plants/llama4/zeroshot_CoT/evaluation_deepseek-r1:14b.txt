@@ -1,0 +1,13 @@
+ ### Evaluation Attributes
+
+1. **Accuracy** — Score: 1 (Poor)
+   - Explanation: The summary is vague and does not reflect the specific details in the logs. It lacks factual consistency with the provided information.
+
+2. **Clarity** — Score: 1 (Poor)
+   - Explanation: The summary is unclear and lacks structure, making it difficult to follow any meaningful points or logical flow.
+
+3. **Completeness** — Score: 1 (Poor)
+   - Explanation: The summary omits all major stages of the AutoML process mentioned in the logs, such as data profiling, pipeline setup, optimization, and evaluation outcomes.
+
+4. **Relevance** — Score: 1 (Poor)
+   - Explanation: The summary is not relevant to the content of the logs, as it does not address any specific information or details from the provided text.

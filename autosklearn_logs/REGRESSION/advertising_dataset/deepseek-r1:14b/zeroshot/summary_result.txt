@@ -1,0 +1,17 @@
+ The log output from the AutoML run using SMAC indicates a successful optimization process for a regression task. Here's a concise summary:
+
+- **Process Overview**: The system utilized SMAC (Sequential Model-Based Optimization) to automatically configure and optimize an ML pipeline, evaluating 53 different configurations.
+
+- **Performance Metrics**:
+  - **Wall-clock Time**: Approximately 106.89 seconds.
+  - **Target Algorithm Runtime**: About 58.60 seconds.
+  - **Incumbent Changes**: The best configuration (incumbent) was updated twice during the optimization process.
+
+- **Final Configuration**:
+  - **Data Preprocessor**: Uses 'feature_type' with median imputation and minmax scaling.
+  - **Feature Preprocessor**: Polynomial features with degree 2, including bias and interaction terms only.
+  - **Regressor**: Gaussian Process with specific hyperparameters (alpha, thetaL, thetaU).
+
+- **Cost Estimate**: The final model's cost is estimated at 0.0265, likely indicating computational efficiency or performance.
+
+- **Conclusion**: SMAC efficiently found a strong model configuration within the given time constraints, demonstrating effective optimization for the regression task.

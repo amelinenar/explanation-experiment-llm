@@ -1,0 +1,11 @@
+ 1. **Accuracy — Score: 2 (Average)**
+   The summary attempts to provide information but may include inaccuracies since the logs lack relevant data.
+
+2. **Clarity — Score: 3 (Good)**
+   Despite lacking substance, the summary is structured and readable, making it clear though not informative.
+
+3. **Completeness — Score: 2 (Average)**
+   The summary partially covers AutoML stages but misses key aspects due to insufficient log data.
+
+4. **Relevance — Score: 2 (Average)**
+   The summary focuses on the logs' minimal content but may include unnecessary explanations or interpretations.

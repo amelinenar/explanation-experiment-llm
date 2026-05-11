@@ -1,0 +1,38 @@
+ ## Summary of AutoML Process
+
+The AutoML process utilized the SMAC (Sequential Model-based Algorithm Configuration) facade to optimize the performance of a regression task. 
+
+### 1. **Configuration and Initialization**
+
+- The process started with the configuration of the SMAC facade, which involved setting up the optimization goals and constraints.
+- The algorithm explored various configurations to identify the best approach.
+
+### 2. **Exploration of Configurations**
+
+- The SMAC algorithm explored different configurations, evaluating their performance based on the specified metrics.
+- It utilized a sequential model-based approach to optimize the configuration.
+
+### 3. **Selection of Methods**
+
+- The algorithm selected methods based on their performance, choosing those that optimized the specified metrics.
+- For example, it selected a polynomial feature preprocessor with a degree of 3.
+
+### 4. **Estimation of Costs**
+
+- The algorithm estimated the costs of the selected configurations, evaluating their performance.
+- The estimated cost of the incumbent configuration was 0.8035.
+
+### 5. **Termination and Cleanup**
+
+- The AutoML process terminated, and the infrastructure was cleaned up.
+- The dask infrastructure was closed, and the logger was cleaned up.
+
+### Key Points
+
+- **SMAC Facade**: Utilized for optimization.
+- **Regression Task**: Focused on optimizing performance.
+- **Configuration Exploration**: Various configurations explored.
+- **Method Selection**: Based on performance metrics.
+- **Cost Estimation**: Evaluated for selected configurations.
+
+The AutoML process efficiently explored configurations, selected optimal methods, and terminated, providing a comprehensive solution.

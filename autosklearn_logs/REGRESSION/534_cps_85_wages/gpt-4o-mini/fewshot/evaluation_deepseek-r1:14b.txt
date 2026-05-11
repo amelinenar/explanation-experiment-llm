@@ -1,0 +1,41 @@
+ ### Evaluation of Sample Summaries
+
+#### Summary 1:
+- **Accuracy**: The summary accurately reflects key points from the logs but may miss minor details.
+  - Score: 3 (Good)
+- **Clarity**: Clear with bullet points but could benefit from a more narrative structure.
+  - Score: 2 (Average)
+- **Completeness**: Covers all major AutoML stages effectively.
+  - Score: 4 (Excellent)
+- **Relevance**: Focused on log content without unnecessary additions.
+  - Score: 3 (Good)
+
+#### Summary 2:
+- **Accuracy**: Maintains factual consistency with minor elaborations.
+  - Score: 3 (Good)
+- **Clarity**: Well-structured and easy to follow with a narrative flow.
+  - Score: 4 (Excellent)
+- **Completeness**: Includes all major stages, ensuring thorough coverage.
+  - Score: 4 (Excellent)
+- **Relevance**: Stays relevant without introducing interpretations or recommendations.
+  - Score: 3 (Good)
+
+### My Summary:
+**Accuracy**: The summary accurately captures key points from the logs.  
+**Clarity**: Well-structured and clear.  
+**Completeness**: Covers all major AutoML stages.  
+**Relevance**: Focuses on log content without unnecessary additions.
+
+### Final Output
+
+1. **Accuracy — Score: 3 (Good)**  
+   The summary reflects the logs factually, though minor details may be omitted.
+
+2. **Clarity — Score: 3 (Good)**  
+   Clear and logical, with a balance between structure and readability.
+
+3. **Completeness — Score: 4 (Excellent)**  
+   Covers all major AutoML stages comprehensively.
+
+4. **Relevance — Score: 3 (Good)**  
+   Focuses on log content without introducing unnecessary information or interpretations.

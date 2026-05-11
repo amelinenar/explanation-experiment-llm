@@ -1,0 +1,11 @@
+ Here is a summary of the log:
+
+The AutoML process used SMAC (Sequential Model-based Algorithm Configuration) to optimize a pipeline. The process ran for approximately 108 seconds, during which 35 configurations were evaluated. The final incumbent configuration was selected, with an estimated cost of 0.1415. The process terminated, and the logger was cleaned up. 
+
+Key events include:
+- Data profiling and pipeline setup 
+- SMAC optimization 
+- Selection of the final incumbent configuration 
+- Termination of the AutoML process 
+
+The log provides a record of the AutoML process, including the time taken, configurations evaluated, and the final incumbent configuration selected.

@@ -1,0 +1,18 @@
+ The optimal machine learning model for predicting house prices, as determined by the AutoML process, involves several key steps and components:
+
+1. **Data Preparation**: The dataset was cleaned and preprocessed, handling missing values and encoding categorical variables appropriately.
+
+2. **Feature Engineering**: Various preprocessing techniques were applied, including numerical scaling (quantile transformation) and text feature extraction using TF-IDF encoding. Polynomial features with a degree of 3 and interaction-only terms were generated to capture complex relationships.
+
+3. **Model Selection**: The AutoML process evaluated multiple algorithms and configurations. The selected model is an instance of the Stochastic Gradient Descent (SGD) regressor, which was found to perform best after the applied preprocessing steps.
+
+**Final Model Configuration**:
+- **Data Preprocessing**:
+  - Numerical features were transformed using a quantile transformer for scaling.
+  - Text features were encoded using TF-IDF with character n-grams of size up to 4.
+  
+- **Feature Engineering**: Polynomial features of degree 3 were included, focusing on interaction terms without including bias.
+
+- **Regressor**: An SGD regressor was chosen with specific hyperparameters optimized during the AutoML search (e.g., alpha = 0.018, learning rate parameters, etc.).
+
+**Conclusion**: The best model identified is a Polynomial + SGD regression pipeline, which effectively captures the relationships in the data and provides accurate predictions for house prices.

@@ -1,0 +1,37 @@
+ ### Summary of the SMAC Output:
+
+1. **Experiment Overview**:
+   - The experiment was conducted using SMAC (Sequential Model-Based Algorithm Configuration) for AutoML (Automated Machine Learning).
+   - The goal was to optimize hyperparameters for a regression task.
+
+2. **Key Statistics**:
+   - **Incumbent Changes**: The best configuration (incumbent) was updated 3 times during the search process.
+   - **Submitted Runs**: A total of 35 configurations were submitted for evaluation.
+   - **Wallclock Time**: The experiment took approximately `108.01 / 112.81 seconds`.
+   - **Target Algorithm Runtime**: The target algorithm ran for a total of `86.87 seconds`.
+
+3. **Final Incumbent Configuration**:
+   - The final best configuration found was:
+     ```json
+     {
+       'data_preprocessor:__choice__': 'feature_type',
+       'data_preprocessor:feature_type:numerical_transformer:imputation:strategy': 'median',
+       'data_preprocessor:feature_type:numerical_transformer:rescaling:__choice__': 'minmax',
+       'feature_preprocessor:__choice__': 'polynomial',
+       'feature_preprocessor:polynomial:degree': 2,
+       'feature_preprocessor:polynomial:include_bias': 'True',
+       'feature_preprocessor:polynomial:interaction_only': 'False',
+       'regressor:__choice__': 'gaussian_process',
+       'regressor:gaussian_process:alpha': 0.09414230179794553,
+       'regressor:gaussian_process:thetaL': 1.3692618062770113e-09,
+       'regressor:gaussian_process:thetaU': 15642.37580197983
+     }
+     ```
+   - The estimated cost (performance) of this configuration was `0.1415`.
+
+4. **Experiment Completion**:
+   - The experiment completed successfully.
+   - All models were loaded and cleaned up properly.
+
+### Conclusion:
+The SMAC AutoML process identified a high-performing configuration for the regression task, with an incumbent configuration achieving an estimated cost of 0.1415. The process explored 35 configurations efficiently within the given time constraints.

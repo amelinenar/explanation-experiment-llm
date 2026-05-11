@@ -1,0 +1,3 @@
+ Here is a summary of the log:
+
+The AutoML process started and ran for approximately 108 seconds. During this time, it evaluated 21 different configurations and selected a final incumbent configuration. The process used a combination of data preprocessing, feature engineering, and classification algorithms to optimize performance. The estimated cost of the final incumbent configuration was 0.1458. The process then shut down and cleaned up resources.
