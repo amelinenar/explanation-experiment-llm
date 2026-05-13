@@ -147,7 +147,7 @@ The project is designed for reproducible research on LLM-based explainability fo
 ## 1. Clone the Repository
 
 ```bash
-git clone https://github.com/amelinenar/explanation-experiment-llm.git
+git clone https://github.com/amelinenar/explanation-experiment-llm.git   
 cd explanation-experiment-llm
 ```
 
@@ -257,6 +257,19 @@ LLMs_judge = {
     'gpt-4.1-mini'
 }
 ```
+```markdown
+# Best Performing Model
+
+Among the evaluated models, `gpt-4.1-mini` produced the best overall results in terms of:
+
+- explanation quality
+- clarity
+- consistency
+- evaluation scores
+
+It achieved the strongest performance across several datasets and prompting strategies.
+
+
 
 ---
 
@@ -468,6 +481,103 @@ python main.py generate_csv_file
 ```
 
 ---
+
+
+# Running a Subset of the Experiments
+
+It is possible to run experiments on a reduced configuration instead of executing the full pipeline.
+
+To do this, modify the configuration variables inside:
+
+```bash
+utils/constant.py
+```
+You can select:
+
+- A single task
+- A single dataset
+- A single LLM
+- A specific prompting strategy
+
+Example configuration:
+
+```bash
+TASK = ['CLASSIFICATION']
+
+CLASSIFICATION_DATASET = [
+    '299_libras_move'
+]
+
+LLMs = {
+    'gpt-4.1-mini'
+}
+```
+This setup will run the experiment only for:
+
+- the CLASSIFICATION task
+- the dataset 299_libras_move
+- the model gpt-4.1-mini
+
+
+
+
+---
+
+## Using Ollama
+
+Add this subsection under **Installation** or after **Environment Variables**.
+
+```markdown
+# Using Ollama for Local LLM Inference
+
+This project also supports local LLM inference using Ollama.
+
+## Install Ollama
+
+Follow the official installation guide:
+
+- Linux/macOS: https://ollama.com/download
+- Windows: https://ollama.com/download/windows
+
+After installation, start the Ollama server:
+
+```bash
+ollama serve
+```
+Then download the desired model, for example:
+```bash
+ollama pull llama4
+ollama pull deepseek-r1:14b
+```
+Update the .env file with the Ollama API endpoint:
+
+```bash
+URL_API="http://localhost:11434/api/generate"
+```
+
+Important Note About Performance
+
+Running large models locally can be slow if the machine does not have sufficient computational resources (RAM/GPU).
+
+Inference speed highly depends on:
+
+available GPU memory
+CPU performance
+model size
+
+Large models such as deepseek-r1:14b may require significant resources for acceptable performance.
+
+
+
+
+
+# License
+
+MIT License
+
+
+
+
 
 <!-- # Citation
 

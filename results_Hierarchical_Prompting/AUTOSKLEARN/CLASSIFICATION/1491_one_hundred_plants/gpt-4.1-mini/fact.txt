@@ -1,0 +1,187 @@
+ === PHASE: Dataset Facts ===
+[DEBUG] [2026-02-04 10:48:23,715:Client-AutoMLSMBO(1)::a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Function called with argument: (), {'data_feat_type': {'d3mIndex': 'numerical', 'V1': 'numerical', 'V2': 'numerical', 'V3': 'numerical', 'V4': 'numerical', 'V5': 'numerical', 'V6': 'numerical', 'V7': 'numerical', 'V8': 'numerical', 'V9': 'numerical', 'V10': 'numerical', 'V11': 'numerical', 'V12': 'numerical', 'V13': 'numerical', 'V14': 'numerical', 'V15': 'numerical', 'V16': 'numerical', 'V17': 'numerical', 'V18': 'numerical', 'V19': 'numerical', 'V20': 'numerical', 'V21': 'numerical', 'V22': 'numerical', 'V23': 'numerical', 'V24': 'numerical', 'V25': 'numerical', 'V26': 'numerical', 'V27': 'numerical', 'V28': 'numerical', 'V29': 'numerical', 'V30': 'numerical', 'V31': 'numerical', 'V32': 'numerical', 'V33': 'numerical', 'V34': 'numerical', 'V35': 'numerical', 'V36': 'numerical', 'V37': 'numerical', 'V38': 'numerical', 'V39': 'numerical', 'V40': 'numerical', 'V41': 'numerical', 'V42': 'numerical', 'V43': 'numerical', 'V44': 'numerical', 'V45': 'numerical', 'V46': 'numerical', 'V47': 'numerical', 'V48': 'numerical', 'V49': 'numerical', 'V50': 'numerical', 'V51': 'numerical', 'V52': 'numerical', 'V53': 'numerical', 'V54': 'numerical', 'V55': 'numerical', 'V56': 'numerical', 'V57': 'numerical', 'V58': 'numerical', 'V59': 'numerical', 'V60': 'numerical', 'V61': 'numerical', 'V62': 'numerical', 'V63': 'numerical', 'V64': 'numerical'}, 'data_info_task': 2, 'x_train': [DataFrame with 1281 rows and 65 columns], 'y_train': array([0., 0., 0., ..., 2., 2., 2.]), 'basename': 'a47eba54-01ae-11f1-b8b7-d54f57ea79c8', ...}
+[INFO] [2026-02-04 10:48:24,031:Client-AutoMLSMBO(1)::a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Metafeatures for dataset a47eba54-01ae-11f1-b8b7-d54f57ea79c8
+  ClassEntropy: 6.643168364270614
+  SymbolsSum: 0.0
+  SymbolsSTD: 0
+  SymbolsMean: 0
+  SymbolsMax: 0
+  SymbolsMin: 0
+  ClassProbabilitySTD: 0.000306245827415036
+  ClassProbabilityMean: 0.009999999999999998
+  ClassProbabilityMax: 0.01014832162373146
+  ClassProbabilityMin: 0.00936768149882904
+  InverseDatasetRatio: 19.70769230769231
+  DatasetRatio: 0.0507416081186573
+  RatioNominalToNumerical: 0.0
+  RatioNumericalToNominal: 0.0
+  NumberOfCategoricalFeatures: 0
+  NumberOfNumericFeatures: 65
+  NumberOfMissingValues: 0.0
+  NumberOfFeaturesWithMissingValues: 0.0
+  NumberOfInstancesWithMissingValues: 0.0
+  NumberOfFeatures: 65.0
+  NumberOfClasses: 100.0
+  NumberOfInstances: 1281.0
+  LogInverseDatasetRatio: 2.981009032001097
+  LogDatasetRatio: -2.981009032001097
+  PercentageOfMissingValues: 0.0
+  PercentageOfFeaturesWithMissingValues: 0.0
+  PercentageOfInstancesWithMissingValues: 0.0
+  LogNumberOfFeatures: 4.174387269895637
+  LogNumberOfInstances: 7.155396301896734
+  SkewnessSTD: 1.7579325276863573
+  SkewnessMean: 2.196637217535852
+  SkewnessMax: 12.028567034952369
+  SkewnessMin: 0.007789864439707334
+  KurtosisSTD: 22.991404672703652
+  KurtosisMean: 10.310123381409465
+  KurtosisMax: 165.9819296743704
+  KurtosisMin: -1.1959199652518606
+
+=== PHASE: Pipeline Search and Synthesis ===
+[DEBUG] [2026-02-04 10:48:22,213:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8]   initial_configurations_via_metalearning: 25
+[DEBUG] [2026-02-04 10:48:22,213:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8]   ensemble_class: <class 'autosklearn.ensembles.ensemble_selection.EnsembleSelection'>
+[DEBUG] [2026-02-04 10:48:22,213:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8]   ensemble_kwargs: {'ensemble_size': 1}
+[DEBUG] [2026-02-04 10:48:22,213:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8]   per_run_time_limit: 30.000000
+[DEBUG] [2026-02-04 10:48:22,213:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8]   time_left_for_this_task: 120.000000
+[DEBUG] [2026-02-04 10:48:22,213:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8]   max_models_on_disc: 50
+[DEBUG] [2026-02-04 10:48:22,213:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8]   metric: accuracy
+[DEBUG] [2026-02-04 10:48:22,213:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Done printing arguments to auto-sklearn
+[DEBUG] [2026-02-04 10:48:22,213:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Starting to print available components
+[DEBUG] [2026-02-04 10:48:22,213:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] ClassifierChoice: OrderedDict([... classifiers and their classes ...])
+[DEBUG] [2026-02-04 10:48:22,214:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] RegressorChoice: OrderedDict([... regressors and their classes ...])
+[DEBUG] [2026-02-04 10:48:22,214:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] FeaturePreprocessorChoice: OrderedDict([... preprocessors and their classes ...])
+[DEBUG] [2026-02-04 10:48:22,214:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] OHEChoice: OrderedDict([... one-hot encoding options ...])
+[DEBUG] [2026-02-04 10:48:22,214:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] RescalingChoice: OrderedDict([... rescaling components ...])
+[DEBUG] [2026-02-04 10:48:22,214:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] CoalescenseChoice: OrderedDict([... coalescence options ...])
+[DEBUG] [2026-02-04 10:48:22,214:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Done printing available components
+[DEBUG] [2026-02-04 10:48:22,567:Client-autosklearn.automl_common.common.utils.backend] Created Configuration space file /home/nguenang/Master_thesis/experiment_setup/autoskl_output_cls/space.json
+[INFO] [2026-02-04 10:48:22,567:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Starting to create dummy predictions.
+[DEBUG] [2026-02-04 10:48:22,574:Client-pynisher] Restricting your function to 3072 mb memory.
+[DEBUG] [2026-02-04 10:48:22,575:Client-pynisher] Restricting your function to 120 seconds wall time.
+[DEBUG] [2026-02-04 10:48:22,587:Client-pynisher] Redirecting output of the function to files.
+[DEBUG] [2026-02-04 10:48:22,587:Client-pynisher] call function
+[INFO] [2026-02-04 10:48:22,727:Client-TAE] Finished evaluating configuration 1
+[INFO] [2026-02-04 10:48:22,729:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Finished creating dummy predictions.
+[INFO] [2026-02-04 10:48:22,729:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Start Ensemble with 119.48sec time left
+[INFO] [2026-02-04 10:48:22,730:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Start SMAC with 119.48sec time left
+[INFO] [2026-02-04 10:48:24,027:Client-AutoMLSMBO(1)::a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Initial Configurations: 25
+[DEBUG] [2026-02-04 10:48:24,027:Client-AutoMLSMBO(1)::a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Configuration(values={ ... configuration values ... })
+[DEBUG] [2026-02-04 10:48:24,030:Client-AutoMLSMBO(1)::a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Initial Configurations took  0.11sec
+[INFO] [2026-02-04 10:48:24,030:Client-AutoMLSMBO(1)::a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Time left for Initial Configurations: 117.18s
+[INFO] [2026-02-04 10:48:24,046:smac.utils.io.cmd_reader.CMDReader] Output to /home/nguenang/Master_thesis/experiment_setup/autoskl_output_cls/smac3-output
+[INFO] [2026-02-04 10:48:24,059:smac.optimizer.smbo.SMBO] Running initial design
+[INFO] [2026-02-04 10:48:24,065:Client-TAE] Starting to evaluate configuration 1
+[DEBUG] [2026-02-04 10:48:24,069:Client-pynisher] Restricting your function to 3072 mb memory.
+[DEBUG] [2026-02-04 10:48:24,069:Client-pynisher] Restricting your function to 30 seconds wall time.
+[DEBUG] [2026-02-04 10:48:24,082:Client-pynisher] call function
+[INFO] [2026-02-04 10:48:28,870:Client-TAE] Finished evaluating configuration 1
+[DEBUG] [2026-02-04 10:48:28,881:Client-EnsembleBuilder] Restricting your function to 3072 mb memory.
+[DEBUG] [2026-02-04 10:48:28,882:Client-EnsembleBuilder] Restricting your function to 108 seconds wall time.
+[DEBUG] [2026-02-04 10:48:28,905:Client-EnsembleBuilder] Fitting the ensemble took 0.0019 seconds.
+[INFO] [2026-02-04 10:48:28,906:Client-EnsembleBuilder] Ensemble Selection:
+	Trajectory: 0: 0.05674
+	Members: [0]
+	Weights: [1.]
+	Identifiers: (1, 2, 0.0)
+[INFO] [2026-02-04 10:48:28,933:Client-EnsembleBuilder] DummyFuture: Started Ensemble builder job at 2026.02.04-10.48.28 for iteration 0
+[INFO] [2026-02-04 10:48:32,165:smac.intensification.simple_intensifier.SimpleIntensifier] Changes in incumbent:
+[INFO] [2026-02-04 10:48:32,165:smac.intensification.simple_intensifier.SimpleIntensifier]   balancing:strategy : 'none' -> 'weighting'
+[INFO] [2026-02-04 10:48:32,165:smac.intensification.simple_intensifier.SimpleIntensifier]   classifier:__choice__ : 'random_forest' -> 'extra_trees'
+[INFO] [2026-02-04 10:48:32,166:smac.intensification.simple_intensifier.SimpleIntensifier]   feature_preprocessor:__choice__ : 'no_preprocessing' -> 'feature_agglomeration'
+[DEBUG] [2026-02-04 10:48:32,167:Client-EnsembleBuilder] iteration=1 @ elapsed_time=9.436 has history=[{'ensemble_optimization_score': 0.9432624113475178}]
+[DEBUG] [2026-02-04 10:48:32,173:Client-EnsembleBuilder] Restricting your function to 3072 mb memory.
+[DEBUG] [2026-02-04 10:48:32,197:Client-EnsembleBuilder] Fitting ensemble on 2 models
+[INFO] [2026-02-04 10:48:32,200:Client-EnsembleBuilder] Ensemble Selection:
+	Trajectory: 0: 0.02600
+	Members: [1]
+	Weights: [0. 1.]
+	Identifiers: (1, 3, 0.0)
+[INFO] [2026-02-04 10:48:32,224:Client-EnsembleBuilder] DummyFuture: Started Ensemble builder job at 2026.02.04-10.48.32 for iteration 1
+[INFO] [2026-02-04 10:48:34,062:Client-TAE] Finished evaluating configuration 3
+[DEBUG] [2026-02-04 10:48:34,065:smac.intensification.simple_intensifier.SimpleIntensifier] Incumbent (0.026) is better than challenger (0.9882) on 1 runs.
+[DEBUG] [2026-02-04 10:48:34,073:Client-EnsembleBuilder] Fitting ensemble on 3 models
+[INFO] [2026-02-04 10:48:34,101:Client-EnsembleBuilder] Ensemble Selection:
+	Trajectory: 0: 0.02600
+	Members: [1]
+	Weights: [0. 1. 0.]
+	Identifiers: (1, 3, 0.0)
+[INFO] [2026-02-04 10:48:34,128:Client-EnsembleBuilder] DummyFuture: Started Ensemble builder job at 2026.02.04-10.48.34 for iteration 2
+[INFO] [2026-02-04 10:48:36,101:Client-TAE] Finished evaluating configuration 4
+[DEBUG] [2026-02-04 10:48:36,104:smac.intensification.simple_intensifier.SimpleIntensifier] Incumbent (0.026) is better than challenger (0.4113) on 1 runs.
+[DEBUG] [2026-02-04 10:48:36,113:Client-EnsembleBuilder] Fitting ensemble on 4 models
+[INFO] [2026-02-04 10:48:36,148:Client-EnsembleBuilder] Ensemble Selection:
+	Trajectory: 0: 0.02600
+	Members: [1]
+	Weights: [0. 1. 0. 0.]
+	Identifiers: (1, 3, 0.0)
+[INFO] [2026-02-04 10:48:36,174:Client-EnsembleBuilder] DummyFuture: Started Ensemble builder job at 2026.02.04-10.48.36 for iteration 3
+[INFO] [2026-02-04 10:48:38,156:Client-TAE] Finished evaluating configuration 5
+[DEBUG] [2026-02-04 10:48:38,158:smac.intensification.simple_intensifier.SimpleIntensifier] Incumbent (0.026) is better than challenger (0.1182) on 1 runs.
+[DEBUG] [2026-02-04 10:48:38,166:Client-EnsembleBuilder] Fitting ensemble on 5 models
+[INFO] [2026-02-04 10:48:38,197:Client-EnsembleBuilder] Ensemble Selection:
+	Trajectory: 0: 0.02600
+	Members: [1]
+	Weights: [0. 1. 0. 0. 0.]
+	Identifiers: (1, 3, 0.0)
+[INFO] [2026-02-04 10:48:38,223:Client-EnsembleBuilder] DummyFuture: Started Ensemble builder job at 2026.02.04-10.48.38 for iteration 4
+[INFO] [2026-02-04 10:48:40,135:Client-TAE] Finished evaluating configuration 6
+[DEBUG] [2026-02-04 10:48:40,139:smac.intensification.simple_intensifier.SimpleIntensifier] Incumbent (0.026) is better than challenger (0.5177) on 1 runs.
+[DEBUG] [2026-02-04 10:48:40,148:Client-EnsembleBuilder] Fitting ensemble on 6 models
+[INFO] [2026-02-04 10:48:40,185:Client-EnsembleBuilder] Ensemble Selection:
+	Trajectory: 0: 0.02600
+	Members: [1]
+	Weights: [0. 1. 0. 0. 0. 0.]
+	Identifiers: (1, 3, 0.0)
+[INFO] [2026-02-04 10:48:40,215:Client-EnsembleBuilder] DummyFuture: Started Ensemble builder job at 2026.02.04-10.48.40 for iteration 5
+[INFO] [2026-02-04 10:48:41,396:Client-EnsembleBuilder] DummyFuture: Started Ensemble builder job at 2026.02.04-10.48.41 for iteration 6
+[INFO] [2026-02-04 10:48:43,129:Client-EnsembleBuilder] DummyFuture: Started Ensemble builder job at 2026.02.04-10.48.43 for iteration 7
+[INFO] [2026-02-04 10:48:45,209:Client-EnsembleBuilder] DummyFuture: Started Ensemble builder job at 2026.02.04-10.48.45 for iteration 8
+[INFO] [2026-02-04 10:48:49,981:Client-EnsembleBuilder] DummyFuture: Started Ensemble builder job at 2026.02.04-10.48.49 for iteration 9
+[INFO] [2026-02-04 10:48:51,991:Client-EnsembleBuilder] DummyFuture: Started Ensemble builder job at 2026.02.04-10.48.51 for iteration 10
+[INFO] [2026-02-04 10:49:02,001:Client-EnsembleBuilder] DummyFuture: Started Ensemble builder job at 2026.02.04-10.49.02 for iteration 12
+[INFO] [2026-02-04 10:49:03,560:Client-EnsembleBuilder] DummyFuture: Started Ensemble builder job at 2026.02.04-10.49.03 for iteration 13
+[INFO] [2026-02-04 10:49:12,008:Client-EnsembleBuilder] DummyFuture: Started Ensemble builder job at 2026.02.04-10.49.12 for iteration 14
+[INFO] [2026-02-04 10:49:48,243:Client-EnsembleBuilder] DummyFuture: Started Ensemble builder job at 2026.02.04-10.49.48 for iteration 15
+[INFO] [2026-02-04 10:49:51,880:Client-EnsembleBuilder] DummyFuture: Started Ensemble builder job at 2026.02.04-10.49.51 for iteration 16
+[INFO] [2026-02-04 10:50:12,008:Client-EnsembleBuilder] DummyFuture: Started Ensemble builder job at 2026.02.04-10.50.12 for iteration 17
+
+=== PHASE: Termination Facts ===
+[INFO] [2026-02-04 10:50:12,016:Client-TAE] Not starting configuration 19 because time is up
+[INFO] [2026-02-04 10:50:12,020:smac.stats.stats.Stats] ---------------------STATISTICS---------------------
+[INFO] [2026-02-04 10:50:12,020:smac.stats.stats.Stats] Incumbent changed: 1
+[INFO] [2026-02-04 10:50:12,020:smac.stats.stats.Stats] Submitted target algorithm runs: 19 / inf
+[INFO] [2026-02-04 10:50:12,020:smac.stats.stats.Stats] Finished target algorithm runs: 19 / inf
+[INFO] [2026-02-04 10:50:12,020:smac.stats.stats.Stats] Configurations: 19
+[INFO] [2026-02-04 10:50:12,020:smac.stats.stats.Stats] Used wallclock time: 107.96 / 112.16 sec 
+[INFO] [2026-02-04 10:50:12,020:smac.stats.stats.Stats] Used target algorithm runtime: 102.89 / inf sec
+[INFO] [2026-02-04 10:50:12,020:smac.facade.smac_ac_facade.SMAC4AC] Final Incumbent: Configuration(values={
+  'balancing:strategy': 'weighting',
+  'classifier:__choice__': 'extra_trees',
+  'classifier:extra_trees:bootstrap': 'False',
+  'classifier:extra_trees:criterion': 'gini',
+  'classifier:extra_trees:max_depth': 'None',
+  'classifier:extra_trees:max_features': 0.5403529301411075,
+  'classifier:extra_trees:max_leaf_nodes': 'None',
+  'classifier:extra_trees:min_impurity_decrease': 0.0,
+  'classifier:extra_trees:min_samples_leaf': 1,
+  'classifier:extra_trees:min_samples_split': 6,
+  'classifier:extra_trees:min_weight_fraction_leaf': 0.0,
+  'data_preprocessor:__choice__': 'feature_type',
+  'data_preprocessor:feature_type:numerical_transformer:imputation:strategy': 'most_frequent',
+  'data_preprocessor:feature_type:numerical_transformer:rescaling:__choice__': 'none',
+  'feature_preprocessor:__choice__': 'feature_agglomeration',
+  'feature_preprocessor:feature_agglomeration:affinity': 'manhattan',
+  'feature_preprocessor:feature_agglomeration:linkage': 'complete',
+  'feature_preprocessor:feature_agglomeration:n_clusters': 67,
+  'feature_preprocessor:feature_agglomeration:pooling_func': 'max',
+})
+[INFO] [2026-02-04 10:50:12,022:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Starting shutdown...
+[INFO] [2026-02-04 10:50:12,022:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Ensemble script still running, waiting for it to finish.
+[INFO] [2026-02-04 10:50:12,022:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Ensemble script finished, continue shutdown.
+[INFO] [2026-02-04 10:50:12,025:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Loading models...
+[INFO] [2026-02-04 10:50:12,445:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Finished loading models...
+[INFO] [2026-02-04 10:50:12,446:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Closing the dask infrastructure
+[INFO] [2026-02-04 10:50:12,446:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Finished closing the dask infrastructure
+[INFO] [2026-02-04 10:50:12,446:Client-AutoML(1):a47eba54-01ae-11f1-b8b7-d54f57ea79c8] Starting to clean up the logger

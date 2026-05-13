@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 
 from itertools import product
-from utils.utils import create_directory, create_fit_classifier,  read_dataset, read_all_dataset, generate_results, filter_automl_logs,iterate_loop
+from utils.utils import create_directory, create_fit_classifier,  read_dataset, read_all_dataset, generate_results, filter_automl_logs,iterate_loop,generate_graph
 
 
 from utils.constant import TASK
@@ -875,7 +875,7 @@ if __name__ == "__main__":
                     # STEP 3 — VERIFICATION
                     # ==============================================================
                     print("\n✔️  Step 3: Verification")
-
+                    time.sleep(60)
                     step_start = time.time()
 
                     verification(global_summary_file, logs_path,sum_llm,verification_file)
@@ -1135,29 +1135,113 @@ if __name__ == "__main__":
         print(f"   • Seconds : {total_time:.2f}s")
         print(f"   • Minutes : {total_time / 60:.2f} min")
         print(f"   • Hours   : {total_time / 3600:.2f} hr")
-
+    
         print("=" * 80)
-            
+    
+    
+    
+    
+    
+    # if sys.argv[1] == 'generate_csv_file':
+
+    #     csv_df = []
+    #     doc = []
+
+    #     # prompt_strategy = "FLAT_PROMPTING"
+
+    #     for prompt_strategy in PROMPT_STRATEGY:
+    #         for automl in AUTOML:
+    #             # if prompt_strategy == "HIERARCHICAL_PROMPTING":
+    #             #     sum_prompt = "Hierachical prompt"
+
+    #             jobs = iterate_loop(
+    #                 prompt_strategy=prompt_strategy,
+    #                 automl=automl
+    #             )
+
+    #             for (
+    #                 logs_path,
+    #                 summary_dir,
+    #                 sum_prompt,
+    #                 output_directory,
+    #                 sum_llm,
+    #                 task,
+    #                 dataset_name,
+    #                 automl
+    #             ) in jobs:
+
+    #                 if prompt_strategy == "HIERARCHICAL_PROMPTING":
+    #                     sum_prompt = "Hierachical prompt"
+
+    #                 for llm_judge in LLMs_judge:
+
+    #                     judge_prompt = "zeroshot_judging"
+
+    #                     judge_dir = os.path.join(
+    #                         output_directory,
+    #                         f'evaluation_{llm_judge}.txt'
+    #                     )
+
+    #                     print(f"judge file directory: {judge_dir}")
+    #                     print("JUDGING PROMPT:", judge_prompt)
+
+    #                     row = result_script(judge_dir)
+
+    #                     result_dir = os.path.join(root_dir, "result.csv")
+
+    #                     write_csv(
+    #                         prompt_strategy,
+    #                         automl,
+    #                         task,
+    #                         dataset_name,
+    #                         sum_llm,
+    #                         sum_prompt,
+    #                         llm_judge,
+    #                         judge_prompt,
+    #                         row,
+    #                         result_dir
+    #                     )    
+                
+    
+    
+
+
 
     elif sys.argv[1] == 'generate_csv_file':
         csv_df = [ ]
         doc = []
+        # prompt_strategy = "FLAT_PROMPTING"
         for prompt_strategy in PROMPT_STRATEGY:
-            # prompt_strategy="FLAT_PROMPTING"
+            print("OUTER LOOP:", prompt_strategy)
             for automl in AUTOML:
                 jobs = iterate_loop(prompt_strategy=prompt_strategy, automl=automl)
                 for logs_path, summary_dir, sum_prompt, output_directory, sum_llm, task, dataset_name, automl in jobs:
+                    if prompt_strategy == "HIERARCHICAL_PROMPTING":
+                        sum_prompt = "Hierarchical_prompt"
+                    # --------------------------------------------------------------
+                    # Skip unsupported combinations
+                    # # --------------------------------------------------------------
+                    # if (task in ["SEMISUPERVISED", "TIME_SERIES_FORECAST"]and automl == "AUTOSKLEARN" ):
+                    #     print( f"⚠️  Skipping unsupported combination: " f"{automl} + {task}" )
+                    #     continue
+                    
                     for  llm_judge, judge_prompt in product(LLMs_judge,JUDGING_PROMPT ):
- 
-                        judge_dir = os.path.join(output_directory, judge_prompt, f'evaluation_{llm_judge}.txt')           
-                        print(f"judge file directory: {judge_dir}")
-                        print("JUDGING PROMPT:", judge_prompt)        
+
+                        judge_dir = os.path.join(output_directory, judge_prompt, f'evaluation_{llm_judge}.txt')
+                        if not os.path.exists(judge_dir):
+                            continue    
+                        # print(f"judge file directory: {judge_dir}")
+                        # print("JUDGING PROMPT:", judge_prompt)        
                         row = result_script(judge_dir)
                         result_dir = os.path.join(root_dir, f"result.csv")
                         write_csv(prompt_strategy, automl,task,dataset_name, sum_llm, sum_prompt, llm_judge, judge_prompt, row , result_dir)     
             
-            
-
+                    
+    elif sys.argv[1] == 'generate_graph':
+        result_dir = os.path.join(root_dir, f"result.csv")
+    
+     
+        generate_graph(result_dir)
 
     elif sys.argv[1] == "fit_1":
 

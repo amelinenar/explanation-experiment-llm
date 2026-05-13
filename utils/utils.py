@@ -5,6 +5,9 @@ import numpy as np
 from itertools import product
 from dotenv import load_dotenv
 
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 from utils.constant import CLASSIFICATION_DATASET,TIMESERIES_DATASET
 from utils.constant import REGRESSION_DATASET,SEMI_SUPERVISED_DATASET
 from utils.constant import TASK, LLMs
@@ -293,8 +296,548 @@ def create_fit_classifier(task_name,X_train,y_train,target_column,logs_path,date
 
 
 
+
+# def iterate_loop(prompt_strategy, automl):
+#     jobs = []
+
+#     for task in TASK:
+
+#         # Select prompts depending on strategy
+#         if prompt_strategy == "FLAT_PROMPTING":
+#             prompt_list = SUMMARIZATION_FLAT_PROMPT
+
+#         elif prompt_strategy == "HIERARCHICAL_PROMPTING":
+#             prompt_list = ["Hierarchical prompt"]
+
+#         for dataset_name, sum_llm, sum_prompt in product(
+#             dataset_names_for_task[task],
+#             LLMs,
+#             prompt_list
+#         ):
+
+#             if automl == "ALPHA-AUTOML":
+#                 logs_path = os.path.join(
+#                     root_dir,
+#                     'results',
+#                     automl,
+#                     task,
+#                     dataset_name,
+#                     'filter_logs.txt'
+#                 )
+
+#             elif automl == "AUTOSKLEARN":
+#                 logs_path = os.path.join(
+#                     root_dir,
+#                     "autosklearn_logs",
+#                     task,
+#                     dataset_name,
+#                     "full_log_MainProcess.txt"
+#                 )
+
+#             # Skip unsupported combinations
+#             if (
+#                 task in ["SEMISUPERVISED", "TIME_SERIES_FORECAST"]
+#                 and automl == "AUTOSKLEARN"
+#             ):
+#                 print(f"⚠️  Skipping unsupported combination: {automl} + {task}")
+#                 continue
+
+#             if prompt_strategy == "FLAT_PROMPTING":
+
+#                 output_directory = os.path.join(
+#                     root_dir,
+#                     'results',
+#                     automl,
+#                     task,
+#                     dataset_name,
+#                     sum_llm,
+#                     sum_prompt
+#                 )
+
+#             elif prompt_strategy == "HIERARCHICAL_PROMPTING":
+
+#                 output_directory = os.path.join(
+#                     root_dir,
+#                     'results_Hierarchical_Prompting',
+#                     automl,
+#                     task,
+#                     dataset_name,
+#                     sum_llm
+#                 )
+
+#             create_directory(output_directory)
+
+#             summary_dir = os.path.join(
+#                 output_directory,
+#                 'summary_result.txt'
+#             )
+
+#             jobs.append((
+#                 logs_path,
+#                 summary_dir,
+#                 sum_prompt,
+#                 output_directory,
+#                 sum_llm,
+#                 task,
+#                 dataset_name,
+#                 automl
+#             ))
+
+#     return jobs
+
+
+
+
+
+
+
+
+# ============================================================
+# CONFIGURATION
+# ============================================================
+
+METRICS_OF_INTEREST = [
+    "Accuracy",
+    "Completeness",
+    "Clarity",
+    "Relevance"
+]
+
+
+
+def generate_graph(csv_file):
+    
+    output_dir = os.path.join(root_dir, "graphs")
+    os.makedirs(output_dir, exist_ok=True)
+
+    # ========================================================
+    # LOAD DATA
+    # ========================================================
+
+    df = pd.read_csv(csv_file)
+
+    # Convert score to percentage
+    df["score_per"] = ((df["score"] - 1) / 3) * 100
+
+    # Remove unwanted datasets/tasks
+    df_common = df[
+        (df["task"] != "REGRESSION") &
+        (df["dataset"] != "185_baseball_dataset")
+    ]
+
+    # ========================================================
+    # BASIC INFORMATION
+    # ========================================================
+
+    tasks = df_common["task"].unique()
+    datasets = df_common["dataset"].unique()
+    llms = df_common["llm_summarizer"].unique()
+    prompts = df_common["summarization_prompt"].unique()
+    metrics = df_common["metric"].unique()
+
+    # ========================================================
+    # RQ1 — OVERALL PROMPT PERFORMANCE
+    # ========================================================
+
+    print("\n================================================")
+    print("RQ1 — Overall Prompt Performance")
+    print("================================================")
+
+    metric_scores = (
+        df_common
+        .groupby(["summarization_prompt", "metric"])["score_per"]
+        .mean()
+        .unstack()
+    )
+
+    print(metric_scores)
+
+#     for metric in metrics:
+
+#         subset = df_common[df_common["metric"] == metric]
+
+#         if subset.empty:
+#             continue
+
+#         data = []
+#         labels = []
+
+#         for prompt in prompts:
+
+#             prompt_scores = subset[
+#                 subset["summarization_prompt"] == prompt
+#             ]["score_per"]
+
+#             if len(prompt_scores) > 0:
+#                 data.append(prompt_scores)
+#                 labels.append(prompt)
+
+#         if not data:
+#             continue
+
+#         plt.figure(figsize=(6, 5))
+#         plt.boxplot(data)
+#         plt.xticks( range(1, len(labels) + 1), labels,rotation=45)
+#         plt.ylabel("Score (%)")
+
+#         plt.title(f"Score Distribution per Prompt\nMetric: {metric}" )
+#         plt.tight_layout()
+#         plt.savefig(
+#     os.path.join(output_dir, f"overall_prompt_performance_{metric}.pdf"),
+#     bbox_inches="tight",
+#     pad_inches=0
+# )
+
+
+
+    # ========================================================
+    # PROMPT × TASK INTERACTION
+    # ========================================================
+
+    print("\n================================================")
+    print("Prompt × Task Interaction")
+    print("================================================")
+
+    filtered = df_common[
+        df_common["metric"].isin(METRICS_OF_INTEREST)
+    ]
+
+    interaction_scores = {}
+
+    for metric in METRICS_OF_INTEREST:
+
+        interaction_scores[metric] = (
+            filtered[filtered["metric"] == metric]
+            .groupby(
+                ["summarization_prompt", "task"]
+            )["score_per"]
+            .mean()
+            .unstack()
+        )
+
+    for metric, table in interaction_scores.items():
+
+        prompts = table.index.tolist()
+        tasks = table.columns.tolist()
+
+        angles = np.linspace(
+            0,
+            2 * np.pi,
+            len(prompts),
+            endpoint=False
+        ).tolist()
+
+        angles += angles[:1]
+
+        plt.figure(figsize=(8, 8))
+        ax = plt.axes(polar=True)
+
+        for task in tasks:
+
+            values = table[task].tolist()
+            values += values[:1]
+
+            ax.plot(angles,  values,  marker="o",  linewidth=2,label=task)  
+            ax.fill(angles, values, alpha=0.15)
+
+        ax.set_thetagrids(
+            np.degrees(angles[:-1]),
+            prompts
+        )
+
+        ax.set_title(
+            f"Summary Quality: Prompt × Task ({metric})"
+        )
+
+        ax.legend(
+            loc="upper right",
+            bbox_to_anchor=(1.35, 1.1)
+        )
+        
+        plt.savefig(
+    os.path.join(output_dir, f"prompt_performance_task_{metric}.pdf"),
+    bbox_inches="tight",
+    pad_inches=0
+)
+
+     
+
+    # ========================================================
+    # PROMPT PERFORMANCE PER DATASET
+    # ========================================================
+
+    print("\n================================================")
+    print("Prompt Performance per Dataset")
+    print("================================================")
+
+    dataset_tables = {}
+
+    for dataset in datasets:
+
+        dataset_df = df_common[
+            (df_common["dataset"] == dataset) &
+            (df_common["metric"].isin(METRICS_OF_INTEREST))
+        ]
+
+        table = (
+            dataset_df
+            .groupby(
+                ["metric", "summarization_prompt"]
+            )["score_per"]
+            .mean()
+            .unstack()
+        )
+
+        dataset_tables[dataset] = table
+
+    # --------------------------------------------------------
+    # RADAR GRID
+    # --------------------------------------------------------
+
+    n_datasets = len(dataset_tables)
+
+    n_cols = 4
+    n_rows = int(np.ceil(n_datasets / n_cols))
+
+    fig, axes = plt.subplots(
+        n_rows,
+        n_cols,
+        subplot_kw=dict(polar=True),
+        figsize=(22, 18)
+    )
+
+    axes = axes.flatten()
+
+    legend_handles = None
+
+    for i, (ax, (dataset, table)) in enumerate(
+        zip(axes, dataset_tables.items())
+    ):
+
+        prompts = table.columns.tolist()
+        metrics = table.index.tolist()
+
+        angles = np.linspace(
+            0,
+            2 * np.pi,
+            len(prompts),
+            endpoint=False
+        ).tolist()
+
+        angles += angles[:1]
+
+        for metric in metrics:
+
+            values = table.loc[metric].tolist()
+            values += values[:1]
+
+            ax.plot(
+                angles,
+                values,
+                linewidth=2,
+                label=metric
+            )
+
+            ax.fill(angles, values, alpha=0.08)
+
+        ax.set_thetagrids(
+            np.degrees(angles[:-1]),
+            prompts
+        )
+
+        ax.set_title(dataset, fontsize=10)
+
+        ax.set_ylim(0, 100)
+
+        if i == 0:
+            legend_handles = ax.get_legend_handles_labels()
+
+    # Hide unused axes
+    for i in range(len(dataset_tables), len(axes)):
+        fig.delaxes(axes[i])
+
+    # --------------------------------------------------------
+    # GLOBAL LEGEND
+    # --------------------------------------------------------
+
+    handles, labels = legend_handles
+
+    fig.legend(
+        handles,
+        labels,
+        loc="lower center",
+        ncol=4,
+        fontsize=11,
+        bbox_to_anchor=(0.5, -0.02)
+    )
+
+    plt.tight_layout()
+
+    plt.subplots_adjust(
+        bottom=0.08,
+        wspace=0.15,
+        hspace=0.25
+    )
+
+    plt.savefig(
+    os.path.join(output_dir, "prompt_per_dataset_without_regression.pdf"),
+    bbox_inches="tight",
+    pad_inches=0
+)
+    
+    # ========================================================
+    # PROMPT × LLM INTERACTION
+    # ========================================================
+
+    print("\n================================================")
+    print("Prompt × LLM Interaction")
+    print("================================================")
+
+    filtered = df_common[
+        df_common["metric"].isin(METRICS_OF_INTEREST)
+    ]
+
+    interaction_scores = {}
+
+    for metric in METRICS_OF_INTEREST:
+
+        interaction_scores[metric] = (
+            filtered[filtered["metric"] == metric]
+            .groupby(
+                ["summarization_prompt", "llm_summarizer"]
+            )["score_per"]
+            .mean()
+            .unstack()
+        )
+
+    print(interaction_scores["Accuracy"])
+
+    for metric, table in interaction_scores.items():
+
+        prompts = table.index.tolist()
+        llms = table.columns.tolist()
+
+        angles = np.linspace(
+            0,
+            2 * np.pi,
+            len(prompts),
+            endpoint=False
+        ).tolist()
+
+        angles += angles[:1]
+
+        plt.figure(figsize=(8, 8))
+
+        ax = plt.axes(polar=True)
+
+        for llm in llms:
+
+            values = table[llm].tolist()
+            values += values[:1]
+
+            ax.plot(
+                angles,
+                values,
+                marker="o",
+                linewidth=2,
+                label=llm
+            )
+
+            ax.fill(angles, values, alpha=0.15)
+
+        ax.set_thetagrids(
+            np.degrees(angles[:-1]),
+            prompts
+        )
+
+        ax.set_title(
+            f"Interaction Effect: Prompt × LLM ({metric})"
+        )
+
+        ax.legend(
+            loc="upper right",
+            bbox_to_anchor=(1.35, 1.1)
+        )
+        
+        
+        plt.savefig(
+    os.path.join(output_dir, f"prompt_llm_interaction_{metric}.pdf"),
+    bbox_inches="tight",
+    pad_inches=0
+)
+
+    
+    
+    
+    #------------------------------------
+    #  Prompt performance  accross AutoML 
+    #-------------------------------------
+
+    task_of_interest = df["task"].unique()
+
+    filtered = df[df["metric"].isin(METRICS_OF_INTEREST)]
+
+    interaction_scores = {}
+
+    for metric in METRICS_OF_INTEREST:
+        interaction_scores[metric] = (
+            filtered[filtered["metric"] == metric]
+            .groupby(["summarization_prompt", "automl"])["score_per"]
+            .mean()
+            .unstack()
+        )
+
+    # # Example
+    # print(interaction_scores["Accuracy"])
+
+
+    for metric, table in interaction_scores.items():
+
+        prompts = table.index.tolist()
+        tasks = table.columns.tolist()
+
+        angles = np.linspace(0, 2 * np.pi, len(prompts), endpoint=False).tolist()
+        angles += angles[:1]
+
+        plt.figure(figsize=(8, 8))
+        ax = plt.axes(polar=True)
+
+        for task in tasks:
+            values = table[task].tolist()
+            values += values[:1]
+
+            ax.plot(angles, values, marker='o', linewidth=2, label=task)
+            ax.fill(angles, values, alpha=0.15)
+            
+
+
+        ax.set_thetagrids(np.degrees(angles[:-1]), prompts)
+        # ax.set_title(f"Summary quality wrt : Prompt × AutoMl ({metric})")
+        ax.legend(loc="upper right", bbox_to_anchor=(1.35, 1.1))
+        
+
+
+        plt.tight_layout()
+        plt.subplots_adjust(bottom=0.08)
+
+        # fig.tight_layout(rect=[0, 0.05, 1, 1])
+        plt.subplots_adjust(wspace=0.15, hspace=0.25)
+
+        plt.savefig(
+             os.path.join(output_dir, f"prompt_ROBUSTNESS_{metric}.pdf"),
+            bbox_inches='tight',
+            pad_inches=0
+        )
+        
+        plt.show()
+
+
+
+
+
 def iterate_loop(prompt_strategy,automl):
     jobs = []
+
     for task in TASK:
         for dataset_name, sum_llm, sum_prompt in product(dataset_names_for_task[task], LLMs, SUMMARIZATION_FLAT_PROMPT):                
             

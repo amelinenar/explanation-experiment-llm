@@ -94,7 +94,7 @@ def write_csv(prompt_strategy, automl,task,dataset,llm_summarizer,summarization_
     ]
 
     file_exists = os.path.exists(csv_path)
-    print(file_exists)
+    # print(file_exists)
     write_header = not file_exists or os.path.getsize(csv_path) == 0
 
     with open(csv_path, "a", encoding="utf-8", newline="") as f:
