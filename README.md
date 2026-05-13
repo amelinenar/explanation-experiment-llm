@@ -138,7 +138,7 @@ The project is designed for reproducible research on LLM-based explainability fo
 
 # Requirements
 
-- Python 3.10+
+- Python 3.10
 - pip
 
 ---
@@ -166,7 +166,7 @@ Create a `.env` file in the root directory:
 URL_API=""
 ROOT_DIR=""
 KEY=""   # Required for OpenAI models such as gpt-4.1-mini
-URL_gpt = "https://api.openai.com/v1/responses" (in case you use  gpt-4.1-mini )
+URL_gpt = "https://api.openai.com/v1/responses" #(in case you use  gpt-4.1-mini )
 ```
 
 ### Environment Variables
@@ -259,7 +259,6 @@ LLMs_judge = {
     'gpt-4.1-mini'
 }
 ```
-```markdown
 # Best Performing Model
 
 Among the evaluated models, `gpt-4.1-mini` produced the best overall results in terms of:
