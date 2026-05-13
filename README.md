@@ -570,12 +570,12 @@ This setup will run the experiment only for:
 
 Add this subsection under **Installation** or after **Environment Variables**.
 
-```markdown
+
 # Using Ollama for Local LLM Inference
 
 This project also supports local LLM inference using Ollama.
 
-## Install Ollama
+#### Install Ollama
 
 Follow the official installation guide:
 
