@@ -103,6 +103,23 @@ The project is designed for reproducible research on LLM-based explainability fo
 
 ---
 
+
+## Implementation Setup
+
+This explanation property was implemented in Python 3.10.
+
+The experiments were conducted on a Linux operating system (Ubuntu 22.04.5 LTS) using the following hardware configuration:
+
+- **CPU:** Intel® Core™ i7-8650U @ 1.90 GHz × 8  
+- **Memory:** 16 GB RAM  
+- **Disk Capacity:** 512.1 GB  
+
+The open-source LLMs were remotely installed on a machine equipped with:
+
+- **Processor:** Intel® Core™ i7-14700K @ 3.4 GHz
+
+
+
 # Features
 
 - AutoML experiment execution
