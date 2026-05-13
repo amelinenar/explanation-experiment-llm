@@ -112,6 +112,7 @@ The project is designed for reproducible research on LLM-based explainability fo
 - Multi-dataset experimentation
 - Support for multiple LLMs
 - CSV result aggregation
+- Graph generation
 
 ---
 
@@ -165,6 +166,7 @@ Create a `.env` file in the root directory:
 URL_API=""
 ROOT_DIR=""
 KEY=""   # Required for OpenAI models such as gpt-4.1-mini
+URL_gpt = "https://api.openai.com/v1/responses" (in case you use  gpt-4.1-mini )
 ```
 
 ### Environment Variables
@@ -467,17 +469,28 @@ autosklearn_logs/
 # Example Workflow
 
 ```bash
-# Step 1 — Train models
+# Step 1 - Train models
 python main.py fit
 
-# Step 2 — Generate flat summaries
+# Step 2 - Generate flat summaries
 python main.py flat_summarization
 
-# Step 3 — Evaluate summaries
+# Step 3 - Generate Hierarchical summaries
+python main.py Hierachical_summarization
+
+# Step 4 - Evaluate flat summaries
 python main.py judge
 
-# Step 4 — Aggregate results
+# Step 5 - Evaluate Hierarchical summaries
+python main.py judge_H
+
+
+# Step 6 - Aggregate results
 python main.py generate_csv_file
+
+
+# Step 6 - Generate graphs
+python main.py generate_graph
 ```
 
 ---

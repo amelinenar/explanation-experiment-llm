@@ -296,102 +296,6 @@ def create_fit_classifier(task_name,X_train,y_train,target_column,logs_path,date
 
 
 
-
-# def iterate_loop(prompt_strategy, automl):
-#     jobs = []
-
-#     for task in TASK:
-
-#         # Select prompts depending on strategy
-#         if prompt_strategy == "FLAT_PROMPTING":
-#             prompt_list = SUMMARIZATION_FLAT_PROMPT
-
-#         elif prompt_strategy == "HIERARCHICAL_PROMPTING":
-#             prompt_list = ["Hierarchical prompt"]
-
-#         for dataset_name, sum_llm, sum_prompt in product(
-#             dataset_names_for_task[task],
-#             LLMs,
-#             prompt_list
-#         ):
-
-#             if automl == "ALPHA-AUTOML":
-#                 logs_path = os.path.join(
-#                     root_dir,
-#                     'results',
-#                     automl,
-#                     task,
-#                     dataset_name,
-#                     'filter_logs.txt'
-#                 )
-
-#             elif automl == "AUTOSKLEARN":
-#                 logs_path = os.path.join(
-#                     root_dir,
-#                     "autosklearn_logs",
-#                     task,
-#                     dataset_name,
-#                     "full_log_MainProcess.txt"
-#                 )
-
-#             # Skip unsupported combinations
-#             if (
-#                 task in ["SEMISUPERVISED", "TIME_SERIES_FORECAST"]
-#                 and automl == "AUTOSKLEARN"
-#             ):
-#                 print(f"⚠️  Skipping unsupported combination: {automl} + {task}")
-#                 continue
-
-#             if prompt_strategy == "FLAT_PROMPTING":
-
-#                 output_directory = os.path.join(
-#                     root_dir,
-#                     'results',
-#                     automl,
-#                     task,
-#                     dataset_name,
-#                     sum_llm,
-#                     sum_prompt
-#                 )
-
-#             elif prompt_strategy == "HIERARCHICAL_PROMPTING":
-
-#                 output_directory = os.path.join(
-#                     root_dir,
-#                     'results_Hierarchical_Prompting',
-#                     automl,
-#                     task,
-#                     dataset_name,
-#                     sum_llm
-#                 )
-
-#             create_directory(output_directory)
-
-#             summary_dir = os.path.join(
-#                 output_directory,
-#                 'summary_result.txt'
-#             )
-
-#             jobs.append((
-#                 logs_path,
-#                 summary_dir,
-#                 sum_prompt,
-#                 output_directory,
-#                 sum_llm,
-#                 task,
-#                 dataset_name,
-#                 automl
-#             ))
-
-#     return jobs
-
-
-
-
-
-
-
-
 # ============================================================
 # CONFIGURATION
 # ============================================================
@@ -829,7 +733,9 @@ def generate_graph(csv_file):
             pad_inches=0
         )
         
-        plt.show()
+    print(f"The graphs are stored in the folder {output_dir}")
+        
+        # plt.show()
 
 
 
@@ -878,84 +784,7 @@ def iterate_loop(prompt_strategy,automl):
 
 
 
-
-
-
-
-
-
-
-
-def generate_results(root_dir, task_name, dataset_name, llm):
-    res = pd.DataFrame(data=np.zeros((0,3), dtype=np.float16), index=[],
-                        columns=['task', 'dataset', 'llm' ])
-    
-    df_metrics = pd.DataFrame([{
-        'task': task_name,
-        'dataset': dataset_name,
-        'llm': llm
-    }])
-    
-    df_metrics['task'] = task_name
-    df_metrics['dataset'] = dataset_name
-    df_metrics['llm'] = llm
-    #df_metrics['metric'] = metric  
-    #df_metrics['llm'] = llm
  
-    res = pd.concat((res, df_metrics), axis=0, sort=False)
-
-    res.to_csv(os.path.join(root_dir, 'results.csv'), index=False, mode='a', header= not os.path.exists(os.path.join(root_dir, 'results.csv')))
-    
-    return res
-
-
-    
-def filter_automl_logs(log_text_path):
-    
-    with open(log_text_path, "r", encoding="utf-8") as f:
-        log_text = f.read()
-        
-    # 1. Remove timestamps
-    log_text = re.sub(r'^\d{4}-\d{2}-\d{2} [\d:,]+ - ', '', log_text, flags=re.MULTILINE)
-
-    # 2. Remove MCTS simulation spam
-    log_text = re.sub(r'.*MCTS SIMULATION \d+.*\n?', '', log_text)
-
-    # 3. Remove MOVE ACTION lines
-    log_text = re.sub(r'.*MOVE ACTION:.*\n?', '', log_text)
-
-    # 4. Deduplicate identical lines
-    lines = log_text.splitlines()
-    seen = set()
-    filtered = []
-    for line in lines:
-        if line not in seen:
-            seen.add(line)
-            filtered.append(line)
-
-    return "\n".join(filtered)
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-                    
-                
-                
-        
         
 
 # file_name = cur_root_dir + '/task/' + task_name + '/' + dataset_name + '/'

@@ -6,19 +6,19 @@ import pandas as pd
 import numpy as np
 
 from itertools import product
-from utils.utils import create_directory, create_fit_classifier,  read_dataset, read_all_dataset, generate_results, filter_automl_logs,iterate_loop,generate_graph
+from utils.utils import create_directory, create_fit_classifier,  read_dataset, read_all_dataset, iterate_loop,generate_graph
 
 
 from utils.constant import TASK
 from utils.constant import LLMs, LLMs_judge
 from utils.constant import dataset_names_for_task
-from utils.constant import SUMMARIZATION_FLAT_PROMPT,JUDGING_PROMPT, SUMMARIZATION_HIERARCHICAL_PROMPT,AUTOML,PROMPT_STRATEGY
+from utils.constant import SUMMARIZATION_FLAT_PROMPT,JUDGING_PROMPT,AUTOML,PROMPT_STRATEGY
 
 
 from prompt import explain_process,judging_explanation
 from dotenv import load_dotenv
 from result_script import write_csv, result_script
-from pipeline.Hierarchical_pipeline import phase_segmentation, micro_summarization,extract_pure_json,macro_summarization,verification,revised_summary,regex_filtering,fact_aggregation
+from pipeline.Hierarchical_pipeline import macro_summarization,verification,revised_summary
 from pipeline.Hierarchical_pipeline import fact_extraction
 from filtering_logs import filtering_logs, remove_consecutive_duplicates
 
@@ -1138,73 +1138,6 @@ if __name__ == "__main__":
     
         print("=" * 80)
     
-    
-    
-    
-    
-    # if sys.argv[1] == 'generate_csv_file':
-
-    #     csv_df = []
-    #     doc = []
-
-    #     # prompt_strategy = "FLAT_PROMPTING"
-
-    #     for prompt_strategy in PROMPT_STRATEGY:
-    #         for automl in AUTOML:
-    #             # if prompt_strategy == "HIERARCHICAL_PROMPTING":
-    #             #     sum_prompt = "Hierachical prompt"
-
-    #             jobs = iterate_loop(
-    #                 prompt_strategy=prompt_strategy,
-    #                 automl=automl
-    #             )
-
-    #             for (
-    #                 logs_path,
-    #                 summary_dir,
-    #                 sum_prompt,
-    #                 output_directory,
-    #                 sum_llm,
-    #                 task,
-    #                 dataset_name,
-    #                 automl
-    #             ) in jobs:
-
-    #                 if prompt_strategy == "HIERARCHICAL_PROMPTING":
-    #                     sum_prompt = "Hierachical prompt"
-
-    #                 for llm_judge in LLMs_judge:
-
-    #                     judge_prompt = "zeroshot_judging"
-
-    #                     judge_dir = os.path.join(
-    #                         output_directory,
-    #                         f'evaluation_{llm_judge}.txt'
-    #                     )
-
-    #                     print(f"judge file directory: {judge_dir}")
-    #                     print("JUDGING PROMPT:", judge_prompt)
-
-    #                     row = result_script(judge_dir)
-
-    #                     result_dir = os.path.join(root_dir, "result.csv")
-
-    #                     write_csv(
-    #                         prompt_strategy,
-    #                         automl,
-    #                         task,
-    #                         dataset_name,
-    #                         sum_llm,
-    #                         sum_prompt,
-    #                         llm_judge,
-    #                         judge_prompt,
-    #                         row,
-    #                         result_dir
-    #                     )    
-                
-    
-    
-
 
 
     elif sys.argv[1] == 'generate_csv_file':
@@ -1239,8 +1172,6 @@ if __name__ == "__main__":
                     
     elif sys.argv[1] == 'generate_graph':
         result_dir = os.path.join(root_dir, f"result.csv")
-    
-     
         generate_graph(result_dir)
 
     elif sys.argv[1] == "fit_1":
