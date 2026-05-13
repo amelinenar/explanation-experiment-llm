@@ -733,9 +733,55 @@ def generate_graph(csv_file):
             pad_inches=0
         )
         
+    
+    
+    #------------------------------#
+    #-----overall distribution of the evaluation per llm-----#
+    #------------------------------#
+
+
+    print("\n===============================================")
+    print("overall distribution of the evaluation per llm")
+    print("================================================")
+
+
+    for metric in metrics:
+
+        subset = df[
+            (df["metric"] == metric)
+            # & (df_2task_3llm["task"] == task)
+            # & (df_2task_3llm["dataset"] == dataset)
+            # & (df_2task_3llm["summarization_prompt"] == prompt)
+        ]
+
+        if subset.empty:
+            continue
+
+        
+        # summary = (
+        #     subset
+        #     .groupby("judging_llm")["score_per"]
+        #     .agg(["count", "mean", "median", "std", "min", "max"])
+        #     .round(2)
+        # )
+
+        # print(f"\nMetric: {metric}")
+        # print(summary)
+        
+        
+        summary_all = (
+        df
+        .groupby(["metric", "judging_llm"])["score_per"]
+        .agg(["count", "mean", "median", "std"])
+        .round(2)
+    )
+
+    print(summary_all)
+        
+        
     print(f"The graphs are stored in the folder {output_dir}")
         
-        # plt.show()
+       
 
 
 
