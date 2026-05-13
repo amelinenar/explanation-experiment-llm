@@ -464,7 +464,7 @@ evaluation_<judge_model>.txt
 
 # Notes
 
-- `AUTOSKLEARN` is only supported for:
+- `AUTOSKLEARN` only support:
   - Classification
   - Regression
 
@@ -501,7 +501,7 @@ python main.py judge_H
 python main.py generate_csv_file
 
 
-# Step 6 - Generate graphs
+# Step 7 - Generate graphs
 python main.py generate_graph
 ```
 
