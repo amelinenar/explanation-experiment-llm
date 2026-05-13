@@ -404,6 +404,18 @@ result.csv
 
 ---
 
+
+---
+
+# Generate graph
+
+```bash
+python main.py generate_graph
+
+---
+
+
+
 # Output Structure
 
 ## Flat Prompting Results
