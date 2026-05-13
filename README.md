@@ -411,6 +411,7 @@ result.csv
 
 ```bash
 python main.py generate_graph
+```
 
 ---
 
