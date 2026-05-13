@@ -259,7 +259,7 @@ LLMs_judge = {
     'gpt-4.1-mini'
 }
 ```
-# Best Performing Model
+#### Best Performing Model
 
 Among the evaluated models, `gpt-4.1-mini` produced the best overall results in terms of:
 
