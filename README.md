@@ -118,6 +118,7 @@ The open-source LLMs were remotely installed on a machine equipped with:
 
 - **Processor:** Intel® Core™ i7-14700K @ 3.4 GHz
 
+The experiment took 4 days. 
 
 
 # Features
